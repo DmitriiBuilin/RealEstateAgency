@@ -1,6 +1,6 @@
 @font-face 
     font-family: roboto
-    src: url(../fonts/Roboto-Bold.ttf)
+    src: url(../fonts/Roboto-Regular.ttf)
     font-weight: 400
     font-style: normal
 
@@ -8,6 +8,18 @@
     font-family: roboto
     src: url(../fonts/Roboto-Bold.ttf)
     font-weight: 700
+    font-style: normal
+
+@font-face 
+    font-family: roboto
+    src: url(../fonts/Roboto-Thin.ttf)
+    font-weight: 100
+    font-style: normal
+
+@font-face 
+    font-family: roboto
+    src: url(../fonts/Roboto-Light.ttf)
+    font-weight: 300
     font-style: normal
 
 $font-main: roboto, arial, sans-serif 
@@ -23,16 +35,16 @@ $color-white: #FFFFFF
     max-width: 100%
 
 .container
-    width: 100%
-    max-width: 1140px
+    width: 97%
+    max-width: 1536px
     margin: 0 auto
+    padding: 0 !important
 
-/* HEADER */
+/* -- HEADER -- */
 
 .header-background
     margin: 20px 0 0 0
     height: 60px
-    width: 97%
     background-color: $color-grey
     border-radius: 10px
     display: flex
@@ -47,7 +59,7 @@ $color-white: #FFFFFF
 .header-logo:hover
     cursor: pointer
 
-.language-button
+.header-options-button
     margin: 0 20px 0 0
     padding: 6px
     display: flex
@@ -58,17 +70,18 @@ $color-white: #FFFFFF
     background-color: $color-white
     font-size: 16px
     font-family: $font-main 
+    font-weight: 700
     color: #b5b5b5
     width: 110px
 
-.language-button:hover
+.header-options-button:hover
     cursor: pointer
     color: $color-dark-blue
 
-.language-button svg
+.header-options-button svg
     fill: #b5b5b5
 
-.language-button:hover svg
+.header-options-button:hover svg
     fill: $color-dark-blue
 
 .header-menu
@@ -78,20 +91,123 @@ $color-white: #FFFFFF
     max-width: 600px
     width: 100%
 
-
-
 .header-menu nav
     font-family: $font-main 
+    font-size: 17px
+    font-weight: 700
     color: $color-dark-blue
     padding: 8px  
+    transition: 0.5s
 
 .header-menu nav:hover
     cursor: pointer
     background-color: $color-white
     border-radius: 5px
+    transition: 0.5s
 
-
+.header-options
+    display: flex
+    justify-content: space-between
 
 header
+    margin: 0 0 30px 0
     display: flex
     justify-content: center
+
+
+
+/* -- MAIN - Search --*/
+
+
+    
+.index-page-search-block
+    margin: 0 0 30px 0
+    position: relative
+    height: 600px
+    background-image: url(../img/index_background_search_block.jpg)
+    background-size: cover
+    border-radius: 10px
+
+.main-search-block
+    margin: 220px 0 0 50px
+    width: 660px
+    background-color: $color-grey
+    opacity: 0.82
+    border-radius: 7px
+    position: absolute
+    transition: 0.5s
+
+.main-search-block:hover
+    transition: 0.5s
+    opacity: 1
+
+.main-search-form
+    padding: 15px
+    display: flex
+    flex-direction: column
+
+.main-search-parameters
+    display: flex
+    justify-content: space-between
+
+
+.search-btn-group
+    display: flex
+    justify-content: flex-end
+
+.search-btn-group button svg
+    fill: $color-white
+
+.button-red 
+    margin: 0 13px 0 0
+    background-color: $color-red !important
+    border-color: $color-red !important
+
+.button-red:hover
+    background-color: #9f0817 !important
+    border-color: #9f0817 !important
+
+.button-blue
+    margin: 0 8px 0 0
+    background-color: $color-blue !important
+    border-color: $color-blue !important
+
+.button-blue:hover
+    background-color: #01286b !important
+    border-color: #01286b !important
+
+.form-label
+    font-family: $font-main !important
+    font-weight: 700
+    font-size: 14px
+
+.form-select 
+    width: 94% !important
+
+.index-page-search-block-header-txt-high
+    position: absolute
+    margin: 80px 0 0 80px
+    font-family: $font-main
+    color: $color-dark-blue
+    font-weight: 100 
+    font-size: 45px
+    text-transform: uppercase
+
+.index-page-search-block-header-txt-low
+    position: absolute
+    margin: 130px 0 0 80px
+    font-family: $font-main
+    color: $color-dark-blue
+    font-size: 35px
+    text-transform: uppercase
+
+/* -- MAIN - Carousel --*/
+
+.index-page-statistic-carousel
+    border-radius: 10px
+
+.carousel-inner
+    border-radius: 10px 
+    background-size: cover
+
+
