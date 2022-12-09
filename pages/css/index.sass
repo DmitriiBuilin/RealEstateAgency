@@ -34,16 +34,23 @@ $color-white: #FFFFFF
     height: 100px
     max-width: 100%
 
-.container
-    width: 97%
+.container-primary
+    padding: 16px
     max-width: 1536px
     margin: 0 auto
-    padding: 0 !important
+
 
 /* -- HEADER -- */
 
+
+header
+    display: flex
+    justify-content: center
+
+.header-block
+    width: 100%
+
 .header-background
-    margin: 20px 0 0 0
     height: 60px
     background-color: $color-grey
     border-radius: 10px
@@ -109,27 +116,19 @@ $color-white: #FFFFFF
     display: flex
     justify-content: space-between
 
-header
-    margin: 0 0 30px 0
-    display: flex
-    justify-content: center
-
-
 
 /* -- MAIN - Search --*/
 
-
     
 .index-page-search-block
-    margin: 0 0 30px 0
     position: relative
-    height: 600px
+    height: 700px
     background-image: url(../img/index_background_search_block.jpg)
     background-size: cover
     border-radius: 10px
 
 .main-search-block
-    margin: 220px 0 0 50px
+    margin: 220px 0 0 80px
     width: 660px
     background-color: $color-grey
     opacity: 0.82
@@ -201,7 +200,9 @@ header
     font-size: 35px
     text-transform: uppercase
 
+
 /* -- MAIN - Carousel --*/
+
 
 .index-page-statistic-carousel
     border-radius: 10px
@@ -209,5 +210,34 @@ header
 .carousel-inner
     border-radius: 10px 
     background-size: cover
+
+
+/* -- MAIN - Search --*/
+
+
+.index-page-aboutus
+
+
+.index-page-aboutus-story
+    border-radius: 10px
+    background-color: $color-grey
+
+.index-page-aboutus-story h2
+    padding: 24px 0px 0 80px
+    font-family: $font-main
+    color: $color-dark-blue
+    font-weight: 400 
+    font-size: 45px
+    text-transform: uppercase
+
+.index-page-aboutus-story h2 span
+
+
+.index-page-aboutus-story p 
+    padding: 24px 80px 48px 80px
+    font-family: $font-main
+    color: $color-dark-blue
+    font-weight: 300 
+    font-size: 18px
 
 
