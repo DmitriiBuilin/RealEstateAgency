@@ -38,6 +38,7 @@ $box-shadow: 2px 2px 5px 1px grey
 .container-primary
     padding: 16px
     max-width: 1536px
+    width: 100%
     margin: 0 auto
 
 
@@ -68,8 +69,6 @@ header
 .header-logo:hover
     cursor: pointer
 
-
-
 .header-options-button
     margin: 0 5px 0 0
     padding: 8px
@@ -92,11 +91,12 @@ header
     background-color: $color-white
     opacity: 0.7
     box-shadow: $box-shadow
+    -moz-box-shadow: $box-shadow
+    -webkit-box-shadow: $box-shadow
 
 .header-options-button svg
     fill: #b5b5b5
     transition: 0.5s
-
 
 .header-options-button:hover svg
     fill: $color-dark-blue
@@ -260,19 +260,32 @@ header
     background-color: $color-grey !important
     width: 250px !important
 
+
 /* -- CARTS -- */
+
 
 .offer-cart
     height: 400px
     width: 310px
     border-radius: 6px
+    -moz-border-radius: 6px
+    -webkit-border-radius: 6px
     background-color: $color-white
+    transition: 0.5s
+
+.offer-cart:hover
+    box-shadow: $box-shadow
+    -moz-box-shadow: $box-shadow
+    -webkit-box-shadow: $box-shadow
+    transition: 0.5s
 
 .offer-cart:hover
     cursor: pointer
 
 .offer-cart-img
     border-radius: 6px 6px 0 0
+    -moz-border-radius: 6px 6px 0 0
+    -webkit-border-radius: 6px 6px 0 0
     width: 100%
     height: 250px
 
@@ -331,3 +344,70 @@ header
     font-size: 18px
 
 
+/* -- FOOTER --*/
+
+
+footer
+    background-color: $color-grey
+
+.footer-content
+    padding: 50px 0
+    display: flex
+    justify-content: space-around
+
+.social-icons
+    margin: 30px 0 30px 0
+    display: flex
+    justify-content: space-between
+    width: 170px 
+
+.social-icons-item
+    border-radius: 50%
+    height: 35px
+    width: 35px
+    background-color: #92a9ce
+    display: flex
+    align-items: center
+    transition: 0.5s
+
+.social-icons-item:hover
+    cursor: pointer
+    box-shadow: $box-shadow
+    -moz-box-shadow: $box-shadow
+    -webkit-box-shadow: $box-shadow
+    transition: 0.5s
+
+.social-icons-item svg
+    fill: $color-blue
+    margin: 0 auto
+
+.copiright
+    font-family: $font-main
+    color: #b5b5b5
+    font-weight: 300 
+    font-size: 16px
+
+.footer-content-navigate
+
+.footer-content-navigate h3 
+    font-family: $font-main
+    color: $color-blue
+    font-weight: 600 
+    font-size: 16px
+    margin: 0 0 40px 0
+
+
+.footer-content-navigate p 
+    font-family: $font-main
+    color: $color-blue
+    font-weight: 300 
+    font-size: 14px
+
+.footer-content-navigate p:hover
+    cursor: pointer
+    font-weight: 400 
+
+
+
+@media(max-width: 1333px)
+    

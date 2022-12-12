@@ -25,6 +25,7 @@
 .container-primary {
   padding: 16px;
   max-width: 1536px;
+  width: 100%;
   margin: 0 auto; }
 
 /* -- HEADER -- */
@@ -73,7 +74,9 @@ header {
   transition: 0.5s;
   background-color: #FFFFFF;
   opacity: 0.7;
-  box-shadow: 2px 2px 5px 1px grey; }
+  box-shadow: 2px 2px 5px 1px grey;
+  -moz-box-shadow: 2px 2px 5px 1px grey;
+  -webkit-box-shadow: 2px 2px 5px 1px grey; }
 
 .header-options-button svg {
   fill: #b5b5b5;
@@ -236,13 +239,24 @@ header {
   height: 400px;
   width: 310px;
   border-radius: 6px;
-  background-color: #FFFFFF; }
+  -moz-border-radius: 6px;
+  -webkit-border-radius: 6px;
+  background-color: #FFFFFF;
+  transition: 0.5s; }
+
+.offer-cart:hover {
+  box-shadow: 2px 2px 5px 1px grey;
+  -moz-box-shadow: 2px 2px 5px 1px grey;
+  -webkit-box-shadow: 2px 2px 5px 1px grey;
+  transition: 0.5s; }
 
 .offer-cart:hover {
   cursor: pointer; }
 
 .offer-cart-img {
   border-radius: 6px 6px 0 0;
+  -moz-border-radius: 6px 6px 0 0;
+  -webkit-border-radius: 6px 6px 0 0;
   width: 100%;
   height: 250px; }
 
@@ -289,5 +303,65 @@ header {
   color: #012158;
   font-weight: 300;
   font-size: 18px; }
+
+/* -- FOOTER -- */
+footer {
+  background-color: #eef2f6; }
+
+.footer-content {
+  padding: 50px 0;
+  display: flex;
+  justify-content: space-around; }
+
+.social-icons {
+  margin: 30px 0 30px 0;
+  display: flex;
+  justify-content: space-between;
+  width: 170px; }
+
+.social-icons-item {
+  border-radius: 50%;
+  height: 35px;
+  width: 35px;
+  background-color: #92a9ce;
+  display: flex;
+  align-items: center;
+  transition: 0.5s; }
+
+.social-icons-item:hover {
+  cursor: pointer;
+  box-shadow: 2px 2px 5px 1px grey;
+  -moz-box-shadow: 2px 2px 5px 1px grey;
+  -webkit-box-shadow: 2px 2px 5px 1px grey;
+  transition: 0.5s; }
+
+.social-icons-item svg {
+  fill: #003da5;
+  margin: 0 auto; }
+
+.copiright {
+  font-family: roboto, arial, sans-serif;
+  color: #b5b5b5;
+  font-weight: 300;
+  font-size: 16px; }
+
+.footer-content-navigate h3 {
+  font-family: roboto, arial, sans-serif;
+  color: #003da5;
+  font-weight: 600;
+  font-size: 16px;
+  margin: 0 0 40px 0; }
+
+.footer-content-navigate p {
+  font-family: roboto, arial, sans-serif;
+  color: #003da5;
+  font-weight: 300;
+  font-size: 14px; }
+
+.footer-content-navigate p:hover {
+  cursor: pointer;
+  font-weight: 400; }
+
+@media(max-width: 1333px);
 
 /*# sourceMappingURL=index.css.map */
