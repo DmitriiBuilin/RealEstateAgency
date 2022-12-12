@@ -362,6 +362,31 @@ footer {
   cursor: pointer;
   font-weight: 400; }
 
-@media(max-width: 1333px);
+@media(max-width: 1333px) {
+  .hid1 {
+    display: none; } }
+@media(max-width: 1023px) {
+  .hid2 {
+    display: none; }
+
+  .offer-cart {
+    box-shadow: 2px 2px 5px 1px grey;
+    -moz-box-shadow: 2px 2px 5px 1px grey;
+    -webkit-box-shadow: 2px 2px 5px 1px grey; } }
+@media(max-width: 768px) {
+  .index-page-search-block-header-txt-high, .index-page-search-block-header-txt-low, .main-search-block {
+    margin-left: 20px; }
+
+  .container-primary {
+    padding: 5px; }
+
+  .footer-content {
+    padding-top: 16px; }
+
+  .footer-content-navigate p {
+    margin-bottom: 0; } }
+@media(max-width: 767px) {
+  .hid3 {
+    display: none; } }
 
 /*# sourceMappingURL=index.css.map */
