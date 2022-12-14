@@ -31,6 +31,9 @@ $color-grey: #eef2f6
 $color-white: #FFFFFF
 $box-shadow: 2px 2px 5px 1px grey
 
+header, main, footer
+    background-color: $color-white
+
 .block
     height: 100px
     max-width: 100%
@@ -102,9 +105,6 @@ header
     fill: $color-dark-blue
     transition: 0.5s
 
-.hidden
-    display: none
-
 .header-menu
     margin: 0 15px
     display: flex
@@ -112,7 +112,7 @@ header
     max-width: 600px
     width: 100%
 
-.header-menu nav
+.header-menu-item
     font-family: $font-main 
     font-size: 17px
     font-weight: 700
@@ -120,7 +120,7 @@ header
     padding: 8px  
     transition: 0.5s
 
-.header-menu nav:hover
+.header-menu-item:hover
     cursor: pointer
     background-color: $color-white
     border-radius: 5px
@@ -129,6 +129,76 @@ header
 .header-options
     display: flex
     justify-content: space-between
+
+.currency-and-language-wrp
+    visibility: hidden
+    display: flex
+    position: fixed
+    z-index: 15
+    width: 100%
+    height: 100%
+    top: 0
+    left: 0
+    background: rgba(102, 102, 102, 0.6)
+
+.currency-and-language
+    visibility: hidden
+    width: 310px
+    height: 320px
+    position: absolute
+    z-index: 20
+    top: 26px
+    right: 26px
+    background-color: $color-grey
+    box-shadow: $box-shadow
+    border-radius: 0 0 0 7px
+
+.language-close-btn
+    display: flex
+    justify-content: flex-end
+    margin: -4px -4px 0 0
+
+.language-close-btn-point
+    scale: 1.2
+
+.language-close-btn:hover svg
+    cursor: pointer
+    transform: scale(1.1)
+    transition: 0.5s
+
+.currency-and-language-block
+    padding: 15px 25px
+    font-family: $font-main 
+    color: $color-dark-blue
+
+.currency-and-language-block-item li
+    list-style-type: none
+    font-size: 17px
+    font-weight: 400
+
+.currency-and-language-block-item h4 
+    font-size: 17px
+    font-weight: 700
+    margin-top: 10px
+    margin-bottom: 10px
+
+.grid-head 
+    grid-area: header
+.grid-left 
+    grid-area: left
+.grid-right 
+    grid-area: right
+
+.currency-and-language-block-item ul
+    display: grid
+    grid-template-areas: 'left-top right-top' 'left right'
+    gap: 10px
+
+.currency-and-language-block-item li:hover
+    color: $color-red
+    font-weight: 700
+    cursor: pointer
+
 
 
 /* -- MAIN - Search --*/
@@ -407,6 +477,18 @@ footer
     cursor: pointer
     font-weight: 400 
 
+
+/* -- IMPORTANT -- */
+
+
+.hidden
+    display: none
+
+.selected
+    color: $color-red
+
+
+/* -- MEDIA -- */
 
 
 @media(max-width: 1333px)

@@ -8,6 +8,7 @@
     <meta name="keywords" content="Недвижимость, Турция, Аренда">
     <title>RealEstateAgency</title>
     <link rel="stylesheet" href="/pages/css/index.css">
+    <link rel="stylesheet" href="/pages/css/animation.css">
     <link rel="stylesheet" href="/pages/css/normalize.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
   </head>
@@ -17,24 +18,24 @@
         <div class="header-block container-primary">
           <div class="header-background">
             <div class="header-logo">
-              <svg width="130" height="50" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
+              <svg width="170" height="50" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
                 <!-- Created with SVG-edit - https://github.com/SVG-Edit/svgedit-->
                 <g class="layer">
                  <title>Layer 1</title>
-                 <text fill="#003da5" font-family="Fantasy" font-size="35" id="svg_1" stroke="#000000" stroke-width="0" text-anchor="middle" x="59.225358" xml:space="preserve" y="30.821596">ANTALYA</text>
-                 <text fill="#dc1c2e" font-family="Sans-serif" font-size="21" id="svg_2" stroke="#000000" stroke-width="0" text-anchor="middle" x="89.976531" xml:space="preserve" y="48.192489">REALTY</text>
+                 <text fill="#003da5" font-family="Fantasy" font-size="35" id="svg_1" stroke="#000000" stroke-width="0" text-anchor="middle" x="79.225358" xml:space="preserve" y="30.821596">ANTALYA</text>
+                 <text fill="#dc1c2e" font-family="Sans-serif" font-size="21" id="svg_2" stroke="#000000" stroke-width="0" text-anchor="middle" x="119.976531" xml:space="preserve" y="48.192489">REALTY</text>
                 </g>
               </svg>
           </div>
-          <div class="header-menu">
-              <nav>Аренда</nav>
-              <nav>Продажа</nav>
-              <nav>Новостройки</nav>
-              <nav>Наш офис</nav>
-              <nav>Контакты</nav>
-          </div>
+          <nav class="header-menu">
+              <div class="header-menu-item">Аренда</div>
+              <div class="header-menu-item">Продажа</div>
+              <div class="header-menu-item">Новостройки</div>
+              <div class="header-menu-item">Наш офис</div>
+              <div class="header-menu-item">Контакты</div>
+          </nav>
           <div class="header-options">
-              <button type="button" class="header-options-button">
+              <button id="language" type="button" class="header-options-button">
                   <svg width="20" height="20" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
                     <g clip-path="url(#clip0_0_338)">
                       <path d="M23.99 4C12.94 4 4 12.95 4 24C4 35.05 12.94 44 23.99 44C35.04 44 44 35.05 44 24C44 12.95 35.04 4 23.99 4ZM37.84 16H31.94C31.29 13.5 30.38 11.1 29.18 8.88C32.86 10.14 35.92 12.69 37.84 16V16ZM24 8.07C25.67 10.47 26.97 13.14 27.82 16H20.18C21.03 13.14 22.33 10.47 24 8.07ZM8.52 28C8.19 26.72 8 25.38 8 24C8 22.62 8.19 21.28 8.52 20H15.27C15.11 21.31 15 22.64 15 24C15 25.36 15.11 26.69 15.28 28H8.52ZM10.15 32H16.05C16.7 34.5 17.61 36.9 18.81 39.13C15.13 37.87 12.07 35.31 10.15 32V32ZM16.05 16H10.15C12.07 12.69 15.13 10.13 18.81 8.87C17.61 11.1 16.7 13.5 16.05 16ZM24 39.93C22.34 37.53 21.04 34.86 20.18 32H27.82C26.96 34.86 25.66 37.53 24 39.93ZM28.68 28H19.32C19.13 26.69 19 25.36 19 24C19 22.64 19.13 21.31 19.32 20H28.68C28.87 21.31 29 22.64 29 24C29 25.36 28.87 26.69 28.68 28ZM29.19 39.12C30.39 36.89 31.3 34.5 31.95 32H37.85C35.92 35.31 32.86 37.86 29.19 39.12ZM32.72 28C32.88 26.69 33 25.36 33 24C33 22.64 32.89 21.31 32.72 20H39.47C39.8 21.28 40 22.62 40 24C40 25.38 39.81 26.72 39.47 28H32.72Z" />
@@ -62,6 +63,33 @@
                 </svg>
               </button>
           </div>
+          <div class="currency-and-language-wrp">
+            <div class="currency-and-language">
+              <div class="language-close-btn">
+                <svg class="language-close-btn-point" width="20" height="20" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M16 8C16 12.4183 12.4183 16 8 16C3.58172 16 0 12.4183 0 8C0 3.58172 3.58172 0 8 0C12.4183 0 16 3.58172 16 8ZM5.35355 4.64645C5.15829 4.45118 4.84171 4.45118 4.64645 4.64645C4.45118 4.84171 4.45118 5.15829 4.64645 5.35355L7.29289 8L4.64645 10.6464C4.45118 10.8417 4.45118 11.1583 4.64645 11.3536C4.84171 11.5488 5.15829 11.5488 5.35355 11.3536L8 8.70711L10.6464 11.3536C10.8417 11.5488 11.1583 11.5488 11.3536 11.3536C11.5488 11.1583 11.5488 10.8417 11.3536 10.6464L8.70711 8L11.3536 5.35355C11.5488 5.15829 11.5488 4.84171 11.3536 4.64645C11.1583 4.45118 10.8417 4.45118 10.6464 4.64645L8 7.29289L5.35355 4.64645Z" fill="black"/>
+                  </svg>
+              </div>
+              <div class="currency-and-language-block">
+                <div class="currency-and-language-block-item">
+                  <h4 class="grid-head">Валюта</h4>
+                  <ul class="currency">
+                    <li class="grid-left-top c-li">USD $</li>
+                    <li class="grid-left c-li">Euro €</li>
+                    <li class="grid-right-top c-li">TRL ₺</li>
+                    <li class="grid-right c-li selected">Rub ₽</li>
+                  </ul>
+                </div>
+                <div class="currency-and-language-block-item">
+                  <h4 class="grid-head">Выбор языка</h4>
+                  <ul class="lenguage">
+                    <li class="grid-left-top l-li selected">Русский</li>
+                    <li class="grid-left l-li">English</li>
+                    <li class="grid-right l-li">Türkçe</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
     </header>
@@ -312,12 +340,12 @@
       <div class="footer-content container-primary">
         <div class="footer-content-logo">
           <div class="header-logo">
-            <svg width="130" height="50" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
+            <svg width="170" height="50" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
               <!-- Created with SVG-edit - https://github.com/SVG-Edit/svgedit-->
               <g class="layer">
-              <title>Layer 1</title>
-              <text fill="#003da5" font-family="Fantasy" font-size="35" id="svg_1" stroke="#000000" stroke-width="0" text-anchor="middle" x="59.225358" xml:space="preserve" y="30.821596">ANTALYA</text>
-              <text fill="#dc1c2e" font-family="Sans-serif" font-size="21" id="svg_2" stroke="#000000" stroke-width="0" text-anchor="middle" x="89.976531" xml:space="preserve" y="48.192489">REALTY</text>
+               <title>Layer 1</title>
+               <text fill="#003da5" font-family="Fantasy" font-size="35" id="svg_1" stroke="#000000" stroke-width="0" text-anchor="middle" x="79.225358" xml:space="preserve" y="30.821596">ANTALYA</text>
+               <text fill="#dc1c2e" font-family="Sans-serif" font-size="21" id="svg_2" stroke="#000000" stroke-width="0" text-anchor="middle" x="119.976531" xml:space="preserve" y="48.192489">REALTY</text>
               </g>
             </svg>
           </div>
