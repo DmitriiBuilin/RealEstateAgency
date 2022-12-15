@@ -49,8 +49,8 @@
                   <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path d="M12 1C12.5523 1 13 1.44772 13 2V3.07378C14.5364 3.30481 15.6883 4.04201 16.4742 4.76321C16.6268 4.90322 16.7662 5.04312 16.8928 5.17939C17.2688 5.58394 17.1569 6.21298 16.7055 6.53125C16.2542 6.84952 15.6352 6.73376 15.2397 6.34821C15.2017 6.31115 15.1625 6.27396 15.122 6.23679C14.6092 5.76622 13.9107 5.30865 13 5.10716V6.39227L13 11.0424C14.2472 11.1531 15.3734 11.4887 16.2544 12.1504C17.4165 13.0233 18 14.3467 18 16C18 17.7112 17.2779 19.0469 16.1119 19.9266C15.2329 20.5898 14.1441 20.9645 13 21.099V22C13 22.5523 12.5523 23 12 23C11.4477 23 11 22.5523 11 22V21.0672C9.56242 20.8116 8.34014 20.0514 7.47297 19.3604C7.268 19.1971 7.07835 19.034 6.90551 18.8769C6.49681 18.5055 6.52227 17.8694 6.92668 17.4932C7.33109 17.1171 7.96082 17.1443 8.37582 17.5087C8.48378 17.6035 8.59846 17.6999 8.71933 17.7962C9.38016 18.3228 10.1634 18.7957 11 19.0197L11 12.9346C8.04043 12.5404 6 10.418 6 8C6 6.74047 6.48741 5.46609 7.52581 4.51321C8.3779 3.73128 9.54616 3.21445 11 3.05355V2C11 1.44772 11.4477 1 12 1ZM9.94054 5.34207C9.49645 5.51483 9.14693 5.74005 8.87804 5.98679C8.28182 6.53391 8 7.25953 8 8C8 9.1414 9.00188 10.5555 11 10.9142L11 5.70575V5.06942C10.5987 5.12854 10.2471 5.22281 9.94054 5.34207ZM13 19.0808C13.7628 18.9604 14.4163 18.7005 14.9073 18.33C15.5683 17.8314 16 17.0888 16 16C16 14.8533 15.622 14.1767 15.0533 13.7496C14.5894 13.4011 13.9129 13.1543 13 13.0522L13 19.0808Z"/>
                 </svg>
-              </button>
-              <button type="button" class="header-options-button hidden">
+              </button> 
+              <button id="menu" type="button" class="header-options-button menu-options-button hidden">
                 <svg width="24" height="24" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
                   <g clip-path="url(#clip0_0_2710)">
                   <path d="M6 36H42V32H6V36ZM6 26H42V22H6V26ZM6 12V16H42V12H6Z" />
@@ -63,11 +63,11 @@
                 </svg>
               </button>
           </div>
-          <div class="currency-and-language-wrp">
+          <div class="currency-and-menu-wrp">
             <div class="currency-and-language">
               <div class="language-close-btn">
-                <svg class="language-close-btn-point" width="20" height="20" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M16 8C16 12.4183 12.4183 16 8 16C3.58172 16 0 12.4183 0 8C0 3.58172 3.58172 0 8 0C12.4183 0 16 3.58172 16 8ZM5.35355 4.64645C5.15829 4.45118 4.84171 4.45118 4.64645 4.64645C4.45118 4.84171 4.45118 5.15829 4.64645 5.35355L7.29289 8L4.64645 10.6464C4.45118 10.8417 4.45118 11.1583 4.64645 11.3536C4.84171 11.5488 5.15829 11.5488 5.35355 11.3536L8 8.70711L10.6464 11.3536C10.8417 11.5488 11.1583 11.5488 11.3536 11.3536C11.5488 11.1583 11.5488 10.8417 11.3536 10.6464L8.70711 8L11.3536 5.35355C11.5488 5.15829 11.5488 4.84171 11.3536 4.64645C11.1583 4.45118 10.8417 4.45118 10.6464 4.64645L8 7.29289L5.35355 4.64645Z" fill="black"/>
+                <svg class="language-close-btn-point" width="20" height="20" viewBox="0 0 16 16"  xmlns="http://www.w3.org/2000/svg">
+                  <path d="M16 8C16 12.4183 12.4183 16 8 16C3.58172 16 0 12.4183 0 8C0 3.58172 3.58172 0 8 0C12.4183 0 16 3.58172 16 8ZM5.35355 4.64645C5.15829 4.45118 4.84171 4.45118 4.64645 4.64645C4.45118 4.84171 4.45118 5.15829 4.64645 5.35355L7.29289 8L4.64645 10.6464C4.45118 10.8417 4.45118 11.1583 4.64645 11.3536C4.84171 11.5488 5.15829 11.5488 5.35355 11.3536L8 8.70711L10.6464 11.3536C10.8417 11.5488 11.1583 11.5488 11.3536 11.3536C11.5488 11.1583 11.5488 10.8417 11.3536 10.6464L8.70711 8L11.3536 5.35355C11.5488 5.15829 11.5488 4.84171 11.3536 4.64645C11.1583 4.45118 10.8417 4.45118 10.6464 4.64645L8 7.29289L5.35355 4.64645Z" />
                   </svg>
               </div>
               <div class="currency-and-language-block">
@@ -90,6 +90,26 @@
                 </div>
               </div>
             </div>
+            <div class="menu">
+              <div class="menu-close-btn">
+                <svg class="menu-close-btn-point" width="20" height="20" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M16 8C16 12.4183 12.4183 16 8 16C3.58172 16 0 12.4183 0 8C0 3.58172 3.58172 0 8 0C12.4183 0 16 3.58172 16 8ZM5.35355 4.64645C5.15829 4.45118 4.84171 4.45118 4.64645 4.64645C4.45118 4.84171 4.45118 5.15829 4.64645 5.35355L7.29289 8L4.64645 10.6464C4.45118 10.8417 4.45118 11.1583 4.64645 11.3536C4.84171 11.5488 5.15829 11.5488 5.35355 11.3536L8 8.70711L10.6464 11.3536C10.8417 11.5488 11.1583 11.5488 11.3536 11.3536C11.5488 11.1583 11.5488 10.8417 11.3536 10.6464L8.70711 8L11.3536 5.35355C11.5488 5.15829 11.5488 4.84171 11.3536 4.64645C11.1583 4.45118 10.8417 4.45118 10.6464 4.64645L8 7.29289L5.35355 4.64645Z" />
+                  </svg>
+              </div>
+              <div class="currency-and-language-block">
+                <div class="menu-block-item">
+                  <h4 class="">Меню</h4>
+                  <ul class="menu-head">
+                    <li class="">Аренда</li>
+                    <li class="">Продажи</li>
+                    <li class="">Новостройки</li>
+                    <li class="">Наш офис</li>
+                    <li class="">Контакты</li>
+                  </ul>
+                </div>
+
+                </div>
+            </div>
           </div>
         </div>
     </header>
@@ -99,8 +119,8 @@
             <h2 class="index-page-search-block-header-txt-high">First in Antalya </h2>
             <h3 class="index-page-search-block-header-txt-low">Real Estate Professionals</h3>
             <div class="main-search-block">
-                <form class="row g-3 needs-validation main-search-form" novalidate>
-                    <div class="col-md-4">
+                <form class="row g-3 main-search-form">
+                    <div class="col-md-6">
                         <label for="inputState"  class="form-label">Предложение</label>
                         <select class="form-select" id="inputState" required>
                           <option selected value="rent">Аренда</option>
@@ -110,41 +130,42 @@
                         <div class="invalid-feedback">
                           Please select a valid option.
                         </div>
-                    </div>            
-                    <div class="main-search-parameters">
-                        <div class="col-md-4">
-                            <label for="inputCountry" class="form-label">Страна</label>
-                            <select class="form-select" id="inputCountry" required>
-                              <option value="rus">Россия</option>
-                              <option selected value="trk">Турция</option>
-                            </select>
-                            <div class="invalid-feedback">
-                              Please select a valid option.
-                            </div>
-                          </div>
-                          <div class="col-md-4">
-                              <label for="inputCity" class="form-label">Город</label>
-                              <select class="form-select" id="inputCity" required>
-                                <option selected value="antalya">...</option>
-                                <option value="antalya">Анталья</option>
-                                <option value="alanya">Аланья</option>
-                              </select>
-                              <div class="invalid-feedback">
-                                Please select a valid option.
-                              </div>
-                          </div>
-                          <div class="col-md-4">
-                              <label for="inputRegion" class="form-label">Район</label>
-                              <select class="form-select" id="inputRegion" required>
-                                <option selected value="antalya">...</option>
-                                <option value="konyalti">Конялты</option>
-                                <option value="kepez">Кепез</option>
-                              </select>
-                              <div class="invalid-feedback">
-                                Please select a valid option.
-                              </div>
-                          </div>
                     </div>
+                    <div class="col-md-4">
+                      <label for="inputCountry" class="form-label">Страна</label>
+                      <select class="form-select" id="inputCountry" required>
+                        <option value="rus">Россия</option>
+                        <option selected value="trk">Турция</option>
+                      </select>
+                      <div class="invalid-feedback">
+                        Please select a valid option.
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="inputCity" class="form-label">Город</label>
+                        <select class="form-select" id="inputCity" required>
+                          <option selected value="antalya">...</option>
+                          <option value="antalya">Анталья</option>
+                          <option value="alanya">Аланья</option>
+                        </select>
+                        <div class="invalid-feedback">
+                          Please select a valid option.
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="inputRegion" class="form-label">Район</label>
+                        <select class="form-select" id="inputRegion" required>
+                          <option selected value="antalya">...</option>
+                          <option value="konyalti">Конялты</option>
+                          <option value="kepez">Кепез</option>
+                        </select>
+                        <div class="invalid-feedback">
+                          Please select a valid option.
+                        </div>
+                    </div>            
+                    <!-- <div class="main-search-parameters">
+                        
+                    </div> -->
                     <div class="search-btn-group">
                         <button class="btn btn-primary button-blue" type="submit">
                             <svg width="25" height="25" viewBox="0 0 56 56"  xmlns="http://www.w3.org/2000/svg">
