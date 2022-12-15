@@ -557,7 +557,7 @@ footer {
     height: 80%;
     top: 0;
     right: 0;
-    border-radius: 0 0 0 7px; }
+    border-radius: 0 0 0 0; }
 
   .menu-close-btn, .language-close-btn {
     margin: 10px 10px 0 0; } }
