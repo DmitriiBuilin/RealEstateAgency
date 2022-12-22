@@ -49,6 +49,7 @@ header {
   align-items: center; }
 
 .header-logo {
+  text-decoration: none;
   display: flex;
   align-items: center;
   margin-left: 10px; }
@@ -94,6 +95,7 @@ header {
   width: 100%; }
 
 .header-menu-item {
+  text-decoration: none;
   font-family: roboto, arial, sans-serif;
   font-size: 17px;
   font-weight: 700;
@@ -104,6 +106,7 @@ header {
 .header-menu-item:hover {
   cursor: pointer;
   text-shadow: 0.5px 0.9px 1px #aaaaaa;
+  color: #dc1c2e;
   transition: 0.5s; }
 
 .header-options {
@@ -193,7 +196,6 @@ header {
 .index-page-search-block {
   position: relative;
   height: 700px;
-  background-image: url(../img/index_background_search_block.jpg);
   background-size: cover;
   border-radius: 10px; }
 

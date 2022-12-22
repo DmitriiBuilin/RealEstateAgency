@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 export const Header = () => {
     const handleOpen = () => {
@@ -9,7 +10,7 @@ export const Header = () => {
         <header>
             <div className="header-block container-primary">
                 <div className="header-background">
-                    <div className="header-logo">
+                    <Link to="/" className="header-logo">
                         <svg width="170" height="50" xmlns="http://www.w3.org/2000/svg">
                         <g className="layer">
                             <title>Layer 1</title>
@@ -17,13 +18,13 @@ export const Header = () => {
                             <text fill="#dc1c2e" fontFamily="Sans-serif" fontSize="21" id="svg_2" stroke="#000000" strokeWidth="0" textAnchor="middle" x="119.976531" xmlSpace="preserve" y="48.192489">REALTY</text>
                         </g>
                         </svg>
-                    </div>
+                    </Link>
                     <nav className="header-menu">
-                        <div className="header-menu-item">Аренда</div>
-                        <div className="header-menu-item">Продажа</div>
-                        <div className="header-menu-item">Новостройки</div>
-                        <div className="header-menu-item">Наш офис</div>
-                        <div className="header-menu-item">Контакты</div>
+                        <Link to="/rent" className="header-menu-item">Аренда</Link>
+                        <Link to="/sale"  className="header-menu-item">Продажа</Link>
+                        <Link to="/new"  className="header-menu-item">Новостройки</Link>
+                        <Link to="/office"  className="header-menu-item">Наш офис</Link>
+                        <Link to="/contacts"  className="header-menu-item">Контакты</Link>
                     </nav>
                     <div className="header-options">
                         <button id="language" type="button" className="header-options-button" onClick={handleOpen}>
