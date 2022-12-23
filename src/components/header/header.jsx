@@ -103,13 +103,14 @@ export const Header = () => {
                         </div>
                         <div className="currency-and-language-block">
                             <div className="menu-block-item">
-                                <h4 className="">Меню</h4>
+                                <h4>Меню</h4>
                                 <ul className="menu-head">
-                                <li className="">Аренда</li>
-                                <li className="">Продажи</li>
-                                <li className="">Новостройки</li>
-                                <li className="">Наш офис</li>
-                                <li className="">Контакты</li>
+                                    <li><Link to="/"className="menu-head-item">Главная</Link></li>   
+                                    <li><Link to="/rent"className="menu-head-item" >Аренда</Link></li>
+                                    <li><Link to="/sale"className="menu-head-item" >Продажи</Link></li>
+                                    <li><Link to="/new"className="menu-head-item" >Новостройки</Link></li>
+                                    <li><Link to="/office"className="menu-head-item" >Наш офис</Link></li>
+                                    <li><Link to="/contacts"className="menu-head-item" >Контакты</Link></li>
                                 </ul>
                             </div>
                         </div>

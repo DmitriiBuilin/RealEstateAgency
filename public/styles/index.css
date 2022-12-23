@@ -192,6 +192,18 @@ header {
   justify-content: space-between;
   height: 200px; }
 
+.menu-head-item {
+  text-decoration: none;
+  font-size: 17px;
+  font-weight: 400;
+  font-family: roboto, arial, sans-serif;
+  color: #012158; }
+
+.menu-head-item:hover {
+  color: #dc1c2e;
+  font-weight: 700;
+  cursor: pointer; }
+
 /* -- MAIN - Search -- */
 .index-page-search-block {
   position: relative;
