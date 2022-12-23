@@ -4,8 +4,24 @@ import Header from "../../../components/header/header";
 import imgTeam from "./img/team.jpg"
 import partners from "./img/partners.jpeg"
 import statistics from "./img/statistics.jpg"
+import Cards from "../../../components/cards/cards";
 
 export const Main = () => {
+    const image = {
+        img_1: "img/offers/1.jpeg",
+        img_2: "img/offers/2.jpg",
+        img_3: "img/offers/3.jpeg",
+        img_4: "img/offers/4.jpg",
+        img_5: "img/offers/5.jpg",
+        img_6: "img/offers/6.jpg",
+        img_7: "img/offers/7.jpg",
+        img_8: "img/offers/8.jpg",
+        img_9: "img/offers/9.jpg",
+        img_10: "img/offers/10.jpg",
+        img_11: "img/offers/11.jpg",
+        img_12: "img/offers/12.jpg",
+    };
+
     return (
     <>
         <Header />
@@ -108,121 +124,13 @@ export const Main = () => {
                 </div>
                 <div className="carousel-inner">
                     <div className="carousel-item active">
-                    <div className="offers-carousel-item">
-                        <p className="offers-carousel-item-name-1">аренда</p>
-                        <div className="offers-carousel-cart-block">
-                            <div className="offer-cart hid1">
-                                <img className="offer-cart-img" src="img/offers/1.jpeg" alt="..." />
-                                <div className="offer-cart-properties">
-                                <h4 className="offer-cart-name">Name</h4>
-                                <p className="offer-cart-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab quod alias ipsam modi odio repellendus a, explicabo.</p>
-                                <p className="offer-cart-price">Price <span>1200</span> $ </p>
-                            </div>
-                        </div>
-                        <div className="offer-cart hid2">
-                            <img className="offer-cart-img" src="img/offers/2.jpg" alt="..." />
-                            <div className="offer-cart-properties">
-                            <h4 className="offer-cart-name">Name</h4>
-                            <p className="offer-cart-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab quod alias ipsam modi odio repellendus a, explicabo.</p>
-                            <p className="offer-cart-price">Price <span>1200</span> $ </p>
-                            </div>
-                        </div>
-                        <div className="offer-cart hid3">
-                            <img className="offer-cart-img" src="img/offers/3.jpeg" alt="..." />
-                            <div className="offer-cart-properties">
-                            <h4 className="offer-cart-name">Name</h4>
-                            <p className="offer-cart-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab quod alias ipsam modi odio repellendus a, explicabo.</p>
-                            <p className="offer-cart-price">Price <span>1200</span> $ </p>
-                            </div>
-                        </div>
-                        <div className="offer-cart">
-                            <img className="offer-cart-img" src="img/offers/4.jpg" alt="..." />
-                            <div className="offer-cart-properties">
-                            <h4 className="offer-cart-name">Name</h4>
-                            <p className="offer-cart-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab quod alias ipsam modi odio repellendus a, explicabo.</p>
-                            <p className="offer-cart-price">Price <span>1200</span> $ </p>
-                            </div>
-                        </div>
-                        </div>
-                    </div>
+                    <Cards img_1={image.img_1} img_2={image.img_2} img_3={image.img_3} img_4={image.img_4}/>
                     </div>
                     <div className="carousel-item">
-                    <div className="offers-carousel-item">
-                        <p className="offers-carousel-item-name-2">продажа</p>
-                        <div className="offers-carousel-cart-block">
-                        <div className="offer-cart hid1">
-                            <img className="offer-cart-img" src="img/offers/5.jpg" alt="..." />
-                            <div className="offer-cart-properties">
-                            <h4 className="offer-cart-name">Name</h4>
-                            <p className="offer-cart-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab quod alias ipsam modi odio repellendus a, explicabo.</p>
-                            <p className="offer-cart-price">Price <span>1200</span> $ </p>
-                            </div>
-                        </div>
-                        <div className="offer-cart hid2">
-                            <img className="offer-cart-img" src="img/offers/6.jpg" alt="..." />
-                            <div className="offer-cart-properties">
-                            <h4 className="offer-cart-name">Name</h4>
-                            <p className="offer-cart-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab quod alias ipsam modi odio repellendus a, explicabo.</p>
-                            <p className="offer-cart-price">Price <span>1200</span> $ </p>
-                            </div>
-                        </div>
-                        <div className="offer-cart hid3">
-                            <img className="offer-cart-img" src="img/offers/7.jpg" alt="..." />
-                            <div className="offer-cart-properties">
-                            <h4 className="offer-cart-name">Name</h4>
-                            <p className="offer-cart-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab quod alias ipsam modi odio repellendus a, explicabo.</p>
-                            <p className="offer-cart-price">Price <span>1200</span> $ </p>
-                            </div>
-                        </div>
-                        <div className="offer-cart">
-                            <img className="offer-cart-img" src="img/offers/8.jpg" alt="..." />
-                            <div className="offer-cart-properties">
-                            <h4 className="offer-cart-name">Name</h4>
-                            <p className="offer-cart-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab quod alias ipsam modi odio repellendus a, explicabo.</p>
-                            <p className="offer-cart-price">Price <span>1200</span> $ </p>
-                            </div>
-                        </div>
-                        </div>
-                    </div>
+                    <Cards img_1={image.img_5} img_2={image.img_6} img_3={image.img_7} img_4={image.img_8}/>
                     </div>
                     <div className="carousel-item">
-                    <div className="offers-carousel-item">
-                        <p className="offers-carousel-item-name-3">новостройки</p>
-                        <div className="offers-carousel-cart-block">
-                        <div className="offer-cart hid1">
-                            <img className="offer-cart-img" src="img/offers/9.jpg" alt="..." />
-                            <div className="offer-cart-properties">
-                            <h4 className="offer-cart-name">Name</h4>
-                            <p className="offer-cart-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab quod alias ipsam modi odio repellendus a, explicabo.</p>
-                            <p className="offer-cart-price">Price <span>1200</span> $ </p>
-                            </div>
-                        </div>
-                        <div className="offer-cart hid2">
-                            <img className="offer-cart-img" src="img/offers/10.jpg" alt="..." />
-                            <div className="offer-cart-properties">
-                            <h4 className="offer-cart-name">Name</h4>
-                            <p className="offer-cart-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab quod alias ipsam modi odio repellendus a, explicabo.</p>
-                            <p className="offer-cart-price">Price <span>1200</span> $ </p>
-                            </div>
-                        </div>
-                        <div className="offer-cart hid3">
-                            <img className="offer-cart-img" src="img/offers/11.jpg" alt="..." />
-                            <div className="offer-cart-properties">
-                            <h4 className="offer-cart-name">Name</h4>
-                            <p className="offer-cart-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab quod alias ipsam modi odio repellendus a, explicabo.</p>
-                            <p className="offer-cart-price">Price <span>1200</span> $ </p>
-                            </div>
-                        </div>
-                        <div className="offer-cart">
-                            <img className="offer-cart-img" src="img/offers/12.jpg" alt="..." />
-                            <div className="offer-cart-properties">
-                            <h4 className="offer-cart-name">Name</h4>
-                            <p className="offer-cart-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab quod alias ipsam modi odio repellendus a, explicabo.</p>
-                            <p className="offer-cart-price">Price <span>1200</span> $ </p>
-                            </div>
-                        </div>
-                        </div>
-                    </div>
+                    <Cards img_1={image.img_9} img_2={image.img_10} img_3={image.img_11} img_4={image.img_12}/>
                     </div>
                 </div>
                 </div>

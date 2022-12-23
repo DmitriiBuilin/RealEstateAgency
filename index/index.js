@@ -16,41 +16,41 @@ languageBtn.onclick = () => {
     document.querySelector(".currency-and-language").classList.add('show');
     document.querySelector(".currency-and-menu-wrp").classList.add('show');
 };
+    
 
-
-// menuBtn.onclick = () => {
-//     document.querySelector(".menu").classList.add('show');
-//     document.querySelector(".currency-and-menu-wrp").classList.add('show');
-// };
-// languageCloseBtn.onclick = () => {
-//     document.querySelector(".currency-and-language").classList.remove('show');
-//     document.querySelector(".currency-and-menu-wrp").classList.remove('show');
-// };
-// menuCloseBtn.onclick = () => {
-//     document.querySelector(".menu").classList.remove('show');
-//     document.querySelector(".currency-and-menu-wrp").classList.remove('show');
-// };  
-// languageCloseField.addEventListener('click', (e) => {
-// 	const langDiv = e.composedPath().includes(languagePopUp);
-//     const MenuDiv = e.composedPath().includes(menuPopUp);
-//  	if (!langDiv & !MenuDiv) {
-// 		languagePopUp.classList.remove('show');
-//         menuPopUp.classList.remove('show');
-//         languageCloseField.classList.remove('show');
-// 	}
-// });
-// currency.addEventListener('click', (e) => {
-//     for(let i=0; i<currencyLi.length; i++) {
-//         currencyLi[i].classList.remove('selected')
-//     };
-//     e.target.classList.add('selected')
-// });
-// lenguage.addEventListener('click', (e) => {
-//     for(let i=0; i<lenguageLi.length; i++) {
-//         lenguageLi[i].classList.remove('selected')
-//     };
-//     e.target.classList.add('selected')
-// });
+menuBtn.onclick = () => {
+    document.querySelector(".menu").classList.add('show');
+    document.querySelector(".currency-and-menu-wrp").classList.add('show');
+};
+languageCloseBtn.onclick = () => {
+    document.querySelector(".currency-and-language").classList.remove('show');
+    document.querySelector(".currency-and-menu-wrp").classList.remove('show');
+};
+menuCloseBtn.onclick = () => {
+    document.querySelector(".menu").classList.remove('show');
+    document.querySelector(".currency-and-menu-wrp").classList.remove('show');
+};  
+languageCloseField.addEventListener('click', (e) => {
+	const langDiv = e.composedPath().includes(languagePopUp);
+    const MenuDiv = e.composedPath().includes(menuPopUp);
+ 	if (!langDiv & !MenuDiv) {
+		languagePopUp.classList.remove('show');
+        menuPopUp.classList.remove('show');
+        languageCloseField.classList.remove('show');
+	}
+});
+currency.addEventListener('click', (e) => {
+    for(let i=0; i<currencyLi.length; i++) {
+        currencyLi[i].classList.remove('selected')
+    };
+    e.target.classList.add('selected')
+});
+lenguage.addEventListener('click', (e) => {
+    for(let i=0; i<lenguageLi.length; i++) {
+        lenguageLi[i].classList.remove('selected')
+    };
+    e.target.classList.add('selected')
+});
 
 
 
