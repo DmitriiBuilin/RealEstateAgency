@@ -21,6 +21,9 @@
 header, main, footer {
   background-color: #FFFFFF; }
 
+.checkbox-visibility {
+  visibility: hidden; }
+
 .block {
   height: 100px;
   max-width: 100%; }
@@ -202,6 +205,12 @@ header {
 .menu-head-item:hover {
   color: #dc1c2e;
   font-weight: 700;
+  cursor: pointer; }
+
+.c-li label:hover {
+  cursor: pointer; }
+
+.l-li label:hover {
   cursor: pointer; }
 
 /* -- MAIN - Search -- */

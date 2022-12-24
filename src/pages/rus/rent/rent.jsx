@@ -12,3 +12,4 @@ export const Rent = () => {
 }
 
 export default Rent;
+
