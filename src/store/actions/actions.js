@@ -1,11 +1,9 @@
-// Examples
+import { CURRENCYSELECT, LANGUAGESELECT } from "../types/types";
 
-// export const auth = (data) => {
-//     return { type: AUTH, payload: data }
-//   };
+export const currencySelect = (data) => {
+    return { type: CURRENCYSELECT, payload: data }
+  };
 
-// export const addMessage = (chatId, message) => ({
-//     type: ADD_MESSAGE,
-//     chatId,
-//     message,
-// });
+  export const languageSelect = (data) => {
+    return { type: LANGUAGESELECT, payload: data }
+  };

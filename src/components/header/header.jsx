@@ -1,7 +1,10 @@
 import React from "react";
+import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+import { currencySelect, languageSelect } from "../../store/actions/actions";
 
 export const Header = () => {
+    const dispatch = useDispatch();
     const langHandleOpen = () => {
         document.querySelector(".currency-and-language").classList.add('show');
         document.querySelector(".currency-and-menu-wrp").classList.add('show');
@@ -15,6 +18,15 @@ export const Header = () => {
         document.querySelector(".menu").classList.remove('show');
         document.querySelector(".currency-and-menu-wrp").classList.remove('show');
     };
+    const handleCurrency = (e) => {
+        const id = e.target.id;
+        dispatch(currencySelect(id))
+    };
+    const handleLanguage = (e) => {
+        const id = e.target.id;
+        dispatch(languageSelect(id))
+    };
+
 
 
     return (
@@ -80,19 +92,19 @@ export const Header = () => {
                                 <h4 className="grid-head">Валюта</h4>
                                 <ul className="currency">
                                 <li className="grid-left-top c-li">
-                                    <input type="checkbox" className="checkbox-visibility" id="usd"/>
+                                    <input onClick={handleCurrency} type="checkbox" className="checkbox-visibility" id="usd"/>
                                     <label htmlFor="usd">USD $</label>
                                 </li>
                                 <li className="grid-left c-li">
-                                    <input type="checkbox" className="checkbox-visibility" id="euro"/>
+                                    <input onClick={handleCurrency} type="checkbox" className="checkbox-visibility" id="euro"/>
                                     <label htmlFor="euro">Euro €</label>
                                 </li>
                                 <li className="grid-right-top c-li">
-                                    <input type="checkbox" className="checkbox-visibility" id="trl"/>
+                                    <input onClick={handleCurrency} type="checkbox" className="checkbox-visibility" id="trl"/>
                                     <label htmlFor="trl">TRL ₺</label>           
                                 </li>
                                 <li className="grid-right c-li selected">
-                                    <input type="checkbox" className="checkbox-visibility" id="rub"/>
+                                    <input onClick={handleCurrency} type="checkbox" className="checkbox-visibility" id="rub"/>
                                     <label htmlFor="rub">Rub ₽</label>
                                 </li>
                                 </ul>
@@ -101,15 +113,15 @@ export const Header = () => {
                                 <h4 className="grid-head">Выбор языка</h4>
                                 <ul className="lenguage">
                                 <li className="grid-left-top l-li selected">
-                                    <input type="checkbox" className="checkbox-visibility" id="rus"/>
+                                    <input onClick={handleLanguage} type="checkbox" className="checkbox-visibility" id="rus"/>
                                     <label htmlFor="rus">Русский</label> 
                                 </li>
                                 <li className="grid-left l-li">
-                                    <input type="checkbox" className="checkbox-visibility" id="en"/>
+                                    <input onClick={handleLanguage} type="checkbox" className="checkbox-visibility" id="en"/>
                                     <label htmlFor="en">English</label> 
                                 </li>
                                 <li className="grid-right l-li">
-                                    <input type="checkbox" className="checkbox-visibility" id="tr"/>
+                                    <input onClick={handleLanguage} type="checkbox" className="checkbox-visibility" id="tr"/>
                                     <label htmlFor="tr">Türkçe</label> 
                                 </li>
                                 </ul>
