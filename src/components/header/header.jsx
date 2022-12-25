@@ -21,6 +21,9 @@ export const Header = () => {
     const handleCurrency = (e) => {
         const id = e.target.id;
         dispatch(currencySelect(id))
+        document.querySelector(".currency-and-menu-wrp").classList.add('show');
+        c-li
+        
     };
     const handleLanguage = (e) => {
         const id = e.target.id;

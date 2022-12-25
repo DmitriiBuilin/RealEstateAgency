@@ -19,8 +19,10 @@ export const Main = () => {
         img_9: "img/offers/9.jpg",
         img_10: "img/offers/10.jpg",
         img_11: "img/offers/11.jpg",
-        img_12: "img/offers/12.jpg",
+        img_12: "img/offers/12.jpg",        
     };
+    const name = ['Аренда', 'Продажа', 'Новостройки'];
+    // console.log(name[1])
 
     return (
     <>
@@ -124,13 +126,13 @@ export const Main = () => {
                 </div>
                 <div className="carousel-inner">
                     <div className="carousel-item active">
-                    <Cards img_1={image.img_1} img_2={image.img_2} img_3={image.img_3} img_4={image.img_4}/>
+                    <Cards img_1={image.img_1} img_2={image.img_2} img_3={image.img_3} img_4={image.img_4} name={name[0]}/>
                     </div>
                     <div className="carousel-item">
-                    <Cards img_1={image.img_5} img_2={image.img_6} img_3={image.img_7} img_4={image.img_8}/>
+                    <Cards img_1={image.img_5} img_2={image.img_6} img_3={image.img_7} img_4={image.img_8} name={name[1]}/>
                     </div>
                     <div className="carousel-item">
-                    <Cards img_1={image.img_9} img_2={image.img_10} img_3={image.img_11} img_4={image.img_12}/>
+                    <Cards img_1={image.img_9} img_2={image.img_10} img_3={image.img_11} img_4={image.img_12} name={name[2]}/>
                     </div>
                 </div>
                 </div>
