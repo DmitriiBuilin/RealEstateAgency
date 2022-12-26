@@ -1,10 +1,16 @@
-import React from "react";
-import { useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Link, NavLink } from "react-router-dom";
 import { currencySelect, languageSelect } from "../../store/actions/actions";
+import { getCurrencyValue, getLanguageValue } from "../../store/selectors/selector";
 
 export const Header = () => {
+    const currency = useSelector(getCurrencyValue);
+    const language = useSelector(getLanguageValue);
     const dispatch = useDispatch();
+    const activeClassName = "selected";
+    const activeLink = ({ isActive }) => isActive ? activeClassName : undefined;
+
     const langHandleOpen = () => {
         document.querySelector(".currency-and-language").classList.add('show');
         document.querySelector(".currency-and-menu-wrp").classList.add('show');
@@ -20,17 +26,29 @@ export const Header = () => {
     };
     const handleCurrency = (e) => {
         const id = e.target.id;
+        const currencyLi = document.querySelectorAll('.c-li');
         dispatch(currencySelect(id))
-        document.querySelector(".currency-and-menu-wrp").classList.add('show');
-        c-li
-        
+        for(let i=0; i<currencyLi.length; i++) {
+            currencyLi[i].classList.remove('selected')
+        };
+        e.target.parentNode.classList.add('selected')   
     };
     const handleLanguage = (e) => {
-        const id = e.target.id;
+        const lenguageLi = document.querySelectorAll(`.l-li`);
+        const id = e.target.id;        
         dispatch(languageSelect(id))
+        for(let i=0; i<lenguageLi.length; i++) {
+            lenguageLi[i].classList.remove('selected')
+        };
     };
 
+    useEffect(() => {
+        const selectedLanguage = document.getElementById(`${language}`);
+        const selectedCurrency = document.getElementById(`${currency}`);
 
+        selectedLanguage.parentNode.classList.add('selected')
+        selectedCurrency.parentNode.classList.add('selected')
+    });
 
     return (
         <header>
@@ -46,11 +64,41 @@ export const Header = () => {
                         </svg>
                     </Link>
                     <nav className="header-menu">
-                        <Link to="/rent" className="header-menu-item">Аренда</Link>
-                        <Link to="/sale"  className="header-menu-item">Продажа</Link>
-                        <Link to="/new"  className="header-menu-item">Новостройки</Link>
-                        <Link to="/office"  className="header-menu-item">Наш офис</Link>
-                        <Link to="/contacts"  className="header-menu-item">Контакты</Link>
+                        <NavLink to="/rent" className="header-menu-item">
+                            {({ isActive }) => (
+                                <span className={ isActive ? activeClassName : undefined }>
+                                Аренда
+                                </span>
+                            )}
+                        </NavLink>
+                        <NavLink to="/sale"  className="header-menu-item">
+                            {({ isActive }) => (
+                                <span className={ isActive ? activeClassName : undefined }>
+                                Продажа
+                                </span>
+                            )}
+                        </NavLink>
+                        <NavLink to="/new"  className="header-menu-item">
+                            {({ isActive }) => (
+                                <span className={ isActive ? activeClassName : undefined }>
+                                Новостройки
+                                </span>
+                            )}                            
+                        </NavLink>
+                        <NavLink to="/office"  className="header-menu-item">
+                            {({ isActive }) => (
+                                <span className={ isActive ? activeClassName : undefined }>
+                                Наш офис
+                                </span>
+                            )}                            
+                        </NavLink>
+                        <NavLink to="/contacts"  className="header-menu-item">
+                        {({ isActive }) => (
+                                <span className={ isActive ? activeClassName : undefined }>
+                                Контакты
+                                </span>
+                            )}                            
+                        </NavLink>
                     </nav>
                     <div className="header-options">
                         <button id="language" type="button" className="header-options-button" onClick={langHandleOpen}>
@@ -106,7 +154,7 @@ export const Header = () => {
                                     <input onClick={handleCurrency} type="checkbox" className="checkbox-visibility" id="trl"/>
                                     <label htmlFor="trl">TRL ₺</label>           
                                 </li>
-                                <li className="grid-right c-li selected">
+                                <li className="grid-right c-li">
                                     <input onClick={handleCurrency} type="checkbox" className="checkbox-visibility" id="rub"/>
                                     <label htmlFor="rub">Rub ₽</label>
                                 </li>
@@ -115,7 +163,7 @@ export const Header = () => {
                             <div className="currency-and-language-block-item">
                                 <h4 className="grid-head">Выбор языка</h4>
                                 <ul className="lenguage">
-                                <li className="grid-left-top l-li selected">
+                                <li className="grid-left-top l-li">
                                     <input onClick={handleLanguage} type="checkbox" className="checkbox-visibility" id="rus"/>
                                     <label htmlFor="rus">Русский</label> 
                                 </li>
@@ -140,14 +188,50 @@ export const Header = () => {
                         <div className="currency-and-language-block">
                             <div className="menu-block-item">
                                 <h4>Меню</h4>
-                                <ul className="menu-head">
-                                    <li><Link to="/"className="menu-head-item">Главная</Link></li>   
-                                    <li><Link to="/rent"className="menu-head-item" >Аренда</Link></li>
-                                    <li><Link to="/sale"className="menu-head-item" >Продажи</Link></li>
-                                    <li><Link to="/new"className="menu-head-item" >Новостройки</Link></li>
-                                    <li><Link to="/office"className="menu-head-item" >Наш офис</Link></li>
-                                    <li><Link to="/contacts"className="menu-head-item" >Контакты</Link></li>
-                                </ul>
+                                <nav className="menu-head">
+                                    <NavLink to="/" className="menu-head-item">
+                                        {({ isActive }) => (
+                                            <span className={ isActive ? activeClassName : undefined }>
+                                            Главная
+                                            </span>
+                                        )}
+                                    </NavLink>
+                                    <NavLink to="/rent" className="menu-head-item">
+                                        {({ isActive }) => (
+                                            <span className={ isActive ? activeClassName : undefined }>
+                                            Аренда
+                                            </span>
+                                        )}
+                                    </NavLink>
+                                    <NavLink to="/sale"  className="menu-head-item">
+                                        {({ isActive }) => (
+                                            <span className={ isActive ? activeClassName : undefined }>
+                                            Продажа
+                                            </span>
+                                        )}
+                                    </NavLink>
+                                    <NavLink to="/new"  className="menu-head-item">
+                                        {({ isActive }) => (
+                                            <span className={ isActive ? activeClassName : undefined }>
+                                            Новостройки
+                                            </span>
+                                        )}                            
+                                    </NavLink>
+                                    <NavLink to="/office"  className="menu-head-item">
+                                        {({ isActive }) => (
+                                            <span className={ isActive ? activeClassName : undefined }>
+                                            Наш офис
+                                            </span>
+                                        )}                            
+                                    </NavLink>
+                                    <NavLink to="/contacts"  className="menu-head-item">
+                                    {({ isActive }) => (
+                                            <span className={ isActive ? activeClassName : undefined }>
+                                            Контакты
+                                            </span>
+                                        )}                            
+                                    </NavLink>
+                                </nav>
                             </div>
                         </div>
                     </div>    

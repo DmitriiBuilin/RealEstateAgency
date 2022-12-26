@@ -1,9 +1,7 @@
-// Example
+export const getCurrencyValue = (state) => {
+    return state.currency
+    };
 
-// export const getProfileName = (state) => {
-//     return state.profile.name
-//     };
-
-// export const getChatList = (state) => {
-//     return state.chatList.chatList
-//     };
+export const getLanguageValue = (state) => {
+    return state.languge
+    };
