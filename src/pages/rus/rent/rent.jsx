@@ -1,5 +1,4 @@
 import CardItem from "../../../components/cards/cardItem";
-import Cards from "../../../components/cards/cards";
 import Footer from "../../../components/footer/footer";
 import Header from "../../../components/header/header";
 
