@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { React, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, NavLink } from "react-router-dom";
 import { currencySelect, languageSelect } from "../../store/actions/actions";
@@ -9,7 +9,6 @@ export const Header = () => {
     const language = useSelector(getLanguageValue);
     const dispatch = useDispatch();
     const activeClassName = "selected";
-    const activeLink = ({ isActive }) => isActive ? activeClassName : undefined;
 
     const langHandleOpen = () => {
         document.querySelector(".currency-and-language").classList.add('show');
