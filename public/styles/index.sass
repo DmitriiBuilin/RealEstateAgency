@@ -31,6 +31,14 @@ $color-grey: #eef2f6
 $color-white: #FFFFFF
 $box-shadow: 2px 2px 5px 1px grey
 
+// Bootstrap variables
+$accordion-padding-y: 0.6rem
+$accordion-button-color: $color-dark-blue
+$accordion-button-active-color: $color-red
+$form-select-padding-y: 0.275rem
+
+@import "../../node_modules/bootstrap/scss/bootstrap"
+
 header, main, footer
     background-color: $color-white
 
@@ -181,7 +189,6 @@ header
 .currency-and-language-block-item h4, .menu-block-item h4
     font-size: 17px
     font-weight: 700
-    // margin-top: 10px
     margin-bottom: 20px
 
 .grid-head 
@@ -431,12 +438,13 @@ header
 
 
 footer
-    background-color: $color-grey
+    padding: 16px 0 0 0
 
 .footer-content
     padding: 50px 0
     display: flex
     justify-content: space-around
+    background-color: $color-grey
 
 .social-icons
     margin: 30px 0 30px 0
@@ -490,6 +498,32 @@ footer
 .footer-content-link:hover
     cursor: pointer
     font-weight: 400 
+
+
+/* -- RENT -- */
+
+
+.container-field
+    display: flex
+    justify-content: space-between
+
+.aside-search
+    background-color: $color-grey
+    border-radius: 10px
+    width: 100%
+    max-width: 315px
+
+.main 
+    background-color: $color-grey
+    border-radius: 10px
+    width: 100%
+    margin: 0 0 0 30px
+
+.form-select-dev
+    margin: 0 0 10px 0 
+
+
+
 
 /* -- IMPORTANT -- */
 

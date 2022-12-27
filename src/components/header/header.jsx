@@ -149,19 +149,19 @@ export const Header = () => {
                                 <h4 className="grid-head">Валюта</h4>
                                 <ul className="currency">
                                 <li className="grid-left-top c-li">
-                                    <input onClick={handleCurrency} type="checkbox" className="checkbox-visibility" id="usd"/>
+                                    <input onClick={handleCurrency} name="currency" type="radio" className="checkbox-visibility" id="usd"/>
                                     <label htmlFor="usd">USD $</label>
                                 </li>
                                 <li className="grid-left c-li">
-                                    <input onClick={handleCurrency} type="checkbox" className="checkbox-visibility" id="euro"/>
+                                    <input onClick={handleCurrency} name="currency" type="radio" className="checkbox-visibility" id="euro"/>
                                     <label htmlFor="euro">Euro €</label>
                                 </li>
                                 <li className="grid-right-top c-li">
-                                    <input onClick={handleCurrency} type="checkbox" className="checkbox-visibility" id="trl"/>
+                                    <input onClick={handleCurrency} name="currency" type="radio" className="checkbox-visibility" id="trl"/>
                                     <label htmlFor="trl">TRL ₺</label>           
                                 </li>
                                 <li className="grid-right c-li">
-                                    <input onClick={handleCurrency} type="checkbox" className="checkbox-visibility" id="rub"/>
+                                    <input onClick={handleCurrency} name="currency" type="radio" className="checkbox-visibility" id="rub"/>
                                     <label htmlFor="rub">Rub ₽</label>
                                 </li>
                                 </ul>
@@ -170,15 +170,15 @@ export const Header = () => {
                                 <h4 className="grid-head">Выбор языка</h4>
                                 <ul className="lenguage">
                                 <li className="grid-left-top l-li">
-                                    <input onClick={handleLanguage} type="checkbox" className="checkbox-visibility" id="rus"/>
+                                    <input onClick={handleLanguage} name="language" type="radio" className="checkbox-visibility" id="rus"/>
                                     <label htmlFor="rus">Русский</label> 
                                 </li>
                                 <li className="grid-left l-li">
-                                    <input onClick={handleLanguage} type="checkbox" className="checkbox-visibility" id="en"/>
+                                    <input onClick={handleLanguage} name="language" type="radio" className="checkbox-visibility" id="en"/>
                                     <label htmlFor="en">English</label> 
                                 </li>
                                 <li className="grid-right l-li">
-                                    <input onClick={handleLanguage} type="checkbox" className="checkbox-visibility" id="tr"/>
+                                    <input onClick={handleLanguage} name="language" type="radio" className="checkbox-visibility" id="tr"/>
                                     <label htmlFor="tr">Türkçe</label> 
                                 </li>
                                 </ul>
