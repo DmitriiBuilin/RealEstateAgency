@@ -99,24 +99,7 @@ export const Main = () => {
                     </form>
                 </div>
                 </div>
-            </div>
-            <div className="index-page-statistic-carousel container-primary">
-                <div id="carouselExampleFade" className="carousel slide carousel-fade" data-bs-ride="carousel">
-                    <div className="carousel-inner">
-                        <div className="carousel-item active">
-                        <img src={imgTeam} className="d-block w-100" alt="..." />
-                        </div>
-                        <div className="carousel-item">
-                        <img src={partners} className="d-block w-100" alt="..." />
-                        </div>
-                        <div className="carousel-item">
-                        <img src={statistics} className="d-block w-100" alt="..." />
-                        </div>
-                    </div>
-                    <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
-                    </button>
-                    </div>
-            </div>
+            </div>            
             <div className="index-page-offers-carousel container-primary">
                 <div id="carouselExampleIndicators" className="carousel slide" data-bs-ride="true">
                 <div className="carousel-indicators">
@@ -136,6 +119,23 @@ export const Main = () => {
                     </div>
                 </div>
                 </div>
+            </div>
+            <div className="index-page-statistic-carousel container-primary">
+                <div id="carouselExampleFade" className="carousel slide carousel-fade" data-bs-ride="carousel">
+                    <div className="carousel-inner">
+                        <div className="carousel-item active">
+                        <img src={imgTeam} className="d-block w-100" alt="..." />
+                        </div>
+                        <div className="carousel-item">
+                        <img src={partners} className="d-block w-100" alt="..." />
+                        </div>
+                        <div className="carousel-item">
+                        <img src={statistics} className="d-block w-100" alt="..." />
+                        </div>
+                    </div>
+                    <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
+                    </button>
+                    </div>
             </div>
             <div className="index-page-aboutus container-primary">
                 <div className="index-page-aboutus-story">

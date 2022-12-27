@@ -98,6 +98,13 @@ export const Header = () => {
                                 </span>
                             )}                            
                         </NavLink>
+                        <NavLink to="/landlords"  className="header-menu-item">
+                        {({ isActive }) => (
+                                <span className={ isActive ? activeClassName : undefined }>
+                                Арендодателям
+                                </span>
+                            )}                            
+                        </NavLink>
                     </nav>
                     <div className="header-options">
                         <button id="language" type="button" className="header-options-button" onClick={langHandleOpen}>
