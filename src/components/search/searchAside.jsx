@@ -1,15 +1,59 @@
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { currencySelect } from "../../store/actions/actions";
+import { getCurrencyValue } from "../../store/selectors/selector";
+
 export const SearchAside = () => {
+    const currency = useSelector(getCurrencyValue);
+    const dispatch = useDispatch();
+    
+
+    const handleCurrency = (e) => {
+        const id = e.target.getAttribute('dataname');
+        dispatch(currencySelect(id))
+        const currencyLi = document.querySelectorAll('.c-li');
+        for(let i=0; i<currencyLi.length; i++) {
+            currencyLi[i].classList.remove('selected')
+        };
+        e.target.parentNode.classList.add('selected')   
+    };
+
+    useEffect(() => {
+        const currencyAsideLi = document.querySelectorAll('.btn-check')
+        for(let i=0; i<currencyAsideLi.length; i++) {            
+            if(currencyAsideLi[i].getAttribute('dataname') === `${currency}`) {
+                currencyAsideLi[i].checked = true;
+            };
+        }
+    });
+
+
     return (
         <>
         <aside className="aside-search">
-            <h3>Недвижимость</h3>
-            <ul>
-                <li>Аренда</li>
-                <li>Продажа</li>
-                <li>Новостройки</li>
-            </ul>
-            <div className="accordion" id="accordionExample">
-                <form id="search-form">
+            <h3 className="aside-search-head">Недвижимость</h3>
+            <form id="search-form">
+                <div className="form-check-wrp">
+                    <div className="form-check">
+                        <input className="form-check-input" type="checkbox" value="" id="rent"/>
+                        <label className="form-check-label" htmlFor="rent">
+                            Аренда
+                        </label>
+                    </div>
+                    <div className="form-check">
+                        <input className="form-check-input" type="checkbox" value="" id="sale"/>
+                        <label className="form-check-label" htmlFor="sale">
+                            Продажа
+                        </label>
+                    </div>
+                    <div className="form-check">
+                        <input className="form-check-input" type="checkbox" value="" id="new"/>
+                        <label className="form-check-label" htmlFor="new">
+                            Новостройки
+                        </label>
+                    </div>
+                </div>
+                <div className="accordion" id="accordionExample">
                     <div className="accordion-item">
                         <h2 className="accordion-header" id="panelsStayOpen-headingOne">
                         <button className="accordion-button accordion-button-user" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
@@ -42,14 +86,17 @@ export const SearchAside = () => {
                         <div id="panelsStayOpen-collapseTwo" data-bs-parent="#accordionExample" className="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingTwo">
                             <div className="accordion-body">
                                 <div className="btn-group" role="group" aria-label="Basic radio toggle button group">
-                                    <input type="radio" className="btn-check" name="btnradio" id="btnradio1" autocomplete="off"/>
-                                    <label className="btn btn-user btn-outline-primary" for="btnradio1">USD $</label>
-                                    <input type="radio" className="btn-check" name="btnradio" id="btnradio2" autocomplete="off"/>
-                                    <label className="btn btn-user btn-outline-primary" for="btnradio2">Euro €</label>
-                                    <input type="radio" className="btn-check" name="btnradio" id="btnradio3" autocomplete="off"/>
-                                    <label className="btn btn-user btn-outline-primary" for="btnradio3">TRL ₺</label>
-                                    <input type="radio" className="btn-check" name="btnradio" id="btnradio4" autocomplete="off"/>
-                                    <label className="btn btn-user btn-outline-primary" for="btnradio4">Rub ₽</label>
+                                    <input type="radio" onClick={handleCurrency} className="btn-check" dataname="usd" name="btnradio" id="btnradio1" autoComplete="off" />
+                                    <label className="btn btn-user btn-outline-primary" htmlFor="btnradio1">USD $</label>
+
+                                    <input type="radio" onClick={handleCurrency} className="btn-check" dataname="euro" name="btnradio" id="btnradio2" autoComplete="off"/>
+                                    <label className="btn btn-user btn-outline-primary" htmlFor="btnradio2">Euro €</label>
+
+                                    <input type="radio" onClick={handleCurrency} className="btn-check" dataname="trl" name="btnradio" id="btnradio3" autoComplete="off"/>
+                                    <label className="btn btn-user btn-outline-primary" htmlFor="btnradio3">TRL ₺</label>
+
+                                    <input type="radio" onClick={handleCurrency} className="btn-check" dataname="rub" name="btnradio" id="btnradio4" autoComplete="off"/>
+                                    <label className="btn btn-user btn-outline-primary" htmlFor="btnradio4">Rub ₽</label>
                                 </div>
                                 <div className="row">
                                     <div className="col">
@@ -78,11 +125,11 @@ export const SearchAside = () => {
                             </div>
                         </div>
                     </div>
-                </form>
-                <div className="search-button">
-                    <button type="submit" form="search-form" className="btn btn-secondary search-button-item">Искать</button>
-                </div>                                
-            </div>
+                    <div className="search-button">
+                    <button type="submit" form="search-form" className="btn btn-primary search-button-item">Искать</button>
+                    </div>   
+                </div>
+            </form>    
         </aside>
             
         </>

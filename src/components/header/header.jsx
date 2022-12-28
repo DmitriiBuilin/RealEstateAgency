@@ -30,7 +30,8 @@ export const Header = () => {
         for(let i=0; i<currencyLi.length; i++) {
             currencyLi[i].classList.remove('selected')
         };
-        e.target.parentNode.classList.add('selected')   
+        e.target.parentNode.classList.add('selected') 
+
     };
     const handleLanguage = (e) => {
         const lenguageLi = document.querySelectorAll(`.l-li`);
