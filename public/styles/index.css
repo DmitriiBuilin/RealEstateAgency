@@ -69,7 +69,7 @@
   --bs-danger-rgb: 220, 53, 69;
   --bs-light-rgb: 248, 249, 250;
   --bs-dark-rgb: 33, 37, 41;
-  --bs-primary-text: #0a58ca;
+  --bs-primary-text: #003da5;
   --bs-secondary-text: #6c757d;
   --bs-success-text: #146c43;
   --bs-info-text: #087990;
@@ -4563,7 +4563,7 @@ textarea.form-control-lg {
   --bs-accordion-btn-icon-width: 1.25rem;
   --bs-accordion-btn-icon-transform: rotate(-180deg);
   --bs-accordion-btn-icon-transition: transform 0.2s ease-in-out;
-  --bs-accordion-btn-active-icon: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%230a58ca'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+  --bs-accordion-btn-active-icon: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23003da5'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
   --bs-accordion-btn-focus-border-color: #86b7fe;
   --bs-accordion-btn-focus-box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
   --bs-accordion-body-padding-x: 1.25rem;
@@ -12393,6 +12393,64 @@ footer {
 
 .form-select-dev {
   margin: 0 0 10px 0;
+}
+
+.accordion-button-user {
+  font-family: roboto, arial, sans-serif;
+  font-weight: 400;
+}
+
+.btn-group {
+  margin-bottom: 10px;
+}
+
+.btn-user {
+  color: #012158;
+  border-color: #eef2f6;
+}
+
+.btn-user:hover {
+  color: #003da5 !important;
+  border-color: #eef2f6 !important;
+}
+
+.btn-check:checked + .btn {
+  background-color: #eef2f6;
+  border-color: #eef2f6;
+  color: #012158;
+}
+
+.col {
+  position: relative;
+}
+
+.col > span {
+  position: absolute;
+  right: 25px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 14px;
+  color: #74797d;
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.search-button {
+  display: flex;
+  justify-content: center;
+  margin: 15px 0 24px 0;
+}
+
+.search-button-item {
+  padding: 0.375rem 2rem;
 }
 
 /* -- IMPORTANT -- */

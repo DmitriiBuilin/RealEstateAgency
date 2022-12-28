@@ -36,6 +36,7 @@ $accordion-padding-y: 0.6rem
 $accordion-button-color: $color-dark-blue
 $accordion-button-active-color: $color-red
 $form-select-padding-y: 0.275rem
+$primary-text: $color-blue
 
 @import "../../node_modules/bootstrap/scss/bootstrap"
 
@@ -522,6 +523,52 @@ footer
 .form-select-dev
     margin: 0 0 10px 0 
 
+.accordion-button-user
+    font-family: $font-main
+    font-weight: 400 
+
+.btn-group
+    margin-bottom: 10px
+
+.btn-user
+    color: $color-dark-blue 
+    border-color: $color-grey   
+    
+.btn-user:hover
+    color: $color-blue !important
+    border-color: $color-grey  !important   
+
+.btn-check:checked + .btn
+    background-color: $color-grey
+    border-color: $color-grey
+    color: $color-dark-blue 
+
+.col
+    position: relative
+
+.col>span 
+    position: absolute
+    right: 25px
+    top: 50%
+    transform: translateY(-50%)
+    font-size: 14px
+    color: #74797d
+
+input[type=number] 
+    -moz-appearance: textfield
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button 
+    -webkit-appearance: none
+    margin: 0
+
+.search-button
+    display: flex
+    justify-content: center
+    margin: 15px 0 24px 0
+
+.search-button-item
+    padding: 0.375rem 2rem 
 
 
 
@@ -533,6 +580,8 @@ footer
 
 .selected
     color: $color-red
+
+
 
 
 /* -- MEDIA -- */
