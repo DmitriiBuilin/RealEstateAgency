@@ -1,7 +1,6 @@
 export const CardItem = (props) => {
     return (
         <>
-        <div className="offers-carousel-cart-block">
             <div className="offer-cart">
                 <img className="offer-cart-img" src={props.img_1} alt="..." />
                 <div className="offer-cart-properties">
@@ -10,7 +9,6 @@ export const CardItem = (props) => {
                     <p className="offer-cart-price">Price <span>1200</span> $ </p>
                 </div>
             </div>
-        </div>
         </>
     );
 }

@@ -23,6 +23,7 @@
   font-weight: 300;
   font-style: normal;
 }
+/* -- Bootstrap variables -- */
 /*!
  * Bootstrap  v5.3.0-alpha1 (https://getbootstrap.com/)
  * Copyright 2011-2022 The Bootstrap Authors
@@ -12456,7 +12457,7 @@ input::-webkit-inner-spin-button {
 }
 
 .form-check-wrp {
-  padding: 7px 25px;
+  padding: 7px 25px 22px 25px;
 }
 
 .form-check-label {
@@ -12475,6 +12476,29 @@ input::-webkit-inner-spin-button {
 
 .mb-3 {
   margin-top: 1rem;
+}
+
+/* -- RENT, SALE, NEW -- */
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.filter {
+  background-color: #FFFFFF;
+  border-radius: 5px;
+  width: 98%;
+  height: 100px;
+  margin: 13px 0;
+}
+
+.search-result {
+  background-color: #FFFFFF;
+  border-radius: 5px;
+  width: 98%;
+  padding: 10px;
+  margin-bottom: 13px;
 }
 
 /* -- IMPORTANT -- */

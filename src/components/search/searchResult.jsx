@@ -1,4 +1,5 @@
-import BigCardItem from "../cards/bigCardItem";
+import Filter from "../filter/filter";
+import CardItem from "../cards/сardItem";
 
 export const SearchResult = () => {
     const image = {
@@ -19,9 +20,10 @@ export const SearchResult = () => {
     return (
         <>
         <main className="main">
-            <h3>Filter</h3>
-            <h3>Search Result</h3>
-            <BigCardItem img_1={image.img_1} />
+            <Filter />
+            <div className="search-result">
+                <CardItem img_1={image.img_1} />
+            </div>            
         </main>
         </>
     )
