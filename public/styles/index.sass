@@ -338,7 +338,7 @@ header
 /* -- MAIN - Offers --*/
 
 
-.offers-carousel-cart-block
+.offers-carousel-card-block
     padding: 20px
     height: 500px
     display: flex
@@ -357,10 +357,10 @@ header
     width: 250px !important
 
 
-/* -- CARTS -- */
+/* -- CARDS -- */
 
 
-.offer-cart
+.offer-card
     height: 400px
     width: 310px
     border-radius: 6px
@@ -369,44 +369,42 @@ header
     background-color: $color-white
     transition: 0.5s
 
-.offer-cart:hover
+.offer-card:hover
     box-shadow: $box-shadow
     -moz-box-shadow: $box-shadow
     -webkit-box-shadow: $box-shadow
     transition: 0.5s
-
-.offer-cart:hover
     cursor: pointer
 
-.offer-cart-img
+.offer-card-img
     border-radius: 6px 6px 0 0
     -moz-border-radius: 6px 6px 0 0
     -webkit-border-radius: 6px 6px 0 0
     width: 100%
     height: 250px
 
-.offer-cart-properties
+.offer-card-properties
     padding: 10px
 
-.offer-cart-name
+.offer-card-name
     font-family: $font-main
     color: $color-dark-blue
     font-weight: 700 
     font-size: 22px
 
-.offer-cart-description
+.offer-card-description
     font-family: $font-main
     color: $color-dark-blue
     font-weight: 300 
     font-size: 12px
 
-.offer-cart-price
+.offer-card-price
     font-family: $font-main
     color: $color-dark-blue
     font-weight: 300 
     font-size: 15px
 
-.offer-cart-price span
+.offer-card-price span
     color: $color-red
 
 
@@ -651,6 +649,8 @@ input::-webkit-inner-spin-button
     flex-wrap: nowrap
 
 
+
+
 /* -- IMPORTANT -- */
 
 
@@ -674,7 +674,7 @@ input::-webkit-inner-spin-button
 @media(max-width: 1023px)
     .hid2
         display: none
-    .offer-cart
+    .offer-card
         box-shadow: $box-shadow
         -moz-box-shadow: $box-shadow
         -webkit-box-shadow: $box-shadow

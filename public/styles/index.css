@@ -12195,7 +12195,7 @@ header {
 }
 
 /* -- MAIN - Offers --*/
-.offers-carousel-cart-block {
+.offers-carousel-card-block {
   padding: 20px;
   height: 500px;
   display: flex;
@@ -12216,8 +12216,8 @@ header {
   width: 250px !important;
 }
 
-/* -- CARTS -- */
-.offer-cart {
+/* -- CARDS -- */
+.offer-card {
   height: 400px;
   width: 310px;
   border-radius: 6px;
@@ -12227,18 +12227,15 @@ header {
   transition: 0.5s;
 }
 
-.offer-cart:hover {
+.offer-card:hover {
   box-shadow: 2px 2px 5px 1px grey;
   -moz-box-shadow: 2px 2px 5px 1px grey;
   -webkit-box-shadow: 2px 2px 5px 1px grey;
   transition: 0.5s;
-}
-
-.offer-cart:hover {
   cursor: pointer;
 }
 
-.offer-cart-img {
+.offer-card-img {
   border-radius: 6px 6px 0 0;
   -moz-border-radius: 6px 6px 0 0;
   -webkit-border-radius: 6px 6px 0 0;
@@ -12246,32 +12243,32 @@ header {
   height: 250px;
 }
 
-.offer-cart-properties {
+.offer-card-properties {
   padding: 10px;
 }
 
-.offer-cart-name {
+.offer-card-name {
   font-family: roboto, arial, sans-serif;
   color: #012158;
   font-weight: 700;
   font-size: 22px;
 }
 
-.offer-cart-description {
+.offer-card-description {
   font-family: roboto, arial, sans-serif;
   color: #012158;
   font-weight: 300;
   font-size: 12px;
 }
 
-.offer-cart-price {
+.offer-card-price {
   font-family: roboto, arial, sans-serif;
   color: #012158;
   font-weight: 300;
   font-size: 15px;
 }
 
-.offer-cart-price span {
+.offer-card-price span {
   color: #dc1c2e;
 }
 
@@ -12557,7 +12554,7 @@ input::-webkit-inner-spin-button {
   .hid2 {
     display: none;
   }
-  .offer-cart {
+  .offer-card {
     box-shadow: 2px 2px 5px 1px grey;
     -moz-box-shadow: 2px 2px 5px 1px grey;
     -webkit-box-shadow: 2px 2px 5px 1px grey;
