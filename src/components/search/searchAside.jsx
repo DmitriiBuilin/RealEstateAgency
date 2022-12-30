@@ -100,7 +100,7 @@ export const SearchAside = () => {
                                 </div>
                                 <div className="row">
                                     <div className="col">
-                                        <input type="number" max="5" className="form-control" placeholder="Min" aria-label="Мин"/>
+                                        <input type="number" max="5" className="form-control" placeholder="Мин" aria-label="Min"/>
                                         <span>$</span>
                                     </div>
                                     <div className="col">

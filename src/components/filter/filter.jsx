@@ -26,7 +26,7 @@ const handleClick = () => {
                             <li className="breadcrumb-item active" aria-current="page">Квартиры</li>
                         </ol>
                     </nav>
-                    <p className="filter-result-notification">Найдено 30 объектов в разделе <span>аренда квартиры</span></p>
+                    <p className="filter-result-notification">Найдено 30 объектов в разделе <span>Аренда квартиры</span></p>
                 </div>
                 <div className="filter-buttons">
                     <button type="button" onClick={handleClick} className="btn btn-primary map-button-item">Показать на карте</button>

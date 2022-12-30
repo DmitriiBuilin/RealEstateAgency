@@ -23,6 +23,15 @@ export const SearchResult = () => {
             <Sorter />
             <div className="search-result">
                 <CardItem img_1={image.img_1} />
+                <CardItem img_1={image.img_2} />
+                <CardItem img_1={image.img_3} />
+                <CardItem img_1={image.img_4} />
+                <CardItem img_1={image.img_5} />
+                <CardItem img_1={image.img_6} />
+                <CardItem img_1={image.img_7} />
+                <CardItem img_1={image.img_8} />
+                <CardItem img_1={image.img_9} />
+                <CardItem img_1={image.img_10} />
             </div>            
         </main>
         </>

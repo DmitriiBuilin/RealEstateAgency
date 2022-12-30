@@ -479,9 +479,6 @@ footer
     font-weight: 300 
     font-size: 16px
 
-.footer-content-navigate
-
-
 .footer-content-navigate h3 
     font-family: $font-main
     color: $color-blue
@@ -649,6 +646,77 @@ input::-webkit-inner-spin-button
     flex-wrap: nowrap
 
 
+/* -- CARD ITEM -- */
+
+
+.card-item
+    display: flex
+    height: 200px
+    width: 98%
+    border-radius: 6px
+    -moz-border-radius: 6px
+    -webkit-border-radius: 6px
+    background-color: $color-white
+    transition: 0.5s
+    margin-bottom: 20px
+
+.card-item:hover
+    box-shadow: $box-shadow
+    -moz-box-shadow: $box-shadow
+    -webkit-box-shadow: $box-shadow
+    transition: 0.5s
+    cursor: pointer
+
+.card-item-img-wrp
+    width: 270px
+    height: 200px
+    display: flex
+    flex-shrink: 0
+
+.card-item-img
+    width: 100%
+    height: 100%
+    object-fit: cover
+    border-radius: 6px 0 0 6px
+    -moz-border-radius: 6px 0 0 6px
+    -webkit-border-radius: 6px 0 0 6px
+
+.card-item-properties
+    display: flex
+    flex-direction: column
+    justify-content: space-between
+    padding: 10px
+
+.card-item-name
+    font-family: $font-main
+    color: $color-dark-blue
+    font-weight: 700 
+    font-size: 18px
+
+.card-item-description
+    font-family: $font-main
+    color: $color-dark-blue
+    font-weight: 300 
+    font-size: 16px
+
+.card-item-price
+    font-family: $font-main
+    color: $color-dark-blue
+    font-weight: 400 
+    font-size: 24px
+
+.card-item-price span
+    font-weight: 700 
+    // color: $color-red
+
+.card-item-propertties
+    display: flex
+
+.card-item-propertties p
+    font-family: $font-main
+    color: $color-dark-blue
+    font-weight: 400 
+    margin-right: 15px
 
 
 /* -- IMPORTANT -- */
