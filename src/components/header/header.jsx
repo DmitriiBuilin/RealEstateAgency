@@ -85,10 +85,10 @@ export const Header = () => {
                                 </span>
                             )}                            
                         </NavLink>
-                        <NavLink to="/office"  className="header-menu-item">
+                        <NavLink to="/map"  className="header-menu-item">
                             {({ isActive }) => (
                                 <span className={ isActive ? activeClassName : undefined }>
-                                Наш офис
+                                Карта
                                 </span>
                             )}                            
                         </NavLink>

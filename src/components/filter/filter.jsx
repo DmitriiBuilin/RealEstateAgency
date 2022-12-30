@@ -1,11 +1,46 @@
-export const Filter = () => {
+import { Link, useNavigate } from "react-router-dom";
+
+export const Sorter = () => {
+const navigate = useNavigate();
+
+const handleClick = () => {
+    navigate('/map')
+};
+
     return (
         <>
             <div className="filter">
-                Filter
+                <div>
+                    <nav className="filter-nav" aria-label="breadcrumb">
+                        <ol className="breadcrumb">
+                            <li className="breadcrumb-item">
+                                <Link to={'/'}>
+                                    <svg width="18" height="18" viewBox="0 0 24 24"  xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M11.4785 2.99047C11.7987 2.79484 12.2013 2.79484 12.5215 2.99047L19.5215 7.26825C19.8187 7.4499 20 7.77316 20 8.12153V18.9999C20 19.5521 19.5523 19.9999 19 19.9999H16V13.9999C16 12.343 14.6569 10.9999 13 10.9999H11C9.34315 10.9999 8 12.343 8 13.9999V19.9999H5C4.44772 19.9999 4 19.5521 4 18.9999V8.12153C4 7.77316 4.1813 7.4499 4.47855 7.26825L11.4785 2.99047ZM10 19.9999V13.9999C10 13.4476 10.4477 12.9999 11 12.9999H13C13.5523 12.9999 14 13.4476 14 13.9999V19.9999H10ZM15 21.9999H19C20.6569 21.9999 22 20.6567 22 18.9999V8.12153C22 7.07643 21.4561 6.10665 20.5644 5.56168L13.5644 1.2839C12.604 0.697032 11.396 0.697032 10.4356 1.2839L3.43565 5.56168C2.54389 6.10665 2 7.07643 2 8.12153V18.9999C2 20.6567 3.34315 21.9999 5 21.9999H9H15Z" />
+                                    </svg>
+                                </Link>
+                            </li>
+                            <li className="breadcrumb-item" aria-current="page">
+                                <Link to={'/rent'}>Аренда</Link>
+                            </li>
+                            <li className="breadcrumb-item active" aria-current="page">Квартиры</li>
+                        </ol>
+                    </nav>
+                    <p className="filter-result-notification">Найдено 30 объектов в разделе <span>аренда квартиры</span></p>
+                </div>
+                <div className="filter-buttons">
+                    <button type="button" onClick={handleClick} className="btn btn-primary map-button-item">Показать на карте</button>
+                    <select className="form-select" aria-label="Default select example">
+                        <option defaultValue>Сортировать...</option>
+                        <option value="1">По цене (Сначала дороже)</option>
+                        <option value="2">По цене (Сначала дешевле)</option>
+                        <option value="3">По дате (Сначала новые)</option>
+                        <option value="4">По дате (Сначала старые)</option>
+                    </select>                    
+                </div>
             </div>
         </>
     )
 }
 
-export default Filter;
+export default Sorter;

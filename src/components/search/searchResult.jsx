@@ -1,4 +1,4 @@
-import Filter from "../filter/filter";
+import { Sorter } from "../filter/filter";
 import CardItem from "../cards/сardItem";
 
 export const SearchResult = () => {
@@ -20,7 +20,7 @@ export const SearchResult = () => {
     return (
         <>
         <main className="main">
-            <Filter />
+            <Sorter />
             <div className="search-result">
                 <CardItem img_1={image.img_1} />
             </div>            
