@@ -1,7 +1,7 @@
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import Contacts from './pages/rus/contacts/contacts';
-import Landlords from './pages/rus/landlords';
+import Landlords from './pages/rus/landlords/landlords';
 import Main from './pages/rus/main/main';
 import NewBuildings from './pages/rus/newBuildings/newBuildings';
 import Rent from './pages/rus/rent/rent';

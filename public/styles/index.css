@@ -12471,6 +12471,11 @@ input::-webkit-inner-spin-button {
   margin-top: 1rem;
 }
 
+.accordion-button:not(.collapsed) {
+  color: #012158;
+  font-weight: 300;
+}
+
 /* -- RENT, SALE, NEW -- */
 .main {
   display: flex;
@@ -12559,8 +12564,6 @@ input::-webkit-inner-spin-button {
 .card-item-img-wrp {
   width: 270px;
   height: 200px;
-  display: flex;
-  flex-shrink: 0;
 }
 
 .card-item-img {
@@ -12614,6 +12617,20 @@ input::-webkit-inner-spin-button {
   color: #012158;
   font-weight: 400;
   margin-right: 15px;
+}
+
+/* -- MAP -- */
+.map-wrp {
+  padding: 10px;
+  width: 100%;
+}
+
+.map {
+  border: 0;
+  border-radius: 6px;
+  width: 100%;
+  max-width: 1300px;
+  height: 600px;
 }
 
 /* -- IMPORTANT -- */

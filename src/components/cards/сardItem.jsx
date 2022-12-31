@@ -1,9 +1,38 @@
 export const CardItem = (props) => {
+    const idCarousel = Math.floor(Math.random() * 100);
+
     return (
         <>
             <div className="card-item">
                 <div className="card-item-img-wrp">
-                    <img className="card-item-img" src={props.img_1} alt="..." />
+                    {/* <img className="card-item-img" src={props.img_1} alt="..." /> */}
+                    <div id={idCarousel} className="carousel slide">
+                        <div className="carousel-inner">
+                            <div className="carousel-item card-item-img-wrp active">
+                                <img src={props.img_1} className="d-block w-100 card-item-img" alt="..." />
+                            </div>
+                            <div className="carousel-item card-item-img-wrp">
+                                <img src={props.img_2} className="d-block w-100 card-item-img" alt="..."/>
+                            </div>
+                            <div className="carousel-item card-item-img-wrp">
+                                <img src={props.img_3} className="d-block w-100 card-item-img" alt="..."/>
+                            </div>
+                            <div className="carousel-item card-item-img-wrp">
+                                <img src={props.img_4} className="d-block w-100 card-item-img" alt="..."/>
+                            </div>
+                            <div className="carousel-item card-item-img-wrp">
+                                <img src={props.img_5} className="d-block w-100 card-item-img" alt="..."/>
+                            </div>
+                        </div>
+                        <button className="carousel-control-prev" type="button" data-bs-target={"#" + idCarousel} data-bs-slide="prev">
+                            <span className="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span className="visually-hidden">Previous</span>
+                        </button>
+                        <button className="carousel-control-next" type="button" data-bs-target={"#" + idCarousel} data-bs-slide="next">
+                            <span className="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span className="visually-hidden">Next</span>
+                        </button>
+                    </div>
                 </div>
                 <div className="card-item-properties">
                     <h4 className="card-item-name">Full object name</h4>

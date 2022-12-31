@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { currencySelect } from "../../store/actions/actions";
 import { getCurrencyValue } from "../../store/selectors/selector";
@@ -6,8 +6,8 @@ import { getCurrencyValue } from "../../store/selectors/selector";
 export const SearchAside = () => {
     const currency = useSelector(getCurrencyValue);
     const dispatch = useDispatch();
+    const [currencySymbol, setCurrencySymbol] = useState('₽')
     
-
     const handleCurrency = (e) => {
         const id = e.target.getAttribute('dataname');
         dispatch(currencySelect(id))
@@ -25,6 +25,13 @@ export const SearchAside = () => {
                 currencyAsideLi[i].checked = true;
             };
         }
+        switch(currency) {
+            case 'usd': return setCurrencySymbol('$')
+            case 'rub': return setCurrencySymbol('₽')
+            case 'euro': return setCurrencySymbol('€')
+            case 'trl': return setCurrencySymbol('₺')
+        }
+            
     });
 
 
@@ -101,11 +108,11 @@ export const SearchAside = () => {
                                 <div className="row">
                                     <div className="col">
                                         <input type="number" max="5" className="form-control" placeholder="Мин" aria-label="Min"/>
-                                        <span>$</span>
+                                        <span>{currencySymbol}</span>
                                     </div>
                                     <div className="col">
                                         <input type="number" className="form-control" placeholder="Макс" aria-label="Max"/>
-                                        <span>$</span>
+                                        <span>{currencySymbol}</span>
                                     </div>
                                 </div>
                             </div>
@@ -120,7 +127,7 @@ export const SearchAside = () => {
                         <div id="panelsStayOpen-collapseThree" data-bs-parent="#accordionExample"  className="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingThree">
                             <div className="accordion-body">
                                 <div className="mb-3">
-                                    <input type="text" className="form-control" id="formGroupExampleInput" placeholder="Поиск по сайту"/>
+                                    <input type="text" className="form-control" id="formGroupExampleInput" placeholder="По всем параметрам"/>
                                 </div>
                             </div>
                         </div>

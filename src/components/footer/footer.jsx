@@ -43,6 +43,7 @@ export const Footer = () => {
                     <p><Link to="/rent" className="footer-content-link">Аренда</Link></p>
                     <p><Link to="/sale" className="footer-content-link">Продажа</Link></p>
                     <p><Link to="/new" className="footer-content-link">Новостройки</Link></p>
+                    <p><Link to="/map" className="footer-content-link">Карта</Link></p>
                 </div>
                 <div className="footer-content-navigate">          
                     <h3>Наши города</h3>
@@ -53,7 +54,6 @@ export const Footer = () => {
                 </div>
                 <div className="footer-content-navigate">
                     <h3>Как нас найти</h3>
-                    <p><Link to="/office" className="footer-content-link">Наш офис</Link></p>
                     <p><Link to="/contacts" className="footer-content-link">Контакты</Link></p>
                 </div> 
                 <div className="footer-content-navigate">
