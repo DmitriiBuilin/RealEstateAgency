@@ -1,5 +1,5 @@
-import { Sorter } from "../filter/filter";
 import CardItem from "../cards/сardItem";
+import Sorter from "../sorter/sorter";
 
 export const SearchResult = () => {
     const image = {

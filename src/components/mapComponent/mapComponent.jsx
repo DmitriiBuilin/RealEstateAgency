@@ -3,7 +3,7 @@ export const MapComponent = () => {
         <>
             <main className="main">
                 <div className="map-wrp">                    
-                    <iframe className="map" src="https://www.google.com/maps/d/embed?mid=12Jrp9q_mJaWmBcOfMF6FbbwpVbzf7n0&ehbc=2E312F" allowFullScreen="" loading="lazy" referrerPolicy="no-referrer-when-downgrade"></iframe>
+                    <iframe title="gMap" className="map" src="https://www.google.com/maps/d/embed?mid=12Jrp9q_mJaWmBcOfMF6FbbwpVbzf7n0&ehbc=2E312F" allowFullScreen="" loading="lazy" referrerPolicy="no-referrer-when-downgrade"></iframe>
                 </div>
             </main>
         </>

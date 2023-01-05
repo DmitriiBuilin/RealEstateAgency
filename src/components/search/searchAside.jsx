@@ -26,13 +26,13 @@ export const SearchAside = () => {
             };
         }
         switch(currency) {
-            case 'usd': return setCurrencySymbol('$')
-            case 'rub': return setCurrencySymbol('₽')
-            case 'euro': return setCurrencySymbol('€')
-            case 'trl': return setCurrencySymbol('₺')
+            case 'usd': return setCurrencySymbol('$');
+            case 'rub': return setCurrencySymbol('₽');
+            case 'euro': return setCurrencySymbol('€');
+            case 'trl': return setCurrencySymbol('₺');
         }
             
-    });
+    }, []);
 
 
     return (

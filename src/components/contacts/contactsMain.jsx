@@ -3,7 +3,7 @@ export const ContactsMain = () => {
         <>
         <main className="main contacts-main">
             <div className="contacts-main-map">            
-                <iframe src="https://www.google.com/maps/d/u/0/embed?mid=1-zvIJRWgsO-cbLMJ8JdWzWfuB_9KoDM&ehbc=2E312F" width="640" height="480"></iframe>
+                <iframe title="officeMap" src="https://www.google.com/maps/d/u/0/embed?mid=1-zvIJRWgsO-cbLMJ8JdWzWfuB_9KoDM&ehbc=2E312F" width="640" height="480"></iframe>
             </div>
             <div className="contacts-main-text">
                 <div className="contacts-aside-bar-item region-wrp">

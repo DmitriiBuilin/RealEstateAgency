@@ -33,7 +33,7 @@ export const Main = () => {
                 <h2 className="index-page-search-block-header-txt-high">First in Antalya </h2>
                 <h3 className="index-page-search-block-header-txt-low">Real Estate Professionals</h3>
                 <div className="main-search-block">
-                    <form className="row g-3 main-search-form">
+                    <form className="row g-3 main-search-form" id="mainSearch">
                         <div className="col-md-6">
                             <label htmlFor="inputState"  className="form-label">Предложение</label>
                             <select className="form-select" id="inputState" required>
@@ -83,7 +83,7 @@ export const Main = () => {
                                     <path d="M43.5797 45.7492L30.2447 32.4118C24.3126 36.6292 16.1384 35.5977 11.4401 30.0387C6.74176 24.4797 7.08674 16.2479 12.2337 11.1015C17.3793 5.95289 25.6119 5.60642 31.1719 10.3045C36.732 15.0026 37.7641 23.1776 33.5464 29.1102L46.8814 42.4475L43.582 45.7468L43.5797 45.7492ZM22.1317 11.6661C17.707 11.6652 13.8896 14.7711 12.9908 19.1035C12.092 23.436 14.3587 27.8041 18.4186 29.5634C22.4785 31.3227 27.2158 29.9895 29.7623 26.371C32.3087 22.7525 31.9645 17.8433 28.938 14.6155L30.3497 16.0155L28.7584 14.4289L28.7304 14.4008C26.9845 12.6443 24.6083 11.6595 22.1317 11.6661Z" />
                                     </svg>
                                 Поиск</button>
-                            <button className="btn btn-danger button-red" type="submit">                           
+                            <button className="btn btn-danger button-red" type="submit" form="mainSearch">                           
                             <svg width="25" height="25" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
                                 <g clipPath="url(#clip0_0_2594)">
                                 <path d="M24 4C16.27 4 10 10.27 10 18C10 28.5 24 44 24 44C24 44 38 28.5 38 18C38 10.27 31.73 4 24 4ZM24 23C21.24 23 19 20.76 19 18C19 15.24 21.24 13 24 13C26.76 13 29 15.24 29 18C29 20.76 26.76 23 24 23Z" />

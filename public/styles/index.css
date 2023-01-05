@@ -12705,7 +12705,7 @@ input::-webkit-inner-spin-button {
 }
 
 .contacts-main {
-  padding: 10px;
+  padding: 30px;
   align-items: flex-start;
   flex-direction: row;
   justify-content: space-around;
@@ -12751,6 +12751,48 @@ input::-webkit-inner-spin-button {
 .contacts-button-item:hover svg {
   fill: #FFFFFF;
   transition: 0.5s;
+}
+
+/* -- LANDLORDS -- */
+.landlords-main {
+  margin: 0 auto;
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+}
+
+.landloards-header {
+  align-self: flex-start;
+  margin: 15px 0 20px 30px;
+  color: #012158;
+}
+
+.landlord-button {
+  align-self: flex-end;
+  margin: 30px;
+  width: 230px;
+  background-color: #003da5;
+}
+
+.landlords-form {
+  display: flex;
+  justify-content: space-between;
+}
+
+.landlords-leftside {
+  width: 450px;
+}
+
+.landlords-rightside {
+  width: 450px;
+}
+
+.landlords-leftside div {
+  margin-bottom: 10px;
+}
+
+.sale-rent label {
+  margin: 0 10px;
 }
 
 /* -- IMPORTANT -- */

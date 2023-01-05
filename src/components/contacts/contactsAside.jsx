@@ -38,7 +38,7 @@ export const ContactsAside = () => {
             </div>
             <div className="divide"></div>
             <div className="contacts-aside-bar">
-            <a  href="https://www.google.com/maps/d/u/0/edit?mid=1-zvIJRWgsO-cbLMJ8JdWzWfuB_9KoDM&usp=sharing" className="contacts-aside-bar-item region-wrp" target="_blank">
+            <a  href="https://www.google.com/maps/d/u/0/edit?mid=1-zvIJRWgsO-cbLMJ8JdWzWfuB_9KoDM&usp=sharing" className="contacts-aside-bar-item region-wrp" rel="noreferrer">
                 <div className="region">
                 <svg width="30" height="30" viewBox="0 0 20 20"  xmlns="http://www.w3.org/2000/svg">
                 <path d="M12.1658 8.93977C11.6418 10.0015 10.9325 11.0601 10.2058 12.01C9.48132 12.957 8.75442 13.7768 8.20768 14.3605C8.13503 14.438 8.06566 14.5113 8 14.5801C7.93434 14.5113 7.86497 14.438 7.79232 14.3605C7.24558 13.7768 6.51868 12.957 5.79425 12.01C5.06754 11.0601 4.35825 10.0015 3.83423 8.93977C3.3048 7.86708 3 6.86191 3 6C3 3.23858 5.23858 1 8 1C10.7614 1 13 3.23858 13 6C13 6.86191 12.6952 7.86708 12.1658 8.93977ZM8 16C8 16 14 10.3137 14 6C14 2.68629 11.3137 0 8 0C4.68629 0 2 2.68629 2 6C2 10.3137 8 16 8 16Z" />
