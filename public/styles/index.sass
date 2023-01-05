@@ -720,7 +720,6 @@ input::-webkit-inner-spin-button
     margin-right: 15px
 
 
-
 /* -- MAP -- */
 
 
@@ -775,7 +774,7 @@ input::-webkit-inner-spin-button
     color: $color-dark-blue
     font-weight: 300
     font-size: 16px
-    margin-left: 25px
+    margin-left: 25px   
 
 .contacts-aside-bar-item:last-child
     margin-bottom: 20px
@@ -790,11 +789,57 @@ input::-webkit-inner-spin-button
     display: flex
     margin-left: 25px
 
+.contacts-main-text p
+    margin-left: 0
+
 .contacts-aside-bar-item svg
     fill: $color-dark-blue
     margin-top: 0
     margin-right: 10px
 
+
+.contacts-main
+    padding: 10px
+    align-items: flex-start
+    flex-direction: row
+    justify-content: space-around
+
+.contacts-main-text
+    padding: 10px
+    display: flex
+    flex-direction: column
+
+
+.contacts-main-map iframe
+    border-radius: 10px
+
+.contacts-button-item
+    margin-bottom: 15px
+    text-decoration: none
+    padding: 0.375rem 1rem
+    font-family: $font-main
+    color: $color-dark-blue
+    font-weight: 400 
+    background-color: $color-white
+    text-align: center
+    width: 90%
+    border: 1px solid $color-dark-blue
+    border-radius: 10px
+    transition: 0.5s
+
+.contacts-button-item:hover
+    background-color: $color-dark-blue
+    color: $color-white
+    transition: 0.5s
+
+.contacts-button-item svg
+    margin-right: 7px
+    fill: $color-dark-blue
+    transition: 0.5s
+
+.contacts-button-item:hover svg
+    fill: $color-white
+    transition: 0.5s
 
 
 
