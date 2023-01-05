@@ -6,7 +6,7 @@ import { getCurrencyValue } from "../../store/selectors/selector";
 export const SearchAside = () => {
     const currency = useSelector(getCurrencyValue);
     const dispatch = useDispatch();
-    const [currencySymbol, setCurrencySymbol] = useState('₽')
+    const [currencySymbol, setCurrencySymbol] = useState('')
     
     const handleCurrency = (e) => {
         const id = e.target.getAttribute('dataname');

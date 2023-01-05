@@ -12190,7 +12190,7 @@ header {
 }
 
 .carousel-inner {
-  border-radius: 10px;
+  border-radius: 5px;
   background-size: cover;
 }
 
@@ -12631,6 +12631,73 @@ input::-webkit-inner-spin-button {
   width: 100%;
   max-width: 1300px;
   height: 600px;
+}
+
+/* -- CONTACTS -- */
+.contacts-aside {
+  background-color: #eef2f6;
+  border-radius: 10px;
+  width: 100%;
+  max-width: 315px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.contacts-aside svg {
+  margin-top: 40px;
+}
+
+.contacts-aside-bar {
+  display: flex;
+  flex-direction: column;
+}
+
+.contacts-aside-bar-item {
+  text-decoration: none;
+  font-family: roboto, arial, sans-serif;
+  color: #012158;
+  font-weight: 700;
+  font-size: 18px;
+  margin: 0 0 5px 0;
+}
+
+.contacts-aside-bar-item h4, .contacts-aside-bar-item .h4 {
+  margin-bottom: 0;
+  font-family: roboto, arial, sans-serif;
+  color: #012158;
+  font-weight: 700;
+}
+
+.contacts-aside-bar-item p {
+  font-family: roboto, arial, sans-serif;
+  color: #012158;
+  font-weight: 300;
+  font-size: 16px;
+  margin-left: 25px;
+}
+
+.contacts-aside-bar-item:last-child {
+  margin-bottom: 20px;
+}
+
+.divide {
+  width: 85%;
+  border-top: 1px solid #012158;
+  margin-bottom: 20px;
+  opacity: 50%;
+}
+
+.region {
+  display: flex;
+  margin-left: 25px;
+}
+
+.contacts-aside-bar-item svg {
+  fill: #012158;
+  margin-top: 0;
+  margin-right: 10px;
 }
 
 /* -- IMPORTANT -- */
