@@ -12161,6 +12161,7 @@ header {
 
 .form-label {
   font-family: roboto, arial, sans-serif !important;
+  color: #012158;
   font-weight: 700;
   font-size: 14px;
 }
@@ -12792,7 +12793,42 @@ input::-webkit-inner-spin-button {
 }
 
 .sale-rent label {
+  color: #012158;
   margin: 0 10px;
+}
+
+.sale-rent label:hover {
+  cursor: pointer;
+}
+
+.sale-rent input:hover {
+  cursor: pointer;
+}
+
+.form-label-link {
+  text-decoration: none;
+  color: #012158;
+}
+
+.personal-data-header {
+  font-family: roboto, arial, sans-serif;
+  color: #012158;
+  margin: 30px auto;
+}
+
+.personal-data-content {
+  width: 80%;
+  height: 400px;
+  overflow: auto;
+}
+
+.landlords-textarea {
+  border-radius: 0.375rem;
+}
+
+.landlords-address {
+  display: flex;
+  justify-content: space-between;
 }
 
 /* -- IMPORTANT -- */

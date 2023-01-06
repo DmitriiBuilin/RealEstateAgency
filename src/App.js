@@ -7,6 +7,7 @@ import NewBuildings from './pages/rus/newBuildings/newBuildings';
 import Rent from './pages/rus/rent/rent';
 import Sale from './pages/rus/sale/sale';
 import Map from './pages/rus/map/map';
+import PersonalData from './pages/rus/personalData/personalData';
 
 
 
@@ -21,6 +22,7 @@ function App() {
         <Route path="/map" element={<Map />} />
         <Route path="/contacts" element={<Contacts />} />
         <Route path="/landlords" element={<Landlords />} />
+        <Route path="/protection-personal-data" element={<PersonalData />} />
         <Route path="/" element={<Main />} />
       </Routes>
     </div>

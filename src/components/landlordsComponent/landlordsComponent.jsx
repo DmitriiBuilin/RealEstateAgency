@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export const LandlordsComponent = () => {
     return (
         <>
@@ -9,19 +11,19 @@ export const LandlordsComponent = () => {
                 <form className="landlords-form row g-3" id="landlordForm" novalidate>
                     <div className="landlords-leftside">
                         <div className="col-md-10">
-                            <input type="text" className="form-control" id="validationCustom01" placeholder="Имя Фамилия" required/>
+                            <input type="text" className="form-control" id="name" placeholder="Имя Фамилия" required/>
                         </div>
                         <div className="col-md-10">
-                            <input type="email" className="form-control" id="validationCustom02" placeholder="mail@mail.com" required/>
+                            <input type="email" className="form-control" id="email" placeholder="mail@mail.com" required/>
                         </div>
                         <div className="col-md-10">
                             <div className="input-group has-validation">                       
-                            <input type="tel" className="form-control" id="validationCustom03" placeholder="tel. +90(535)123-45-67" required/>
+                            <input type="tel" className="form-control" id="tel" placeholder="tel. +90(535)123-45-67" required/>
                             </div>
                         </div>
                         <div className="col-md-10">
-                            <label for="validationCustom04" className="form-label">Выберите объект</label>
-                            <select className="form-select" id="validationCustom04" required>
+                            <label for="realAstateType" className="form-label">Выберите объект</label>
+                            <select className="form-select" id="realAstateType" required>
                                 <option selected disabled value="">Вид недвижимости</option>
                                 <option>Квартира</option>
                                 <option>Дом</option>
@@ -29,21 +31,47 @@ export const LandlordsComponent = () => {
                                 <option>Участок</option>
                                 <option>Торговое помещение</option>
                             </select>
-                        </div>
+                        </div>                        
                         <div className="sale-rent">
-                        <p className="form-label">Цель размещения объекта</p>
-                        <input type="radio" id="sale" name="sale-rent" value="sale"/>
-                        <label for="sale">Продать</label>
-                        <input type="radio" id="rent" name="sale-rent" value="rent"/>
-                        <label for="rent">Сдать в аренду</label>
+                            <p className="form-label">Цель размещения объекта</p>
+                            <input type="radio" id="sale" name="sale-rent" value="sale" required/>
+                            <label for="sale">Продать</label>
+                            <input type="radio" id="rent" name="sale-rent" value="rent" required/>
+                            <label for="rent">Сдать в аренду</label>
                         </div>
-
-
+                        <div className="col-10 landlords-address">
+                            <div className="col-6">
+                                <select className="form-select" id="city" required>
+                                    <option selected disabled value="">Город</option>
+                                    <option>Анталья</option>
+                                    <option>Аланья</option>
+                                    <option>Фетие</option>
+                                </select>
+                            </div>
+                            <div className="col-5">
+                                <select className="form-select" id="district" required>
+                                    <option selected disabled value="">Район</option>
+                                    <option>Кепез</option>
+                                    <option>Коньялты</option>
+                                    <option>Лара</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div className="col-10">
+                            <textarea className="landlords-textarea" name="address" id="address" cols="46" rows="3" placeholder="Адрес" maxlength="100" required></textarea>
+                        </div>
+                        <div className="col-10">
+                            <textarea className="landlords-textarea" name="address" id="description" cols="46" rows="4" placeholder="Описание" maxlength="500"></textarea>
+                        </div>
                         <div className="col-10">
                             <div className="form-check">
                             <input className="form-check-input" type="checkbox" value="" id="invalidCheck" required/>
                             <label className="form-label" for="invalidCheck">
-                                Я прочитал и согласен с положением о защите персональных данных
+                                <Link 
+                                className="form-label-link" 
+                                to='/protection-personal-data'
+                                // target='_blank'
+                                >Я прочитал и согласен с положением о защите персональных данных</Link>                                
                             </label>
                                 <div className="invalid-feedback">
                                     Вы долджны подтвердить согласие перед отправкой данных
@@ -60,3 +88,4 @@ export const LandlordsComponent = () => {
 }
 
 export default LandlordsComponent;
+
