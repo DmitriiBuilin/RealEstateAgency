@@ -51,7 +51,7 @@ export const Header = () => {
     });
 
     return (
-        <header>
+        <header id="header">
             <div className="header-block container-primary">
                 <div className="header-background">
                     <Link to="/" className="header-logo">
