@@ -3,7 +3,8 @@ import { Link } from "react-router-dom";
 export const LandlordsComponent = () => {
     return (
         <>
-            <main className="main landlords-main">
+        <div className="container-field container-primary">
+            <main className="landlords-main">
                 <div className="landloards-header">
                     <h4>Разместите свой объект недвижимости</h4>
                     <p>Заполните форму чтобы продать или сдать в аренду квартиру / офис / торговое помещение или участок</p>
@@ -58,10 +59,10 @@ export const LandlordsComponent = () => {
                             </div>
                         </div>
                         <div className="col-10">
-                            <textarea className="landlords-textarea" name="address" id="address" cols="46" rows="3" placeholder="Адрес" maxlength="90" required></textarea>
+                            <textarea className="landlords-textarea" name="address" id="address" cols="36" rows="3" placeholder="Адрес" maxlength="90" required></textarea>
                         </div>
                         <div className="col-10">
-                            <textarea className="landlords-textarea" name="address" id="description" cols="46" rows="11" placeholder="Описание" maxlength="500"></textarea>
+                            <textarea className="landlords-textarea" name="address" id="description" cols="36" rows="11" placeholder="Описание" maxlength="500"></textarea>
                         </div>
                         <div className="col-10">
                             <div className="form-check">
@@ -228,6 +229,7 @@ export const LandlordsComponent = () => {
                 </form>
                 <button className="btn btn-primary landlord-button" form="landlordForm">Отправить</button>                
             </main>
+        </div>
         </>
     );
 }

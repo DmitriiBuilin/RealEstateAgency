@@ -8,7 +8,7 @@ export const Map = () => {
         <>
             <Header />
                 <div className="container-field container-primary">
-                <SearchAside />
+                <SearchAside />                
                 <MapComponent />
                 </div>   
             <Footer />

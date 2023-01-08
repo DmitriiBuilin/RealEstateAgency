@@ -147,7 +147,7 @@ header
     visibility: hidden
     display: flex
     position: fixed
-    z-index: 15
+    z-index: 60
     width: 100%
     height: 100%
     top: 0
@@ -159,7 +159,7 @@ header
     width: 310px
     height: 320px
     position: absolute
-    z-index: 20
+    z-index: 70
     top: 26px
     right: 26px
     background-color: $color-grey
@@ -570,6 +570,11 @@ input::-webkit-inner-spin-button
     padding: 0.375rem 8rem
     background-color: $color-blue 
 
+.filter-button-item
+    padding: 0.375rem 1rem
+    background-color: $color-blue 
+    display: none
+
 .form-check-wrp
     padding: 7px 25px 22px 25px
 
@@ -638,7 +643,7 @@ input::-webkit-inner-spin-button
     font-weight: 700
 
 .map-button-item
-    padding: 0.375rem 2rem
+    padding: 0.375rem 1rem
     background-color: $color-blue 
 
 .filter-buttons
@@ -649,12 +654,16 @@ input::-webkit-inner-spin-button
     margin: 0 35px 0 30px
     flex-wrap: nowrap
 
-.search-button-item
-    display: none
-
-.search-button-item svg
+.filter-button-item svg
     fill: $color-white
     margin-right: 5px
+
+.searchbar-close-button
+    display: none
+    margin: 10px
+    position: absolute
+    right: 10px
+    top: 5px
 
 
 /* -- CARD ITEM -- */
@@ -868,6 +877,9 @@ input::-webkit-inner-spin-button
     width: 70%
     display: flex
     flex-direction: column
+    align-items: center
+    background-color: $color-grey
+    border-radius: 10px
 
 .landloards-header
     align-self: flex-start
@@ -947,6 +959,10 @@ input::-webkit-inner-spin-button
     .hid1
         display: none
 
+    .landlords-form
+        flex-direction: row
+        justify-content: center
+
 
 @media(max-width: 1024px)
     .hid2
@@ -1002,6 +1018,9 @@ input::-webkit-inner-spin-button
     .offers-carousel-item-name-1, .offers-carousel-item-name-2, .offers-carousel-item-name-3
         padding: 15px 0 0 50px
         font-size: 32px
+
+    .landlords-main
+        width: 100%
 
 @media(max-width: 768px)
     .filter-buttons
@@ -1061,6 +1080,11 @@ input::-webkit-inner-spin-button
 @media(max-width: 677px)
     .aside-search
         display: none
+        // display: block
+        position: absolute
+        z-index: 50
+        width: 100%
+        max-width: 676px
 
     .main 
         margin: 0
@@ -1072,6 +1096,33 @@ input::-webkit-inner-spin-button
 
     .filter   
         height: 250px
+
+    .filter-button-item
+        display: block
+
+    .searchbar-close-button
+        display: block
+
+    .landlords-leftside
+        display: flex
+        flex-direction: column
+        align-items: center
+        width: 400px
+
+    .landlords-rightside
+        display: flex
+        flex-direction: column
+        align-items: center
+        width: 400px
+
+    .landloards-header
+        display: flex
+        flex-direction: column
+        align-items: flex-start
+        margin: 15px 10px 20px 10px
+
+    .landlord-button
+        align-self: center
 
 
 @media(max-width: 429px)
@@ -1117,7 +1168,10 @@ input::-webkit-inner-spin-button
     .menu-close-btn, .language-close-btn
         margin: 10px 10px 0 0 
 
-
+    .landlords-leftside, .landlords-rightside
+        width: 350px
+    .landloards-header
+        align-self: flex-start
 
 
 @media(max-width: 340px)

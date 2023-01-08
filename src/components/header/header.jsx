@@ -224,17 +224,24 @@ export const Header = () => {
                                             </span>
                                         )}                            
                                     </NavLink>
-                                    <NavLink to="/office"  className="menu-head-item">
+                                    <NavLink to="/map"  className="menu-head-item">
                                         {({ isActive }) => (
                                             <span className={ isActive ? activeClassName : undefined }>
-                                            Наш офис
+                                            Карта
                                             </span>
                                         )}                            
                                     </NavLink>
                                     <NavLink to="/contacts"  className="menu-head-item">
-                                    {({ isActive }) => (
+                                        {({ isActive }) => (
                                             <span className={ isActive ? activeClassName : undefined }>
                                             Контакты
+                                            </span>
+                                        )}                            
+                                    </NavLink>
+                                    <NavLink to="/landlords"  className="menu-head-item">
+                                        {({ isActive }) => (
+                                            <span className={ isActive ? activeClassName : undefined }>
+                                            Арендодателям
                                             </span>
                                         )}                            
                                     </NavLink>
