@@ -5,7 +5,7 @@ export const ContactsAside = () => {
             <svg width="270" height="130" xmlns="http://www.w3.org/2000/svg">
                 <g className="layer">
                     <title>Layer 1</title>
-                    <text fill="#003da5" fontFamily="Fantasy" fontSize="70" id="svg_1" stroke="#000000" strokeWidth="0" textAnchor="middle" x="119.225358" xmlSpace="preserve" y="60.821596">ANTALYA</text>
+                    <text fill="#003da5" fontFamily="Roboto" fontWeight="700" fontSize="60" id="svg_1" stroke="#000000" strokeWidth="0" textAnchor="middle" x="130.225358" xmlSpace="preserve" y="60.821596">ANTALYA</text>
                     <text fill="#dc1c2e" fontFamily="Sans-serif" fontSize="43" id="svg_2" stroke="#000000" strokeWidth="0" textAnchor="middle" x="185.976531" xmlSpace="preserve" y="98.192489">REALTY</text>
                 </g>
             </svg>

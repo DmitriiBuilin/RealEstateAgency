@@ -1,5 +1,5 @@
 export const CardItem = (props) => {
-    const idCarousel = Math.floor(Math.random() * 100);
+    const idCarousel = Math.floor(Math.random() * 1000);
 
     return (
         <>
@@ -38,7 +38,7 @@ export const CardItem = (props) => {
                     <h4 className="card-item-name">Full object name</h4>
                     <p className="card-item-price">Price <span>1200</span> $ </p>
                     <p className="card-item-description">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe at dolor libero reprehenderit cumque veritatis iure assumenda mollitia omnis! Ad beatae minus quisquam eaque temporibus?
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem numquam voluptas minima quas expedita! Ea facilis quasi illum laudantium impedit porro, quia, temporibus excepturi rem id error. Eius, voluptatibus soluta!
                     </p>
                     <div className="card-item-propertties">
                         <p>1+1</p>

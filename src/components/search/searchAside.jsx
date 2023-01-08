@@ -30,9 +30,10 @@ export const SearchAside = () => {
             case 'rub': return setCurrencySymbol('₽');
             case 'euro': return setCurrencySymbol('€');
             case 'trl': return setCurrencySymbol('₺');
+            default: return;
         }
             
-    }, []);
+    });
 
 
     return (
