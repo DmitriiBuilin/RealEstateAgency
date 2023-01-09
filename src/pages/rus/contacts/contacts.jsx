@@ -8,7 +8,7 @@ export const Contacts = () => {
         
         <>
             <Header />
-            <div className="container-field container-primary">
+            <div className="container-field container-primary contacts-wrp">
                 <ContactsAside />
                 <ContactsMain />
             </div>  
