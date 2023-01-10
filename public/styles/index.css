@@ -11956,7 +11956,7 @@ header {
   width: 100%;
 }
 
-.header-menu-item {
+.header-menu-item, .header-menu-item-search {
   text-decoration: none;
   font-family: roboto, arial, sans-serif;
   font-size: 17px;

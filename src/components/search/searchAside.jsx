@@ -68,7 +68,7 @@ export const SearchAside = () => {
                         </div>
             <form id="search-form">
                 <div className="form-check-wrp">
-                    <NavLink onClick={handlePage} datapage='rent' to="/rent" className="header-menu-item">
+                    <NavLink onClick={handlePage} datapage='rent' to="/rent" className="header-menu-item-search">
                         Аренда
                     </NavLink>
                     <ul className="header-menu-item-context rent">
@@ -78,7 +78,7 @@ export const SearchAside = () => {
                         <li>Торговое помещение</li>
                         <li>Участок</li>
                     </ul>
-                    <NavLink onClick={handlePage} datapage='sale' to="/sale" className="header-menu-item">
+                    <NavLink onClick={handlePage} datapage='sale' to="/sale" className="header-menu-item-search">
                         Продажа
                     </NavLink>
                     <ul className="header-menu-item-context sale">
@@ -88,7 +88,7 @@ export const SearchAside = () => {
                         <li>Торговое помещение</li>
                         <li>Участок</li>
                     </ul>
-                    <NavLink onClick={handlePage} datapage='new' to="/new" className="header-menu-item">
+                    <NavLink onClick={handlePage} datapage='new' to="/new" className="header-menu-item-search">
                         Новостройки
                     </NavLink>
                     <ul className="header-menu-item-context new">
