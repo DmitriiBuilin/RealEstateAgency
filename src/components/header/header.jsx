@@ -1,7 +1,7 @@
 import { React, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, NavLink } from "react-router-dom";
-import { currencySelect, languageSelect } from "../../store/actions/actions";
+import { currencySelect, languageSelect, pageSelect } from "../../store/actions/actions";
 import { getCurrencyValue, getLanguageValue } from "../../store/selectors/selector";
 
 export const Header = () => {
@@ -36,10 +36,14 @@ export const Header = () => {
     const handleLanguage = (e) => {
         const lenguageLi = document.querySelectorAll(`.l-li`);
         const id = e.target.id;        
-        dispatch(languageSelect(id))
+        dispatch(languageSelect(id));
         for(let i=0; i<lenguageLi.length; i++) {
             lenguageLi[i].classList.remove('selected')
         };
+    };
+    const handlePage = (e) => {
+        const pageId = e.target.getAttribute('datapage');
+        dispatch(pageSelect(pageId));
     };
 
     useEffect(() => {
@@ -64,23 +68,23 @@ export const Header = () => {
                         </svg>
                     </Link>
                     <nav className="header-menu">
-                        <NavLink to="/rent" dataPage='rent' className="header-menu-item">
+                        <NavLink to="/rent" onClick={handlePage} datapage='rent' className="header-menu-item">
                             {({ isActive }) => (
-                                <span className={ isActive ? activeClassName : undefined }>
+                                <span onClick={handlePage} datapage='rent' className={ isActive ? activeClassName : undefined }>
                                 Аренда
                                 </span>
                             )}
                         </NavLink>
-                        <NavLink to="/sale"  className="header-menu-item">
+                        <NavLink to="/sale" onClick={handlePage} datapage='sale' className="header-menu-item">
                             {({ isActive }) => (
-                                <span className={ isActive ? activeClassName : undefined }>
+                                <span onClick={handlePage} datapage='sale' className={ isActive ? activeClassName : undefined }>
                                 Продажа
                                 </span>
                             )}
                         </NavLink>
-                        <NavLink to="/new"  className="header-menu-item">
+                        <NavLink to="/new" onClick={handlePage} datapage='new' className="header-menu-item">
                             {({ isActive }) => (
-                                <span className={ isActive ? activeClassName : undefined }>
+                                <span onClick={handlePage} datapage='new' className={ isActive ? activeClassName : undefined }>
                                 Новостройки
                                 </span>
                             )}                            

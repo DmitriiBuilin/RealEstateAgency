@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
-import { currencySelect } from "../../store/actions/actions";
+import { currencySelect, pageSelect } from "../../store/actions/actions";
 import { getCurrencyValue } from "../../store/selectors/selector";
 
 export const SearchAside = () => {
@@ -18,11 +18,13 @@ export const SearchAside = () => {
         };
         e.target.parentNode.classList.add('selected')   
     };
-
     const handleSearchCloseButton = () => {
         document.querySelector('.aside-search').style.display = 'none';
     };
-
+    const handlePage = (e) => {
+        const pageId = e.target.getAttribute('datapage');
+        dispatch(pageSelect(pageId));
+    };
     
 
     useEffect(() => {
@@ -54,13 +56,13 @@ export const SearchAside = () => {
                         </div>
             <form id="search-form">
                 <div className="form-check-wrp">
-                    <NavLink to="/rent" className="header-menu-item">
+                    <NavLink onClick={handlePage} datapage='rent' to="/rent" className="header-menu-item">
                         Аренда
                     </NavLink>
-                    <NavLink to="/sale" className="header-menu-item">
+                    <NavLink onClick={handlePage} datapage='sale' to="/sale" className="header-menu-item">
                         Продажа
                     </NavLink>
-                    <NavLink to="/new" className="header-menu-item">
+                    <NavLink onClick={handlePage} datapage='new' to="/new" className="header-menu-item">
                         Новостройки
                     </NavLink>
                 </div>
