@@ -17,12 +17,6 @@ export const SearchResult = () => {
         img_12: "img/offers/12.jpg",        
     };
 
-    // const page = {
-    //     rent: 'Аренда',
-    //     sale: 'Продажа',
-    //     new: 'Новостройки',
-    // };
-
     return (
         <>
         <main className="main">

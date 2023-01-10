@@ -11966,6 +11966,15 @@ header {
   transition: 0.5s;
 }
 
+.header-menu-item-context {
+  padding-left: 30px;
+  list-style-type: none;
+  font-family: roboto, arial, sans-serif;
+  font-size: 16px;
+  font-weight: 300;
+  color: #012158;
+}
+
 .header-menu-item:hover {
   cursor: pointer;
   text-shadow: 0.5px 0.9px 1px #aaaaaa;

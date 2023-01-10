@@ -1,13 +1,22 @@
+import { useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
+import { getPageValue } from "../../store/selectors/selector";
 
 export const Sorter = () => {
 const navigate = useNavigate();
+const pageKey = useSelector(getPageValue);
 
 const handleClickMapButton = () => {
     navigate('/map')
 };
 const handleClickFilterButton = () => {
     document.querySelector('.aside-search').style.display = 'block';
+};
+
+const page = {
+    rent: 'Аренда',
+    sale: 'Продажа',
+    new: 'Новостройки',
 };
 
 
@@ -25,12 +34,12 @@ const handleClickFilterButton = () => {
                                 </Link>
                             </li>
                             <li className="breadcrumb-item" aria-current="page">
-                                <Link to={'/rent'}>Аренда</Link>
+                                <Link to={`/${pageKey}`}>{page[pageKey]}</Link>
                             </li>
                             <li className="breadcrumb-item active" aria-current="page">Квартиры</li>
                         </ol>
                     </nav>
-                    <p className="filter-result-notification">Найдено 30 объектов в разделе <span>Аренда</span>&nbsp;<span>квартиры</span></p>
+                    <p className="filter-result-notification">Найдено 30 объектов в разделе <span>{page[pageKey]}</span>&nbsp;<span>квартиры</span></p>
                 </div>
                 <div className="filter-buttons">                    
                     <button type="button" onClick={handleClickMapButton} className="btn btn-primary map-button-item">Показать на карте</button>

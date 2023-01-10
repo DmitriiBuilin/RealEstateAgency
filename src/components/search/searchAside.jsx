@@ -2,12 +2,13 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { currencySelect, pageSelect } from "../../store/actions/actions";
-import { getCurrencyValue } from "../../store/selectors/selector";
+import { getCurrencyValue, getPageValue } from "../../store/selectors/selector";
 
 export const SearchAside = () => {
     const currency = useSelector(getCurrencyValue);
     const dispatch = useDispatch();
     const [currencySymbol, setCurrencySymbol] = useState('')
+    const pageKey = useSelector(getPageValue);
     
     const handleCurrency = (e) => {
         const id = e.target.getAttribute('dataname');
@@ -25,23 +26,36 @@ export const SearchAside = () => {
         const pageId = e.target.getAttribute('datapage');
         dispatch(pageSelect(pageId));
     };
+
     
 
     useEffect(() => {
-        const currencyAsideLi = document.querySelectorAll('.btn-check')
+        const currencyAsideLi = document.querySelectorAll('.btn-check');
+        const contextMenu = document.querySelectorAll('.header-menu-item-context');        
+
+        for(let i=0; i<contextMenu.length; i++) {
+            contextMenu[i].classList.add('hidden');
+        };        
         for(let i=0; i<currencyAsideLi.length; i++) {            
             if(currencyAsideLi[i].getAttribute('dataname') === `${currency}`) {
                 currencyAsideLi[i].checked = true;
             };
-        }
+        }       
+
         switch(currency) {
-            case 'usd': return setCurrencySymbol('$');
-            case 'rub': return setCurrencySymbol('₽');
-            case 'euro': return setCurrencySymbol('€');
-            case 'trl': return setCurrencySymbol('₺');
+            case 'usd': setCurrencySymbol('$');
+            case 'rub': setCurrencySymbol('₽');
+            case 'euro': setCurrencySymbol('€');
+            case 'trl': setCurrencySymbol('₺');
+            default: setCurrencySymbol('$');
+        } 
+        console.log(pageKey)
+        switch(pageKey) {
+            case 'rent': return document.querySelector('.rent').classList.remove('hidden');
+            case 'sale': return document.querySelector('.sale').classList.remove('hidden');
+            case 'new': return document.querySelector('.new').classList.remove('hidden');
             default: return;
-        }
-            
+        };
     });
 
 
@@ -59,12 +73,32 @@ export const SearchAside = () => {
                     <NavLink onClick={handlePage} datapage='rent' to="/rent" className="header-menu-item">
                         Аренда
                     </NavLink>
+                    <ul className="header-menu-item-context rent">
+                        <li>Квартира</li>
+                        <li>Дом</li>
+                        <li>Офис</li>
+                        <li>Торговое помещение</li>
+                        <li>Участок</li>
+                    </ul>
                     <NavLink onClick={handlePage} datapage='sale' to="/sale" className="header-menu-item">
                         Продажа
                     </NavLink>
+                    <ul className="header-menu-item-context sale">
+                        <li>Квартира</li>
+                        <li>Дом</li>
+                        <li>Офис</li>
+                        <li>Торговое помещение</li>
+                        <li>Участок</li>
+                    </ul>
                     <NavLink onClick={handlePage} datapage='new' to="/new" className="header-menu-item">
                         Новостройки
                     </NavLink>
+                    <ul className="header-menu-item-context new">
+                        <li>Квартира</li>
+                        <li>Дом</li>
+                        <li>Офис</li>
+                        <li>Торговое помещение</li>
+                    </ul>
                 </div>
                 <div className="accordion" id="accordionExample">
                     <div className="accordion-item">
