@@ -9,7 +9,7 @@ export const Header = () => {
     const language = useSelector(getLanguageValue);
     const dispatch = useDispatch();
     const activeClassName = "selected";
-
+    
     const langHandleOpen = () => {
         document.querySelector(".currency-and-language").classList.add('show');
         document.querySelector(".currency-and-menu-wrp").classList.add('show');
@@ -64,7 +64,7 @@ export const Header = () => {
                         </svg>
                     </Link>
                     <nav className="header-menu">
-                        <NavLink to="/rent" className="header-menu-item">
+                        <NavLink to="/rent" dataPage='rent' className="header-menu-item">
                             {({ isActive }) => (
                                 <span className={ isActive ? activeClassName : undefined }>
                                 Аренда

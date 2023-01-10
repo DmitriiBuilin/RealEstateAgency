@@ -11962,7 +11962,7 @@ header {
   font-size: 17px;
   font-weight: 700;
   color: #012158;
-  padding: 8px;
+  padding-left: 8px;
   transition: 0.5s;
 }
 
@@ -12457,6 +12457,8 @@ input::-webkit-inner-spin-button {
 }
 
 .form-check-wrp {
+  display: flex;
+  flex-direction: column;
   padding: 7px 25px 22px 25px;
 }
 

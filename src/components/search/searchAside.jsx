@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { NavLink } from "react-router-dom";
 import { currencySelect } from "../../store/actions/actions";
 import { getCurrencyValue } from "../../store/selectors/selector";
 
@@ -53,24 +54,15 @@ export const SearchAside = () => {
                         </div>
             <form id="search-form">
                 <div className="form-check-wrp">
-                    <div className="form-check">
-                        <input className="form-check-input" type="checkbox" value="" id="rent"/>
-                        <label className="form-check-label" htmlFor="rent">
-                            Аренда
-                        </label>
-                    </div>
-                    <div className="form-check">
-                        <input className="form-check-input" type="checkbox" value="" id="sale"/>
-                        <label className="form-check-label" htmlFor="sale">
-                            Продажа
-                        </label>
-                    </div>
-                    <div className="form-check">
-                        <input className="form-check-input" type="checkbox" value="" id="new"/>
-                        <label className="form-check-label" htmlFor="new">
-                            Новостройки
-                        </label>
-                    </div>
+                    <NavLink to="/rent" className="header-menu-item">
+                        Аренда
+                    </NavLink>
+                    <NavLink to="/sale" className="header-menu-item">
+                        Продажа
+                    </NavLink>
+                    <NavLink to="/new" className="header-menu-item">
+                        Новостройки
+                    </NavLink>
                 </div>
                 <div className="accordion" id="accordionExample">
                     <div className="accordion-item">

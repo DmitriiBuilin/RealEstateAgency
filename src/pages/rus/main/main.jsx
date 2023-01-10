@@ -5,6 +5,7 @@ import imgTeam from "./img/team.jpg"
 import partners from "./img/partners.jpeg"
 import statistics from "./img/statistics.jpg"
 import Cards from "../../../components/cards/cards";
+import { useParams } from "react-router-dom";
 
 export const Main = () => {
     const image = {

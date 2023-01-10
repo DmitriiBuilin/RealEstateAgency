@@ -1,4 +1,4 @@
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, useParams } from 'react-router-dom';
 import './App.css';
 import Contacts from './pages/rus/contacts/contacts';
 import Landlords from './pages/rus/landlords/landlords';
