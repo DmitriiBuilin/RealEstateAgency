@@ -26,7 +26,6 @@ export const SearchAside = () => {
         const pageId = e.target.getAttribute('datapage');
         dispatch(pageSelect(pageId));
     };
-
     
 
     useEffect(() => {
@@ -40,7 +39,7 @@ export const SearchAside = () => {
             if(currencyAsideLi[i].getAttribute('dataname') === `${currency}`) {
                 currencyAsideLi[i].checked = true;
             };
-        }       
+        }      
 
         switch(currency) {
             case 'usd': setCurrencySymbol('$');
@@ -49,7 +48,6 @@ export const SearchAside = () => {
             case 'trl': setCurrencySymbol('₺');
             default: setCurrencySymbol('$');
         } 
-        console.log(pageKey)
         switch(pageKey) {
             case 'rent': return document.querySelector('.rent').classList.remove('hidden');
             case 'sale': return document.querySelector('.sale').classList.remove('hidden');

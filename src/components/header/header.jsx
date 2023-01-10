@@ -89,7 +89,7 @@ export const Header = () => {
                                 </span>
                             )}                            
                         </NavLink>
-                        <NavLink to="/map"  className="header-menu-item">
+                        <NavLink to="/map" className="header-menu-item">
                             {({ isActive }) => (
                                 <span className={ isActive ? activeClassName : undefined }>
                                 Карта
@@ -207,28 +207,28 @@ export const Header = () => {
                                             </span>
                                         )}
                                     </NavLink>
-                                    <NavLink to="/rent" className="menu-head-item">
+                                    <NavLink to="/rent" onClick={handlePage} datapage='rent' className="menu-head-item">
                                         {({ isActive }) => (
-                                            <span className={ isActive ? activeClassName : undefined }>
+                                            <span onClick={handlePage} datapage='rent' className={ isActive ? activeClassName : undefined }>
                                             Аренда
                                             </span>
                                         )}
                                     </NavLink>
-                                    <NavLink to="/sale"  className="menu-head-item">
+                                    <NavLink to="/sale" onClick={handlePage} datapage='sale' className="menu-head-item">
                                         {({ isActive }) => (
-                                            <span className={ isActive ? activeClassName : undefined }>
+                                            <span onClick={handlePage} datapage='sale' className={ isActive ? activeClassName : undefined }>
                                             Продажа
                                             </span>
                                         )}
                                     </NavLink>
-                                    <NavLink to="/new"  className="menu-head-item">
+                                    <NavLink to="/new" onClick={handlePage} datapage='new' className="menu-head-item">
                                         {({ isActive }) => (
-                                            <span className={ isActive ? activeClassName : undefined }>
+                                            <span to="/new" onClick={handlePage} datapage='new' className={ isActive ? activeClassName : undefined }>
                                             Новостройки
                                             </span>
                                         )}                            
                                     </NavLink>
-                                    <NavLink to="/map"  className="menu-head-item">
+                                    <NavLink to="/map" className="menu-head-item">
                                         {({ isActive }) => (
                                             <span className={ isActive ? activeClassName : undefined }>
                                             Карта

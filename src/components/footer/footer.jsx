@@ -1,6 +1,14 @@
-import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { Link, NavLink } from "react-router-dom";
+import { pageSelect } from "../../store/actions/actions";
 
 export const Footer = () => {
+    const dispatch = useDispatch();
+    const handlePage = (e) => {
+        const pageId = e.target.getAttribute('datapage');
+        dispatch(pageSelect(pageId));
+    };
+
     return (
         <footer>
             <div className="footer-content container-primary">
@@ -40,9 +48,9 @@ export const Footer = () => {
                 </div>
                 <div className="footer-content-navigate">
                     <h3>Наши услуги</h3>
-                    <p><Link to="/rent" className="footer-content-link">Аренда</Link></p>
-                    <p><Link to="/sale" className="footer-content-link">Продажа</Link></p>
-                    <p><Link to="/new" className="footer-content-link">Новостройки</Link></p>
+                    <p><NavLink onClick={handlePage} datapage='rent' to="/rent" className="footer-content-link">Аренда</NavLink></p>
+                    <p><NavLink onClick={handlePage} datapage='sale' to="/sale" className="footer-content-link">Продажа</NavLink></p>
+                    <p><NavLink onClick={handlePage} datapage='new' to="/new" className="footer-content-link">Новостройки</NavLink></p>
                     <p><Link to="/map" className="footer-content-link">Карта</Link></p>
                 </div>
                 <div className="footer-content-navigate">          

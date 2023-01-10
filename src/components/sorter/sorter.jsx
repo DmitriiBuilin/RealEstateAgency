@@ -39,7 +39,7 @@ const page = {
                             <li className="breadcrumb-item active" aria-current="page">Квартиры</li>
                         </ol>
                     </nav>
-                    <p className="filter-result-notification">Найдено 30 объектов в разделе <span>{page[pageKey]}</span>&nbsp;<span>квартиры</span></p>
+                    <p className="filter-result-notification">Найдено 0 объектов в разделе <span>{page[pageKey]}</span>&nbsp;<span>квартиры</span></p>
                 </div>
                 <div className="filter-buttons">                    
                     <button type="button" onClick={handleClickMapButton} className="btn btn-primary map-button-item">Показать на карте</button>
