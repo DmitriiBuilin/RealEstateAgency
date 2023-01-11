@@ -5,7 +5,6 @@ import imgTeam from "./img/team.jpg"
 import partners from "./img/partners.jpeg"
 import statistics from "./img/statistics.jpg"
 import Cards from "../../../components/cards/cards";
-import { NavLink, useParams } from "react-router-dom";
 
 export const Main = () => {
     const image = {
@@ -29,7 +28,7 @@ export const Main = () => {
     <>
         <Header />
         <main>
-            <div className="index-page-search-and-title container-primary">
+            <div className="index-page-search-and-title  container-primary">
                 <div style={{backgroundImage: `url("img/index_background_search_block.jpg")`}} className="index-page-search-block">
                 <h2 className="index-page-search-block-header-txt-high">First in Antalya </h2>
                 <h3 className="index-page-search-block-header-txt-low">Real Estate Professionals</h3>

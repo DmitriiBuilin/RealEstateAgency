@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, NavLink } from "react-router-dom";
 import { currencySelect, languageSelect, pageSelect } from "../../store/actions/actions";
 import { getCurrencyValue, getLanguageValue } from "../../store/selectors/selector";
+import $ from "jquery"
 
 export const Header = () => {
     const currency = useSelector(getCurrencyValue);
@@ -25,13 +26,12 @@ export const Header = () => {
     };
     const handleCurrency = (e) => {
         const id = e.target.id;
-        const currencyLi = document.querySelectorAll('.c-li');
+        const currencyLi = document.querySelectorAll('.c-li');        
         dispatch(currencySelect(id))
         for(let i=0; i<currencyLi.length; i++) {
             currencyLi[i].classList.remove('selected')
         };
-        e.target.parentNode.classList.add('selected') 
-
+        e.target.parentNode.classList.add('selected')
     };
     const handleLanguage = (e) => {
         const lenguageLi = document.querySelectorAll(`.l-li`);
@@ -45,18 +45,33 @@ export const Header = () => {
         const pageId = e.target.getAttribute('datapage');
         dispatch(pageSelect(pageId));
     };
-
+    
     useEffect(() => {
         const selectedLanguage = document.getElementById(`${language}`);
         const selectedCurrency = document.getElementById(`${currency}`);
 
         selectedLanguage.parentNode.classList.add('selected')
         selectedCurrency.parentNode.classList.add('selected')
+
+        // jQuery script (show/hide header)
+        let header = $('.header-fixed'),
+        scrollPrev = 0;
+
+        $(window).scroll(function() {
+            let scrolled = $(window).scrollTop();
+        
+            if ( scrolled > 100 && scrolled > scrollPrev ) {
+                header.addClass('out');
+            } else {
+                header.removeClass('out');
+            }
+            scrollPrev = scrolled;
+        }); 
     });
 
     return (
         <header id="header">
-            <div className="header-block container-primary">
+            <div id='headerFloat' className="header-block header-fixed container-primary">
                 <div className="header-background">
                     <Link to="/" className="header-logo">
                         <svg width="170" height="50" xmlns="http://www.w3.org/2000/svg">

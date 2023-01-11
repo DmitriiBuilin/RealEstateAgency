@@ -11885,12 +11885,29 @@ header, main, footer {
 
 /* -- HEADER -- */
 header {
+  width: 100%;
+  height: 100%;
   display: flex;
   justify-content: center;
 }
 
 .header-block {
   width: 100%;
+  z-index: 100;
+  background-color: #FFFFFF;
+  padding-bottom: 0;
+  border-radius: 0 0 50px 50px;
+}
+
+.header-fixed {
+  position: fixed;
+  left: 0;
+  top: 0;
+  transition: all 0.3s ease;
+}
+
+.header-fixed.out {
+  transform: translateY(-100%);
 }
 
 .header-background {
@@ -11901,6 +11918,7 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  box-shadow: 0px 3px 6px -2px grey;
 }
 
 .header-logo {
@@ -12106,6 +12124,10 @@ header {
 }
 
 /* -- MAIN - Search --*/
+.index-page-search-and-title {
+  padding-top: 100px;
+}
+
 .index-page-search-block {
   position: relative;
   height: 700px;
@@ -12379,6 +12401,7 @@ footer {
 .container-field {
   display: flex;
   justify-content: space-between;
+  padding-top: 100px;
 }
 
 .aside-search {
@@ -12386,6 +12409,7 @@ footer {
   border-radius: 10px;
   width: 100%;
   max-width: 315px;
+  box-shadow: 0px 3px 6px -2px grey;
 }
 
 .main {
@@ -12393,6 +12417,7 @@ footer {
   border-radius: 10px;
   width: 100%;
   margin: 0 0 0 30px;
+  box-shadow: 0px 3px 6px -2px grey;
 }
 
 .form-select-dev {
@@ -12452,6 +12477,9 @@ input::-webkit-inner-spin-button {
   justify-content: center;
   padding: 15px 0 24px 0;
   background-color: #FFFFFF;
+  position: -webkit-sticky;
+  position: sticky;
+  bottom: 0;
 }
 
 .search-button-item {
@@ -12809,6 +12837,7 @@ input::-webkit-inner-spin-button {
   align-items: center;
   background-color: #eef2f6;
   border-radius: 10px;
+  box-shadow: 0px 3px 6px -2px grey;
 }
 
 .landloards-header {
@@ -12978,11 +13007,11 @@ input::-webkit-inner-spin-button {
   .container-primary {
     padding: 5px;
   }
+  .container-field, .index-page-search-and-title {
+    padding-top: 70px;
+  }
   .footer-content {
     padding-top: 16px;
-  }
-  .footer-content-navigate p {
-    margin-bottom: 3;
   }
   .header-menu {
     display: none;
@@ -13049,7 +13078,6 @@ input::-webkit-inner-spin-button {
   }
   .search-button-item {
     display: block;
-    padding: 0.375rem 2rem;
     background-color: #003da5;
   }
   .filter {
