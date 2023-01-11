@@ -16,9 +16,12 @@ function App() {
     <div className="App">
       <Routes>        
         <Route path="*" element={<h2>404 Page not found</h2>} />
-        <Route path="/rent" element={<Rent />} />
-        <Route path="/sale" element={<Sale />} />
-        <Route path="/new" element={<NewBuildings />} />
+        <Route exact path="/rent" element={<Rent />} />
+        <Route path="/rent/:param" element={<Rent />} />
+        <Route exact path="/sale" element={<Sale />} />
+        <Route path="/sale/:param" element={<Sale />} />
+        <Route exact path="/new" element={<NewBuildings />} />
+        <Route path="/new/:param" element={<NewBuildings />} />
         <Route path="/map" element={<Map />} />
         <Route path="/contacts" element={<Contacts />} />
         <Route path="/landlords" element={<Landlords />} />
