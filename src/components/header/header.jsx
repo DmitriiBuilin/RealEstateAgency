@@ -53,7 +53,8 @@ export const Header = () => {
         selectedLanguage.parentNode.classList.add('selected')
         selectedCurrency.parentNode.classList.add('selected')
 
-        // jQuery script (show/hide header)
+        /* jQuery script (show/hide header) */
+        
         let header = $('.header-fixed'),
         scrollPrev = 0;
 

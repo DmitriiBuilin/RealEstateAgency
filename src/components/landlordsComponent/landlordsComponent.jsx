@@ -1,6 +1,54 @@
+import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { getCurrencyValue } from "../../store/selectors/selector";
 
 export const LandlordsComponent = () => {
+    const currency = useSelector(getCurrencyValue);
+    const [currencySymbol, setCurrencySymbol] = useState() 
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        console.log('Landlord submit')
+    };
+
+    useEffect(() => {  
+        /*Load-photo script*/        
+        let inputs = document.querySelectorAll('.input-file');
+        console.log(inputs);
+        Array.prototype.forEach.call(inputs, function (input) {
+            let labelVal = document.querySelector('.load-photo-button-text').innerText;
+            console.log(labelVal);
+            console.log(input);
+            input.addEventListener('change', function (e) {
+                let countFiles = '';
+                if (this.files && this.files.length >= 1)
+                    countFiles = this.files.length;   
+                    console.log(countFiles);     
+                if (countFiles)
+                    document.querySelector('.load-photo-button-text').innerText = 'Выбрано файлов: ' + countFiles;
+                else
+                    document.querySelector('.load-photo-button-text').innerText = labelVal;
+            });
+        });
+
+        switch(currency) {
+            case 'usd': 
+                setCurrencySymbol('$');
+                break;
+            case 'rub': 
+                setCurrencySymbol('₽');
+                break;
+            case 'euro': 
+                setCurrencySymbol('€');
+                break;
+            case 'trl': 
+                setCurrencySymbol('₺');
+                break;
+            default: setCurrencySymbol('$');
+        } 
+    });
+
     return (
         <>
         <div className="container-field container-primary">
@@ -9,7 +57,7 @@ export const LandlordsComponent = () => {
                     <h4>Разместите свой объект недвижимости</h4>
                     <p>Заполните форму чтобы продать или сдать в аренду квартиру / офис / торговое помещение или участок</p>
                 </div>
-                <form className="landlords-form row g-3" id="landlordForm" noValidate>
+                <form encType="multipart/form-data" method="post" className="landlords-form row g-3" id="landlordForm" noValidate>
                     <div className="landlords-leftside">
                         <div className="col-10">
                             <input type="text" className="form-control" id="name" placeholder="Имя Фамилия" required/>
@@ -40,6 +88,16 @@ export const LandlordsComponent = () => {
                             <input type="radio" id="rent" name="sale-rent" value="rent" required/>
                             <label htmlFor="rent">Сдать в аренду</label>
                         </div>
+                        <div className="form-check">
+                            <input className="form-check-input" type="checkbox" value="" id="newBuilding" required />
+                            <label className="form-label" htmlFor="newBuilding">
+                                Новостройка
+                            </label>
+                        </div>
+                        <div className="col-5 flex-row">
+                                <input type="number" className="form-control" id="price" placeholder="Цена" required/>
+                                <label className="form-label margin-0 label-padding" htmlFor="price">{currencySymbol}</label>                            
+                            </div>
                         <div className="col-10 landlords-row">
                             <div className="col-6">
                                 <select defaultValue='Город' className="form-select" id="city" required>
@@ -59,11 +117,15 @@ export const LandlordsComponent = () => {
                             </div>
                         </div>
                         <div className="col-10">
-                            <textarea className="landlords-textarea" name="address" id="address" cols="36" rows="3" placeholder="Адрес" maxLength="90" required></textarea>
+                            <textarea className="landlords-textarea" name="address" id="address" placeholder="Адрес" maxLength="90" required></textarea>
                         </div>
                         <div className="col-10">
-                            <textarea className="landlords-textarea" name="address" id="description" cols="36" rows="11" placeholder="Описание" maxLength="500"></textarea>
+                            <textarea className="landlords-textarea" name="address" id="description" placeholder="Описание" maxLength="500"></textarea>
                         </div>
+                        <div className="col-10">
+                            <label className="btn btn-primary load-photo-button" htmlFor="photo"><span className="load-photo-button-text">Загрузите фото</span></label>
+                            <input className='input-file' id="photo" type="file" name="photo" multiple accept="image/jpeg"></input>
+                        </div>                        
                         <div className="col-10">
                             <div className="form-check">
                             <input className="form-check-input" type="checkbox"  id="invalidCheck" required/>
@@ -71,7 +133,7 @@ export const LandlordsComponent = () => {
                                 <Link 
                                 className="form-label-link" 
                                 to='/protection-personal-data'
-                                // target='_blank'
+                                target='_blank'
                                 >Я прочитал и согласен с положением о защите персональных данных</Link>                                
                             </label>
                                 <div className="invalid-feedback">
@@ -83,11 +145,13 @@ export const LandlordsComponent = () => {
                     <div className="landlords-rightside">
                         <p className="form-label">Параметры объекта недвижимости</p>
                         <div className="col-10 landlords-row">
-                            <div className="col-5">
-                                <input type="number" className="form-control" id="m2gross" placeholder="m² gross" required/>                            
+                            <div className="col-5 flex-row">
+                                <input type="number" className="form-control" id="m2gross" placeholder="m² общая" required/>
+                                <label className="form-label margin-0 label-padding" htmlFor="m2gross">m²</label>                            
                             </div>
-                            <div className="col-5">
-                                <input type="number" className="form-control" id="m2net" placeholder="m² net" required/>    
+                            <div className="col-5 flex-row">
+                                <input type="number" className="form-control" id="m2net" placeholder="m² жилая" required/>
+                                <label className="form-label margin-0 label-padding" htmlFor="m2gross">m²</label>     
                             </div>
                         </div>
                         <div className="col-10">
@@ -227,7 +291,7 @@ export const LandlordsComponent = () => {
                         </div>                        
                     </div>
                 </form>
-                <button className="btn btn-primary landlord-button" form="landlordForm">Отправить</button>                
+                <button onClick={handleSubmit} className="btn btn-primary landlord-button" form="landlordForm">Отправить</button>                
             </main>
         </div>
         </>
