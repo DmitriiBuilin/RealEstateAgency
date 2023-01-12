@@ -1,14 +1,14 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { NavLink } from "react-router-dom";
-import { currencySelect, pageSelect } from "../../store/actions/actions";
+import { Link, NavLink } from "react-router-dom";
+import { currencySelect, pageParam, pageSelect } from "../../store/actions/actions";
 import { getCurrencyValue, getPageValue } from "../../store/selectors/selector";
 
 export const SearchAside = () => {
     const currency = useSelector(getCurrencyValue);
-    const dispatch = useDispatch();
-    const [currencySymbol, setCurrencySymbol] = useState('')
     const pageKey = useSelector(getPageValue);
+    const dispatch = useDispatch();
+    const [currencySymbol, setCurrencySymbol] = useState()  
     
     const handleCurrency = (e) => {
         const id = e.target.getAttribute('dataname');
@@ -26,6 +26,10 @@ export const SearchAside = () => {
         const pageId = e.target.getAttribute('datapage');
         dispatch(pageSelect(pageId));
     };
+    const handlePageParam = (e) => {
+        const pageParamId = e.target.getAttribute('datapage');
+        dispatch(pageParam(pageParamId));
+    };
     
 
     useEffect(() => {
@@ -40,22 +44,33 @@ export const SearchAside = () => {
                 currencyAsideLi[i].checked = true;
             };
         }      
-
         switch(currency) {
-            case 'usd': setCurrencySymbol('$');
-            case 'rub': setCurrencySymbol('₽');
-            case 'euro': setCurrencySymbol('€');
-            case 'trl': setCurrencySymbol('₺');
+            case 'usd': 
+                setCurrencySymbol('$');
+                break;
+            case 'rub': 
+                setCurrencySymbol('₽');
+                break;
+            case 'euro': 
+                setCurrencySymbol('€');
+                break;
+            case 'trl': 
+                setCurrencySymbol('₺');
+                break;
             default: setCurrencySymbol('$');
         } 
         switch(pageKey) {
-            case 'rent': return document.querySelector('.rent').classList.remove('hidden');
-            case 'sale': return document.querySelector('.sale').classList.remove('hidden');
-            case 'new': return document.querySelector('.new').classList.remove('hidden');
+            case 'rent': 
+                document.querySelector('.rent').classList.remove('hidden');
+                break;
+            case 'sale': 
+                document.querySelector('.sale').classList.remove('hidden');
+                break;
+            case 'new': document.querySelector('.new').classList.remove('hidden');
+                break;
             default: return;
         };
     });
-
 
     return (
         <>
@@ -72,30 +87,58 @@ export const SearchAside = () => {
                         Аренда
                     </NavLink>
                     <ul className="header-menu-item-context rent">
-                        <li>Квартира</li>
-                        <li>Дом</li>
-                        <li>Офис</li>
-                        <li>Торговое помещение</li>
-                        <li>Участок</li>
+                        <li>
+                            <Link className="header-menu-item-context-link" to='/rent/flat' onClick={handlePageParam} datapage='flat'>Квартира</Link>
+                        </li>
+                        <li>
+                            <Link className="header-menu-item-context-link" to='/rent/house' onClick={handlePageParam} datapage='house'>Дом</Link>
+                        </li>
+                        <li>
+                            <Link className="header-menu-item-context-link" to='/rent/office' onClick={handlePageParam} datapage='office'>Офис</Link>
+                        </li>
+                        <li>
+                            <Link className="header-menu-item-context-link" to='/rent/shop' onClick={handlePageParam} datapage='shop'>Торговое помещение</Link>
+                        </li>
+                        <li>
+                            <Link className="header-menu-item-context-link" to='/rent/land' onClick={handlePageParam} datapage='land'>Участок</Link>
+                        </li>                        
                     </ul>
                     <NavLink onClick={handlePage} datapage='sale' to="/sale" className="header-menu-item-search">
                         Продажа
                     </NavLink>
                     <ul className="header-menu-item-context sale">
-                        <li>Квартира</li>
-                        <li>Дом</li>
-                        <li>Офис</li>
-                        <li>Торговое помещение</li>
-                        <li>Участок</li>
+                        <li>
+                            <Link className="header-menu-item-context-link" to='/sale/flat' onClick={handlePageParam} datapage='flat'>Квартира</Link>
+                        </li>
+                        <li>
+                            <Link className="header-menu-item-context-link" to='/sale/house' onClick={handlePageParam} datapage='house'>Дом</Link>
+                        </li>
+                        <li>
+                            <Link className="header-menu-item-context-link" to='/sale/office' onClick={handlePageParam} datapage='office'>Офис</Link>
+                        </li>
+                        <li>
+                            <Link className="header-menu-item-context-link" to='/sale/shop' onClick={handlePageParam} datapage='shop'>Торговое помещение</Link>
+                        </li>
+                        <li>
+                            <Link className="header-menu-item-context-link" to='/sale/land' onClick={handlePageParam} datapage='land'>Участок</Link>
+                        </li> 
                     </ul>
                     <NavLink onClick={handlePage} datapage='new' to="/new" className="header-menu-item-search">
                         Новостройки
                     </NavLink>
                     <ul className="header-menu-item-context new">
-                        <li>Квартира</li>
-                        <li>Дом</li>
-                        <li>Офис</li>
-                        <li>Торговое помещение</li>
+                        <li>
+                            <Link className="header-menu-item-context-link" to='/new/flat' onClick={handlePageParam} datapage='flat'>Квартира</Link>
+                        </li>
+                        <li>
+                            <Link className="header-menu-item-context-link" to='/new/house' onClick={handlePageParam} datapage='house'>Дом</Link>
+                        </li>
+                        <li>
+                            <Link className="header-menu-item-context-link" to='/new/office' onClick={handlePageParam} datapage='office'>Офис</Link>
+                        </li>
+                        <li>
+                            <Link className="header-menu-item-context-link" to='/new/shop' onClick={handlePageParam} datapage='shop'>Торговое помещение</Link>
+                        </li>
                     </ul>
                 </div>
                 <div className="accordion" id="accordionExample">
@@ -107,15 +150,15 @@ export const SearchAside = () => {
                         </h2>
                         <div id="panelsStayOpen-collapseOne" data-bs-parent="#accordionExample" className="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingOne">
                             <div className="accordion-body">
-                                <select className="form-select form-select-dev" id="inputCountry" required>
-                                    <option value="rus">Страна</option>
+                                <select className="form-select form-select-dev" defaultValue='country' id="inputCountry" required>
+                                    <option disabled value="country">Страна</option>
                                     <option value="trk">Турция</option>
                                 </select>
                                 <div className="invalid-feedback">
                                 Please select a valid option.
                                 </div>
-                                <select className="form-select" id="inputCity" required>
-                                    <option value="antalya">Город</option>
+                                <select className="form-select" defaultValue='city' id="inputCity" required>
+                                    <option disabled value="city">Город</option>
                                     <option value="antalya">Анталья</option>
                                     <option value="alanya">Аланья</option>
                                 </select>

@@ -7,3 +7,6 @@ export const getLanguageValue = (state) => {
 export const getPageValue = (state) => {
     return state.page
 };
+export const getPageParamValue = (state) => {
+    return state.pageParam
+};

@@ -11904,6 +11904,8 @@ header {
   left: 0;
   top: 0;
   transition: all 0.3s ease;
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
 }
 
 .header-fixed.out {
@@ -11946,6 +11948,8 @@ header {
   color: #b5b5b5;
   width: 60px;
   transition: 0.5s;
+  -webkit-transition: 0.5s;
+  -moz-transition: 0.5s;
   background-color: rgba(255, 255, 255, 0);
 }
 
@@ -11953,17 +11957,23 @@ header {
   cursor: pointer;
   color: #012158;
   transition: 0.5s;
+  -webkit-transition: 0.5s;
+  -moz-transition: 0.5s;
 }
 
 .header-options-button svg {
   fill: #b5b5b5;
   transition: 0.5s;
+  -webkit-transition: 0.5s;
+  -moz-transition: 0.5s;
 }
 
 .header-options-button:hover svg {
   fill: #012158;
   scale: 1.1;
   transition: 0.5s;
+  -webkit-transition: 0.5s;
+  -moz-transition: 0.5s;
 }
 
 .header-menu {
@@ -11982,22 +11992,35 @@ header {
   color: #012158;
   padding-left: 8px;
   transition: 0.5s;
+  -webkit-transition: 0.5s;
+  -moz-transition: 0.5s;
 }
 
 .header-menu-item-context {
   padding-left: 30px;
   list-style-type: none;
+}
+
+.header-menu-item-context-link {
+  text-decoration: none;
   font-family: roboto, arial, sans-serif;
   font-size: 16px;
   font-weight: 300;
   color: #012158;
 }
 
+.header-menu-item-context-link:hover {
+  cursor: pointer;
+  font-weight: 400;
+}
+
 .header-menu-item:hover {
   cursor: pointer;
-  text-shadow: 0.5px 0.9px 1px #aaaaaa;
+  text-shadow: 0.5px 0.9px 1px rgb(170, 170, 170);
   color: #dc1c2e;
   transition: 0.5s;
+  -webkit-transition: 0.5s;
+  -moz-transition: 0.5s;
 }
 
 .header-options {
@@ -12143,10 +12166,14 @@ header {
   border-radius: 7px;
   position: absolute;
   transition: 0.5s;
+  -webkit-transition: 0.5s;
+  -moz-transition: 0.5s;
 }
 
 .main-search-block:hover {
   transition: 0.5s;
+  -webkit-transition: 0.5s;
+  -moz-transition: 0.5s;
   opacity: 1;
 }
 
@@ -12257,6 +12284,8 @@ header {
   -webkit-border-radius: 6px;
   background-color: #FFFFFF;
   transition: 0.5s;
+  -webkit-transition: 0.5s;
+  -moz-transition: 0.5s;
 }
 
 .offer-card:hover {
@@ -12264,6 +12293,8 @@ header {
   -moz-box-shadow: 2px 2px 5px 1px grey;
   -webkit-box-shadow: 2px 2px 5px 1px grey;
   transition: 0.5s;
+  -webkit-transition: 0.5s;
+  -moz-transition: 0.5s;
   cursor: pointer;
 }
 
@@ -12354,6 +12385,8 @@ footer {
   display: flex;
   align-items: center;
   transition: 0.5s;
+  -webkit-transition: 0.5s;
+  -moz-transition: 0.5s;
 }
 
 .social-icons-item:hover {
@@ -12362,6 +12395,8 @@ footer {
   -moz-box-shadow: 2px 2px 5px 1px grey;
   -webkit-box-shadow: 2px 2px 5px 1px grey;
   transition: 0.5s;
+  -webkit-transition: 0.5s;
+  -moz-transition: 0.5s;
 }
 
 .social-icons-item svg {
@@ -12609,6 +12644,8 @@ input::-webkit-inner-spin-button {
   -webkit-border-radius: 6px;
   background-color: #FFFFFF;
   transition: 0.5s;
+  -webkit-transition: 0.5s;
+  -moz-transition: 0.5s;
   margin-bottom: 20px;
 }
 
@@ -12617,6 +12654,8 @@ input::-webkit-inner-spin-button {
   -moz-box-shadow: 2px 2px 5px 1px grey;
   -webkit-box-shadow: 2px 2px 5px 1px grey;
   transition: 0.5s;
+  -webkit-transition: 0.5s;
+  -moz-transition: 0.5s;
   cursor: pointer;
 }
 
@@ -12809,23 +12848,31 @@ input::-webkit-inner-spin-button {
   border: 1px solid #012158;
   border-radius: 10px;
   transition: 0.5s;
+  -webkit-transition: 0.5s;
+  -moz-transition: 0.5s;
 }
 
 .contacts-button-item:hover {
   background-color: #012158;
   color: #FFFFFF;
   transition: 0.5s;
+  -webkit-transition: 0.5s;
+  -moz-transition: 0.5s;
 }
 
 .contacts-button-item svg {
   margin-right: 7px;
   fill: #012158;
   transition: 0.5s;
+  -webkit-transition: 0.5s;
+  -moz-transition: 0.5s;
 }
 
 .contacts-button-item:hover svg {
   fill: #FFFFFF;
   transition: 0.5s;
+  -webkit-transition: 0.5s;
+  -moz-transition: 0.5s;
 }
 
 /* -- LANDLORDS -- */

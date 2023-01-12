@@ -2,7 +2,7 @@ import { useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { getPageValue } from "../../store/selectors/selector";
 
-export const Sorter = () => {
+export const Sorter = (props) => {
 const navigate = useNavigate();
 const pageKey = useSelector(getPageValue);
 
@@ -36,10 +36,10 @@ const page = {
                             <li className="breadcrumb-item" aria-current="page">
                                 <Link to={`/${pageKey}`}>{page[pageKey]}</Link>
                             </li>
-                            <li className="breadcrumb-item active" aria-current="page">Квартиры</li>
+                            <li className="breadcrumb-item active" aria-current="page">{props.pageParametr}</li>
                         </ol>
                     </nav>
-                    <p className="filter-result-notification">Найдено 0 объектов в разделе <span>{page[pageKey]}</span>&nbsp;<span>квартиры</span></p>
+                    <p className="filter-result-notification">Найдено 0 объектов в разделе <span>{page[pageKey]}</span>&nbsp;<span>{props.pageParametr}</span></p>
                 </div>
                 <div className="filter-buttons">                    
                     <button type="button" onClick={handleClickMapButton} className="btn btn-primary map-button-item">Показать на карте</button>

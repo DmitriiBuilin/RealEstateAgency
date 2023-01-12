@@ -10,7 +10,7 @@ import rootReducer from "./reducers/rootReducer";
 const persistConfig = {
     key: 'realty',
     storage,
-    // blacklist: ['anyName']
+    blacklist: ['pageParam']
   }
   
 const persistedReducer = persistReducer(persistConfig, rootReducer)

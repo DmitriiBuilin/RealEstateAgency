@@ -82,6 +82,8 @@ header
     left: 0
     top: 0
     transition: all .3s ease 
+    -webkit-transition: all .3s ease 
+    -moz-transition: all .3s ease 
 
 .header-fixed.out
     transform: translateY(-100%)
@@ -119,21 +121,29 @@ header
     color: #b5b5b5
     width: 60px
     transition: 0.5s
+    -webkit-transition: 0.5s
+    -moz-transition: 0.5s
     background-color: #ffffff00
 
 .header-options-button:hover
     cursor: pointer
     color: $color-dark-blue
     transition: 0.5s
+    -webkit-transition: 0.5s
+    -moz-transition: 0.5s
 
 .header-options-button svg
     fill: #b5b5b5
     transition: 0.5s
+    -webkit-transition: 0.5s
+    -moz-transition: 0.5s
 
 .header-options-button:hover svg
     fill: $color-dark-blue
     scale: 1.1
     transition: 0.5s
+    -webkit-transition: 0.5s
+    -moz-transition: 0.5s
 
 .header-menu 
     margin: 0 15px
@@ -150,21 +160,31 @@ header
     color: $color-dark-blue
     padding-left: 8px  
     transition: 0.5s
+    -webkit-transition: 0.5s
+    -moz-transition: 0.5s
 
 .header-menu-item-context
     padding-left: 30px
     list-style-type: none
+
+.header-menu-item-context-link
+    text-decoration: none
     font-family: $font-main
     font-size: 16px
     font-weight: 300
     color: $color-dark-blue
 
+.header-menu-item-context-link:hover
+    cursor: pointer
+    font-weight: 400
 
 .header-menu-item:hover
     cursor: pointer
-    text-shadow: 0.5px 0.9px 1px #aaaaaa
+    text-shadow: 0.5px 0.9px 1px rgb(170, 170, 170)
     color: $color-red
     transition: 0.5s
+    -webkit-transition: 0.5s
+    -moz-transition: 0.5s
 
 .header-options
     display: flex
@@ -289,9 +309,13 @@ header
     border-radius: 7px
     position: absolute
     transition: 0.5s
+    -webkit-transition: 0.5s
+    -moz-transition: 0.5s
 
 .main-search-block:hover
     transition: 0.5s
+    -webkit-transition: 0.5s
+    -moz-transition: 0.5s
     opacity: 1
 
 .main-search-form
@@ -398,12 +422,16 @@ header
     -webkit-border-radius: 6px
     background-color: $color-white
     transition: 0.5s
+    -webkit-transition: 0.5s
+    -moz-transition: 0.5s
 
 .offer-card:hover
     box-shadow: $box-shadow
     -moz-box-shadow: $box-shadow
     -webkit-box-shadow: $box-shadow
     transition: 0.5s
+    -webkit-transition: 0.5s
+    -moz-transition: 0.5s
     cursor: pointer
 
 .offer-card-img
@@ -488,6 +516,8 @@ footer
     display: flex
     align-items: center
     transition: 0.5s
+    -webkit-transition: 0.5s
+    -moz-transition: 0.5s
 
 .social-icons-item:hover
     cursor: pointer
@@ -495,6 +525,8 @@ footer
     -moz-box-shadow: $box-shadow
     -webkit-box-shadow: $box-shadow
     transition: 0.5s
+    -webkit-transition: 0.5s
+    -moz-transition: 0.5s
 
 .social-icons-item svg
     fill: $color-blue
@@ -712,6 +744,8 @@ input::-webkit-inner-spin-button
     -webkit-border-radius: 6px
     background-color: $color-white
     transition: 0.5s
+    -webkit-transition: 0.5s
+    -moz-transition: 0.5s
     margin-bottom: 20px
 
 .card-item:hover
@@ -719,6 +753,8 @@ input::-webkit-inner-spin-button
     -moz-box-shadow: $box-shadow
     -webkit-box-shadow: $box-shadow
     transition: 0.5s
+    -webkit-transition: 0.5s
+    -moz-transition: 0.5s
     cursor: pointer
 
 .card-item-img-wrp
@@ -891,20 +927,28 @@ input::-webkit-inner-spin-button
     border: 1px solid $color-dark-blue
     border-radius: 10px
     transition: 0.5s
+    -webkit-transition: 0.5s
+    -moz-transition: 0.5s
 
 .contacts-button-item:hover
     background-color: $color-dark-blue
     color: $color-white
     transition: 0.5s
+    -webkit-transition: 0.5s
+    -moz-transition: 0.5s
 
 .contacts-button-item svg
     margin-right: 7px
     fill: $color-dark-blue
     transition: 0.5s
+    -webkit-transition: 0.5s
+    -moz-transition: 0.5s
 
 .contacts-button-item:hover svg
     fill: $color-white
     transition: 0.5s
+    -webkit-transition: 0.5s
+    -moz-transition: 0.5s
 
 
 /* -- LANDLORDS -- */

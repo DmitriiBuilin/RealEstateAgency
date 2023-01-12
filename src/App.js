@@ -1,4 +1,4 @@
-import { Route, Routes, useParams } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import Contacts from './pages/rus/contacts/contacts';
 import Landlords from './pages/rus/landlords/landlords';
@@ -8,6 +8,7 @@ import Rent from './pages/rus/rent/rent';
 import Sale from './pages/rus/sale/sale';
 import Map from './pages/rus/map/map';
 import PersonalData from './pages/rus/personalData/personalData';
+import SearchResult from './components/search/searchResult';
 
 
 
