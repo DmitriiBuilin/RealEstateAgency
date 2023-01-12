@@ -116,23 +116,29 @@ export const Main = () => {
             </div>            
             <div className="index-page-offers-carousel container-primary">
                 <div id="carouselExampleIndicators" className="carousel slide" data-bs-ride="true">
-                <div className="carousel-indicators">
-                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" className="active" aria-current="true" aria-label="Slide 1"></button>
-                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
-                </div>
-                <div className="carousel-inner">
-                    <div className="carousel-item active">
-                    <Cards img_1={image.img_1} img_2={image.img_2} img_3={image.img_3} img_4={image.img_4} name={name[0]}/>
+                    <div className="carousel-indicators">
+                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" className="active" aria-current="true" aria-label="Slide 1"></button>
+                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
                     </div>
-                    <div className="carousel-item">
-                    <Cards img_1={image.img_5} img_2={image.img_6} img_3={image.img_7} img_4={image.img_8} name={name[1]}/>
+                    <div className="carousel-inner">
+                        <div className="carousel-item active">
+                        <Cards img_1={image.img_1} img_2={image.img_2} img_3={image.img_3} img_4={image.img_4} name={name[0]}/>
+                        </div>
+                        <div className="carousel-item">
+                        <Cards img_1={image.img_5} img_2={image.img_6} img_3={image.img_7} img_4={image.img_8} name={name[1]}/>
+                        </div>
+                        <div className="carousel-item">
+                        <Cards img_1={image.img_9} img_2={image.img_10} img_3={image.img_11} img_4={image.img_12} name={name[2]}/>
+                        </div>
                     </div>
-                    <div className="carousel-item">
-                    <Cards img_1={image.img_9} img_2={image.img_10} img_3={image.img_11} img_4={image.img_12} name={name[2]}/>
-                    </div>
-                </div>
-                </div>
+                    <button class="carousel-control-prev carousel-control-custom" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next carousel-control-custom" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>                
             </div>
             <div className="index-page-statistic-carousel container-primary">
                 <div id="carouselExampleFade" className="carousel slide carousel-fade" data-bs-ride="carousel">
@@ -146,8 +152,12 @@ export const Main = () => {
                         <div className="carousel-item">
                         <img src={statistics} className="d-block w-100" alt="..." />
                         </div>
-                    </div>
-                    <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
+                    </div>                    
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
+                        <span class="visually-hidden">Next</span>
                     </button>
                     </div>
             </div>
