@@ -60,14 +60,14 @@ export const LandlordsComponent = () => {
                 <form encType="multipart/form-data" method="post" className="landlords-form row g-3" id="landlordForm" noValidate>
                     <div className="landlords-leftside">
                         <div className="col-10">
-                            <input type="text" className="form-control" id="name" placeholder="Имя Фамилия" required/>
+                            <input type="text" className="form-control" id="ownerName" placeholder="Имя Фамилия" required/>
                         </div>
                         <div className="col-10">
                             <input type="email" className="form-control" id="email" placeholder="mail@mail.com" required/>
                         </div>
                         <div className="col-10">
                             <div className="input-group has-validation">                       
-                            <input type="tel" className="form-control" id="tel" placeholder="tel. +90(535)123-45-67" required/>
+                            <input type="tel" className="form-control" id="phoneNumber" placeholder="tel. +90(535)123-45-67" required/>
                             </div>
                         </div>
                         <div className="col-10">
@@ -83,9 +83,9 @@ export const LandlordsComponent = () => {
                         </div>                        
                         <div className="sale-rent">
                             <p className="form-label">Цель размещения объекта</p>
-                            <input type="radio" id="sale" name="sale-rent" value="sale" required/>
+                            <input type="radio" id="sale" name="target" value="sale" required/>
                             <label htmlFor="sale">Продать</label>
-                            <input type="radio" id="rent" name="sale-rent" value="rent" required/>
+                            <input type="radio" id="rent" name="target" value="rent" required/>
                             <label htmlFor="rent">Сдать в аренду</label>
                         </div>
                         <div className="form-check">
@@ -120,11 +120,11 @@ export const LandlordsComponent = () => {
                             <textarea className="landlords-textarea" name="address" id="address" placeholder="Адрес" maxLength="90" required></textarea>
                         </div>
                         <div className="col-10">
-                            <textarea className="landlords-textarea" name="address" id="description" placeholder="Описание" maxLength="500"></textarea>
+                            <textarea className="landlords-textarea" name="description" id="description" placeholder="Описание" maxLength="500"></textarea>
                         </div>
                         <div className="col-10">
-                            <label className="btn btn-primary load-photo-button" htmlFor="photo"><span className="load-photo-button-text">Загрузите фото</span></label>
-                            <input className='input-file' id="photo" type="file" name="photo" multiple accept="image/jpeg"></input>
+                            <label className="btn btn-primary load-photo-button" htmlFor="img"><span className="load-photo-button-text">Загрузите фото</span></label>
+                            <input className='input-file' id="img" type="file" name="photo" multiple accept="image/jpeg"></input>
                         </div>                        
                         <div className="col-10">
                             <div className="form-check">
@@ -151,7 +151,7 @@ export const LandlordsComponent = () => {
                             </div>
                             <div className="col-5 flex-row">
                                 <input type="number" className="form-control" id="m2net" placeholder="m² жилая" required/>
-                                <label className="form-label margin-0 label-padding" htmlFor="m2gross">m²</label>     
+                                <label className="form-label margin-0 label-padding" htmlFor="m2net">m²</label>     
                             </div>
                         </div>
                         <div className="col-10">

@@ -132,11 +132,11 @@ export const Main = () => {
                         <Cards img_1={image.img_9} img_2={image.img_10} img_3={image.img_11} img_4={image.img_12} name={name[2]}/>
                         </div>
                     </div>
-                    <button class="carousel-control-prev carousel-control-custom" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-                        <span class="visually-hidden">Previous</span>
+                    <button className="carousel-control-prev carousel-control-custom" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                        <span className="visually-hidden">Previous</span>
                     </button>
-                    <button class="carousel-control-next carousel-control-custom" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-                        <span class="visually-hidden">Next</span>
+                    <button className="carousel-control-next carousel-control-custom" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                        <span className="visually-hidden">Next</span>
                     </button>
                 </div>                
             </div>
@@ -153,11 +153,11 @@ export const Main = () => {
                         <img src={statistics} className="d-block w-100" alt="..." />
                         </div>
                     </div>                    
-                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
-                        <span class="visually-hidden">Previous</span>
+                    <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
+                        <span className="visually-hidden">Previous</span>
                     </button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
-                        <span class="visually-hidden">Next</span>
+                    <button className="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
+                        <span className="visually-hidden">Next</span>
                     </button>
                     </div>
             </div>

@@ -4,6 +4,7 @@ import { Link, NavLink } from "react-router-dom";
 import { currencySelect, languageSelect, pageSelect } from "../../store/actions/actions";
 import { getCurrencyValue, getLanguageValue } from "../../store/selectors/selector";
 import $ from "jquery"
+import objectsDataBase from "../../server/server"
 
 export const Header = () => {
     const currency = useSelector(getCurrencyValue);
@@ -45,6 +46,11 @@ export const Header = () => {
         const pageId = e.target.getAttribute('datapage');
         dispatch(pageSelect(pageId));
     };
+
+    /* parse json */
+    const objects = JSON.parse(objectsDataBase);
+    console.log(objects)
+
     
     useEffect(() => {
         const selectedLanguage = document.getElementById(`${language}`);
