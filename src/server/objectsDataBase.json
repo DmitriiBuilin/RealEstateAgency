@@ -9,6 +9,7 @@
         "phoneNumber":"+905551234567",
         "realAstateType": "flat",
         "target":"rent",
+        "objectName":"Best price house",
         "newBuilding": true,
         "price": 300,
         "city": "Antalya",

@@ -80,6 +80,10 @@ export const LandlordsComponent = () => {
                                 <option>Участок</option>
                                 <option>Торговое помещение</option>
                             </select>
+                        </div>
+                        <div className="col-10">
+                            <label htmlFor="objectName" className="form-label">Название объекта</label>
+                            <input type="text" className="form-control" id="objectName" placeholder="Введите название объекта" required/>
                         </div>                        
                         <div className="sale-rent">
                             <p className="form-label">Цель размещения объекта</p>
@@ -121,11 +125,7 @@ export const LandlordsComponent = () => {
                         </div>
                         <div className="col-10">
                             <textarea className="landlords-textarea" name="description" id="description" placeholder="Описание" maxLength="500"></textarea>
-                        </div>
-                        <div className="col-10">
-                            <label className="btn btn-primary load-photo-button" htmlFor="img"><span className="load-photo-button-text">Загрузите фото</span></label>
-                            <input className='input-file' id="img" type="file" name="photo" multiple accept="image/jpeg"></input>
-                        </div>                        
+                        </div>                                                
                         <div className="col-10">
                             <div className="form-check">
                             <input className="form-check-input" type="checkbox"  id="invalidCheck" required/>
@@ -287,8 +287,12 @@ export const LandlordsComponent = () => {
                             <div className="form-check">
                                 <input className="form-check-input" type="checkbox" id="microwave" name=""/>
                                 <label className="form-label" htmlFor="microwave">Микроволновая печь</label>
-                            </div>                            
-                        </div>                        
+                            </div>                                                       
+                        </div>
+                        <div className="col-10">
+                            <label className="btn btn-primary load-photo-button" htmlFor="img"><span className="load-photo-button-text">Загрузите фото</span></label>
+                            <input className='input-file' id="img" type="file" name="photo" multiple accept="image/jpeg"></input>
+                        </div>                         
                     </div>
                 </form>
                 <button onClick={handleSubmit} className="btn btn-primary landlord-button" form="landlordForm">Отправить</button>                

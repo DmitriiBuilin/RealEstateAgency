@@ -35,16 +35,16 @@ export const CardItem = (props) => {
                     </div>
                 </div>
                 <div className="card-item-properties">
-                    <h4 className="card-item-name">Full object name</h4>
-                    <p className="card-item-price">Price <span>1200</span> $ </p>
+                    <h4 className="card-item-name">{props.objectName}</h4>
+                    <p className="card-item-price">Price <span>{props.price}</span> $ </p>
                     <p className="card-item-description">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem numquam voluptas minima quas expedita! Ea facilis quasi illum laudantium impedit porro, quia, temporibus excepturi rem id error. Eius, voluptatibus soluta!
+                    {props.description}
                     </p>
                     <div className="card-item-propertties">
-                        <p>1+1</p>
-                        <p>150 m²</p>
-                        <p>Antalya</p>
-                        <p>30/12/2022</p>
+                        <p>{props.rooms}</p>
+                        <p>{props.m2gross}<span>m²</span></p>
+                        <p>{props.city}</p>
+                        <p>{props.data}</p>
                     </div>                    
                 </div>
             </div>
