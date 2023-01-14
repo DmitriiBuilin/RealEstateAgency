@@ -1,4 +1,4 @@
-import { CURRENCYSELECT, LANGUAGESELECT, PAGEPARAM, PAGESELECT } from "../types/types";
+import { CURRENCYSELECT, DATABASE, LANGUAGESELECT, PAGEPARAM, PAGESELECT } from "../types/types";
 
 export const currencySelect = (data) => {
   return { type: CURRENCYSELECT, payload: data }
@@ -14,4 +14,8 @@ export const pageSelect = (data) => {
 
 export const pageParam = (data) => {
   return { type: PAGEPARAM, payload: data }
+};
+
+export const objectsDataBase = (data) => {
+  return { type: DATABASE, payload: data }
 };

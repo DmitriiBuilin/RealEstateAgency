@@ -6,17 +6,19 @@ import thunk from "redux-thunk";
 import storage from 'redux-persist/lib/storage'
 import persistStore from "redux-persist/es/persistStore";
 import rootReducer from "./reducers/rootReducer";
+import { initState } from "./initState";
 
 const persistConfig = {
     key: 'realty',
     storage,
-    blacklist: ['pageParam']
+    blacklist: ['pageParam', 'fullDataBase']
   }
   
 const persistedReducer = persistReducer(persistConfig, rootReducer)
 
 export const store = createStore(
     persistedReducer,
+    initState,
     composeWithDevTools(applyMiddleware(thunk))
 );
 

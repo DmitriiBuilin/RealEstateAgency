@@ -10,3 +10,7 @@ export const getPageValue = (state) => {
 export const getPageParamValue = (state) => {
     return state.pageParam
 };
+
+export const getFullDataBase = (state) => {
+    return state.fullDataBase
+};

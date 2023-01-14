@@ -8,9 +8,6 @@ import Rent from './pages/rus/rent/rent';
 import Sale from './pages/rus/sale/sale';
 import Map from './pages/rus/map/map';
 import PersonalData from './pages/rus/personalData/personalData';
-import SearchResult from './components/search/searchResult';
-
-
 
 function App() {
   return (
