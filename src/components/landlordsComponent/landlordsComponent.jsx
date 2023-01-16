@@ -74,11 +74,11 @@ export const LandlordsComponent = () => {
                             <label htmlFor="realAstateType" className="form-label">Выберите объект</label>
                             <select defaultValue='Вид недвижимости' className="form-select" id="realAstateType" required>
                                 <option disabled>Вид недвижимости</option>
-                                <option>Квартира</option>
-                                <option>Дом</option>
-                                <option>Офис</option>
-                                <option>Участок</option>
-                                <option>Торговое помещение</option>
+                                <option value="flat">Квартира</option>
+                                <option value="house">Дом</option>
+                                <option value="office">Офис</option>
+                                <option value="land">Участок</option>
+                                <option value="shop">Торговое помещение</option>
                             </select>
                         </div>
                         <div className="col-10">
@@ -91,13 +91,15 @@ export const LandlordsComponent = () => {
                             <label htmlFor="sale">Продать</label>
                             <input type="radio" id="rent" name="target" value="rent" required/>
                             <label htmlFor="rent">Сдать в аренду</label>
+                            <input type="radio" id="new" name="target" value="new" required/>
+                            <label htmlFor="rent">Новостройка</label>
                         </div>
-                        <div className="form-check">
+                        {/* <div className="form-check">
                             <input className="form-check-input" type="checkbox" value="" id="newBuilding" required />
                             <label className="form-label" htmlFor="newBuilding">
                                 Новостройка
                             </label>
-                        </div>
+                        </div> */}
                         <div className="col-5 flex-row">
                                 <input type="number" className="form-control" id="price" placeholder="Цена" required/>
                                 <label className="form-label margin-0 label-padding" htmlFor="price">{currencySymbol}</label>                            
@@ -124,7 +126,7 @@ export const LandlordsComponent = () => {
                             <textarea className="landlords-textarea" name="address" id="address" placeholder="Адрес" maxLength="90" required></textarea>
                         </div>
                         <div className="col-10">
-                            <textarea className="landlords-textarea" name="description" id="description" placeholder="Описание" maxLength="500"></textarea>
+                            <textarea className="landlords-textarea" name="description" id="description" placeholder="Описание" maxLength="1500"></textarea>
                         </div>                                                
                         <div className="col-10">
                             <div className="form-check">

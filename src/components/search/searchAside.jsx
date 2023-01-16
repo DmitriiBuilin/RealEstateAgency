@@ -26,11 +26,10 @@ export const SearchAside = () => {
         const pageId = e.target.getAttribute('datapage');
         dispatch(pageSelect(pageId));
     };
-    const handlePageParam = (e) => {
-        const pageParamId = e.target.getAttribute('datapage');
-        dispatch(pageParam(pageParamId));
-    };
-    
+    // const handlePageParam = (e) => {
+    //     const pageParamId = e.target.getAttribute('datapage');
+    //     dispatch(pageParam(pageParamId));
+    // };    
 
     useEffect(() => {
         const currencyAsideLi = document.querySelectorAll('.btn-check');
@@ -88,19 +87,19 @@ export const SearchAside = () => {
                     </NavLink>
                     <ul className="header-menu-item-context rent">
                         <li>
-                            <Link className="header-menu-item-context-link" to='/rent/flat' onClick={handlePageParam} datapage='flat'>Квартира</Link>
+                            <Link className="header-menu-item-context-link" to='/rent/flat' onClick={console.log('handlePageParam')} datapage='flat'>Квартира</Link>
                         </li>
                         <li>
-                            <Link className="header-menu-item-context-link" to='/rent/house' onClick={handlePageParam} datapage='house'>Дом</Link>
+                            <Link className="header-menu-item-context-link" to='/rent/house' onClick={console.log('handlePageParam')} datapage='house'>Дом</Link>
                         </li>
                         <li>
-                            <Link className="header-menu-item-context-link" to='/rent/office' onClick={handlePageParam} datapage='office'>Офис</Link>
+                            <Link className="header-menu-item-context-link" to='/rent/office' onClick={console.log('handlePageParam')} datapage='office'>Офис</Link>
                         </li>
                         <li>
-                            <Link className="header-menu-item-context-link" to='/rent/shop' onClick={handlePageParam} datapage='shop'>Торговое помещение</Link>
+                            <Link className="header-menu-item-context-link" to='/rent/shop' onClick={console.log('handlePageParam')} datapage='shop'>Торговое помещение</Link>
                         </li>
                         <li>
-                            <Link className="header-menu-item-context-link" to='/rent/land' onClick={handlePageParam} datapage='land'>Участок</Link>
+                            <Link className="header-menu-item-context-link" to='/rent/land' onClick={console.log('handlePageParam')} datapage='land'>Участок</Link>
                         </li>                        
                     </ul>
                     <NavLink onClick={handlePage} datapage='sale' to="/sale" className="header-menu-item-search">
@@ -108,19 +107,19 @@ export const SearchAside = () => {
                     </NavLink>
                     <ul className="header-menu-item-context sale">
                         <li>
-                            <Link className="header-menu-item-context-link" to='/sale/flat' onClick={handlePageParam} datapage='flat'>Квартира</Link>
+                            <Link className="header-menu-item-context-link" to='/sale/flat' onClick={console.log('handlePageParam')} datapage='flat'>Квартира</Link>
                         </li>
                         <li>
-                            <Link className="header-menu-item-context-link" to='/sale/house' onClick={handlePageParam} datapage='house'>Дом</Link>
+                            <Link className="header-menu-item-context-link" to='/sale/house' onClick={console.log('handlePageParam')} datapage='house'>Дом</Link>
                         </li>
                         <li>
-                            <Link className="header-menu-item-context-link" to='/sale/office' onClick={handlePageParam} datapage='office'>Офис</Link>
+                            <Link className="header-menu-item-context-link" to='/sale/office' onClick={console.log('handlePageParam')} datapage='office'>Офис</Link>
                         </li>
                         <li>
-                            <Link className="header-menu-item-context-link" to='/sale/shop' onClick={handlePageParam} datapage='shop'>Торговое помещение</Link>
+                            <Link className="header-menu-item-context-link" to='/sale/shop' onClick={console.log('handlePageParam')} datapage='shop'>Торговое помещение</Link>
                         </li>
                         <li>
-                            <Link className="header-menu-item-context-link" to='/sale/land' onClick={handlePageParam} datapage='land'>Участок</Link>
+                            <Link className="header-menu-item-context-link" to='/sale/land' onClick={console.log('handlePageParam')} datapage='land'>Участок</Link>
                         </li> 
                     </ul>
                     <NavLink onClick={handlePage} datapage='new' to="/new" className="header-menu-item-search">
@@ -128,16 +127,16 @@ export const SearchAside = () => {
                     </NavLink>
                     <ul className="header-menu-item-context new">
                         <li>
-                            <Link className="header-menu-item-context-link" to='/new/flat' onClick={handlePageParam} datapage='flat'>Квартира</Link>
+                            <Link className="header-menu-item-context-link" to='/new/flat' onClick={console.log('handlePageParam')} datapage='flat'>Квартира</Link>
                         </li>
                         <li>
-                            <Link className="header-menu-item-context-link" to='/new/house' onClick={handlePageParam} datapage='house'>Дом</Link>
+                            <Link className="header-menu-item-context-link" to='/new/house' onClick={console.log('handlePageParam')} datapage='house'>Дом</Link>
                         </li>
                         <li>
-                            <Link className="header-menu-item-context-link" to='/new/office' onClick={handlePageParam} datapage='office'>Офис</Link>
+                            <Link className="header-menu-item-context-link" to='/new/office' onClick={console.log('handlePageParam')} datapage='office'>Офис</Link>
                         </li>
                         <li>
-                            <Link className="header-menu-item-context-link" to='/new/shop' onClick={handlePageParam} datapage='shop'>Торговое помещение</Link>
+                            <Link className="header-menu-item-context-link" to='/new/shop' onClick={console.log('handlePageParam')} datapage='shop'>Торговое помещение</Link>
                         </li>
                     </ul>
                 </div>

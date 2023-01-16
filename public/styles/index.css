@@ -11930,7 +11930,7 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  box-shadow: 0px 3px 6px -2px grey;
+  box-shadow: 1px 1px 5px -2px grey;
 }
 
 .header-logo {
@@ -12253,6 +12253,14 @@ header {
   text-transform: uppercase;
 }
 
+.empty-search-result {
+  margin: 5px 0 5px 10px;
+  font-family: roboto, arial, sans-serif;
+  color: #012158;
+  font-size: 22px;
+  font-weight: 700;
+}
+
 /* -- MAIN - Carousel --*/
 .index-page-statistic-carousel {
   border-radius: 10px;
@@ -12458,7 +12466,7 @@ footer {
   border-radius: 10px;
   width: 100%;
   max-width: 315px;
-  box-shadow: 0px 3px 6px -2px grey;
+  box-shadow: 1px 1px 5px -2px grey;
 }
 
 .main {
@@ -12466,7 +12474,7 @@ footer {
   border-radius: 10px;
   width: 100%;
   margin: 0 0 0 30px;
-  box-shadow: 0px 3px 6px -2px grey;
+  box-shadow: 1px 1px 5px -2px grey;
 }
 
 .form-select-dev {
@@ -12898,7 +12906,7 @@ input::-webkit-inner-spin-button {
   align-items: center;
   background-color: #eef2f6;
   border-radius: 10px;
-  box-shadow: 0px 3px 6px -2px grey;
+  box-shadow: 1px 1px 5px -2px grey;
 }
 
 .landloards-header {
