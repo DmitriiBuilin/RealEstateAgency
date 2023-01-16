@@ -14,3 +14,7 @@ export const getPageParamValue = (state) => {
 export const getFullDataBase = (state) => {
     return state.fullDataBase
 };
+
+export const getChosenObject = (state) => {
+    return state.chosenObject
+};

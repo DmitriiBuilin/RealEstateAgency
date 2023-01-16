@@ -9,4 +9,5 @@ export const initState = {
     page: "rent",
     pageParam: "",
     fullDataBase: objects,
+    chosenObject: "",
   }

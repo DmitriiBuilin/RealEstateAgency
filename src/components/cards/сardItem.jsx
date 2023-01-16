@@ -1,11 +1,24 @@
+import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
+import { chosenObject } from "../../store/actions/actions";
+import { getFullDataBase } from "../../store/selectors/selector";
+
 export const CardItem = (props) => {
+    const dispatch = useDispatch();
     const idCarousel = Math.floor(Math.random() * 1000);
+    const fullDataBase = useSelector(getFullDataBase);
+    const getThisObject = fullDataBase.filter((item) => {
+        return item.id === props.id
+    });
+    const dispatchChoosenObject = () => {
+        dispatch(chosenObject(getThisObject))
+    };
 
     return (
         <>
-            <div className="card-item">
+        <Link to={`/card/${props.id}`} onClick={dispatchChoosenObject} className="card-item-wrp">
+            <div className="card-item">                
                 <div className="card-item-img-wrp">
-                    {/* <img className="card-item-img" src={props.img_1} alt="..." /> */}
                     <div id={idCarousel} className="carousel slide">
                         <div className="carousel-inner">
                             <div className="carousel-item card-item-img-wrp active">
@@ -46,8 +59,9 @@ export const CardItem = (props) => {
                         <p>{props.city}</p>
                         <p>{props.data}</p>
                     </div>                    
-                </div>
+                </div>                
             </div>
+        </Link>
         </>
     );
 }

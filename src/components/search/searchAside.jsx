@@ -87,19 +87,19 @@ export const SearchAside = () => {
                     </NavLink>
                     <ul className="header-menu-item-context rent">
                         <li>
-                            <Link className="header-menu-item-context-link" to='/rent/flat' onClick={console.log('handlePageParam')} datapage='flat'>Квартира</Link>
+                            <Link className="header-menu-item-context-link" to='/rent/flat'  datapage='flat'>Квартира</Link>
                         </li>
                         <li>
-                            <Link className="header-menu-item-context-link" to='/rent/house' onClick={console.log('handlePageParam')} datapage='house'>Дом</Link>
+                            <Link className="header-menu-item-context-link" to='/rent/house'  datapage='house'>Дом</Link>
                         </li>
                         <li>
-                            <Link className="header-menu-item-context-link" to='/rent/office' onClick={console.log('handlePageParam')} datapage='office'>Офис</Link>
+                            <Link className="header-menu-item-context-link" to='/rent/office'  datapage='office'>Офис</Link>
                         </li>
                         <li>
-                            <Link className="header-menu-item-context-link" to='/rent/shop' onClick={console.log('handlePageParam')} datapage='shop'>Торговое помещение</Link>
+                            <Link className="header-menu-item-context-link" to='/rent/shop'  datapage='shop'>Торговое помещение</Link>
                         </li>
                         <li>
-                            <Link className="header-menu-item-context-link" to='/rent/land' onClick={console.log('handlePageParam')} datapage='land'>Участок</Link>
+                            <Link className="header-menu-item-context-link" to='/rent/land'  datapage='land'>Участок</Link>
                         </li>                        
                     </ul>
                     <NavLink onClick={handlePage} datapage='sale' to="/sale" className="header-menu-item-search">
@@ -107,19 +107,19 @@ export const SearchAside = () => {
                     </NavLink>
                     <ul className="header-menu-item-context sale">
                         <li>
-                            <Link className="header-menu-item-context-link" to='/sale/flat' onClick={console.log('handlePageParam')} datapage='flat'>Квартира</Link>
+                            <Link className="header-menu-item-context-link" to='/sale/flat'  datapage='flat'>Квартира</Link>
                         </li>
                         <li>
-                            <Link className="header-menu-item-context-link" to='/sale/house' onClick={console.log('handlePageParam')} datapage='house'>Дом</Link>
+                            <Link className="header-menu-item-context-link" to='/sale/house'  datapage='house'>Дом</Link>
                         </li>
                         <li>
-                            <Link className="header-menu-item-context-link" to='/sale/office' onClick={console.log('handlePageParam')} datapage='office'>Офис</Link>
+                            <Link className="header-menu-item-context-link" to='/sale/office'  datapage='office'>Офис</Link>
                         </li>
                         <li>
-                            <Link className="header-menu-item-context-link" to='/sale/shop' onClick={console.log('handlePageParam')} datapage='shop'>Торговое помещение</Link>
+                            <Link className="header-menu-item-context-link" to='/sale/shop'  datapage='shop'>Торговое помещение</Link>
                         </li>
                         <li>
-                            <Link className="header-menu-item-context-link" to='/sale/land' onClick={console.log('handlePageParam')} datapage='land'>Участок</Link>
+                            <Link className="header-menu-item-context-link" to='/sale/land'  datapage='land'>Участок</Link>
                         </li> 
                     </ul>
                     <NavLink onClick={handlePage} datapage='new' to="/new" className="header-menu-item-search">
@@ -127,16 +127,16 @@ export const SearchAside = () => {
                     </NavLink>
                     <ul className="header-menu-item-context new">
                         <li>
-                            <Link className="header-menu-item-context-link" to='/new/flat' onClick={console.log('handlePageParam')} datapage='flat'>Квартира</Link>
+                            <Link className="header-menu-item-context-link" to='/new/flat'  datapage='flat'>Квартира</Link>
                         </li>
                         <li>
-                            <Link className="header-menu-item-context-link" to='/new/house' onClick={console.log('handlePageParam')} datapage='house'>Дом</Link>
+                            <Link className="header-menu-item-context-link" to='/new/house'  datapage='house'>Дом</Link>
                         </li>
                         <li>
-                            <Link className="header-menu-item-context-link" to='/new/office' onClick={console.log('handlePageParam')} datapage='office'>Офис</Link>
+                            <Link className="header-menu-item-context-link" to='/new/office'  datapage='office'>Офис</Link>
                         </li>
                         <li>
-                            <Link className="header-menu-item-context-link" to='/new/shop' onClick={console.log('handlePageParam')} datapage='shop'>Торговое помещение</Link>
+                            <Link className="header-menu-item-context-link" to='/new/shop'  datapage='shop'>Торговое помещение</Link>
                         </li>
                     </ul>
                 </div>
