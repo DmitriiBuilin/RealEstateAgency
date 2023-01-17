@@ -187,11 +187,11 @@ export const SearchAside = () => {
                                 </div>
                                 <div className="row">
                                     <div className="col">
-                                        <input type="number" max="5" className="form-control" placeholder="Мин" aria-label="Min"/>
+                                        <input type="number" min="0" max="99999999" className="form-control" placeholder="Мин" aria-label="Min"/>
                                         <span>{currencySymbol}</span>
                                     </div>
                                     <div className="col">
-                                        <input type="number" className="form-control" placeholder="Макс" aria-label="Max"/>
+                                        <input type="number" min="0" max="99999999" className="form-control" placeholder="Макс" aria-label="Max"/>
                                         <span>{currencySymbol}</span>
                                     </div>
                                 </div>
