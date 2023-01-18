@@ -23,7 +23,7 @@ const page = {
 return (
     <>
         <div className="filter">
-            <div>
+            <div className="sorter-side">
                 <nav className="filter-nav" aria-label="breadcrumb">
                     <ol className="breadcrumb">
                         <li className="breadcrumb-item">

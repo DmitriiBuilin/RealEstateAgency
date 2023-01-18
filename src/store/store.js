@@ -11,7 +11,11 @@ import { initState } from "./initState";
 const persistConfig = {
     key: 'realty',
     storage,
-    blacklist: ['pageParam', 'fullDataBase', 'chosenObject']
+    blacklist: [
+      'pageParam', 
+      'fullDataBase', 
+      // 'chosenObject'
+    ]
   }
   
 const persistedReducer = persistReducer(persistConfig, rootReducer)

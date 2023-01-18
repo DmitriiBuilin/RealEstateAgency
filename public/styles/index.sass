@@ -695,6 +695,8 @@ input::-webkit-inner-spin-button
     display: flex
     justify-content: space-between
 
+.sorter-side
+    padding-left: 12px
 
 .search-result
     background-color: $color-white
@@ -712,10 +714,10 @@ input::-webkit-inner-spin-button
 
 .filter-nav
     --bs-breadcrumb-divider: '>'
-    padding: 7px 0 0 12px
+    padding: 7px 0 0 0
 
 .filter-result-notification
-    padding: 0 0 0 12px
+    padding: 0 0 0 0
     color: $color-dark-blue
     font-family: $font-main
     font-size: 17px
@@ -1056,6 +1058,38 @@ input::-webkit-inner-spin-button
     padding: 1rem 1rem
     width: 100%
     background-color: $color-blue 
+
+
+/* -- CARD COMPONENT -- */  
+
+
+.card-component-main
+    margin: 0 auto
+    width: 70%
+    display: flex
+    flex-direction: column
+    align-items: flex-start
+    background-color: #eef2f6
+    border-radius: 10px
+    box-shadow: 1px 1px 5px -2px grey
+    padding: 0 10px
+
+.card-title-wrp
+    display: flex
+    flex-direction: column
+    align-items: flex-start
+
+.card-id
+    color: rgba(33, 37, 41, 0.75)
+    font-size: 14px
+
+.card-name
+    font-family: $font-main
+    color: $color-dark-blue
+    font-size: 27px
+    font-weight: 700
+
+
 
 
 /* -- IMPORTANT -- */
