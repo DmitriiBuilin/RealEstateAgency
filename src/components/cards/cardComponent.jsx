@@ -1,11 +1,16 @@
+import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { getChosenObject } from "../../store/selectors/selector";
+import { getChosenObject, getCurrencyValue } from "../../store/selectors/selector";
 import { getPageValue } from "../../store/selectors/selector";
 
 export const CardComponent = () => {
     const chosenObject = useSelector(getChosenObject);
     const pageKey = useSelector(getPageValue);
+    const currency = useSelector(getCurrencyValue);
+    const [currencySymbol, setCurrencySymbol] = useState()  
+
+
     const page = {
         rent: 'Аренда',
         sale: 'Продажа',
@@ -20,6 +25,24 @@ export const CardComponent = () => {
     }
     
     // console.log(pageType[chosenObject[0].realAstateType])
+
+    useEffect(() => {
+        switch(currency) {
+            case 'usd': 
+                setCurrencySymbol('$');
+                break;
+            case 'rub': 
+                setCurrencySymbol('₽');
+                break;
+            case 'euro': 
+                setCurrencySymbol('€');
+                break;
+            case 'trl': 
+                setCurrencySymbol('₺');
+                break;
+            default: setCurrencySymbol('$');
+        }         
+    });
 
     return (
         <>
@@ -42,7 +65,111 @@ export const CardComponent = () => {
                 </ol>
             </nav>
             <h2 className="card-name">{chosenObject[0].objectName}</h2>
-            <p className="card-id">Номер объекта: {chosenObject[0].id}</p>
+            <p className="card-id">№ объекта: {chosenObject[0].id}</p>            
+        </div>
+        <div className="card-main-info">
+            <div className="card-photo">
+                <div className="card-photo-main">
+                    <img className="card-photo-main-img" src={chosenObject[0].img_1} alt="" />
+                </div>
+                <div className="card-photo-carousel">
+                    <div id="carouselExampleIndicators" className="carousel slide" data-bs-ride="true">
+                        <div className="carousel-inner">
+                            <div className="carousel-item active">
+                                <div className="card-photo-carousel-item ">
+                                    <img className="card-photo-main-item-img" src={chosenObject[0].img_1} alt="" />
+                                    <img className="card-photo-main-item-img" src={chosenObject[0].img_2} alt="" />
+                                    <img className="card-photo-main-item-img" src={chosenObject[0].img_3} alt="" />
+                                    <img className="card-photo-main-item-img" src={chosenObject[0].img_4} alt="" />
+                                </div>                                
+                            </div>
+                            <div className="carousel-item">
+                                <div className="card-photo-carousel-item">
+                                    <img className="card-photo-main-item-img" src={chosenObject[0].img_5} alt="" />
+                                </div>
+                            </div>
+                        </div>
+                        <button className="carousel-control-prev carousel-control-custom" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">                            
+                                <svg width="16" height="16" viewBox="0 0 16 16"  xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" clip-rule="evenodd" d="M11.3536 1.64645C11.5488 1.84171 11.5488 2.15829 11.3536 2.35355L5.70711 8L11.3536 13.6464C11.5488 13.8417 11.5488 14.1583 11.3536 14.3536C11.1583 14.5488 10.8417 14.5488 10.6464 14.3536L4.64645 8.35355C4.45118 8.15829 4.45118 7.84171 4.64645 7.64645L10.6464 1.64645C10.8417 1.45118 11.1583 1.45118 11.3536 1.64645Z" />
+                                </svg>                            
+                        </button>
+                        <button className="carousel-control-next carousel-control-custom" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">                            
+                                <svg width="16" height="16" viewBox="0 0 16 16"  xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" clip-rule="evenodd" d="M4.64645 1.64645C4.84171 1.45118 5.15829 1.45118 5.35355 1.64645L11.3536 7.64645C11.5488 7.84171 11.5488 8.15829 11.3536 8.35355L5.35355 14.3536C5.15829 14.5488 4.84171 14.5488 4.64645 14.3536C4.45118 14.1583 4.45118 13.8417 4.64645 13.6464L10.2929 8L4.64645 2.35355C4.45118 2.15829 4.45118 1.84171 4.64645 1.64645Z" />
+                                </svg>                            
+                        </button>                      
+                    </div>               
+                </div>
+            </div>
+            <div className="card-characters">                
+                <h3 className="card-price">{chosenObject[0].price}<span>{currencySymbol}</span></h3>
+                <p className="card-region">{chosenObject[0].city} / {chosenObject[0].district}</p>
+                <div className="card-properties-wrp">
+                    <ul className="card-properties-ul">
+                        <li>
+                            <p className="card-properties-item">Вид недвижимости</p>
+                            <p className="card-properties-item-value">{pageType[chosenObject[0].realAstateType]}</p>
+                        </li>
+                        <div className="card-divide"></div>
+                        <li>
+                            <p className="card-properties-item">Общая площадь, m²</p>
+                            <p className="card-properties-item-value">{chosenObject[0].m2gross}</p>
+                        </li>
+                        <div className="card-divide"></div>
+                        <li>
+                            <p className="card-properties-item">Жилая площадь, m²</p>
+                            <p className="card-properties-item-value">{chosenObject[0].m2net}</p>
+                        </li>
+                        <div className="card-divide"></div>
+                        <li>
+                            <p className="card-properties-item">Количество комнат</p>
+                            <p className="card-properties-item-value">{chosenObject[0].rooms}</p>
+                        </li>
+                        <div className="card-divide"></div>
+                        <li>
+                            <p className="card-properties-item">Этаж</p>
+                            <p className="card-properties-item-value">{chosenObject[0].floor}</p>
+                        </li>
+                        <div className="card-divide"></div>
+                        <li>
+                            <p className="card-properties-item">Всего этажей</p>
+                            <p className="card-properties-item-value">{chosenObject[0].totalFloor}</p>
+                        </li>
+                        <div className="card-divide"></div>
+                        <li>
+                            <p className="card-properties-item">Отопление</p>
+                            <p className="card-properties-item-value">{chosenObject[0].heating}</p>
+                        </li>
+                        <div className="card-divide"></div>
+                        <li>
+                            <p className="card-properties-item">Кондиционер</p>
+                            <p className="card-properties-item-value">{chosenObject[0].airConditioning}</p>
+                        </li>
+                        <div className="card-divide"></div>
+                        <li>
+                            <p className="card-properties-item">Ванные комнаты</p>
+                            <p className="card-properties-item-value">{chosenObject[0].bathrooms}</p>
+                        </li>
+                        <div className="card-divide"></div>
+                        <li>
+                            <p className="card-properties-item">Балкон</p>
+                            <p className="card-properties-item-value">{chosenObject[0].balcony}</p>
+                        </li>
+                        <div className="card-divide"></div>
+                        <li>
+                            <p className="card-properties-item">Мебель</p>
+                            <p className="card-properties-item-value">{chosenObject[0].furniture}</p>
+                        </li>
+                        <div className="card-divide"></div>
+                        <li>
+                            <p className="card-properties-item">Кухонная мебель</p>
+                            <p className="card-properties-item-value">{chosenObject[0].kitchen}</p>
+                        </li>
+                        <div className="card-divide"></div>
+                    </ul>                    
+                </div>
+            </div>
         </div>
         </>
     );
