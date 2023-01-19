@@ -13050,6 +13050,11 @@ input::-webkit-inner-spin-button {
   flex-direction: column;
 }
 
+.card-photo-small-screen {
+  display: none;
+  margin-bottom: 15px;
+}
+
 .card-photo-main {
   width: 100%;
   max-width: 600px;
@@ -13062,6 +13067,8 @@ input::-webkit-inner-spin-button {
   width: 600px;
   height: 100%;
   border-radius: 5px;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 .card-characters {
@@ -13083,6 +13090,8 @@ input::-webkit-inner-spin-button {
   width: 100%;
   max-width: 142px;
   height: 100px;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 .card-photo-main-item-img:hover {
@@ -13389,8 +13398,11 @@ input::-webkit-inner-spin-button {
   .card-properties-wrp {
     width: 100%;
   }
-  .card-photo-carousel {
+  .card-photo {
     display: none;
+  }
+  .card-photo-small-screen {
+    display: block;
   }
   .card-component-main {
     padding: 0 5px;

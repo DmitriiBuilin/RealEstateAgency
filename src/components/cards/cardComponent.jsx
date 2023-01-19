@@ -102,6 +102,44 @@ export const CardComponent = () => {
                     </div>               
                 </div>
             </div>
+            <div className="card-photo-small-screen">
+                <div id="carouselExampleFade" className="carousel slide carousel-fade">
+                    <div class="carousel-indicators">
+                        <button type="button" data-bs-target="#carouselExampleFade" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                        <button type="button" data-bs-target="#carouselExampleFade" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                        <button type="button" data-bs-target="#carouselExampleFade" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                        <button type="button" data-bs-target="#carouselExampleFade" data-bs-slide-to="3" aria-label="Slide 4"></button>
+                        <button type="button" data-bs-target="#carouselExampleFade" data-bs-slide-to="4" aria-label="Slide 5"></button>
+                    </div>
+                    <div className="carousel-inner">
+                        <div className="carousel-item card-photo-main active">
+                            <img src={chosenObject[0].img_1} className="d-block w-100 " alt="..." />
+                        </div>
+                        <div className="carousel-item card-photo-main">
+                            <img src={chosenObject[0].img_2} className="d-block w-100 " alt="..." />
+                        </div>
+                        <div className="carousel-item card-photo-main">
+                            <img src={chosenObject[0].img_3} className="d-block w-100 " alt="..." />
+                        </div>
+                        <div className="carousel-item card-photo-main">
+                            <img src={chosenObject[0].img_4} className="d-block w-100 " alt="..." />
+                        </div>
+                        <div className="carousel-item card-photo-main">
+                            <img src={chosenObject[0].img_5} className="d-block w-100 " alt="..." />
+                        </div>
+                    </div>
+                    <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
+                        <span className="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span className="visually-hidden">Previous</span>
+                    </button>
+                    <button className="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
+                        <span className="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span className="visually-hidden">Next</span>
+                    </button>
+                </div>
+
+
+            </div>
             <div className="card-characters">                
                 <h3 className="card-price">{chosenObject[0].price}<span>{currencySymbol}</span></h3>
                 <p className="card-region">{chosenObject[0].city} / {chosenObject[0].district}</p>
