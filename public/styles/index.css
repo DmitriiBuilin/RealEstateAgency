@@ -13013,7 +13013,7 @@ input::-webkit-inner-spin-button {
 /* -- CARD COMPONENT -- */  
 .card-component-main {
   margin: 0 auto;
-  width: 70%;
+  width: 1030px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -13120,6 +13120,7 @@ input::-webkit-inner-spin-button {
 
 .card-properties-wrp {
   width: 405px;
+  margin-bottom: 40px;
 }
 
 .card-properties-ul {
@@ -13175,6 +13176,15 @@ input::-webkit-inner-spin-button {
     justify-content: center;
   }
   .contacts-main {
+    flex-direction: column;
+  }
+}
+@media (max-width: 1065px) {
+  .card-component-main {
+    width: 100%;
+    margin: 0;
+  }
+  .card-main-info {
     flex-direction: column;
   }
 }
@@ -13261,6 +13271,9 @@ input::-webkit-inner-spin-button {
   }
   .header-menu {
     display: none;
+  }
+  .header-fixed {
+    padding-bottom: 0;
   }
 }
 @media (max-width: 767px) {
@@ -13359,6 +13372,28 @@ input::-webkit-inner-spin-button {
   .landlords-textarea {
     width: 100%;
     max-width: 320px;
+  }
+  .card-main-info {
+    align-items: center;
+    align-self: center;
+  }
+  .card-characters {
+    margin-left: 0;
+  }
+  .card-photo-main {
+    height: 300px;
+  }
+  .card-photo-main-img {
+    width: 100%;
+  }
+  .card-properties-wrp {
+    width: 100%;
+  }
+  .card-photo-carousel {
+    display: none;
+  }
+  .card-component-main {
+    padding: 0 5px;
   }
 }
 @media (max-width: 429px) {

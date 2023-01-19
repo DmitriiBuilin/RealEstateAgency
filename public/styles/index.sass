@@ -1065,7 +1065,7 @@ input::-webkit-inner-spin-button
 
 .card-component-main
     margin: 0 auto
-    width: 70%
+    width: 1030px
     display: flex
     flex-direction: column
     align-items: flex-start
@@ -1154,6 +1154,7 @@ input::-webkit-inner-spin-button
 
 .card-properties-wrp
     width:  405px
+    margin-bottom: 40px
 
 .card-properties-ul
     list-style: none
@@ -1209,6 +1210,15 @@ input::-webkit-inner-spin-button
     .contacts-main
         flex-direction: column
 
+@media(max-width: 1065px)
+
+    .card-component-main
+        width: 100%
+        margin: 0
+
+    .card-main-info
+        flex-direction: column
+    
 
 @media(max-width: 1024px)
     .hid2
@@ -1291,6 +1301,9 @@ input::-webkit-inner-spin-button
     
     .header-menu
         display: none
+
+    .header-fixed
+        padding-bottom: 0
 
 @media(max-width: 767px)
     .hid3
@@ -1391,6 +1404,27 @@ input::-webkit-inner-spin-button
         width: 100%
         max-width: 320px
 
+    .card-main-info
+        align-items: center
+        align-self: center
+
+    .card-characters
+        margin-left: 0
+
+    .card-photo-main
+        height: 300px
+
+    .card-photo-main-img
+        width: 100%
+
+    .card-properties-wrp
+        width: 100%
+
+    .card-photo-carousel
+        display: none
+
+    .card-component-main
+        padding: 0 5px
 
 
 @media(max-width: 429px)
