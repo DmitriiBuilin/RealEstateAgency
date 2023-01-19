@@ -9,7 +9,13 @@ export const CardComponent = () => {
     const pageKey = useSelector(getPageValue);
     const currency = useSelector(getCurrencyValue);
     const [currencySymbol, setCurrencySymbol] = useState()  
-
+    const noAction = (e) => {
+        e.preventDefault();
+    };
+    const [mainPhoto, setMainPhoto] = useState(chosenObject[0].img[0]);
+    const handleChangePhoto = (e, imgNumber) => {
+        setMainPhoto(chosenObject[0].img[imgNumber])
+    };
 
     const page = {
         rent: 'Аренда',
@@ -24,7 +30,7 @@ export const CardComponent = () => {
         land:'Участок',
     }
     
-    // console.log(pageType[chosenObject[0].realAstateType])
+    // console.log(document.getElementById('stove'))    
 
     useEffect(() => {
         switch(currency) {
@@ -41,7 +47,13 @@ export const CardComponent = () => {
                 setCurrencySymbol('₺');
                 break;
             default: setCurrencySymbol('$');
-        }         
+        }
+
+        document.getElementById('stove').checked = chosenObject[0].stove;  
+        document.getElementById('dishwasher').checked = chosenObject[0].dishwasher;  
+        document.getElementById('washingMachine').checked = chosenObject[0].washingMachine;  
+        document.getElementById('refrigerator').checked = chosenObject[0].refrigerator;  
+        document.getElementById('microwave').checked = chosenObject[0].microwave;  
     });
 
     return (
@@ -70,22 +82,22 @@ export const CardComponent = () => {
         <div className="card-main-info">
             <div className="card-photo">
                 <div className="card-photo-main">
-                    <img className="card-photo-main-img" src={chosenObject[0].img_1} alt="" />
+                    <img className="card-photo-main-img" src={mainPhoto} alt="" />
                 </div>
                 <div className="card-photo-carousel">
                     <div id="carouselExampleIndicators" className="carousel slide" data-bs-ride="true">
                         <div className="carousel-inner">
                             <div className="carousel-item active">
                                 <div className="card-photo-carousel-item ">
-                                    <img className="card-photo-main-item-img" src={chosenObject[0].img_1} alt="" />
-                                    <img className="card-photo-main-item-img" src={chosenObject[0].img_2} alt="" />
-                                    <img className="card-photo-main-item-img" src={chosenObject[0].img_3} alt="" />
-                                    <img className="card-photo-main-item-img" src={chosenObject[0].img_4} alt="" />
+                                    <img className="card-photo-main-item-img" src={chosenObject[0].img[0]} alt="" onClick={(e) => handleChangePhoto(e, '0')} />
+                                    <img className="card-photo-main-item-img" src={chosenObject[0].img[1]} alt="" onClick={(e) => handleChangePhoto(e, '1')} />
+                                    <img className="card-photo-main-item-img" src={chosenObject[0].img[2]} alt="" onClick={(e) => handleChangePhoto(e, '2')} />
+                                    <img className="card-photo-main-item-img" src={chosenObject[0].img[3]} alt="" onClick={(e) => handleChangePhoto(e, '3')} />
                                 </div>                                
                             </div>
                             <div className="carousel-item">
                                 <div className="card-photo-carousel-item">
-                                    <img className="card-photo-main-item-img" src={chosenObject[0].img_5} alt="" />
+                                    <img className="card-photo-main-item-img" src={chosenObject[0].img[4]} alt="" onClick={(e) => handleChangePhoto(e, '4')} />
                                 </div>
                             </div>
                         </div>
@@ -113,19 +125,19 @@ export const CardComponent = () => {
                     </div>
                     <div className="carousel-inner">
                         <div className="carousel-item card-photo-main active">
-                            <img src={chosenObject[0].img_1} className="d-block w-100 " alt="..." />
+                            <img src={chosenObject[0].img[0]} className="d-block w-100 " alt="..." />
                         </div>
                         <div className="carousel-item card-photo-main">
-                            <img src={chosenObject[0].img_2} className="d-block w-100 " alt="..." />
+                            <img src={chosenObject[0].img[1]} className="d-block w-100 " alt="..." />
                         </div>
                         <div className="carousel-item card-photo-main">
-                            <img src={chosenObject[0].img_3} className="d-block w-100 " alt="..." />
+                            <img src={chosenObject[0].img[2]} className="d-block w-100 " alt="..." />
                         </div>
                         <div className="carousel-item card-photo-main">
-                            <img src={chosenObject[0].img_4} className="d-block w-100 " alt="..." />
+                            <img src={chosenObject[0].img[3]} className="d-block w-100 " alt="..." />
                         </div>
                         <div className="carousel-item card-photo-main">
-                            <img src={chosenObject[0].img_5} className="d-block w-100 " alt="..." />
+                            <img src={chosenObject[0].img[4]} className="d-block w-100 " alt="..." />
                         </div>
                     </div>
                     <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
@@ -183,8 +195,7 @@ export const CardComponent = () => {
                         <li>
                             <p className="card-properties-item">Кондиционер</p>
                             <p className="card-properties-item-value">
-                                {chosenObject[0].airConditioning && 'Есть'}
-                                {!chosenObject[0].airConditioning && 'Нет'}
+                                {chosenObject[0].airConditioning ? 'Есть' : 'Нет'}
                             </p>
                         </li>
                         <div className="card-divide"></div>
@@ -201,19 +212,47 @@ export const CardComponent = () => {
                         <li>
                             <p className="card-properties-item">Мебель</p>
                             <p className="card-properties-item-value">
-                                {chosenObject[0].furniture && 'Есть'}
-                                {!chosenObject[0].furniture && 'Нет'}
+                                {chosenObject[0].furniture ? 'Есть' : 'Нет'}
                             </p>
                         </li>
                         <div className="card-divide"></div>
                         <li>
                             <p className="card-properties-item">Кухонная мебель</p>
                             <p className="card-properties-item-value">
-                                {chosenObject[0].kitchen && 'Есть'}
-                                {!chosenObject[0].kitchen && 'Нет'}
+                                {chosenObject[0].kitchen ? 'Есть' : 'Нет'}
+                            </p>
+                        </li>                            
+                        <div className="card-divide margin-bottom"></div>
+                        <li>
+                            <p className="card-properties-mini-item">Кухонная плита</p>
+                            <p className="card-properties-mini-item-value">
+                             <input className="form-check-input" type="checkbox" value='' id="stove" onClick={noAction} />
                             </p>
                         </li>
-                        <div className="card-divide"></div>
+                        <li>
+                            <p className="card-properties-mini-item">Посудомоечная машина</p>
+                            <p className="card-properties-mini-item-value">
+                             <input className="form-check-input" type="checkbox" value='' id="dishwasher" onClick={noAction} />
+                            </p>
+                        </li>
+                        <li>
+                            <p className="card-properties-mini-item">Стиральная машина</p>
+                            <p className="card-properties-mini-item-value">
+                             <input className="form-check-input" type="checkbox" value='' id="washingMachine" onClick={noAction} />
+                            </p>
+                        </li>
+                        <li>
+                            <p className="card-properties-mini-item">Холодильник</p>
+                            <p className="card-properties-mini-item-value">
+                             <input className="form-check-input" type="checkbox" value='' id="refrigerator" onClick={noAction} />
+                            </p>
+                        </li>
+                        <li>
+                            <p className="card-properties-mini-item">Микроволновая печь</p>
+                            <p className="card-properties-mini-item-value">
+                             <input className="form-check-input" type="checkbox" value='' id="microwave" onClick={noAction} />
+                            </p>
+                        </li>   
                     </ul>                    
                 </div>
             </div>

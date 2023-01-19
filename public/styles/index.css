@@ -13166,6 +13166,29 @@ input::-webkit-inner-spin-button {
   opacity: 50%;
 }
 
+.card-properties-mini-item {
+  width: 50%;
+  margin: 0;
+  font-family: roboto, arial, sans-serif;
+  color: #012158;
+  font-size: 15px;
+  font-weight: 400;
+}
+
+.card-properties-mini-item-value {
+  width: 50%;
+  right: 0;
+  font-family: roboto, arial, sans-serif;
+  color: #012158;
+  font-size: 15px;
+  font-weight: 300;
+  margin: 0;
+}
+
+.margin-bottom {
+  margin-bottom: 15px;
+}
+
 /* -- IMPORTANT -- */
 .hidden {
   display: none;
