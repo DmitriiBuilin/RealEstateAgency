@@ -13071,6 +13071,14 @@ input::-webkit-inner-spin-button {
      object-fit: cover;
 }
 
+.card-photo-main-mini-img {
+  width: 100%;
+  max-width: 400px;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
 .card-characters {
   width: 100%;
   max-width: 420px;

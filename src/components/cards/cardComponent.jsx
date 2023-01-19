@@ -125,19 +125,19 @@ export const CardComponent = () => {
                     </div>
                     <div className="carousel-inner">
                         <div className="carousel-item card-photo-main active">
-                            <img src={chosenObject[0].img[0]} className="d-block w-100 " alt="..." />
+                            <img src={chosenObject[0].img[0]} className="card-photo-main-mini-img d-block w-100 " alt="..." />
                         </div>
                         <div className="carousel-item card-photo-main">
-                            <img src={chosenObject[0].img[1]} className="d-block w-100 " alt="..." />
+                            <img src={chosenObject[0].img[1]} className=" card-photo-main-mini-img d-block w-100 " alt="..." />
                         </div>
                         <div className="carousel-item card-photo-main">
-                            <img src={chosenObject[0].img[2]} className="d-block w-100 " alt="..." />
+                            <img src={chosenObject[0].img[2]} className=" card-photo-main-mini-img d-block w-100 " alt="..." />
                         </div>
                         <div className="carousel-item card-photo-main">
-                            <img src={chosenObject[0].img[3]} className="d-block w-100 " alt="..." />
+                            <img src={chosenObject[0].img[3]} className=" card-photo-main-mini-img d-block w-100 " alt="..." />
                         </div>
                         <div className="carousel-item card-photo-main">
-                            <img src={chosenObject[0].img[4]} className="d-block w-100 " alt="..." />
+                            <img src={chosenObject[0].img[4]} className=" card-photo-main-mini-img d-block w-100 " alt="..." />
                         </div>
                     </div>
                     <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
