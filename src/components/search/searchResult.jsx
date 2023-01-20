@@ -61,7 +61,7 @@ export const SearchResult = () => {
                 <div className="search-result">                
                     {cardsListFilter.map((item) => {
                         return(
-                            <CardItem key={item.id} id={item.id} objectName={item.objectName} price={item.price} description={item.description} rooms={item.rooms} m2gross={item.m2gross} city={item.city} data={item.data} img_1={item.img[0]} img_2={item.img[1]} img_3={item.img[2]} img_4={item.img[3]} img_5={item.img[4]}/>
+                            <CardItem key={item.id} id={item.id} objectName={item.objectName} price={item.price} description={item.description} rooms={item.rooms} m2gross={item.m2gross} city={item.city} data={item.data} img={item.img} img_1={item.img[0]} img_2={item.img[1]} img_3={item.img[2]} img_4={item.img[3]} img_5={item.img[4]}/>
                         )                    
                     })}
                 </div>            

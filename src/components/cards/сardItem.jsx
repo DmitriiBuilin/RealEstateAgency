@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { chosenObject } from "../../store/actions/actions";
@@ -11,8 +12,17 @@ export const CardItem = (props) => {
         return item.id === props.id
     });
     const dispatchChoosenObject = () => {
-        dispatch(chosenObject(getThisObject))
+        dispatch(chosenObject(getThisObject)); 
     };
+
+    useEffect(() => {
+        // document.querySelectorAll('.carousel-inner').firrstChild.classList.add('active');
+        
+        const carouselInner = document.querySelectorAll('.carousel-inner')
+        for (let item of carouselInner) {
+            item.children[0].classList.add('active')
+        }        
+    });
 
     return (
         <>
@@ -21,7 +31,14 @@ export const CardItem = (props) => {
                 <div className="card-item-img-wrp">
                     <div id={idCarousel} className="carousel slide">
                         <div className="carousel-inner">
-                            <div className="carousel-item card-item-img-wrp active">
+                        {props.img.map((item) => {                            
+                            return(
+                            <div key={item + Math.random() * 100} className="carousel-item card-item-img-wrp">
+                                <img src={item} className="d-block w-100 card-item-img" alt={item}/>
+                            </div>                            
+                            )                                               
+                        })}
+                            {/* <div className="carousel-item card-item-img-wrp active">
                                 <img src={props.img_1} className="d-block w-100 card-item-img" alt="..." />
                             </div>
                             <div className="carousel-item card-item-img-wrp">
@@ -35,7 +52,7 @@ export const CardItem = (props) => {
                             </div>
                             <div className="carousel-item card-item-img-wrp">
                                 <img src={props.img_5} className="d-block w-100 card-item-img" alt="..."/>
-                            </div>
+                            </div> */}
                         </div>
                         <button className="carousel-control-prev" type="button" data-bs-target={"#" + idCarousel} data-bs-slide="prev">
                             <span className="carousel-control-prev-icon" aria-hidden="true"></span>
