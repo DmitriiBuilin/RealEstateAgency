@@ -6,7 +6,7 @@ import { getFullDataBase } from "../../store/selectors/selector";
 
 export const CardItem = (props) => {
     const dispatch = useDispatch();
-    const idCarousel = Math.floor(Math.random() * 1000);
+    const idCarousel = Math.floor(Math.random() * 100000);
     const fullDataBase = useSelector(getFullDataBase);
     const getThisObject = fullDataBase.filter((item) => {
         return item.id === props.id
@@ -16,8 +16,6 @@ export const CardItem = (props) => {
     };
 
     useEffect(() => {
-        // document.querySelectorAll('.carousel-inner').firrstChild.classList.add('active');
-        
         const carouselInner = document.querySelectorAll('.carousel-inner')
         for (let item of carouselInner) {
             item.children[0].classList.add('active')
@@ -31,28 +29,13 @@ export const CardItem = (props) => {
                 <div className="card-item-img-wrp">
                     <div id={idCarousel} className="carousel slide">
                         <div className="carousel-inner">
-                        {props.img.map((item) => {                            
-                            return(
-                            <div key={item + Math.random() * 100} className="carousel-item card-item-img-wrp">
-                                <img src={item} className="d-block w-100 card-item-img" alt={item}/>
-                            </div>                            
-                            )                                               
-                        })}
-                            {/* <div className="carousel-item card-item-img-wrp active">
-                                <img src={props.img_1} className="d-block w-100 card-item-img" alt="..." />
-                            </div>
-                            <div className="carousel-item card-item-img-wrp">
-                                <img src={props.img_2} className="d-block w-100 card-item-img" alt="..."/>
-                            </div>
-                            <div className="carousel-item card-item-img-wrp">
-                                <img src={props.img_3} className="d-block w-100 card-item-img" alt="..."/>
-                            </div>
-                            <div className="carousel-item card-item-img-wrp">
-                                <img src={props.img_4} className="d-block w-100 card-item-img" alt="..."/>
-                            </div>
-                            <div className="carousel-item card-item-img-wrp">
-                                <img src={props.img_5} className="d-block w-100 card-item-img" alt="..."/>
-                            </div> */}
+                            {props.img.map((item) => {                            
+                                return(
+                                <div key={item + Math.random() * 100} className="carousel-item card-item-img-wrp">
+                                    <img src={item} className="d-block w-100 card-item-img" alt={item}/>
+                                </div>                            
+                                )                                               
+                            })}
                         </div>
                         <button className="carousel-control-prev" type="button" data-bs-target={"#" + idCarousel} data-bs-slide="prev">
                             <span className="carousel-control-prev-icon" aria-hidden="true"></span>

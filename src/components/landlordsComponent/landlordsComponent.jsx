@@ -9,22 +9,18 @@ export const LandlordsComponent = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log('Landlord submit')
     };
 
     useEffect(() => {  
         /*Load-photo script*/        
         let inputs = document.querySelectorAll('.input-file');
-        console.log(inputs);
+
         Array.prototype.forEach.call(inputs, function (input) {
             let labelVal = document.querySelector('.load-photo-button-text').innerText;
-            console.log(labelVal);
-            console.log(input);
             input.addEventListener('change', function (e) {
                 let countFiles = '';
                 if (this.files && this.files.length >= 1)
-                    countFiles = this.files.length;   
-                    console.log(countFiles);     
+                    countFiles = this.files.length;  
                 if (countFiles)
                     document.querySelector('.load-photo-button-text').innerText = 'Выбрано файлов: ' + countFiles;
                 else

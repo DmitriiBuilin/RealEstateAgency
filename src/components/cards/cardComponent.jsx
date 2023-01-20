@@ -30,7 +30,7 @@ export const CardComponent = () => {
         land:'Участок',
     }
     
-    // console.log(document.getElementById('stove'))    
+    console.log(chosenObject[0].img.length)    
 
     useEffect(() => {
         switch(currency) {
@@ -53,7 +53,9 @@ export const CardComponent = () => {
         document.getElementById('dishwasher').checked = chosenObject[0].dishwasher;  
         document.getElementById('washingMachine').checked = chosenObject[0].washingMachine;  
         document.getElementById('refrigerator').checked = chosenObject[0].refrigerator;  
-        document.getElementById('microwave').checked = chosenObject[0].microwave;  
+        document.getElementById('microwave').checked = chosenObject[0].microwave;
+        
+        const carouselInner = document.querySelector('.carousel-inner-small').children[0].classList.add('active');
     });
 
     return (
@@ -82,24 +84,42 @@ export const CardComponent = () => {
         <div className="card-main-info">
             <div className="card-photo">
                 <div className="card-photo-main">
-                    <img className="card-photo-main-img" src={mainPhoto} alt="" />
+                    <img className="card-photo-main-img" src={mainPhoto} alt={mainPhoto} />
                 </div>
                 <div className="card-photo-carousel">
                     <div id="carouselExampleIndicators" className="carousel slide" data-bs-ride="true">
                         <div className="carousel-inner">
                             <div className="carousel-item active">
-                                <div className="card-photo-carousel-item ">
-                                    <img className="card-photo-main-item-img" src={chosenObject[0].img[0]} alt="" onClick={(e) => handleChangePhoto(e, '0')} />
-                                    <img className="card-photo-main-item-img" src={chosenObject[0].img[1]} alt="" onClick={(e) => handleChangePhoto(e, '1')} />
-                                    <img className="card-photo-main-item-img" src={chosenObject[0].img[2]} alt="" onClick={(e) => handleChangePhoto(e, '2')} />
-                                    <img className="card-photo-main-item-img" src={chosenObject[0].img[3]} alt="" onClick={(e) => handleChangePhoto(e, '3')} />
-                                </div>                                
-                            </div>
-                            <div className="carousel-item">
                                 <div className="card-photo-carousel-item">
-                                    <img className="card-photo-main-item-img" src={chosenObject[0].img[4]} alt="" onClick={(e) => handleChangePhoto(e, '4')} />
+                                    {chosenObject[0].img.slice(0, 4).map((item, index) => {                            
+                                        return(
+                                        <img key={item + Math.random() * 100} className="card-photo-main-item-img" src={item} alt={item} onClick={(e) => handleChangePhoto(e, index)} />                            
+                                        )                                               
+                                    })}
+                                </div>               
+                            </div>                            
+                            {chosenObject[0].img.length <= 4 ? null :
+                                <div className="carousel-item">
+                                    <div className="card-photo-carousel-item ">
+                                        {chosenObject[0].img.slice(4, 8).map((item, index) => {                            
+                                            return(
+                                            <img key={item + Math.random() * 100} className="card-photo-main-item-img" src={item} alt={item} onClick={(e) => handleChangePhoto(e, index + 4)} />                            
+                                            )                                               
+                                        })}
+                                    </div>
                                 </div>
-                            </div>
+                            }
+                            {chosenObject[0].img.length <= 8 ? null :
+                                <div className="carousel-item">
+                                    <div className="card-photo-carousel-item ">
+                                        {chosenObject[0].img.slice(8, 12).map((item, index) => {                            
+                                            return(
+                                            <img key={item + Math.random() * 100} className="card-photo-main-item-img" src={item} alt={item} onClick={(e) => handleChangePhoto(e, index + 8)} />                            
+                                            )                                               
+                                        })}
+                                    </div>
+                                </div>
+                            }
                         </div>
                         <button className="carousel-control-prev carousel-control-custom" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">                            
                                 <svg width="16" height="16" viewBox="0 0 16 16"  xmlns="http://www.w3.org/2000/svg">
@@ -116,16 +136,23 @@ export const CardComponent = () => {
             </div>
             <div className="card-photo-small-screen">
                 <div id="carouselExampleFade" className="carousel slide carousel-fade">
-                    <div className="carousel-indicators">
+                    {/* <div className="carousel-indicators">
                         <button type="button" data-bs-target="#carouselExampleFade" data-bs-slide-to="0" className="active" aria-current="true" aria-label="Slide 1"></button>
                         <button type="button" data-bs-target="#carouselExampleFade" data-bs-slide-to="1" aria-label="Slide 2"></button>
                         <button type="button" data-bs-target="#carouselExampleFade" data-bs-slide-to="2" aria-label="Slide 3"></button>
                         <button type="button" data-bs-target="#carouselExampleFade" data-bs-slide-to="3" aria-label="Slide 4"></button>
                         <button type="button" data-bs-target="#carouselExampleFade" data-bs-slide-to="4" aria-label="Slide 5"></button>
-                    </div>
-                    <div className="carousel-inner">
-                        <div className="carousel-item card-photo-main active">
-                            <img src={chosenObject[0].img[0]} className="card-photo-main-mini-img d-block w-100 " alt="..." />
+                    </div> */}
+                    <div className="carousel-inner carousel-inner-small">
+                        {chosenObject[0].img.map((item) => {                            
+                            return(  
+                            <div key={item + Math.random() * 1000} className="carousel-item card-photo-main">
+                                <img src={item} className="d-block w-100 card-item-img" alt={item} />
+                            </div>                            
+                            )                                               
+                        })}
+                        {/* <div className="carousel-item card-photo-main active">
+                            <img src={item} className="card-photo-main-mini-img d-block w-100 " alt={item} />
                         </div>
                         <div className="carousel-item card-photo-main">
                             <img src={chosenObject[0].img[1]} className=" card-photo-main-mini-img d-block w-100 " alt="..." />
@@ -138,7 +165,7 @@ export const CardComponent = () => {
                         </div>
                         <div className="carousel-item card-photo-main">
                             <img src={chosenObject[0].img[4]} className=" card-photo-main-mini-img d-block w-100 " alt="..." />
-                        </div>
+                        </div> */}
                     </div>
                     <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
                         <span className="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -149,8 +176,6 @@ export const CardComponent = () => {
                         <span className="visually-hidden">Next</span>
                     </button>
                 </div>
-
-
             </div>
             <div className="card-characters">                
                 <h3 className="card-price">{chosenObject[0].price}<span>{currencySymbol}</span></h3>
