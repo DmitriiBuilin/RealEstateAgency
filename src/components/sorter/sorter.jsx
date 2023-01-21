@@ -1,17 +1,26 @@
-import { useSelector } from "react-redux";
+import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
+import { sorterValue } from "../../store/actions/actions";
 import { getPageParamValue, getPageValue } from "../../store/selectors/selector";
 
 export const Sorter = (props) => {
 const navigate = useNavigate();
+const dispatch = useDispatch();
 const pageKey = useSelector(getPageValue);
-const totalValue = useSelector(getPageParamValue)
+const totalValue = useSelector(getPageParamValue);
+const [sortValue, setSortValue] = useState("sort");
 
 const handleClickMapButton = () => {
     navigate('/map')
 };
 const handleClickFilterButton = () => {
     document.querySelector('.aside-search').style.display = 'block';
+};
+const handleChangeValue = (e) => {
+    setSortValue(e.target.value);
+    dispatch(sorterValue(e.target.value));
+    console.log(e.target.value)
 };
 
 const page = {
@@ -42,19 +51,19 @@ return (
                 <p className="filter-result-notification">Найдено <span>{totalValue}</span> объектов в разделе <span>{page[pageKey]}</span>&nbsp;<span>{props.pageParametr}</span></p>
             </div>
             <div className="filter-buttons">                    
-                <button type="button" onClick={handleClickMapButton} className="btn btn-primary map-button-item">Показать на карте</button>
+                <button type="button" onClick={() => handleClickMapButton()} className="btn btn-primary map-button-item">Показать на карте</button>
                 <button type="button" onClick={handleClickFilterButton} className="btn btn-primary filter-button-item">
                     <svg width="16" height="16" viewBox="0 0 16 16"  xmlns="http://www.w3.org/2000/svg">
                     <path d="M1.5 1.5C1.5 1.22386 1.72386 1 2 1H14C14.2761 1 14.5 1.22386 14.5 1.5V3.5C14.5 3.62352 14.4543 3.74267 14.3716 3.83448L10 8.69187V13.5C10 13.7152 9.86228 13.9063 9.65811 13.9743L6.65811 14.9743C6.50564 15.0252 6.33803 14.9996 6.20764 14.9056C6.07726 14.8116 6 14.6607 6 14.5V8.69187L1.62835 3.83448C1.54572 3.74267 1.5 3.62352 1.5 3.5V1.5Z" />
                     </svg>
                     Фильтр
                 </button>
-                <select className="form-select" aria-label="Default select example">
-                    <option defaultValue>Сортировать...</option>
-                    <option value="1">По цене (Сначала дороже)</option>
-                    <option value="2">По цене (Сначала дешевле)</option>
-                    <option value="3">По дате (Сначала новые)</option>
-                    <option value="4">По дате (Сначала старые)</option>
+                <select value={sortValue} onChange={handleChangeValue} className="form-select" aria-label="Default select example">
+                    <option disabled value="sort">Сортировать...</option>
+                    <option value="expensive">По цене (Сначала дороже)</option>
+                    <option value="chipiest">По цене (Сначала дешевле)</option>
+                    <option value="new">По дате (Сначала новые)</option>
+                    <option value="old">По дате (Сначала старые)</option>
                 </select>                    
             </div>
         </div>

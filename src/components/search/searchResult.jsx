@@ -3,7 +3,7 @@ import CardItem from "../cards/сardItem";
 import Sorter from "../sorter/sorter";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getFullDataBase, getPageValue } from "../../store/selectors/selector";
+import { getFullDataBase, getPageValue, getSorterValue } from "../../store/selectors/selector";
 import { pageParam } from "../../store/actions/actions";
 // import axios from "axios";
 
@@ -12,6 +12,7 @@ export const SearchResult = () => {
     const dispatch = useDispatch();
     const fullDataBase = useSelector(getFullDataBase);
     const target = useSelector(getPageValue);
+    const storeSorterValue = useSelector(getSorterValue);
     const [cardsList] = useState(fullDataBase)
     const cardsListFilter = (
         cardsList.filter((item) => {
@@ -30,6 +31,56 @@ export const SearchResult = () => {
         office: 'Офис',
         shop: 'Торговое помещение',
         land: 'Участок',
+    };
+
+    /* Sort module */
+
+    switch(storeSorterValue) {
+        case "chipiest":
+            cardsListFilter.sort((a, b) => {
+                if (a.price > b.price) {
+                    return 1;
+                    }
+                    if (a.price < b.price) {
+                    return -1;
+                    }
+                    return 0;
+            });
+            break;                
+        case "expensive": 
+            cardsListFilter.sort((a, b) => {
+                if (a.price > b.price) {
+                    return -1;
+                }
+                if (a.price < b.price) {
+                    return 1;
+                }
+                return 0;
+            });
+            break;   
+        case "old":
+            cardsListFilter.sort((a, b) => {
+                if (a.date > b.date) {
+                    return 1;
+                    }
+                    if (a.date < b.date) {
+                    return -1;
+                    }
+                    return 0;
+            });
+            break;   
+        case "new":  
+            cardsListFilter.sort((a, b) => {
+                if (a.date > b.date) {
+                    return -1;
+                    }
+                    if (a.date < b.date) {
+                    return 1;
+                    }
+                    return 0;
+            });
+            break; 
+        default:
     };
 
     useEffect(() => {        
@@ -61,7 +112,7 @@ export const SearchResult = () => {
                 <div className="search-result">                
                     {cardsListFilter.map((item) => {
                         return(
-                            <CardItem key={item.id} id={item.id} objectName={item.objectName} price={item.price} description={item.description} rooms={item.rooms} m2gross={item.m2gross} city={item.city} data={item.data} img={item.img} img_1={item.img[0]} img_2={item.img[1]} img_3={item.img[2]} img_4={item.img[3]} img_5={item.img[4]}/>
+                            <CardItem key={item.id} id={item.id} objectName={item.objectName} price={item.price} description={item.description} rooms={item.rooms} m2gross={item.m2gross} city={item.city} date={item.date} img={item.img} img_1={item.img[0]} img_2={item.img[1]} img_3={item.img[2]} img_4={item.img[3]} img_5={item.img[4]}/>
                         )                    
                     })}
                 </div>            

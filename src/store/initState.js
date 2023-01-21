@@ -10,4 +10,5 @@ export const initState = {
     pageParam: "",
     fullDataBase: objects,
     chosenObject: "",
+    sorterValue: "sort",
   }

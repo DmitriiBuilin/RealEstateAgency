@@ -57,7 +57,7 @@ export const CardItem = (props) => {
                         <p>{props.rooms}</p>
                         <p>{props.m2gross}<span>m²</span></p>
                         <p>{props.city}</p>
-                        <p>{props.data}</p>
+                        <p>{props.date}</p>
                     </div>                    
                 </div>                
             </div>

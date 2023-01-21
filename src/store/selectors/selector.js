@@ -18,3 +18,7 @@ export const getFullDataBase = (state) => {
 export const getChosenObject = (state) => {
     return state.chosenObject
 };
+
+export const getSorterValue = (state) => {
+    return state.sorterValue
+};

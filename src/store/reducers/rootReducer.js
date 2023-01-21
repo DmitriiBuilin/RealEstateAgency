@@ -6,6 +6,7 @@ import languageReducer from "./languageReducer";
 import objectReducer from "./objectReducer";
 import pageParamReducer from "./pageParamReducer";
 import pageReducer from "./pageReducer";
+import sorterValueReducer from "./sorterValueReducer";
 
 const rootReducer = combineReducers ({
     currency: currencyReducer,
@@ -14,6 +15,7 @@ const rootReducer = combineReducers ({
     pageParam: pageParamReducer,
     fullDataBase: dataBaseReducer,
     chosenObject: objectReducer,
+    sorterValue: sorterValueReducer,
 });
 
 export default rootReducer;

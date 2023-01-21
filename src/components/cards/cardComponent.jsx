@@ -30,7 +30,7 @@ export const CardComponent = () => {
         land:'Участок',
     }
     
-    console.log(chosenObject[0].img.length)    
+    // console.log(chosenObject[0].img.length)    
 
     useEffect(() => {
         switch(currency) {
@@ -55,7 +55,7 @@ export const CardComponent = () => {
         document.getElementById('refrigerator').checked = chosenObject[0].refrigerator;  
         document.getElementById('microwave').checked = chosenObject[0].microwave;
         
-        const carouselInner = document.querySelector('.carousel-inner-small').children[0].classList.add('active');
+        document.querySelector('.carousel-inner-small').children[0].classList.add('active');
     });
 
     return (
@@ -136,13 +136,6 @@ export const CardComponent = () => {
             </div>
             <div className="card-photo-small-screen">
                 <div id="carouselExampleFade" className="carousel slide carousel-fade">
-                    {/* <div className="carousel-indicators">
-                        <button type="button" data-bs-target="#carouselExampleFade" data-bs-slide-to="0" className="active" aria-current="true" aria-label="Slide 1"></button>
-                        <button type="button" data-bs-target="#carouselExampleFade" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                        <button type="button" data-bs-target="#carouselExampleFade" data-bs-slide-to="2" aria-label="Slide 3"></button>
-                        <button type="button" data-bs-target="#carouselExampleFade" data-bs-slide-to="3" aria-label="Slide 4"></button>
-                        <button type="button" data-bs-target="#carouselExampleFade" data-bs-slide-to="4" aria-label="Slide 5"></button>
-                    </div> */}
                     <div className="carousel-inner carousel-inner-small">
                         {chosenObject[0].img.map((item) => {                            
                             return(  
@@ -151,21 +144,6 @@ export const CardComponent = () => {
                             </div>                            
                             )                                               
                         })}
-                        {/* <div className="carousel-item card-photo-main active">
-                            <img src={item} className="card-photo-main-mini-img d-block w-100 " alt={item} />
-                        </div>
-                        <div className="carousel-item card-photo-main">
-                            <img src={chosenObject[0].img[1]} className=" card-photo-main-mini-img d-block w-100 " alt="..." />
-                        </div>
-                        <div className="carousel-item card-photo-main">
-                            <img src={chosenObject[0].img[2]} className=" card-photo-main-mini-img d-block w-100 " alt="..." />
-                        </div>
-                        <div className="carousel-item card-photo-main">
-                            <img src={chosenObject[0].img[3]} className=" card-photo-main-mini-img d-block w-100 " alt="..." />
-                        </div>
-                        <div className="carousel-item card-photo-main">
-                            <img src={chosenObject[0].img[4]} className=" card-photo-main-mini-img d-block w-100 " alt="..." />
-                        </div> */}
                     </div>
                     <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
                         <span className="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -176,10 +154,14 @@ export const CardComponent = () => {
                         <span className="visually-hidden">Next</span>
                     </button>
                 </div>
+                <p className="card-region">Всего {chosenObject[0].img.length} фото</p>
             </div>
             <div className="card-characters">                
                 <h3 className="card-price">{chosenObject[0].price}<span>{currencySymbol}</span></h3>
-                <p className="card-region">{chosenObject[0].city} / {chosenObject[0].district}</p>
+                <div className="card-region-wrp">
+                    <p className="card-region">{chosenObject[0].city} / {chosenObject[0].district}</p>
+                    <p className="card-region">{chosenObject[0].date}</p>
+                </div>                
                 <div className="card-properties-wrp">
                     <ul className="card-properties-ul">
                         <li>
