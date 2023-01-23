@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, NavLink } from "react-router-dom";
-import { currencySelect, pageParam, pageSelect } from "../../store/actions/actions";
+import { currencySelect, pageSelect } from "../../store/actions/actions";
 import { getCurrencyValue, getPageValue } from "../../store/selectors/selector";
 
 export const SearchAside = () => {
@@ -26,10 +26,6 @@ export const SearchAside = () => {
         const pageId = e.target.getAttribute('datapage');
         dispatch(pageSelect(pageId));
     };
-    // const handlePageParam = (e) => {
-    //     const pageParamId = e.target.getAttribute('datapage');
-    //     dispatch(pageParam(pageParamId));
-    // };    
 
     useEffect(() => {
         const currencyAsideLi = document.querySelectorAll('.btn-check');
@@ -149,17 +145,22 @@ export const SearchAside = () => {
                         </h2>
                         <div id="panelsStayOpen-collapseOne" data-bs-parent="#accordionExample" className="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingOne">
                             <div className="accordion-body">
-                                <select className="form-select form-select-dev" defaultValue='country' id="inputCountry" required>
-                                    <option disabled value="country">Страна</option>
-                                    <option value="trk">Турция</option>
+                                <select className="form-select form-select-dev" defaultValue='city' id="inputCountry" required>
+                                    <option disabled value="city">Город</option>
+                                    <option value="Istanbul">Стамбул</option>
+                                    <option value="Antalya">Анталья</option>
+                                    <option value="Alanya">Аланья</option>
+                                    <option value="Mersin">Мерсин</option>
                                 </select>
                                 <div className="invalid-feedback">
                                 Please select a valid option.
                                 </div>
-                                <select className="form-select" defaultValue='city' id="inputCity" required>
-                                    <option disabled value="city">Город</option>
-                                    <option value="antalya">Анталья</option>
-                                    <option value="alanya">Аланья</option>
+                                <select className="form-select" defaultValue='district' id="inputCity" required>
+                                    <option disabled value="district">Район</option>
+                                    <option value="Kepez">Кепез</option>
+                                    <option value="Konyalty">Конъялты</option>
+                                    <option value="Lara">Лара</option>
+                                    <option value="Muratpasha">Муратпаша</option>
                                 </select>
                             </div>
                         </div>

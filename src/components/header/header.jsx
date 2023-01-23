@@ -4,6 +4,7 @@ import { Link, NavLink } from "react-router-dom";
 import { currencySelect, languageSelect, pageSelect } from "../../store/actions/actions";
 import { getCurrencyValue, getLanguageValue } from "../../store/selectors/selector";
 import $ from "jquery"
+import Api from "../../utils/loadJSON";
 
 
 export const Header = () => {
@@ -54,8 +55,7 @@ export const Header = () => {
         selectedLanguage.parentNode.classList.add('selected')
         selectedCurrency.parentNode.classList.add('selected')
 
-        /* jQuery script (show/hide header) */
-        
+        /* jQuery script (show/hide header) */        
         let header = $('.header-fixed'),
         scrollPrev = 0;
 
@@ -74,7 +74,7 @@ export const Header = () => {
     return (
         <header id="header">
             <div id='headerFloat' className="header-block header-fixed container-primary">
-                <div className="header-background">
+                <div className="header-background">                    
                     <Link to="/" className="header-logo">
                         <svg width="170" height="50" xmlns="http://www.w3.org/2000/svg">
                         <g className="layer">

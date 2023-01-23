@@ -57,7 +57,7 @@ export const Footer = () => {
                     <h3>Наши города</h3>
                     <p><Link className="footer-content-link">Стамбул</Link></p>
                     <p><Link className="footer-content-link">Анталья</Link></p>
-                    <p><Link className="footer-content-link">Бодрум</Link></p>
+                    <p><Link className="footer-content-link">Аланья</Link></p>
                     <p><Link className="footer-content-link">Мерсин</Link></p>
                 </div>
                 <div className="footer-content-navigate">

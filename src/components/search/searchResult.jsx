@@ -88,7 +88,6 @@ export const SearchResult = () => {
         //     .then((response) => {
         //         console.log(response.data);
         //     });
-        
         dispatch(pageParam(totalValue))
     });
 
