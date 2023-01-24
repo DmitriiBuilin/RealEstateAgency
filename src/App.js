@@ -9,12 +9,10 @@ import Sale from './pages/rus/sale/sale';
 import Map from './pages/rus/map/map';
 import PersonalData from './pages/rus/personalData/personalData';
 import ObjectCard from './pages/rus/objectCard/objectCard';
-import Firebase from './server/googleFirebase';
 
 function App() {
   return (
     <div className="App">
-      <Firebase/>
       <Routes>        
         <Route path="*" element={<h2>404 Page not found</h2>} />
         <Route exact path="/rent" element={<Rent />} />

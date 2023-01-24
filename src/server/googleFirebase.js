@@ -1,26 +1,32 @@
 import { initializeApp } from "firebase/app";
-import { getDatabase, ref, set } from "firebase/database";
-import objectsDataBase from "./server";
+import { getAnalytics } from "firebase/analytics";
+import { getDatabase, ref, set, get, child } from "firebase/database";
 
-
-export const Firebase = () => {
-// TODO: Replace the following with your app's Firebase project configuration
-// See: https://firebase.google.com/docs/web/learn-more#config-object
 const firebaseConfig = {
-    // ...
-    // The value of `databaseURL` depends on the location of the database
-    databaseURL: "https://antalya-realty.firebaseio.com",
-  };
-  // Initialize Firebase
-  const app = initializeApp(firebaseConfig);
-  // Initialize Realtime Database and get a reference to the service
-  const database = getDatabase(app);
-
-//   set(ref(database), {
-//     objectsDataBase;
-//   });
-  
-  console.log(database);
+    apiKey: "AIzaSyAClSHATIAMG2wLVdhn8VkrWQGt-cr-nEo",
+    authDomain: "antalya-realty.firebaseapp.com",
+    databaseURL: "https://antalya-realty-default-rtdb.europe-west1.firebasedatabase.app",
+    projectId: "antalya-realty",
+    storageBucket: "antalya-realty.appspot.com",
+    messagingSenderId: "827813591412",
+    appId: "1:827813591412:web:802cdfc4926f6e5e005421",
+    measurementId: "G-PGJ27FCMNM"
 };
 
-export default Firebase;
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
+const database = getDatabase(app);
+
+const dbRef = ref(getDatabase());
+get(dbRef).then((snapshot) => {
+    if (snapshot.exists()) {
+        console.log(snapshot.val());
+    } else {
+        console.log("No data available");
+    }
+}).catch((error) => {
+        console.error(error);
+});
+
+
+export const dataRef = ref(database);

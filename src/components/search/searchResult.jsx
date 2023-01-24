@@ -4,16 +4,18 @@ import Sorter from "../sorter/sorter";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getFullDataBase, getPageValue, getSorterValue } from "../../store/selectors/selector";
-import { pageParam } from "../../store/actions/actions";
-// import axios from "axios";
+import { objectsDataBase, pageParam } from "../../store/actions/actions";
+import { onValue, ref } from "firebase/database";
+import { dataRef } from "../../server/googleFirebase";
 
 export const SearchResult = () => {
     const { param } = useParams();    
     const dispatch = useDispatch();
-    const fullDataBase = useSelector(getFullDataBase);
+    // const fullDataBase = useSelector(getFullDataBase);
+    // const [fullDataBase, setFullDataBase] = useState([]);
     const target = useSelector(getPageValue);
     const storeSorterValue = useSelector(getSorterValue);
-    const [cardsList] = useState(fullDataBase)
+    const [cardsList, setCardsList] = useState([])
     const cardsListFilter = (
         cardsList.filter((item) => {
             if(!param) {
@@ -83,13 +85,17 @@ export const SearchResult = () => {
         default:
     };
 
-    useEffect(() => {        
-        // axios.get(fullDataBase)
-        //     .then((response) => {
-        //         console.log(response.data);
-        //     });
-        dispatch(pageParam(totalValue))
-    });
+    dispatch(pageParam(totalValue));
+
+    useEffect(() => {
+        onValue(dataRef, (snapshot) => {
+            const data = snapshot.val()
+            if (data) {
+                setCardsList(data);      
+                dispatch(objectsDataBase(data));
+            }
+        });        
+    }, []);
 
     if(cardsListFilter.length === 0) {
         return (

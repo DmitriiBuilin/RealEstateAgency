@@ -4,8 +4,6 @@ import { Link, NavLink } from "react-router-dom";
 import { currencySelect, languageSelect, pageSelect } from "../../store/actions/actions";
 import { getCurrencyValue, getLanguageValue } from "../../store/selectors/selector";
 import $ from "jquery"
-import Api from "../../utils/loadJSON";
-
 
 export const Header = () => {
     const currency = useSelector(getCurrencyValue);
