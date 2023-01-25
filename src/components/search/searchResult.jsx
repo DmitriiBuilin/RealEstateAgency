@@ -11,8 +11,6 @@ import { dataRef } from "../../server/googleFirebase";
 export const SearchResult = () => {
     const { param } = useParams();    
     const dispatch = useDispatch();
-    // const fullDataBase = useSelector(getFullDataBase);
-    // const [fullDataBase, setFullDataBase] = useState([]);
     const target = useSelector(getPageValue);
     const storeSorterValue = useSelector(getSorterValue);
     const [cardsList, setCardsList] = useState([])
@@ -22,10 +20,8 @@ export const SearchResult = () => {
                 return (item.target === target)}
             return (
                 item.target === target && item.realAstateType === param
-            )
-            
+            )            
     }));
-    const totalValue = String(cardsListFilter.length);
 
     const pageParametr = {
         flat: 'Квартира',
@@ -85,7 +81,7 @@ export const SearchResult = () => {
         default:
     };
 
-    dispatch(pageParam(totalValue));
+    
 
     useEffect(() => {
         onValue(dataRef, (snapshot) => {
@@ -96,6 +92,8 @@ export const SearchResult = () => {
             }
         });        
     }, []);
+
+    dispatch(pageParam(String(cardsListFilter.length)));
 
     if(cardsListFilter.length === 0) {
         return (

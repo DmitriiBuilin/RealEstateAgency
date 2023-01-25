@@ -18,15 +18,15 @@ const analytics = getAnalytics(app);
 const database = getDatabase(app);
 
 const dbRef = ref(getDatabase());
-get(dbRef).then((snapshot) => {
+
+export const objectData = get(dbRef).then((snapshot) => {
     if (snapshot.exists()) {
-        console.log(snapshot.val());
+        // console.log(snapshot.val());
     } else {
         console.log("No data available");
     }
 }).catch((error) => {
         console.error(error);
 });
-
 
 export const dataRef = ref(database);

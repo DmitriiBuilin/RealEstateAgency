@@ -1,4 +1,4 @@
-export const currencyReducer = (state = "rub", action) => {
+export const currencyReducer = (state = "$", action) => {
     switch (action.type) {
         case 'HEADER::CURRENCYSELECT':
           return action.payload;

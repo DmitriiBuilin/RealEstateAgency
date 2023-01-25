@@ -8,7 +8,7 @@ export const SearchAside = () => {
     const currency = useSelector(getCurrencyValue);
     const pageKey = useSelector(getPageValue);
     const dispatch = useDispatch();
-    const [currencySymbol, setCurrencySymbol] = useState()  
+    const [currencySymbol, setCurrencySymbol] = useState(currency)  
     
     const handleCurrency = (e) => {
         const id = e.target.getAttribute('dataname');
@@ -38,22 +38,23 @@ export const SearchAside = () => {
             if(currencyAsideLi[i].getAttribute('dataname') === `${currency}`) {
                 currencyAsideLi[i].checked = true;
             };
-        }      
-        switch(currency) {
-            case 'usd': 
-                setCurrencySymbol('$');
-                break;
-            case 'rub': 
-                setCurrencySymbol('₽');
-                break;
-            case 'euro': 
-                setCurrencySymbol('€');
-                break;
-            case 'trl': 
-                setCurrencySymbol('₺');
-                break;
-            default: setCurrencySymbol('$');
-        } 
+        }
+        setCurrencySymbol(currency);      
+        // switch(currency) {
+        //     case 'usd': 
+        //         setCurrencySymbol('$');
+        //         break;
+        //     case 'rub': 
+        //         setCurrencySymbol('₽');
+        //         break;
+        //     case 'euro': 
+        //         setCurrencySymbol('€');
+        //         break;
+        //     case 'trl': 
+        //         setCurrencySymbol('₺');
+        //         break;
+        //     default: setCurrencySymbol('$');
+        // } 
         switch(pageKey) {
             case 'rent': 
                 document.querySelector('.rent').classList.remove('hidden');
@@ -174,16 +175,16 @@ export const SearchAside = () => {
                         <div id="panelsStayOpen-collapseTwo" data-bs-parent="#accordionExample" className="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingTwo">
                             <div className="accordion-body">
                                 <div className="btn-group" role="group" aria-label="Basic radio toggle button group">
-                                    <input type="radio" onClick={handleCurrency} className="btn-check" dataname="usd" name="btnradio" id="btnradio1" autoComplete="off" />
+                                    <input type="radio" onClick={handleCurrency} className="btn-check" dataname="$" name="btnradio" id="btnradio1" autoComplete="off" />
                                     <label className="btn btn-user btn-outline-primary" htmlFor="btnradio1">USD $</label>
 
-                                    <input type="radio" onClick={handleCurrency} className="btn-check" dataname="euro" name="btnradio" id="btnradio2" autoComplete="off"/>
+                                    <input type="radio" onClick={handleCurrency} className="btn-check" dataname="€" name="btnradio" id="btnradio2" autoComplete="off"/>
                                     <label className="btn btn-user btn-outline-primary" htmlFor="btnradio2">Euro €</label>
 
-                                    <input type="radio" onClick={handleCurrency} className="btn-check" dataname="trl" name="btnradio" id="btnradio3" autoComplete="off"/>
+                                    <input type="radio" onClick={handleCurrency} className="btn-check" dataname="₺" name="btnradio" id="btnradio3" autoComplete="off"/>
                                     <label className="btn btn-user btn-outline-primary" htmlFor="btnradio3">TRL ₺</label>
 
-                                    <input type="radio" onClick={handleCurrency} className="btn-check" dataname="rub" name="btnradio" id="btnradio4" autoComplete="off"/>
+                                    <input type="radio" onClick={handleCurrency} className="btn-check" dataname="₽" name="btnradio" id="btnradio4" autoComplete="off"/>
                                     <label className="btn btn-user btn-outline-primary" htmlFor="btnradio4">Rub ₽</label>
                                 </div>
                                 <div className="row">

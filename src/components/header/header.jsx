@@ -30,7 +30,7 @@ export const Header = () => {
         dispatch(currencySelect(id))
         for(let i=0; i<currencyLi.length; i++) {
             currencyLi[i].classList.remove('selected')
-        };
+        };  
         e.target.parentNode.classList.add('selected')
     };
     const handleLanguage = (e) => {
@@ -169,20 +169,20 @@ export const Header = () => {
                                 <h4 className="grid-head">Валюта</h4>
                                 <ul className="currency">
                                 <li className="grid-left-top c-li">
-                                    <input onClick={handleCurrency} name="currency" type="radio" className="checkbox-visibility" id="usd"/>
-                                    <label htmlFor="usd">USD $</label>
+                                    <input onClick={handleCurrency} name="currency" type="radio" className="checkbox-visibility" id="$"/>
+                                    <label htmlFor="$">USD $</label>
                                 </li>
                                 <li className="grid-left c-li">
-                                    <input onClick={handleCurrency} name="currency" type="radio" className="checkbox-visibility" id="euro"/>
-                                    <label htmlFor="euro">Euro €</label>
+                                    <input onClick={handleCurrency} name="currency" type="radio" className="checkbox-visibility" id="€"/>
+                                    <label htmlFor="€">Euro €</label>
                                 </li>
                                 <li className="grid-right-top c-li">
-                                    <input onClick={handleCurrency} name="currency" type="radio" className="checkbox-visibility" id="trl"/>
-                                    <label htmlFor="trl">TRL ₺</label>           
+                                    <input onClick={handleCurrency} name="currency" type="radio" className="checkbox-visibility" id="₺"/>
+                                    <label htmlFor="₺">TRL ₺</label>           
                                 </li>
                                 <li className="grid-right c-li">
-                                    <input onClick={handleCurrency} name="currency" type="radio" className="checkbox-visibility" id="rub"/>
-                                    <label htmlFor="rub">Rub ₽</label>
+                                    <input onClick={handleCurrency} name="currency" type="radio" className="checkbox-visibility" id="₽"/>
+                                    <label htmlFor="₽">Rub ₽</label>
                                 </li>
                                 </ul>
                             </div>

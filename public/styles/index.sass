@@ -464,12 +464,20 @@ header
     color: $color-dark-blue
     font-weight: 700 
     font-size: 22px
+    overflow: hidden
+    text-overflow: ellipsis
+    max-height: 28px
+    height: 100%
 
 .offer-card-description
     font-family: $font-main
     color: $color-dark-blue
     font-weight: 300 
     font-size: 12px
+    overflow: hidden
+    text-overflow: ellipsis
+    max-height: 50px
+    height: 100%
 
 .offer-card-price
     font-family: $font-main
@@ -643,6 +651,7 @@ input::-webkit-inner-spin-button
     background-color: $color-white
     position: sticky
     bottom: 0
+    z-index: 2
 
 .search-button-item
     padding: 0.375rem 8rem
@@ -1166,7 +1175,6 @@ input::-webkit-inner-spin-button
 
 .card-properties-wrp
     width:  405px
-    margin-bottom: 40px
 
 .card-properties-ul
     list-style: none
@@ -1234,7 +1242,7 @@ input::-webkit-inner-spin-button
 
 
 @media(max-width: 1333px)
-    .hid1
+    .offer-card:nth-child(4n)
         display: none
 
     .landlords-form
@@ -1255,7 +1263,7 @@ input::-webkit-inner-spin-button
     
 
 @media(max-width: 1024px)
-    .hid2
+    .offer-card:nth-child(3n)
         display: none
 
     .offer-card
@@ -1340,7 +1348,7 @@ input::-webkit-inner-spin-button
         padding-bottom: 0
 
 @media(max-width: 767px)
-    .hid3
+    .offer-card:nth-child(2n)
         display: none
 
     .main-search-block

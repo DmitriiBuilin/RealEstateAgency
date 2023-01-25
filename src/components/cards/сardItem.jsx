@@ -2,9 +2,10 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { chosenObject } from "../../store/actions/actions";
-import { getFullDataBase } from "../../store/selectors/selector";
+import { getCurrencyValue, getFullDataBase } from "../../store/selectors/selector";
 
 export const CardItem = (props) => {
+    const currency = useSelector(getCurrencyValue);
     const dispatch = useDispatch();
     const idCarousel = Math.floor(Math.random() * 100000);
     const fullDataBase = useSelector(getFullDataBase);
@@ -31,7 +32,7 @@ export const CardItem = (props) => {
                         <div className="carousel-inner">
                             {props.img.map((item) => {                            
                                 return(
-                                <div key={item + Math.random() * 100} className="carousel-item card-item-img-wrp">
+                                <div key={item + Math.random() * 10000} className="carousel-item card-item-img-wrp">
                                     <img src={item} className="d-block w-100 card-item-img" alt={item}/>
                                 </div>                            
                                 )                                               
@@ -49,7 +50,7 @@ export const CardItem = (props) => {
                 </div>
                 <div className="card-item-properties">
                     <h4 className="card-item-name">{props.objectName}</h4>
-                    <p className="card-item-price">Price <span>{props.price}</span> $ </p>
+                    <p className="card-item-price">Price <span>{props.price}</span> {currency} </p>
                     <p className="card-item-description">
                     {props.description}
                     </p>

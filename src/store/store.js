@@ -13,8 +13,8 @@ const persistConfig = {
     storage,
     blacklist: [
       'pageParam', 
-      'fullDataBase',
-      'sorterValue', 
+      // 'fullDataBase',
+      'sorterValue',
       // 'chosenObject'
     ]
   }

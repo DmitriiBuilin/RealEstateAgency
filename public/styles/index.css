@@ -12337,6 +12337,10 @@ header {
   color: #012158;
   font-weight: 700;
   font-size: 22px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-height: 28px;
+  height: 100%;
 }
 
 .offer-card-description {
@@ -12344,6 +12348,10 @@ header {
   color: #012158;
   font-weight: 300;
   font-size: 12px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-height: 50px;
+  height: 100%;
 }
 
 .offer-card-price {
@@ -12537,6 +12545,7 @@ input::-webkit-inner-spin-button {
   position: -webkit-sticky;
   position: sticky;
   bottom: 0;
+  z-index: 2;
 }
 
 .search-button-item {
@@ -13136,7 +13145,6 @@ input::-webkit-inner-spin-button {
 
 .card-properties-wrp {
   width: 405px;
-  margin-bottom: 40px;
 }
 
 .card-properties-ul {
@@ -13207,7 +13215,7 @@ input::-webkit-inner-spin-button {
 
 /* -- MEDIA -- */
 @media (max-width: 1333px) {
-  .hid1 {
+  .offer-card:nth-child(4n) {
     display: none;
   }
   .landlords-form {
@@ -13228,7 +13236,7 @@ input::-webkit-inner-spin-button {
   }
 }
 @media (max-width: 1024px) {
-  .hid2 {
+  .offer-card:nth-child(3n) {
     display: none;
   }
   .offer-card {
@@ -13316,7 +13324,7 @@ input::-webkit-inner-spin-button {
   }
 }
 @media (max-width: 767px) {
-  .hid3 {
+  .offer-card:nth-child(2n) {
     display: none;
   }
   .main-search-block {

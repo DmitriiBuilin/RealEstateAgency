@@ -1,14 +1,20 @@
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
-import { getChosenObject, getCurrencyValue } from "../../store/selectors/selector";
+import { Link, useNavigate, useParams } from "react-router-dom";
+import { getChosenObject, getCurrencyValue, getFullDataBase } from "../../store/selectors/selector";
 import { getPageValue } from "../../store/selectors/selector";
 
 export const CardComponent = () => {
-    const chosenObject = useSelector(getChosenObject);
+    const { id } = useParams();
+    const navigate = useNavigate();
+    // const chosenObject = useSelector(getChosenObject);
+
+    const fullDataBase = useSelector(getFullDataBase);
+    const chosenObject = fullDataBase.filter(item => item.id == id);
+    // console.log(chosenObject)
+    
     const pageKey = useSelector(getPageValue);
     const currency = useSelector(getCurrencyValue);
-    const [currencySymbol, setCurrencySymbol] = useState()  
     const noAction = (e) => {
         e.preventDefault();
     };
@@ -33,22 +39,6 @@ export const CardComponent = () => {
     // console.log(chosenObject[0].img.length)    
 
     useEffect(() => {
-        switch(currency) {
-            case 'usd': 
-                setCurrencySymbol('$');
-                break;
-            case 'rub': 
-                setCurrencySymbol('₽');
-                break;
-            case 'euro': 
-                setCurrencySymbol('€');
-                break;
-            case 'trl': 
-                setCurrencySymbol('₺');
-                break;
-            default: setCurrencySymbol('$');
-        }
-
         document.getElementById('stove').checked = chosenObject[0].stove;  
         document.getElementById('dishwasher').checked = chosenObject[0].dishwasher;  
         document.getElementById('washingMachine').checked = chosenObject[0].washingMachine;  
@@ -157,7 +147,7 @@ export const CardComponent = () => {
                 <p className="card-region">Всего {chosenObject[0].img.length} фото</p>
             </div>
             <div className="card-characters">                
-                <h3 className="card-price">{chosenObject[0].price}<span>{currencySymbol}</span></h3>
+                <h3 className="card-price">{chosenObject[0].price}<span>{currency}</span></h3>
                 <div className="card-region-wrp">
                     <p className="card-region">{chosenObject[0].city} / {chosenObject[0].district}</p>
                     <p className="card-region">{chosenObject[0].date}</p>
@@ -260,7 +250,8 @@ export const CardComponent = () => {
                              <input className="form-check-input" type="checkbox" value='' id="microwave" onClick={noAction} />
                             </p>
                         </li>   
-                    </ul>                    
+                    </ul>
+                    <button onClick={() => navigate(-1)} className="btn btn-primary landlord-button">Вернуться назад</button>                     
                 </div>
             </div>
         </div>
