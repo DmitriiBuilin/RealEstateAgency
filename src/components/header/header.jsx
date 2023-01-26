@@ -47,11 +47,11 @@ export const Header = () => {
     };
   
     useEffect(() => {
-        const selectedLanguage = document.getElementById(`${language}`);
-        const selectedCurrency = document.getElementById(`${currency}`);
+        // const selectedLanguage = document.getElementById(`${language}`);
+        // const selectedCurrency = document.getElementById(`${currency}`);
 
-        selectedLanguage.parentNode.classList.add('selected')
-        selectedCurrency.parentNode.classList.add('selected')
+        // selectedLanguage.parentNode.classList.add('selected')
+        // selectedCurrency.parentNode.classList.add('selected')
 
         /* jQuery script (show/hide header) */        
         let header = $('.header-fixed'),

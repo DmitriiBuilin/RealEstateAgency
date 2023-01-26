@@ -40,21 +40,7 @@ export const SearchAside = () => {
             };
         }
         setCurrencySymbol(currency);      
-        // switch(currency) {
-        //     case 'usd': 
-        //         setCurrencySymbol('$');
-        //         break;
-        //     case 'rub': 
-        //         setCurrencySymbol('₽');
-        //         break;
-        //     case 'euro': 
-        //         setCurrencySymbol('€');
-        //         break;
-        //     case 'trl': 
-        //         setCurrencySymbol('₺');
-        //         break;
-        //     default: setCurrencySymbol('$');
-        // } 
+
         switch(pageKey) {
             case 'rent': 
                 document.querySelector('.rent').classList.remove('hidden');
@@ -64,7 +50,7 @@ export const SearchAside = () => {
                 break;
             case 'new': document.querySelector('.new').classList.remove('hidden');
                 break;
-            default: return;
+            default: break;
         };
     });
 

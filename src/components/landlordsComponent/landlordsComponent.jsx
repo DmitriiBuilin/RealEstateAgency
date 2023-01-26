@@ -66,6 +66,15 @@ export const LandlordsComponent = () => {
                             <input type="tel" className="form-control" id="phoneNumber" placeholder="tel. +90(535)123-45-67" required/>
                             </div>
                         </div>
+                        <div className="sale-rent">
+                            <p className="form-label">Раздел</p>
+                            <input type="radio" id="sale" name="target" value="sale" required/>
+                            <label htmlFor="sale">Продажа</label>
+                            <input type="radio" id="rent" name="target" value="rent" required/>
+                            <label htmlFor="rent">Аренда</label>
+                            <input type="radio" id="new" name="target" value="new" required/>
+                            <label htmlFor="new">Новостройка</label>
+                        </div>
                         <div className="col-10">
                             <label htmlFor="realAstateType" className="form-label">Выберите объект</label>
                             <select defaultValue='Вид недвижимости' className="form-select" id="realAstateType" required>
@@ -80,22 +89,7 @@ export const LandlordsComponent = () => {
                         <div className="col-10">
                             <label htmlFor="objectName" className="form-label">Название объекта</label>
                             <input type="text" className="form-control" id="objectName" placeholder="Введите название объекта" required/>
-                        </div>                        
-                        <div className="sale-rent">
-                            <p className="form-label">Цель размещения объекта</p>
-                            <input type="radio" id="sale" name="target" value="sale" required/>
-                            <label htmlFor="sale">Продать</label>
-                            <input type="radio" id="rent" name="target" value="rent" required/>
-                            <label htmlFor="rent">Сдать в аренду</label>
-                            <input type="radio" id="new" name="target" value="new" required/>
-                            <label htmlFor="rent">Новостройка</label>
                         </div>
-                        {/* <div className="form-check">
-                            <input className="form-check-input" type="checkbox" value="" id="newBuilding" required />
-                            <label className="form-label" htmlFor="newBuilding">
-                                Новостройка
-                            </label>
-                        </div> */}
                         <div className="col-5 flex-row">
                                 <input type="number" className="form-control" id="price" placeholder="Цена" required/>
                                 <label className="form-label margin-0 label-padding" htmlFor="price">{currencySymbol}</label>                            
