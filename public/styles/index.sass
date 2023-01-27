@@ -1030,16 +1030,6 @@ input::-webkit-inner-spin-button
 .landlords-leftside div,.landlords-rightside div
     margin-bottom: 10px
 
-.sale-rent label
-    color: $color-dark-blue
-    margin: 0 10px 
-
-.sale-rent label:hover
-    cursor: pointer
-
-.sale-rent input:hover
-    cursor: pointer
-
 .form-label-link
     color: $color-dark-blue
 
@@ -1059,6 +1049,15 @@ input::-webkit-inner-spin-button
     resize: none
     width: 362px
     height: 75px
+
+.landlords-textarea-description
+    border-radius: 0.375rem
+    border-color: #dee2e6
+    resize: none
+    width: 362px
+    height: 200px
+    width: 100%
+    max-width: 640px
 
 .landlords-row
     display: flex
@@ -1083,7 +1082,7 @@ input::-webkit-inner-spin-button
 
 /* -- CARD COMPONENT -- */  
 
-
+ 
 .card-component-main
     margin: 0 auto
     width: 1030px
@@ -1239,6 +1238,12 @@ input::-webkit-inner-spin-button
 
 .margin-bottom
     margin-bottom: 15px
+
+.card-item-description-p
+    font-family: $font-main
+    color: $color-dark-blue
+    font-size: 16px
+    font-weight: 400
 
 
 
@@ -1456,8 +1461,14 @@ input::-webkit-inner-spin-button
 
     .landlord-button
         align-self: center
+        margin-left: 0
+        margin-right: 0
 
     .landlords-textarea
+        width: 100%
+        max-width: 320px
+
+    .landlords-textarea-description
         width: 100%
         max-width: 320px
 

@@ -16,7 +16,7 @@ const persistConfig = {
       'fullDataBase',
       'sorterValue',
       'agreementValue',
-      // 'chosenObject'
+      'formInput',
     ]
   }
   

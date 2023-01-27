@@ -42,7 +42,6 @@ export const CardComponent = () => {
             const data = snapshot.val();
             if (data) {
                 setFullDataBase(data);
-                document.querySelector('.card-photo-small-screen-active').classList.add('active');
             }
           });
     }, []);
@@ -128,6 +127,7 @@ export const CardComponent = () => {
                             </button>                      
                         </div>               
                     </div>
+                    <p className="card-item-description-p">{item.description}</p>
                 </div>
                 <div className="card-photo-small-screen">
                     <div id="carouselExampleFade" className="carousel slide carousel-fade">
@@ -153,6 +153,7 @@ export const CardComponent = () => {
                         </button>
                     </div>
                     <p className="card-region">Всего {item.img.length} фото</p>
+                    <p className="card-item-description-p">{item.description}</p>
                 </div>
                 <div className="card-characters">                
                     <h3 className="card-price">{item.price}<span>{currency}</span></h3>
@@ -258,7 +259,7 @@ export const CardComponent = () => {
                                 <input className="form-check-input" type="checkbox" value='' id="microwave" onClick={noAction} defaultChecked={item.microwave} />
                                 </p>
                             </li>   
-                        </ul>
+                        </ul>                        
                         <button onClick={() => navigate(-1)} className="btn btn-primary landlord-button">Вернуться назад</button>                     
                     </div>
                 </div>

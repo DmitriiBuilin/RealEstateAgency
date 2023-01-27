@@ -26,3 +26,7 @@ export const getSorterValue = (state) => {
 export const getAgreementrValue = (state) => {
     return state.agreementValue
 };
+
+export const getInputsValue = (state) => {
+    return state.formInput
+};

@@ -7,5 +7,6 @@ export const OBJECT = 'CARD::OBJECT';
 export const SORTERVALUE = 'CARD::SORTERVALUE';
 export const AGREEMENTVALUE = 'LANDLORDS::AGREEMENTVALUE';
 export const TYPING = 'LANDLORDS::TYPING';
+export const CHECK = 'LANDLORDS::CHECK';
+export const SELECT = 'LANDLORDS::SELECT';
 export const CLEAR_INPUTS = 'LANDLORDS::CLEAR_INPUTS';
-

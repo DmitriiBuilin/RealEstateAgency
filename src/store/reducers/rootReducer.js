@@ -2,6 +2,7 @@ import { combineReducers } from "redux";
 
 import currencyReducer from "./currencyReducer";
 import dataBaseReducer from "./dataBaseReduser";
+import landLordReducer from "./landLordReducer";
 import languageReducer from "./languageReducer";
 import objectReducer from "./objectReducer";
 import pageParamReducer from "./pageParamReducer";
@@ -18,6 +19,7 @@ const rootReducer = combineReducers ({
     chosenObject: objectReducer,
     sorterValue: sorterValueReducer,
     agreementValue: userAgreementReducer,
+    formInput: landLordReducer,
 });
 
 export default rootReducer;

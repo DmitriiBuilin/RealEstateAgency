@@ -1,4 +1,4 @@
-import { AGREEMENTVALUE, CLEAR_INPUTS, CURRENCYSELECT, DATABASE, LANGUAGESELECT, OBJECT, PAGEPARAM, PAGESELECT, SORTERVALUE, TYPING } from "../types/types";
+import { AGREEMENTVALUE, CHECK, CLEAR_INPUTS, CURRENCYSELECT, DATABASE, LANGUAGESELECT, OBJECT, PAGEPARAM, PAGESELECT, SELECT, SORTERVALUE, TYPING } from "../types/types";
 
 export const currencySelect = (data) => {
   return { type: CURRENCYSELECT, payload: data }
@@ -35,13 +35,28 @@ export const userAgreement = (data) => {
 export const typing = (event) => {
   return {
     type: TYPING,
-    payload: { [event.target.name]: event.target.value, check: event.target.checked }
+    payload: {[event.target.id]: event.target.value }
+    // payload: { [event.target.name]: event.target.value, check: event.target.checked }
+  }
+}
+
+export const checkBox = (event) => {
+  return {
+    type: CHECK,
+    payload: {[event.target.id]: event.target.checked }
+  }
+}
+
+export const select = (event) => {
+  return {
+    type: SELECT,
+    payload: {[event.target.id]: event.target.value }
   }
 }
 
 export const clearInput = () => {
   return {
     type: CLEAR_INPUTS,
-    payload: { title: '', text: '', check: false }
+    payload: { }
   }
 }
