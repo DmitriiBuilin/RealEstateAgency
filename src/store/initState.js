@@ -1,9 +1,10 @@
 export const initState = {
-    currency: "",
+    currency: "$",
     languge: "rus",
     page: "rent",
     pageParam: "",
     fullDataBase: "",
     chosenObject: "",
     sorterValue: "sort",
+    agreementValue: false,
   }

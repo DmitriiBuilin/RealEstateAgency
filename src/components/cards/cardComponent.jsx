@@ -1,9 +1,9 @@
 import { onValue } from "firebase/database";
 import { memo, useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { dataRef } from "../../server/googleFirebase";
-import { getChosenObject, getCurrencyValue, getFullDataBase } from "../../store/selectors/selector";
+import { getCurrencyValue } from "../../store/selectors/selector";
 import { getPageValue } from "../../store/selectors/selector";
 
 export const CardComponent = () => {
@@ -34,20 +34,27 @@ export const CardComponent = () => {
         shop:'Торговое помещение',
         land:'Участок',
     }
-    
+
+        
+
     useEffect(() => {
         onValue(dataRef, (snapshot) => {
             const data = snapshot.val();
             if (data) {
                 setFullDataBase(data);
+                document.querySelector('.card-photo-small-screen-active').classList.add('active');
             }
           });
     }, []);
 
+    // useEffect (() => {
+    //     document.querySelector('.card-photo-small-screen-active').classList.add('active');
+    // })
+
     return (
         <>
         {fullDataBase.filter(item => item.id == id).map((item) => 
-            <>
+            <div key={item + Math.random() * 10000}>
             <div className="card-title-wrp">
                 <nav className="filter-nav" aria-label="breadcrumb">
                     <ol className="breadcrumb">
@@ -81,7 +88,7 @@ export const CardComponent = () => {
                                     <div className="card-photo-carousel-item">
                                         {item.img.slice(0, 4).map((item, index) => {                            
                                             return(
-                                            <img key={item + Math.random() * 100} className="card-photo-main-item-img" src={item} alt={item} onClick={(e) => handleChangePhoto(e, index)} />                            
+                                            <img key={item + Math.random() * 10000} className="card-photo-main-item-img" src={item} alt={item} onClick={(e) => handleChangePhoto(e, index)} />                            
                                             )                                               
                                         })}
                                     </div>               
@@ -91,7 +98,7 @@ export const CardComponent = () => {
                                         <div className="card-photo-carousel-item ">
                                             {item.img.slice(4, 8).map((item, index) => {                            
                                                 return(
-                                                <img key={item + Math.random() * 100} className="card-photo-main-item-img" src={item} alt={item} onClick={(e) => handleChangePhoto(e, index + 4)} />                            
+                                                <img key={item + Math.random() * 10000} className="card-photo-main-item-img" src={item} alt={item} onClick={(e) => handleChangePhoto(e, index + 4)} />                            
                                                 )                                               
                                             })}
                                         </div>
@@ -102,7 +109,7 @@ export const CardComponent = () => {
                                         <div className="card-photo-carousel-item ">
                                             {item.img.slice(8, 12).map((item, index) => {                            
                                                 return(
-                                                <img key={item + Math.random() * 100} className="card-photo-main-item-img" src={item} alt={item} onClick={(e) => handleChangePhoto(e, index + 8)} />                            
+                                                <img key={item + Math.random() * 10000} className="card-photo-main-item-img" src={item} alt={item} onClick={(e) => handleChangePhoto(e, index + 8)} />                            
                                                 )                                               
                                             })}
                                         </div>
@@ -125,9 +132,12 @@ export const CardComponent = () => {
                 <div className="card-photo-small-screen">
                     <div id="carouselExampleFade" className="carousel slide carousel-fade">
                         <div className="carousel-inner carousel-inner-small">
-                            {item.img.map((item) => {                            
+                            <div className="carousel-item card-photo-main active">
+                                <img src={item.img[0]} className="d-block w-100 card-item-img" alt={item.img[0]} />
+                            </div>   
+                            {item.img.slice(1).map((item) => {                            
                                 return(  
-                                <div key={item + Math.random() * 1000} className="carousel-item card-photo-main">
+                                <div key={item + Math.random() * 10000} className="carousel-item card-photo-main">
                                     <img src={item} className="d-block w-100 card-item-img" alt={item} />
                                 </div>                            
                                 )                                               
@@ -253,7 +263,7 @@ export const CardComponent = () => {
                     </div>
                 </div>
             </div>
-            </>
+            </div>
         )}
         </>
     )

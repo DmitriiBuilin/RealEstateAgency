@@ -15,6 +15,7 @@ const persistConfig = {
       'pageParam', 
       'fullDataBase',
       'sorterValue',
+      'agreementValue',
       // 'chosenObject'
     ]
   }

@@ -1,13 +1,21 @@
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import Footer from "../../../components/footer/footer";
 import Header from "../../../components/header/header";
+import { userAgreement } from "../../../store/actions/actions";
 
 
 export const PersonalData = () => {
     const navigate = useNavigate();
+    const dispatch = useDispatch();
+
+    const handleBack = () => {
+        navigate('/landlords');
+    };
 
     const handleAccept = () => {
         navigate('/landlords');
+        dispatch(userAgreement(true));
     };
 
     return (
@@ -56,7 +64,8 @@ export const PersonalData = () => {
                         Dolor est fuga sequi doloremque ea, cumque illo voluptates culpa voluptatem eius harum, exercitationem consequatur rerum dolorum quam sed magni assumenda ipsam similique! Officia harum odit porro commodi earum laboriosam!
                         Maxime iusto mollitia omnis nesciunt suscipit laboriosam inventore voluptas velit consequuntur. Error est mollitia debitis, quia dolorem placeat ducimus? Quos nemo dicta eos facilis praesentium quo qui optio eius voluptas.
                         Ad sunt quia error neque et iusto deleniti dolorem asperiores obcaecati, architecto temporibus laborum, quo itaque consectetur voluptas blanditiis, aliquam omnis! Dolor distinctio labore quod quo odio facere excepturi debitis!</div>
-                        <button onClick={handleAccept} className="btn btn-primary landlord-button">Вернуться назад</button>
+                        <button onClick={handleAccept} className="btn btn-primary landlord-button">Подписать соглашение</button>
+                        <button onClick={handleBack} className="btn btn-primary landlord-button-red">Вернуться назад</button>
                     </main>
                 </div>   
             <Footer />

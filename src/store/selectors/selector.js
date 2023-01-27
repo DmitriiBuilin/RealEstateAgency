@@ -22,3 +22,7 @@ export const getChosenObject = (state) => {
 export const getSorterValue = (state) => {
     return state.sorterValue
 };
+
+export const getAgreementrValue = (state) => {
+    return state.agreementValue
+};

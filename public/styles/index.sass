@@ -1000,9 +1000,22 @@ input::-webkit-inner-spin-button
 
 .landlord-button
     align-self: flex-end
-    margin: 30px
+    margin: 30px 30px 15px 80px 
     width: 230px
+    background-color: $color-blue
+
+.landlord-button:hover
     background-color: $color-dark-blue
+
+.landlord-button-red
+    margin: 0 30px 30px 0 
+    align-self: flex-end
+    width: 230px
+    background-color: $color-red 
+    border-color: $color-red 
+
+.landlord-button-red:hover
+    background-color: #a70615
 
 .landlords-form
     display: flex
@@ -1028,7 +1041,6 @@ input::-webkit-inner-spin-button
     cursor: pointer
 
 .form-label-link
-    text-decoration: none
     color: $color-dark-blue
 
 .personal-data-header
@@ -1151,6 +1163,9 @@ input::-webkit-inner-spin-button
     top: 25%
     margin: 10px 
 
+.carousel-control-custom-main
+    width: 3%
+
 .carousel-control-custom svg
     fill: black
 
@@ -1242,7 +1257,7 @@ input::-webkit-inner-spin-button
 
 
 @media(max-width: 1333px)
-    .offer-card:nth-child(4n)
+    .card-item-wrp:nth-child(4n)
         display: none
 
     .landlords-form
@@ -1263,7 +1278,7 @@ input::-webkit-inner-spin-button
     
 
 @media(max-width: 1024px)
-    .offer-card:nth-child(3n)
+    .card-item-wrp:nth-child(3n)
         display: none
 
     .offer-card
@@ -1348,7 +1363,7 @@ input::-webkit-inner-spin-button
         padding-bottom: 0
 
 @media(max-width: 767px)
-    .offer-card:nth-child(2n)
+    .card-item-wrp:nth-child(2n)
         display: none
 
     .main-search-block

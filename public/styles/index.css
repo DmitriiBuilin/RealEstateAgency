@@ -12934,9 +12934,25 @@ input::-webkit-inner-spin-button {
 
 .landlord-button {
   align-self: flex-end;
-  margin: 30px;
+  margin: 30px 30px 15px 80px;
   width: 230px;
+  background-color: #003da5;
+}
+
+.landlord-button:hover {
   background-color: #012158;
+}
+
+.landlord-button-red {
+  margin: 0 30px 30px 0;
+  align-self: flex-end;
+  width: 230px;
+  background-color: #dc1c2e;
+  border-color: #dc1c2e;
+}
+
+.landlord-button-red:hover {
+  background-color: #a70615;
 }
 
 .landlords-form {
@@ -12970,7 +12986,6 @@ input::-webkit-inner-spin-button {
 }
 
 .form-label-link {
-  text-decoration: none;
   color: #012158;
 }
 
@@ -13116,6 +13131,10 @@ input::-webkit-inner-spin-button {
   margin: 10px;
 }
 
+.carousel-control-custom-main {
+  width: 3%;
+}
+
 .carousel-control-custom svg {
   fill: black;
 }
@@ -13215,7 +13234,7 @@ input::-webkit-inner-spin-button {
 
 /* -- MEDIA -- */
 @media (max-width: 1333px) {
-  .offer-card:nth-child(4n) {
+  .card-item-wrp:nth-child(4n) {
     display: none;
   }
   .landlords-form {
@@ -13236,7 +13255,7 @@ input::-webkit-inner-spin-button {
   }
 }
 @media (max-width: 1024px) {
-  .offer-card:nth-child(3n) {
+  .card-item-wrp:nth-child(3n) {
     display: none;
   }
   .offer-card {
@@ -13324,7 +13343,7 @@ input::-webkit-inner-spin-button {
   }
 }
 @media (max-width: 767px) {
-  .offer-card:nth-child(2n) {
+  .card-item-wrp:nth-child(2n) {
     display: none;
   }
   .main-search-block {

@@ -1,17 +1,18 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { getCurrencyValue } from "../../store/selectors/selector";
+import { getAgreementrValue, getCurrencyValue } from "../../store/selectors/selector";
 
 export const LandlordsComponent = () => {
     const currency = useSelector(getCurrencyValue);
-    const [currencySymbol, setCurrencySymbol] = useState() 
+    const agreement = useSelector(getAgreementrValue);
 
     const handleSubmit = (e) => {
         e.preventDefault();
     };
 
     useEffect(() => {  
+
         /*Load-photo script*/        
         let inputs = document.querySelectorAll('.input-file');
 
@@ -26,23 +27,7 @@ export const LandlordsComponent = () => {
                 else
                     document.querySelector('.load-photo-button-text').innerText = labelVal;
             });
-        });
-
-        switch(currency) {
-            case 'usd': 
-                setCurrencySymbol('$');
-                break;
-            case 'rub': 
-                setCurrencySymbol('₽');
-                break;
-            case 'euro': 
-                setCurrencySymbol('€');
-                break;
-            case 'trl': 
-                setCurrencySymbol('₺');
-                break;
-            default: setCurrencySymbol('$');
-        } 
+        });       
     });
 
     return (
@@ -92,7 +77,7 @@ export const LandlordsComponent = () => {
                         </div>
                         <div className="col-5 flex-row">
                                 <input type="number" className="form-control" id="price" placeholder="Цена" required/>
-                                <label className="form-label margin-0 label-padding" htmlFor="price">{currencySymbol}</label>                            
+                                <label className="form-label margin-0 label-padding" htmlFor="price">{currency}</label>                            
                             </div>
                         <div className="col-10 landlords-row">
                             <div className="col-6">
@@ -120,12 +105,12 @@ export const LandlordsComponent = () => {
                         </div>                                                
                         <div className="col-10">
                             <div className="form-check">
-                            <input className="form-check-input" type="checkbox"  id="invalidCheck" required/>
+                            <input className="form-check-input" type="checkbox"  id="invalidCheck" required checked={agreement} />
                             <label className="form-label" htmlFor="invalidCheck">
                                 <Link 
                                 className="form-label-link" 
                                 to='/protection-personal-data'
-                                target='_blank'
+                                // target='_blank'
                                 >Я прочитал и согласен с положением о защите персональных данных</Link>                                
                             </label>
                                 <div className="invalid-feedback">
