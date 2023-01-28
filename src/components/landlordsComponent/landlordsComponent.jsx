@@ -1,23 +1,24 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { checkBox, select, typing, userAgreement } from "../../store/actions/actions";
+import { checkBox, clearInput, select, typing, userAgreement } from "../../store/actions/actions";
 import { getAgreementrValue, getInputsValue } from "../../store/selectors/selector";
+import { push, set } from "firebase/database";
+import { dataRef } from "../../server/googleFirebase";
+
 
 export const LandlordsComponent = () => {
     const agreement = useSelector(getAgreementrValue);
     const dispatch = useDispatch();
     const filledForm = useSelector(getInputsValue);
-    console.log(filledForm)
-    // const [inputs] = useSelector(getInputsValue)
 
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log("Submit form")
-        // push(dataRef, {
-        //     ...inputs
-        //   })
-        // dispatch(clearInput())
+        push(dataRef, {"img": ["/img/offers/7.jpg"],
+            ...filledForm
+          })
+        dispatch(clearInput())
     };
 
     const handleInputs = (event) => {
@@ -29,7 +30,6 @@ export const LandlordsComponent = () => {
     };
 
     const handleSelect = (event) => {
-        console.log(event.target.id, event.target.value)
         dispatch(select(event))
     };
 

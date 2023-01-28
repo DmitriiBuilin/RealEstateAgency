@@ -13225,6 +13225,11 @@ input::-webkit-inner-spin-button {
   color: #012158;
   font-size: 16px;
   font-weight: 400;
+  width: 100%;
+  max-width: 600px;
+  margin-bottom: 20px;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 /* -- IMPORTANT -- */

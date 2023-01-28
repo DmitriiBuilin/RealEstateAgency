@@ -30,8 +30,13 @@ export const Cards = (props) => {
         onValue(dataRef, (snapshot) => {
             const data = snapshot.val()
             if (data) {
-                setCardsList(data);      
-                dispatch(objectsDataBase(data));
+                const newData = Object.entries(data).map((item) => ({
+                    id: item[0],
+                    ...item[1]
+                  }))    
+                setCardsList(newData);      
+                dispatch(objectsDataBase(newData)); 
+                console.log(newData)           
             }
         });        
     }, []);

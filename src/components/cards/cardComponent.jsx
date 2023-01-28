@@ -33,15 +33,17 @@ export const CardComponent = () => {
         office:'Офис',
         shop:'Торговое помещение',
         land:'Участок',
-    }
-
-        
+    }        
 
     useEffect(() => {
         onValue(dataRef, (snapshot) => {
             const data = snapshot.val();
             if (data) {
-                setFullDataBase(data);
+                const newData = Object.entries(data).map((item) => ({
+                    id: item[0],
+                    ...item[1]
+                  }))    
+                setFullDataBase(newData);
             }
           });
     }, []);
@@ -127,7 +129,7 @@ export const CardComponent = () => {
                             </button>                      
                         </div>               
                     </div>
-                    <p className="card-item-description-p">{item.description}</p>
+                    <div className="card-item-description-p">{item.description}</div>
                 </div>
                 <div className="card-photo-small-screen">
                     <div id="carouselExampleFade" className="carousel slide carousel-fade">
@@ -153,7 +155,7 @@ export const CardComponent = () => {
                         </button>
                     </div>
                     <p className="card-region">Всего {item.img.length} фото</p>
-                    <p className="card-item-description-p">{item.description}</p>
+                    <div className="card-item-description-p">{item.description}</div>
                 </div>
                 <div className="card-characters">                
                     <h3 className="card-price">{item.price}<span>{currency}</span></h3>
