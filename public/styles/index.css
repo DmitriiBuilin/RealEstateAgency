@@ -12684,7 +12684,7 @@ input::-webkit-inner-spin-button {
   margin-bottom: 20px;
 }
 
-.card-item-wrp {
+.card-item-wrp, .offer-card-wrp {
   text-decoration: none;
 }
 
@@ -13243,7 +13243,7 @@ input::-webkit-inner-spin-button {
 
 /* -- MEDIA -- */
 @media (max-width: 1333px) {
-  .card-item-wrp:nth-child(4n) {
+  .offer-card-wrp:nth-child(4n) {
     display: none;
   }
   .landlords-form {
@@ -13264,7 +13264,7 @@ input::-webkit-inner-spin-button {
   }
 }
 @media (max-width: 1024px) {
-  .card-item-wrp:nth-child(3n) {
+  .offer-card-wrp:nth-child(3n) {
     display: none;
   }
   .offer-card {
@@ -13352,7 +13352,7 @@ input::-webkit-inner-spin-button {
   }
 }
 @media (max-width: 767px) {
-  .card-item-wrp:nth-child(2n) {
+  .offer-card-wrp:nth-child(2n) {
     display: none;
   }
   .main-search-block {
