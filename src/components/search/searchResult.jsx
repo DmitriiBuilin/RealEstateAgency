@@ -92,8 +92,7 @@ export const SearchResult = () => {
                     ...item[1]
                   }))    
                 setCardsList(newData);      
-                dispatch(objectsDataBase(newData)); 
-                console.log(newData)           
+                dispatch(objectsDataBase(newData));  
             }
             
         });        

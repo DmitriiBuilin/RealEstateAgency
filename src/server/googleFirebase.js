@@ -1,6 +1,7 @@
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 import { getDatabase, ref, set, get, child } from "firebase/database";
+import firebase from 'firebase/compat/app';
 
 const firebaseConfig = {
     apiKey: "AIzaSyAClSHATIAMG2wLVdhn8VkrWQGt-cr-nEo",
@@ -16,22 +17,10 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
 
+
 export const database = getDatabase(app);
 export const dataRef = ref(database);
 
 // const firebase = require('firebase');
-// const firebaseui = require('firebaseui');
-
-// const dbRef = ref(getDatabase());
-
-// export const objectData = get(dbRef).then((snapshot) => {
-//     if (snapshot.exists()) {
-//         // console.log(snapshot.val());
-//     } else {
-//         console.log("No data available");
-//     }
-// }).catch((error) => {
-//         console.error(error);
-// });
-
-
+export const fireBase = firebase.initializeApp(firebaseConfig);
+export const firebaseui = require('firebaseui');
