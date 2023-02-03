@@ -9,6 +9,9 @@ import Sale from './pages/rus/sale/sale';
 import Map from './pages/rus/map/map';
 import PersonalData from './pages/rus/personalData/personalData';
 import ObjectCard from './pages/rus/objectCard/objectCard';
+import LogIn from './components/authtorisation/logIn';
+import SignIn from './components/authtorisation/signIn';
+import SignUp from './components/authtorisation/signUp';
 
 function App() {
   return (
@@ -24,7 +27,9 @@ function App() {
         <Route path="/card/:id" element={<ObjectCard />} />
         <Route path="/map" element={<Map />} />
         <Route path="/contacts" element={<Contacts />} />
-        <Route path="/landlords" element={<Landlords />} />
+        <Route path="/landlords" element={<Landlords component={<LogIn />}/>} />
+        <Route path="/landlords/signin" element={<Landlords component={<SignIn />}/>} />
+        <Route path="/landlords/signup" element={<Landlords component={<SignUp />}/>} />
         <Route path="/protection-personal-data" element={<PersonalData />} />
         <Route path="/" element={<Main />} />
       </Routes>

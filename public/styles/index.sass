@@ -87,7 +87,6 @@ header
 
 .header-fixed
     position: fixed
-    left: 0
     top: 0
     transition: all .3s ease 
     -webkit-transition: all .3s ease 
@@ -979,6 +978,44 @@ input::-webkit-inner-spin-button
     -webkit-transition: 0.5s
     -moz-transition: 0.5s
 
+/* -- AUTHTORISATION -- */   
+
+.login-header, .signin-signup-header
+    padding: 25px 10px
+    font-family: $font-main
+    color: $color-dark-blue
+    font-weight: 700
+    font-size: 17px
+    max-width: 40rem
+    width: 100%
+    text-align: center
+
+.signin-signup-description
+    padding: 0 10px
+    font-family: $font-main
+    color: $color-dark-blue
+    font-weight: 300
+    font-size: 17px
+    max-width: 40rem
+    width: 100%
+    text-align: center
+
+.login-button, .login-btn
+    width: 200px
+    margin: 0 0 25px 0
+
+.signin-signup-header
+    font-size: 32px
+    margin: 0
+    padding-bottom: 10px
+
+.login-btn
+    margin-top: 15px
+    height: 50px
+
+
+
+
 
 /* -- LANDLORDS -- */
 
@@ -1003,9 +1040,6 @@ input::-webkit-inner-spin-button
     margin: 30px 30px 15px 80px 
     width: 230px
     background-color: $color-blue
-
-.landlord-button:hover
-    background-color: $color-dark-blue
 
 .landlord-button-red
     margin: 0 30px 30px 0 
@@ -1076,7 +1110,8 @@ input::-webkit-inner-spin-button
 
 .load-photo-button
     padding: 1rem 1rem
-    width: 100%
+    width: 30%
+    margin-bottom: 25px
     background-color: $color-blue 
 
 
@@ -1216,7 +1251,7 @@ input::-webkit-inner-spin-button
 
 .card-divide
     width: 95%
-    border-top: 1px solid #012158
+    border-top: 1px solid $color-dark-blue
     opacity: 50%
 
 .card-properties-mini-item

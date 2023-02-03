@@ -19,6 +19,9 @@ const analytics = getAnalytics(app);
 export const database = getDatabase(app);
 export const dataRef = ref(database);
 
+// const firebase = require('firebase');
+// const firebaseui = require('firebaseui');
+
 // const dbRef = ref(getDatabase());
 
 // export const objectData = get(dbRef).then((snapshot) => {

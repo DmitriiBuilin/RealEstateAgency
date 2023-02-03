@@ -7,7 +7,7 @@ import { push, set } from "firebase/database";
 import { dataRef } from "../../server/googleFirebase";
 
 
-export const LandlordsComponent = () => {
+export const SendForm = () => {
     const agreement = useSelector(getAgreementrValue);
     const dispatch = useDispatch();
     const filledForm = useSelector(getInputsValue);
@@ -318,5 +318,5 @@ export const LandlordsComponent = () => {
     );
 }
 
-export default LandlordsComponent;
+export default SendForm;
 
