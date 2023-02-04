@@ -12952,6 +12952,16 @@ input::-webkit-inner-spin-button {
   height: 50px;
 }
 
+.formGroup {
+  margin-bottom: 25px;
+}
+
+.form-floating-wrp {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 /* -- LANDLORDS -- */
 .landlords-main {
   margin: 0 auto;
@@ -13064,6 +13074,17 @@ input::-webkit-inner-spin-button {
   width: 30%;
   margin-bottom: 25px;
   background-color: #003da5;
+}
+
+.exit-button {
+  padding: 1rem 1rem;
+  width: 30%;
+  margin-bottom: 25px;
+  background-color: #dc1c2e;
+}
+
+.exit-button:hover {
+  background-color: #e24554;
 }
 
 /* -- CARD COMPONENT -- */  

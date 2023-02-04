@@ -1,21 +1,27 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { checkBox, clearInput, select, typing, userAgreement } from "../../store/actions/actions";
 import { getAgreementrValue, getInputsValue } from "../../store/selectors/selector";
 import { push, set } from "firebase/database";
-import { dataRef } from "../../server/googleFirebase";
+import { dataRef, logOut } from "../../server/googleFirebase";
 
 
 export const SendForm = () => {
     const agreement = useSelector(getAgreementrValue);
     const dispatch = useDispatch();
     const filledForm = useSelector(getInputsValue);
+    const navigate = useNavigate();
 
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log("Submit form")
-        push(dataRef, {"img": ["/img/offers/7.jpg"],
+
+        // !!! Need to function to create id instead of:
+        const id = Math.floor(Math.random() * 1000000);
+        console.log(id)
+    
+        push(dataRef, {"img": ["/img/offers/8.jpg"], "id": id,
             ...filledForm
           })
         dispatch(clearInput())
@@ -31,6 +37,11 @@ export const SendForm = () => {
 
     const handleSelect = (event) => {
         dispatch(select(event))
+    };
+
+    const handleQuit = () => {
+        logOut();
+        navigate("/landlords/signin")
     };
 
     const changeAgreement = () => {
@@ -311,7 +322,8 @@ export const SendForm = () => {
                         </div>                         
                     </div>
                 </form>
-                <button type="submit" className="btn btn-primary load-photo-button" form="landlordForm">Отправить</button>                
+                <button type="submit" className="btn btn-primary load-photo-button" form="landlordForm">Отправить</button>
+                <button onClick={handleQuit} type="button" className="btn btn-danger exit-button" form="landlordForm">Выйти</button>
             </main>
         </div>
         </>

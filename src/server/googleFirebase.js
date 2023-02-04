@@ -1,7 +1,9 @@
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 import { getDatabase, ref, set, get, child } from "firebase/database";
-import firebase from 'firebase/compat/app';
+import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signOut } from "firebase/auth";
+
+/*-- Firebase connection --*/
 
 const firebaseConfig = {
     apiKey: "AIzaSyAClSHATIAMG2wLVdhn8VkrWQGt-cr-nEo",
@@ -16,11 +18,47 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
-
+const auth = getAuth(app);
 
 export const database = getDatabase(app);
-export const dataRef = ref(database);
+export const dataRef = ref(database, 'fulldb');
+export const userRef = ref(database, 'users')
+export const getPostById = (userId) => ref(database, `users/${userId}`)
 
-// const firebase = require('firebase');
-export const fireBase = firebase.initializeApp(firebaseConfig);
-export const firebaseui = require('firebaseui');
+export const signUp = async (email, password) => {
+    await createUserWithEmailAndPassword(auth, email, password)
+};
+  
+export const signIn = async (email, password) => {
+    await signInWithEmailAndPassword(auth, email, password)
+};
+
+export const logOut = async () => await signOut(auth)
+
+export const onAuth = async () => {
+    await onAuthStateChanged(auth, (user) => {
+        if (user) {
+            const uid = user.uid;
+            console.log('Loged in')
+          } else {            
+            console.log('Loged out')
+          }
+    })
+};
+
+export const checkuser = () => {
+    if (auth.currentUser) {
+        return true
+    } else {
+        return false
+    }
+};
+  
+
+  
+
+
+
+
+// console.log(ui)
+

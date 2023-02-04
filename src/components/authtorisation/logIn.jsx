@@ -1,9 +1,13 @@
 import { useNavigate } from "react-router-dom";
+import { checkuser } from "../../server/googleFirebase";
 import SendForm from "../sendForm/sendForm";
 
 export const LogIn = () => {
+
     const navigate = useNavigate();
-    const isAuth = 0;
+
+    const isAuth = checkuser();
+    console.log(isAuth)
 
     const handleSignIn = (e) => {
         e.preventDefault();
