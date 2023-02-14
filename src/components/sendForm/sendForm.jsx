@@ -147,20 +147,6 @@ export const SendForm = () => {
                         <div className="col-10">
                             <textarea onChange={handleInputs} className="landlords-textarea-description" name="description" id="description" placeholder="Описание" maxLength="500" value={filledForm.description} required></textarea>
                         </div>                                                
-                        <div className="col-10">
-                            <div className="form-check">
-                                <input onChange={changeAgreement} className="form-check-input" type="checkbox"  id="invalidCheck" required defaultChecked={agreement} />
-                                <label className="form-label" htmlFor="invalidCheck">
-                                    <Link 
-                                    className="form-label-link" 
-                                    to='/protection-personal-data'
-                                    // target='_blank'
-                                    >Я прочитал и согласен с положением о защите персональных данных</Link>                                
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="landlords-rightside">
                         <p className="form-label">Параметры объекта недвижимости</p>
                         <div className="col-10 landlords-row">
                             <div className="col-5 flex-row">
@@ -172,6 +158,8 @@ export const SendForm = () => {
                                 <label className="form-label margin-0 label-padding" htmlFor="m2net">m²</label>     
                             </div>
                         </div>
+                    </div>
+                    <div className="landlords-rightside">                        
                         <div className="col-10">
                             <label htmlFor="rooms" className="form-label">Количество комнат</label>
                             <select onChange={handleSelect} defaultValue='' className="form-select" id="rooms" value={filledForm.rooms} required>
@@ -319,6 +307,18 @@ export const SendForm = () => {
                         <div className="col-10">
                             <label className="btn btn-primary landlord-button" htmlFor="img"><span className="load-photo-button-text">Загрузите фото</span></label>
                             <input className='input-file' id="img" type="file" name="photo" multiple accept="image/jpeg"></input>
+                        </div>
+                        <div className="col-10">
+                            <div className="form-check">
+                                <input onChange={changeAgreement} className="form-check-input" type="checkbox"  id="invalidCheck" required defaultChecked={agreement} />
+                                <label className="form-label" htmlFor="invalidCheck">
+                                    <Link 
+                                    className="form-label-link" 
+                                    to='/protection-personal-data'
+                                    // target='_blank'
+                                    >Я прочитал и согласен с положением о защите персональных данных</Link>                                
+                                </label>
+                            </div>
                         </div>                         
                     </div>
                 </form>

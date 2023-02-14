@@ -67,7 +67,11 @@ export const Footer = () => {
                 <div className="footer-content-navigate">
                     <h3>Арендодателям</h3>
                     <p><Link to="/landlords" className="footer-content-link">Разместить объект</Link></p>
-                </div>        
+                </div>
+                <div className="footer-content-navigate">
+                    <h3>Прочее</h3>
+                    <p><a href="https://www.cbr-xml-daily.ru/" className="footer-content-link" target="_blank">Виджет курсов валют</a></p>
+                </div>             
             </div>
         </footer>
     )

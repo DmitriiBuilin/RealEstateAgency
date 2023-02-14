@@ -1,7 +1,11 @@
-import { AGREEMENTVALUE, CHECK, CLEAR_INPUTS, CURRENCYSELECT, DATABASE, LANGUAGESELECT, OBJECT, PAGEPARAM, PAGESELECT, SELECT, SORTERVALUE, TYPING } from "../types/types";
+import { AGREEMENTVALUE, CHECK, CLEAR_INPUTS, CURRENCYOBJECT, CURRENCYSELECT, DATABASE, LANGUAGESELECT, OBJECT, PAGEPARAM, PAGESELECT, SELECT, SORTERVALUE, TYPING } from "../types/types";
 
 export const currencySelect = (data) => {
   return { type: CURRENCYSELECT, payload: data }
+};
+
+export const currencyObject = (data) => {
+  return { type: CURRENCYOBJECT, payload: data }
 };
 
 export const languageSelect = (data) => {

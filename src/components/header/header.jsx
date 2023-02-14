@@ -4,6 +4,7 @@ import { Link, NavLink } from "react-router-dom";
 import { currencySelect, languageSelect, pageSelect } from "../../store/actions/actions";
 import { getCurrencyValue, getLanguageValue } from "../../store/selectors/selector";
 import $ from "jquery"
+import { CurrencyApi } from "../currency/currencyAPI";
 
 export const Header = () => {
     const currency = useSelector(getCurrencyValue);
@@ -50,9 +51,16 @@ export const Header = () => {
         dispatch(pageSelect(pageId));
     };
 
+
+
     useEffect(() => {    
-        // selectedLanguage.parentNode.classList.add('selected')
-        // selectedCurrency.parentNode.classList.add('selected')
+        const selectedLanguage = document.getElementById(`${language}`);
+        const selectedCurrency = document.getElementById(`${currency}`);
+
+        selectedLanguage.parentNode.classList.add('selected')
+        selectedCurrency.parentNode.classList.add('selected')
+
+        
 
         /* jQuery script (show/hide header) */        
         let header = $('.header-fixed'),
@@ -72,6 +80,7 @@ export const Header = () => {
 
     return (
         <header id="header">
+            <CurrencyApi />
             <div id='headerFloat' className="header-block header-fixed container-primary">
                 <div className="header-background">                    
                     <Link to="/" className="header-logo">

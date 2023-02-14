@@ -1,4 +1,5 @@
 import { combineReducers } from "redux";
+import { currencyObjectReducer } from "./currencyObjectReducer";
 
 import currencyReducer from "./currencyReducer";
 import dataBaseReducer from "./dataBaseReduser";
@@ -12,6 +13,7 @@ import userAgreementReducer from "./userAgreemetReducer";
 
 const rootReducer = combineReducers ({
     currency: currencyReducer,
+    currensyObject: currencyObjectReducer,
     languge: languageReducer,
     page: pageReducer,
     pageParam: pageParamReducer,

@@ -1,6 +1,9 @@
 export const getCurrencyValue = (state) => {
     return state.currency
 };
+export const getCurrencyObject = (state) => {
+    return state.currencyObject
+};
 export const getLanguageValue = (state) => {
     return state.languge
 };
