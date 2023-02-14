@@ -3,7 +3,7 @@ import { memo, useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { dataRef } from "../../server/googleFirebase";
-import { getCurrencyValue } from "../../store/selectors/selector";
+import { getCurrencyObject, getCurrencyValue } from "../../store/selectors/selector";
 import { getPageValue } from "../../store/selectors/selector";
 
 export const CardComponent = () => {
@@ -21,6 +21,35 @@ export const CardComponent = () => {
     const handleChangePhoto = (e, imgNumber) => {
         setMainPhotoKey(imgNumber)
     };
+
+
+    const currencyValue = () => {
+    switch (currency) {
+        case '€':
+            return 'EUR';
+        case '₺':
+            return 'TRY';
+        default: 
+            return 'USD';
+    }}
+    const currencyDollar = useSelector(getCurrencyObject)['USD'].Value;
+    const currencyRate = useSelector(getCurrencyObject)[currencyValue()].Value;
+
+    const currencyCoefficient = () => {
+        switch (currency) {
+            case '$':
+                return 1;
+            case '€':
+                return (currencyDollar / currencyRate).toFixed(4);
+            case '₺':
+                return (currencyDollar / currencyRate * 10).toFixed(4);
+            case '₽':
+                return currencyDollar.toFixed(4);
+            default: 
+                return 1;
+        }}
+    console.log(currencyValue());
+    console.log(currencyCoefficient());
 
     const page = {
         rent: 'Аренда',

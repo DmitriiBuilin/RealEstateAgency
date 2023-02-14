@@ -13,7 +13,7 @@ import userAgreementReducer from "./userAgreemetReducer";
 
 const rootReducer = combineReducers ({
     currency: currencyReducer,
-    currensyObject: currencyObjectReducer,
+    currencyObject: currencyObjectReducer,
     languge: languageReducer,
     page: pageReducer,
     pageParam: pageParamReducer,
