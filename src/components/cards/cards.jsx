@@ -3,11 +3,13 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { dataRef } from "../../server/googleFirebase";
-import { chosenObject, objectsDataBase } from "../../store/actions/actions";
+import { objectsDataBase } from "../../store/actions/actions";
 import { getCurrencyValue } from "../../store/selectors/selector";
+import useCurrencyCoefficient from "../currency/curencyCoefficient";
 
 export const Cards = (props) => {
     const currency = useSelector(getCurrencyValue);
+    const valuteCoefficient = useCurrencyCoefficient();
     const dispatch = useDispatch();
     const [cardsList, setCardsList] = useState([]);
 
@@ -53,7 +55,7 @@ export const Cards = (props) => {
                                     <div className="offer-card-properties">
                                         <h4 className="offer-card-name">{item.objectName}</h4>
                                         <p className="offer-card-description">{item.description}</p>
-                                        <p className="offer-card-price">Price <span>{item.price}</span> {currency} </p>
+                                        <p className="offer-card-price">Price <span>{Math.round(item.price * valuteCoefficient)}</span> {currency} </p>
                                     </div>
                                 </div>
                             </Link>
