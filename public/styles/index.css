@@ -12950,8 +12950,13 @@ input::-webkit-inner-spin-button {
 
 .input-file {
   opacity: 0;
-  visibility: hidden;
+  display: none;
   width: 100%;
+}
+
+.input-file-wrp {
+  display: flex;
+  width: auto;
 }
 
 .load-photo-button {
@@ -13101,6 +13106,8 @@ input::-webkit-inner-spin-button {
 }
 
 .card-properties-wrp {
+  display: flex;
+  flex-direction: column;
   width: 405px;
 }
 

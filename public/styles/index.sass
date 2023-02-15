@@ -1112,9 +1112,14 @@ input::-webkit-inner-spin-button
     padding-left: 10px
 
 .input-file
-  opacity: 0
-  visibility: hidden
-  width: 100%
+    opacity: 0
+    display: none
+    width: 100%
+//   visibility: hidden  
+
+.input-file-wrp  
+    display: flex
+    width: auto 
 
 .load-photo-button
     padding: 1rem 1rem
@@ -1240,7 +1245,9 @@ input::-webkit-inner-spin-button
     color: rgba(33, 37, 41, 0.75)
     font-size: 15px
 
-.card-properties-wrp
+.card-properties-wrp    
+    display: flex
+    flex-direction: column
     width:  405px
 
 .card-properties-ul

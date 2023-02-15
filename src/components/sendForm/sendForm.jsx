@@ -304,7 +304,7 @@ export const SendForm = () => {
                                 <label className="form-label" htmlFor="microwave">Микроволновая печь</label>
                             </div>                                                       
                         </div>
-                        <div className="col-10">
+                        <div className="col-10 input-file-wrp">
                             <label className="btn btn-primary landlord-button" htmlFor="img"><span className="load-photo-button-text">Загрузите фото</span></label>
                             <input className='input-file' id="img" type="file" name="photo" multiple accept="image/jpeg"></input>
                         </div>
