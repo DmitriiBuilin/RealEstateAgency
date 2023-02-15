@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, NavLink } from "react-router-dom";
-import { currencySelect, pageSelect } from "../../store/actions/actions";
+import { currencySelect, pageSelect, searchClearInput, searchTyping } from "../../store/actions/actions";
 import { getCurrencyValue, getPageValue } from "../../store/selectors/selector";
 
 export const SearchAside = () => {
@@ -25,6 +25,15 @@ export const SearchAside = () => {
     const handlePage = (e) => {
         const pageId = e.target.getAttribute('datapage');
         dispatch(pageSelect(pageId));
+    };
+
+    const handleInputs = (event) => {
+        dispatch(searchTyping(event))
+    };
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        dispatch(searchClearInput())
     };
 
     useEffect(() => {
@@ -63,7 +72,7 @@ export const SearchAside = () => {
                                 <path d="M16 8C16 12.4183 12.4183 16 8 16C3.58172 16 0 12.4183 0 8C0 3.58172 3.58172 0 8 0C12.4183 0 16 3.58172 16 8ZM5.35355 4.64645C5.15829 4.45118 4.84171 4.45118 4.64645 4.64645C4.45118 4.84171 4.45118 5.15829 4.64645 5.35355L7.29289 8L4.64645 10.6464C4.45118 10.8417 4.45118 11.1583 4.64645 11.3536C4.84171 11.5488 5.15829 11.5488 5.35355 11.3536L8 8.70711L10.6464 11.3536C10.8417 11.5488 11.1583 11.5488 11.3536 11.3536C11.5488 11.1583 11.5488 10.8417 11.3536 10.6464L8.70711 8L11.3536 5.35355C11.5488 5.15829 11.5488 4.84171 11.3536 4.64645C11.1583 4.45118 10.8417 4.45118 10.6464 4.64645L8 7.29289L5.35355 4.64645Z" />
                             </svg>
                         </div>
-            <form id="search-form">
+            <form id="search-form" onSubmit={handleSubmit}>
                 <div className="form-check-wrp">
                     <NavLink onClick={handlePage} datapage='rent' to="/rent" className="header-menu-item-search">
                         Аренда
@@ -132,7 +141,7 @@ export const SearchAside = () => {
                         </h2>
                         <div id="panelsStayOpen-collapseOne" data-bs-parent="#accordionExample" className="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingOne">
                             <div className="accordion-body">
-                                <select className="form-select form-select-dev" defaultValue='city' id="inputCountry" required>
+                                <select className="form-select form-select-dev" onChange={handleInputs} defaultValue='city' id="inputCity" required>
                                     <option disabled value="city">Город</option>
                                     <option value="Istanbul">Стамбул</option>
                                     <option value="Antalya">Анталья</option>
@@ -142,7 +151,7 @@ export const SearchAside = () => {
                                 <div className="invalid-feedback">
                                 Please select a valid option.
                                 </div>
-                                <select className="form-select" defaultValue='district' id="inputCity" required>
+                                <select className="form-select" onChange={handleInputs} defaultValue='district' id="inputDistrict" required>
                                     <option disabled value="district">Район</option>
                                     <option value="Kepez">Кепез</option>
                                     <option value="Konyalty">Конъялты</option>
@@ -175,11 +184,25 @@ export const SearchAside = () => {
                                 </div>
                                 <div className="row">
                                     <div className="col">
-                                        <input type="number" min="0" max="99999999" className="form-control" placeholder="Мин" aria-label="Min"/>
+                                        <input id="minPrice" 
+                                        onChange={handleInputs} 
+                                        type="number" 
+                                        min="0" 
+                                        max="50000000" 
+                                        className="form-control" 
+                                        placeholder="Мин" 
+                                        aria-label="Min"/>
                                         <span>{currencySymbol}</span>
                                     </div>
                                     <div className="col">
-                                        <input type="number" min="0" max="99999999" className="form-control" placeholder="Макс" aria-label="Max"/>
+                                        <input id="maxPrice"  
+                                        onChange={handleInputs} 
+                                        type="number" 
+                                        min="0" 
+                                        max="50000000" 
+                                        className="form-control" 
+                                        placeholder="Макс" 
+                                        aria-label="Max"/>
                                         <span>{currencySymbol}</span>
                                     </div>
                                 </div>
@@ -195,7 +218,12 @@ export const SearchAside = () => {
                         <div id="panelsStayOpen-collapseThree" data-bs-parent="#accordionExample"  className="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingThree">
                             <div className="accordion-body">
                                 <div className="mb-3">
-                                    <input type="text" className="form-control" id="formGroupExampleInput" placeholder="По всем параметрам"/>
+                                    <input type="text" 
+                                    onChange={handleInputs} 
+                                    className="form-control" 
+                                    id="globalSearchInput"
+                                    // id="formGroupExampleInput"
+                                    placeholder="По всем параметрам"/>
                                 </div>
                             </div>
                         </div>

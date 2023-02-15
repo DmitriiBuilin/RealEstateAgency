@@ -1,4 +1,4 @@
-import { AGREEMENTVALUE, CHECK, CLEAR_INPUTS, CURRENCYOBJECT, CURRENCYSELECT, DATABASE, LANGUAGESELECT, OBJECT, PAGEPARAM, PAGESELECT, SELECT, SORTERVALUE, TYPING } from "../types/types";
+import { AGREEMENTVALUE, CHECK, CLEAR_INPUTS, CURRENCYOBJECT, CURRENCYSELECT, DATABASE, LANGUAGESELECT, OBJECT, PAGEPARAM, PAGESELECT, SEARCHCHECK, SEARCHSELECT, SEARCHTYPING, SEARCH_CLEAR_INPUTS, SELECT, SORTERVALUE, TYPING } from "../types/types";
 
 export const currencySelect = (data) => {
   return { type: CURRENCYSELECT, payload: data }
@@ -40,7 +40,6 @@ export const typing = (event) => {
   return {
     type: TYPING,
     payload: {[event.target.id]: event.target.value }
-    // payload: { [event.target.name]: event.target.value, check: event.target.checked }
   }
 }
 
@@ -61,6 +60,34 @@ export const select = (event) => {
 export const clearInput = () => {
   return {
     type: CLEAR_INPUTS,
+    payload: { }
+  }
+}
+
+export const searchTyping = (event) => {
+  return {
+    type: SEARCHTYPING,
+    payload: {[event.target.id]: event.target.value }
+  }
+}
+
+export const searchCheckBox = (event) => {
+  return {
+    type: SEARCHCHECK,
+    payload: {[event.target.id]: event.target.checked }
+  }
+}
+
+export const searchSelect = (event) => {
+  return {
+    type: SEARCHSELECT,
+    payload: {[event.target.id]: event.target.value }
+  }
+}
+
+export const searchClearInput = () => {
+  return {
+    type: SEARCH_CLEAR_INPUTS,
     payload: { }
   }
 }

@@ -8,6 +8,7 @@ import languageReducer from "./languageReducer";
 import objectReducer from "./objectReducer";
 import pageParamReducer from "./pageParamReducer";
 import pageReducer from "./pageReducer";
+import searchReducer from "./searchReduser";
 import sorterValueReducer from "./sorterValueReducer";
 import userAgreementReducer from "./userAgreemetReducer";
 
@@ -22,6 +23,7 @@ const rootReducer = combineReducers ({
     sorterValue: sorterValueReducer,
     agreementValue: userAgreementReducer,
     formInput: landLordReducer,
+    searchInput: searchReducer,
 });
 
 export default rootReducer;

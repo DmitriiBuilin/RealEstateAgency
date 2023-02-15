@@ -33,3 +33,7 @@ export const getAgreementrValue = (state) => {
 export const getInputsValue = (state) => {
     return state.formInput
 };
+
+export const getSearchValue = (state) => {
+    return state.searchInput
+};
