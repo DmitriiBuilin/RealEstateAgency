@@ -20,14 +20,16 @@ export const SearchResult = () => {
     const cardsListFilter = (
         cardsList.filter((item) => {
             if(!param) {
-                return (item.target === target)}
-            if(!searchResponse.globalSearchInput){
+                return (item.target === target && (item.objectName.match(regexp) || item.description.match(regexp))
+                )
+            }
+            if(!searchResponse){
                 return (
                     item.target === target && item.realAstateType === param
                 )
             }
             return (
-                item.target === target && item.realAstateType === param && item.objectName.match(regexp)
+                item.target === target && item.realAstateType === param && (item.objectName.match(regexp) || item.description.match(regexp))
             )  
             
     }));

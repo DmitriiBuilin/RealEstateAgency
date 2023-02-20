@@ -34,10 +34,10 @@ export const SearchAside = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         /* Clearing inputs */
-        // const inputs = document.querySelectorAll('input');
-        // for (let i = 0;  i < inputs.length; i++) {
-        // inputs[i].value = '';
-        // };
+        const inputs = document.querySelectorAll('input');
+        for (let i = 0;  i < inputs.length; i++) {
+        inputs[i].value = '';
+        };
         dispatch(searchClearInput())
     };
 
@@ -234,7 +234,7 @@ export const SearchAside = () => {
                         </div>
                     </div>
                     <div className="search-button">
-                    <button type="submit" form="search-form" className="btn btn-primary search-button-item">Искать</button>
+                    <button type="submit" form="search-form" className="btn btn-primary search-button-item">Очистить поиск</button>
                     </div>   
                 </div>
             </form>    
