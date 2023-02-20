@@ -3,7 +3,7 @@ import CardItem from "../cards/сardItem";
 import Sorter from "../sorter/sorter";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getFullDataBase, getPageValue, getSorterValue } from "../../store/selectors/selector";
+import { getFullDataBase, getPageValue, getSearchValue, getSorterValue } from "../../store/selectors/selector";
 import { objectsDataBase, pageParam } from "../../store/actions/actions";
 import { onValue, ref } from "firebase/database";
 import { dataRef } from "../../server/googleFirebase";
@@ -13,16 +13,25 @@ export const SearchResult = () => {
     const dispatch = useDispatch();
     const target = useSelector(getPageValue);
     const storeSorterValue = useSelector(getSorterValue);
+    const searchResponse = useSelector(getSearchValue);
+    const regexp = new RegExp(searchResponse.globalSearchInput, 'i');
+    console.log(regexp);
     const [cardsList, setCardsList] = useState([])
     const cardsListFilter = (
         cardsList.filter((item) => {
             if(!param) {
                 return (item.target === target)}
+            if(!searchResponse.globalSearchInput){
+                return (
+                    item.target === target && item.realAstateType === param
+                )
+            }
             return (
-                item.target === target && item.realAstateType === param
-            )            
+                item.target === target && item.realAstateType === param && item.objectName.match(regexp)
+            )  
+            
     }));
-
+    
     const pageParametr = {
         flat: 'Квартира',
         house: 'Дом',

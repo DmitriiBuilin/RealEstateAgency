@@ -7,5 +7,6 @@ export const initState = {
     fullDataBase: "",
     chosenObject: "",
     sorterValue: "sort",
+    searchInput: "",
     agreementValue: false,
   }

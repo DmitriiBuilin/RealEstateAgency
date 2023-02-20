@@ -30,8 +30,6 @@ export default function useCurrencyCoefficient() {
         default: 
             return 1;
     }}
-    console.log(currencyValue());
-    console.log(currencyCoefficient());
 
     return currencyCoefficient()
 }
