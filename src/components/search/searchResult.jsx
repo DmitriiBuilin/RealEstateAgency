@@ -20,8 +20,10 @@ export const SearchResult = () => {
     const cardsListFilter = (
         cardsList.filter((item) => {
             if(!param) {
-                return (item.target === target && (item.objectName.match(regexp) || item.description.match(regexp))
-                )
+                if(!searchResponse) {
+                    return (item.target === target)
+                }
+                return (item.target === target && (item.objectName.match(regexp) || item.description.match(regexp)) && item.city == searchResponse.inputCity)
             }
             if(!searchResponse){
                 return (
@@ -29,7 +31,7 @@ export const SearchResult = () => {
                 )
             }
             return (
-                item.target === target && item.realAstateType === param && (item.objectName.match(regexp) || item.description.match(regexp))
+                item.target === target && item.realAstateType === param && (item.objectName.match(regexp) || item.description.match(regexp)) && item.city == searchResponse.inputCity
             )  
             
     }));

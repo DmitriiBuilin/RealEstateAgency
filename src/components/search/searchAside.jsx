@@ -35,9 +35,13 @@ export const SearchAside = () => {
         e.preventDefault();
         /* Clearing inputs */
         const inputs = document.querySelectorAll('input');
+        const selects = document.querySelectorAll('select');
         for (let i = 0;  i < inputs.length; i++) {
         inputs[i].value = '';
         };
+        for (let i = 0;  i < selects.length; i++) {
+            selects[i].value = 'main';
+            };
         dispatch(searchClearInput())
     };
 
@@ -146,8 +150,8 @@ export const SearchAside = () => {
                         </h2>
                         <div id="panelsStayOpen-collapseOne" data-bs-parent="#accordionExample" className="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingOne">
                             <div className="accordion-body">
-                                <select className="form-select form-select-dev" onChange={handleInputs} defaultValue='city' id="inputCity" required>
-                                    <option disabled value="city">Город</option>
+                                <select className="form-select form-select-dev" onChange={handleInputs} defaultValue='main' id="inputCity" required>
+                                    <option disabled value="main">Город</option>
                                     <option value="Istanbul">Стамбул</option>
                                     <option value="Antalya">Анталья</option>
                                     <option value="Alanya">Аланья</option>
@@ -156,8 +160,8 @@ export const SearchAside = () => {
                                 <div className="invalid-feedback">
                                 Please select a valid option.
                                 </div>
-                                <select className="form-select" onChange={handleInputs} defaultValue='district' id="inputDistrict" required>
-                                    <option disabled value="district">Район</option>
+                                <select className="form-select" onChange={handleInputs} defaultValue='main' id="inputDistrict" required>
+                                    <option disabled value="main">Район</option>
                                     <option value="Kepez">Кепез</option>
                                     <option value="Konyalty">Конъялты</option>
                                     <option value="Lara">Лара</option>

@@ -7,7 +7,7 @@ export const searchReducer = (state = "", action) => {
       case 'SEARCH::SELECT':
         return { ...state, ...action.payload }
       case 'SEARCH::CLEAR_INPUTS':
-        return { ...action.payload }
+        return action.payload;
           default:
             return state;
         }

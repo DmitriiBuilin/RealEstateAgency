@@ -60,7 +60,7 @@ export const select = (event) => {
 export const clearInput = () => {
   return {
     type: CLEAR_INPUTS,
-    payload: { }
+    payload: {}
   }
 }
 
@@ -88,6 +88,6 @@ export const searchSelect = (event) => {
 export const searchClearInput = () => {
   return {
     type: SEARCH_CLEAR_INPUTS,
-    payload: { }
+    payload: ""
   }
 }
