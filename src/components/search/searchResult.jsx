@@ -3,9 +3,9 @@ import CardItem from "../cards/сardItem";
 import Sorter from "../sorter/sorter";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getFullDataBase, getPageValue, getSearchValue, getSorterValue } from "../../store/selectors/selector";
+import { getPageValue, getSearchValue, getSorterValue } from "../../store/selectors/selector";
 import { objectsDataBase, pageParam } from "../../store/actions/actions";
-import { onValue, ref } from "firebase/database";
+import { onValue } from "firebase/database";
 import { dataRef } from "../../server/googleFirebase";
 
 export const SearchResult = () => {
@@ -15,15 +15,14 @@ export const SearchResult = () => {
     const storeSorterValue = useSelector(getSorterValue);
     const searchResponse = useSelector(getSearchValue);
     const regexp = new RegExp(searchResponse.globalSearchInput, 'i');
-    console.log(regexp);
     const [cardsList, setCardsList] = useState([])
     const cardsListFilter = (
         cardsList.filter((item) => {
             if(!param) {
                 if(!searchResponse) {
                     return (item.target === target)
-                }
-                return (item.target === target && (item.objectName.match(regexp) || item.description.match(regexp)) && item.city == searchResponse.inputCity)
+                }                
+                return (item.target === target && (item.objectName.match(regexp) || item.description.match(regexp)))
             }
             if(!searchResponse){
                 return (
@@ -31,9 +30,8 @@ export const SearchResult = () => {
                 )
             }
             return (
-                item.target === target && item.realAstateType === param && (item.objectName.match(regexp) || item.description.match(regexp)) && item.city == searchResponse.inputCity
-            )  
-            
+                item.target === target && item.realAstateType === param && (item.objectName.match(regexp) || item.description.match(regexp) || item.city == searchResponse.inputCity)
+            )           
     }));
     
     const pageParametr = {

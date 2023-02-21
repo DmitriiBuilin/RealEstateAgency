@@ -31,7 +31,9 @@ export const SearchAside = () => {
         dispatch(searchTyping(event))
     };
 
-    const handleSubmit = (e) => {
+    
+
+    const clearInputs = (e) => {
         e.preventDefault();
         /* Clearing inputs */
         const inputs = document.querySelectorAll('input');
@@ -43,6 +45,11 @@ export const SearchAside = () => {
             selects[i].value = 'main';
             };
         dispatch(searchClearInput())
+    };
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+
     };
 
     useEffect(() => {
@@ -221,10 +228,321 @@ export const SearchAside = () => {
                     <div className="accordion-item">
                         <h2 className="accordion-header" id="panelsStayOpen-headingThree">
                         <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">
+                            Общая площадь
+                        </button>
+                        </h2>
+                        <div id="panelsStayOpen-collapseThree" data-bs-parent="#accordionExample" className="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingThree">
+                            <div className="accordion-body">
+                                <div className="row">
+                                    <div className="col">
+                                        <input id="minSqure" 
+                                        onChange={handleInputs} 
+                                        type="number" 
+                                        min="0" 
+                                        max="100000" 
+                                        className="form-control" 
+                                        placeholder="Мин" 
+                                        aria-label="Min"/>
+                                        <span>m²</span>
+                                    </div>
+                                    <div className="col">
+                                        <input id="maxSqure"  
+                                        onChange={handleInputs} 
+                                        type="number" 
+                                        min="0" 
+                                        max="100000" 
+                                        className="form-control" 
+                                        placeholder="Макс" 
+                                        aria-label="Max"/>
+                                        <span>m²</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="accordion-item">
+                        <h2 className="accordion-header" id="panelsStayOpen-headingFour">
+                        <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseFour" aria-expanded="false" aria-controls="panelsStayOpen-collapseFour">
+                        Количество комнат
+                        </button>
+                        </h2>
+                        <div id="panelsStayOpen-collapseFour" data-bs-parent="#accordionExample" className="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingFour">
+                            <div className="accordion-body">
+                                <div className="row accordion-checkbox-input">
+                                    <div className="col form-check checkbox-input">
+                                        <input id="1+1" 
+                                        defaultChecked={false}
+                                        onChange={handleInputs} 
+                                        type="checkbox"
+                                        className="form-check-input"/>
+                                        <label className="form-label" htmlFor="1+1">1+1</label>
+                                    </div>
+                                    <div className="col form-check checkbox-input">
+                                        <input id="2+1" 
+                                        defaultChecked={false}
+                                        onChange={handleInputs} 
+                                        type="checkbox"
+                                        className="form-check-input"/>
+                                        <label className="form-label" htmlFor="2+1">2+1</label>
+                                    </div>
+                                    <div className="col form-check checkbox-input">
+                                        <input id="3+1" 
+                                        defaultChecked={false}
+                                        onChange={handleInputs} 
+                                        type="checkbox"
+                                        className="form-check-input"/>
+                                        <label className="form-label" htmlFor="3+1">3+1</label>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="accordion-item">
+                        <h2 className="accordion-header" id="panelsStayOpen-headingFive">
+                        <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseFive" aria-expanded="false" aria-controls="panelsStayOpen-collapseFive">
+                        Отопление
+                        </button>
+                        </h2>
+                        <div id="panelsStayOpen-collapseFive" data-bs-parent="#accordionExample" className="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingFive">
+                            <div className="accordion-body">
+                                <div className="row accordion-checkbox-input">
+                                    <div className="col form-check checkbox-input">
+                                        <input id="heatingNo" 
+                                        defaultChecked={false}
+                                        onChange={handleInputs} 
+                                        type="checkbox"
+                                        className="form-check-input"/>
+                                        <label className="form-label" htmlFor="heatingNo">Нет</label>
+                                    </div>
+                                    <div className="col form-check checkbox-input">
+                                        <input id="heatingGas" 
+                                        defaultChecked={false}
+                                        onChange={handleInputs} 
+                                        type="checkbox"
+                                        className="form-check-input"/>
+                                        <label className="form-label" htmlFor="heatingGas">Газ</label>
+                                    </div>
+                                    <div className="col form-check checkbox-input">
+                                        <input id="heatingElectro" 
+                                        defaultChecked={false}
+                                        onChange={handleInputs} 
+                                        type="checkbox"
+                                        className="form-check-input"/>
+                                        <label className="form-label" htmlFor="heatingElectro">Электричество</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="accordion-item">
+                        <h2 className="accordion-header" id="panelsStayOpen-headingSix">
+                        <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseSix" aria-expanded="false" aria-controls="panelsStayOpen-collapseSix">
+                        Кондционер
+                        </button>
+                        </h2>
+                        <div id="panelsStayOpen-collapseSix" data-bs-parent="#accordionExample" className="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingSix">
+                            <div className="accordion-body">
+                                <div className="row accordion-checkbox-input">
+                                    <div className="col form-check checkbox-input">
+                                        <input id="airYes" 
+                                        defaultChecked={false}
+                                        onChange={handleInputs} 
+                                        type="checkbox"
+                                        className="form-check-input"/>
+                                        <label className="form-label" htmlFor="airYes">Есть</label>
+                                    </div>
+                                    <div className="col form-check checkbox-input">
+                                        <input id="airNo" 
+                                        defaultChecked={false}
+                                        onChange={handleInputs} 
+                                        type="checkbox"
+                                        className="form-check-input"/>
+                                        <label className="form-label" htmlFor="airNo">Нет</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="accordion-item">
+                        <h2 className="accordion-header" id="panelsStayOpen-headingSeven">
+                        <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseSeven" aria-expanded="false" aria-controls="panelsStayOpen-collapseSeven">
+                        Ванных комнат
+                        </button>
+                        </h2>
+                        <div id="panelsStayOpen-collapseSeven" data-bs-parent="#accordionExample" className="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingSeven">
+                            <div className="accordion-body">
+                                <div className="row accordion-checkbox-input">
+                                    <div className="col form-check checkbox-input">
+                                        <input id="bath0" 
+                                        defaultChecked={false}
+                                        onChange={handleInputs} 
+                                        type="checkbox"
+                                        className="form-check-input"/>
+                                        <label className="form-label" htmlFor="bath0">Нет</label>
+                                    </div>
+                                    <div className="col form-check checkbox-input">
+                                        <input id="bath1" 
+                                        defaultChecked={false}
+                                        onChange={handleInputs} 
+                                        type="checkbox"
+                                        className="form-check-input"/>
+                                        <label className="form-label" htmlFor="bath1">1</label>
+                                    </div>
+                                    <div className="col form-check checkbox-input">
+                                        <input id="bath2" 
+                                        defaultChecked={false}
+                                        onChange={handleInputs} 
+                                        type="checkbox"
+                                        className="form-check-input"/>
+                                        <label className="form-label" htmlFor="bath2">2</label>
+                                    </div>
+                                    <div className="col form-check checkbox-input">
+                                        <input id="bath3" 
+                                        defaultChecked={false}
+                                        onChange={handleInputs} 
+                                        type="checkbox"
+                                        className="form-check-input"/>
+                                        <label className="form-label" htmlFor="bath3">3</label>
+                                    </div>
+                                    <div className="col form-check checkbox-input">
+                                        <input id="bath4" 
+                                        defaultChecked={false}
+                                        onChange={handleInputs} 
+                                        type="checkbox"
+                                        className="form-check-input"/>
+                                        <label className="form-label" htmlFor="bath4">4</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="accordion-item">
+                        <h2 className="accordion-header" id="panelsStayOpen-headingEight">
+                        <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseEight" aria-expanded="false" aria-controls="panelsStayOpen-collapseEight">
+                        Балкон
+                        </button>
+                        </h2>
+                        <div id="panelsStayOpen-collapseEight" data-bs-parent="#accordionExample" className="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingEight">
+                            <div className="accordion-body">
+                                <div className="row accordion-checkbox-input">
+                                    <div className="col form-check checkbox-input">
+                                        <input id="balkony0" 
+                                        defaultChecked={false}
+                                        onChange={handleInputs} 
+                                        type="checkbox"
+                                        className="form-check-input"/>
+                                        <label className="form-label" htmlFor="balkony0">Нет</label>
+                                    </div>
+                                    <div className="col form-check checkbox-input">
+                                        <input id="balkony1" 
+                                        defaultChecked={false}
+                                        onChange={handleInputs} 
+                                        type="checkbox"
+                                        className="form-check-input"/>
+                                        <label className="form-label" htmlFor="balkony1">1</label>
+                                    </div>
+                                    <div className="col form-check checkbox-input">
+                                        <input id="balkony2" 
+                                        defaultChecked={false}
+                                        onChange={handleInputs} 
+                                        type="checkbox"
+                                        className="form-check-input"/>
+                                        <label className="form-label" htmlFor="balkony2">2</label>
+                                    </div>
+                                    <div className="col form-check checkbox-input">
+                                        <input id="balkony3" 
+                                        defaultChecked={false}
+                                        onChange={handleInputs} 
+                                        type="checkbox"
+                                        className="form-check-input"/>
+                                        <label className="form-label" htmlFor="balkony3">3</label>
+                                    </div>
+                                    <div className="col form-check checkbox-input">
+                                        <input id="balkony4" 
+                                        defaultChecked={false}
+                                        onChange={handleInputs} 
+                                        type="checkbox"
+                                        className="form-check-input"/>
+                                        <label className="form-label" htmlFor="balkony4">4</label>
+                                    </div>
+                                    <div className="col form-check checkbox-input">
+                                        <input id="balkony5" 
+                                        defaultChecked={false}
+                                        onChange={handleInputs} 
+                                        type="checkbox"
+                                        className="form-check-input"/>
+                                        <label className="form-label" htmlFor="balkony5">5</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="accordion-item">
+                        <h2 className="accordion-header" id="panelsStayOpen-headingNine">
+                        <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseNine" aria-expanded="false" aria-controls="panelsStayOpen-collapseNine">
+                        Мебель
+                        </button>
+                        </h2>
+                        <div id="panelsStayOpen-collapseNine" data-bs-parent="#accordionExample" className="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingNine">
+                            <div className="accordion-body">
+                                <div className="row accordion-checkbox-input">
+                                    <div className="col form-check checkbox-input">
+                                        <input id="furnitureYes" 
+                                        defaultChecked={false}
+                                        onChange={handleInputs} 
+                                        type="checkbox"
+                                        className="form-check-input"/>
+                                        <label className="form-label" htmlFor="furnitureYes">Есть</label>
+                                    </div>
+                                    <div className="col form-check checkbox-input">
+                                        <input id="furnitureNo" 
+                                        defaultChecked={false}
+                                        onChange={handleInputs} 
+                                        type="checkbox"
+                                        className="form-check-input"/>
+                                        <label className="form-label" htmlFor="furnitureNo">Нет</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="accordion-item">
+                        <h2 className="accordion-header" id="panelsStayOpen-headingTen">
+                        <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTen" aria-expanded="false" aria-controls="panelsStayOpen-collapseTen">
+                        Кухонная мебель
+                        </button>
+                        </h2>
+                        <div id="panelsStayOpen-collapseTen" data-bs-parent="#accordionExample" className="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingTen">
+                            <div className="accordion-body">
+                                <div className="row accordion-checkbox-input">
+                                    <div className="col form-check checkbox-input">
+                                        <input id="kitchenYes" 
+                                        defaultChecked={false}
+                                        onChange={handleInputs} 
+                                        type="checkbox"
+                                        className="form-check-input"/>
+                                        <label className="form-label" htmlFor="kitchenYes">Есть</label>
+                                    </div>
+                                    <div className="col form-check checkbox-input">
+                                        <input id="kitchenNo" 
+                                        defaultChecked={false}
+                                        onChange={handleInputs} 
+                                        type="checkbox"
+                                        className="form-check-input"/>
+                                        <label className="form-label" htmlFor="kitchenNo">Нет</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="accordion-item">
+                        <h2 className="accordion-header" id="panelsStayOpen-headingTwelve">
+                        <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwelve" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwelve">
                             Поиск
                         </button>
                         </h2>
-                        <div id="panelsStayOpen-collapseThree" data-bs-parent="#accordionExample"  className="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingThree">
+                        <div id="panelsStayOpen-collapseTwelve" data-bs-parent="#accordionExample"  className="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingTwelve">
                             <div className="accordion-body">
                                 <div className="mb-3">
                                     <input type="text" 
@@ -232,13 +550,14 @@ export const SearchAside = () => {
                                     className="form-control" 
                                     id="globalSearchInput"
                                     // id="formGroupExampleInput"
-                                    placeholder="По всем параметрам"/>
+                                    placeholder="Название или описание"/>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div className="search-button">
-                    <button type="submit" form="search-form" className="btn btn-primary search-button-item">Очистить поиск</button>
+                    <button type="submit" form="search-form" className="btn btn-primary search-button-item">Поиск</button>
+                    <button type="button" onClick={clearInputs} form="search-form" className="btn btn-primary clear-button-item">Очистить поиск</button>
                     </div>   
                 </div>
             </form>    

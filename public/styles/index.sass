@@ -645,17 +645,30 @@ input::-webkit-inner-spin-button
 
 .search-button
     display: flex
+    flex-direction: column
+    align-items: center
     justify-content: center
     padding: 15px 0 24px 0
     background-color: $color-white
     position: sticky
     bottom: 0
-    z-index: 2
+    z-index: 5
 
 .search-button-item
     padding: 0.375rem 1rem
     background-color: $color-blue 
     width: 90%
+
+.clear-button-item
+    padding: 0.375rem 1rem
+    background-color: $color-red 
+    border-color: $color-red
+    width: 90%
+    margin-top: 10px
+
+.clear-button-item:hover
+    background-color: #dc5461 
+    border-color: $color-red
 
 .filter-button-item
     padding: 0.375rem 1rem
@@ -685,6 +698,14 @@ input::-webkit-inner-spin-button
 .accordion-button:not(.collapsed)
     color: $color-dark-blue
     font-weight: 300
+
+.accordion-checkbox-input
+    display: flex
+    flex-direction: column
+
+.checkbox-input
+    padding-left: 2.5rem
+
 
 /* -- RENT, SALE, NEW -- */
 
@@ -1494,10 +1515,8 @@ input::-webkit-inner-spin-button
     .main 
         margin: 0
 
-    .search-button-item
-        display: block
-        // padding: 0.375rem 2rem
-        background-color: $color-blue 
+    // .search-button-item
+    //     display: block
 
     .filter   
         height: 250px
