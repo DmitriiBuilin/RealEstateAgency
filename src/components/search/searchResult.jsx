@@ -24,12 +24,12 @@ export const SearchResult = () => {
             if(!param) {      
                 // console.log(item.airConditioning);      
                 return (item.target === target
-                    && item.objectName.match(regexp)
-                    && item.description.match(regexp)
+                    && (item.objectName.match(regexp)
+                    || item.description.match(regexp))
                     && item.city.match(searchResponse.inputCity)
                     && item.district.match(searchResponse.inputDistrict)
                     && item.price*currencyCoefficient >= Number(searchResponse.minPrice)
-                    && item.price <= Number(searchResponse.maxPrice)
+                    && item.price*currencyCoefficient <= Number(searchResponse.maxPrice)
                     && item.m2gross >= Number(searchResponse.minSqure)
                     && item.m2gross <= Number(searchResponse.maxSqure)
                     // && item..match(searchResponse.minSqure)
@@ -60,12 +60,12 @@ export const SearchResult = () => {
             }
             return (item.target === target
                 && item.realAstateType === param
-                && item.objectName.match(regexp)
-                && item.description.match(regexp)
+                && (item.objectName.match(regexp)
+                || item.description.match(regexp))
                 && item.city.match(searchResponse.inputCity)
                 && item.district.match(searchResponse.inputDistrict)
                 && item.price*currencyCoefficient >= Number(searchResponse.minPrice)
-                && item.price <= Number(searchResponse.maxPrice)
+                && item.price*currencyCoefficient <= Number(searchResponse.maxPrice)
                 && item.m2gross >= Number(searchResponse.minSqure)
                 && item.m2gross <= Number(searchResponse.maxSqure)
             )         
