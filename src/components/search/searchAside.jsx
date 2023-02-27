@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, NavLink } from "react-router-dom";
-import { currencySelect, pageSelect, searchClearInput, searchTyping } from "../../store/actions/actions";
+import { currencySelect, pageSelect, searchCheckBox, searchClearInput, searchTyping } from "../../store/actions/actions";
 import { getCurrencyValue, getPageValue } from "../../store/selectors/selector";
 
 export const SearchAside = () => {
@@ -30,8 +30,9 @@ export const SearchAside = () => {
     const handleInputs = (event) => {
         dispatch(searchTyping(event))
     };
-
-    
+    const handleCheckBox = (event) => {
+        dispatch(searchCheckBox(event))
+    };    
 
     const clearInputs = (e) => {
         e.preventDefault();
@@ -40,6 +41,7 @@ export const SearchAside = () => {
         const selects = document.querySelectorAll('select');
         for (let i = 0;  i < inputs.length; i++) {
         inputs[i].value = '';
+        inputs[i].checked = false;
         };
         for (let i = 0;  i < selects.length; i++) {
             selects[i].value = 'main';
@@ -49,7 +51,6 @@ export const SearchAside = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-
     };
 
     useEffect(() => {
@@ -152,11 +153,30 @@ export const SearchAside = () => {
                     <div className="accordion-item">
                         <h2 className="accordion-header" id="panelsStayOpen-headingOne">
                         <button className="accordion-button accordion-button-user" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
-                            Адрес
+                        Поиск
                         </button>
                         </h2>
                         <div id="panelsStayOpen-collapseOne" data-bs-parent="#accordionExample" className="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingOne">
                             <div className="accordion-body">
+                                <div className="mb-3">
+                                    <input type="text" 
+                                    onChange={handleInputs} 
+                                    className="form-control" 
+                                    id="globalSearchInput"
+                                    // id="formGroupExampleInput"
+                                    placeholder="Название или описание"/>
+                                </div>
+                            </div>                            
+                        </div>
+                    </div>
+                    <div className="accordion-item">
+                        <h2 className="accordion-header" id="panelsStayOpen-headingTwelve">
+                        <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwelve" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwelve">
+                            Расположение
+                        </button>
+                        </h2>
+                        <div id="panelsStayOpen-collapseTwelve" data-bs-parent="#accordionExample"  className="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingTwelve">
+                         <div className="accordion-body">
                                 <select className="form-select form-select-dev" onChange={handleInputs} defaultValue='main' id="inputCity" required>
                                     <option disabled value="main">Город</option>
                                     <option value="Istanbul">Стамбул</option>
@@ -272,7 +292,7 @@ export const SearchAside = () => {
                                     <div className="col form-check checkbox-input">
                                         <input id="1+1" 
                                         defaultChecked={false}
-                                        onChange={handleInputs} 
+                                        onChange={handleCheckBox} 
                                         type="checkbox"
                                         className="form-check-input"/>
                                         <label className="form-label" htmlFor="1+1">1+1</label>
@@ -280,7 +300,7 @@ export const SearchAside = () => {
                                     <div className="col form-check checkbox-input">
                                         <input id="2+1" 
                                         defaultChecked={false}
-                                        onChange={handleInputs} 
+                                        onChange={handleCheckBox} 
                                         type="checkbox"
                                         className="form-check-input"/>
                                         <label className="form-label" htmlFor="2+1">2+1</label>
@@ -288,7 +308,7 @@ export const SearchAside = () => {
                                     <div className="col form-check checkbox-input">
                                         <input id="3+1" 
                                         defaultChecked={false}
-                                        onChange={handleInputs} 
+                                        onChange={handleCheckBox} 
                                         type="checkbox"
                                         className="form-check-input"/>
                                         <label className="form-label" htmlFor="3+1">3+1</label>
@@ -310,7 +330,7 @@ export const SearchAside = () => {
                                     <div className="col form-check checkbox-input">
                                         <input id="heatingNo" 
                                         defaultChecked={false}
-                                        onChange={handleInputs} 
+                                        onChange={handleCheckBox} 
                                         type="checkbox"
                                         className="form-check-input"/>
                                         <label className="form-label" htmlFor="heatingNo">Нет</label>
@@ -318,7 +338,7 @@ export const SearchAside = () => {
                                     <div className="col form-check checkbox-input">
                                         <input id="heatingGas" 
                                         defaultChecked={false}
-                                        onChange={handleInputs} 
+                                        onChange={handleCheckBox} 
                                         type="checkbox"
                                         className="form-check-input"/>
                                         <label className="form-label" htmlFor="heatingGas">Газ</label>
@@ -326,7 +346,7 @@ export const SearchAside = () => {
                                     <div className="col form-check checkbox-input">
                                         <input id="heatingElectro" 
                                         defaultChecked={false}
-                                        onChange={handleInputs} 
+                                        onChange={handleCheckBox} 
                                         type="checkbox"
                                         className="form-check-input"/>
                                         <label className="form-label" htmlFor="heatingElectro">Электричество</label>
@@ -347,7 +367,7 @@ export const SearchAside = () => {
                                     <div className="col form-check checkbox-input">
                                         <input id="airYes" 
                                         defaultChecked={false}
-                                        onChange={handleInputs} 
+                                        onChange={handleCheckBox} 
                                         type="checkbox"
                                         className="form-check-input"/>
                                         <label className="form-label" htmlFor="airYes">Есть</label>
@@ -355,7 +375,7 @@ export const SearchAside = () => {
                                     <div className="col form-check checkbox-input">
                                         <input id="airNo" 
                                         defaultChecked={false}
-                                        onChange={handleInputs} 
+                                        onChange={handleCheckBox} 
                                         type="checkbox"
                                         className="form-check-input"/>
                                         <label className="form-label" htmlFor="airNo">Нет</label>
@@ -376,7 +396,7 @@ export const SearchAside = () => {
                                     <div className="col form-check checkbox-input">
                                         <input id="bath0" 
                                         defaultChecked={false}
-                                        onChange={handleInputs} 
+                                        onChange={handleCheckBox} 
                                         type="checkbox"
                                         className="form-check-input"/>
                                         <label className="form-label" htmlFor="bath0">Нет</label>
@@ -384,7 +404,7 @@ export const SearchAside = () => {
                                     <div className="col form-check checkbox-input">
                                         <input id="bath1" 
                                         defaultChecked={false}
-                                        onChange={handleInputs} 
+                                        onChange={handleCheckBox} 
                                         type="checkbox"
                                         className="form-check-input"/>
                                         <label className="form-label" htmlFor="bath1">1</label>
@@ -392,7 +412,7 @@ export const SearchAside = () => {
                                     <div className="col form-check checkbox-input">
                                         <input id="bath2" 
                                         defaultChecked={false}
-                                        onChange={handleInputs} 
+                                        onChange={handleCheckBox} 
                                         type="checkbox"
                                         className="form-check-input"/>
                                         <label className="form-label" htmlFor="bath2">2</label>
@@ -400,7 +420,7 @@ export const SearchAside = () => {
                                     <div className="col form-check checkbox-input">
                                         <input id="bath3" 
                                         defaultChecked={false}
-                                        onChange={handleInputs} 
+                                        onChange={handleCheckBox} 
                                         type="checkbox"
                                         className="form-check-input"/>
                                         <label className="form-label" htmlFor="bath3">3</label>
@@ -408,7 +428,7 @@ export const SearchAside = () => {
                                     <div className="col form-check checkbox-input">
                                         <input id="bath4" 
                                         defaultChecked={false}
-                                        onChange={handleInputs} 
+                                        onChange={handleCheckBox} 
                                         type="checkbox"
                                         className="form-check-input"/>
                                         <label className="form-label" htmlFor="bath4">4</label>
@@ -429,7 +449,7 @@ export const SearchAside = () => {
                                     <div className="col form-check checkbox-input">
                                         <input id="balkony0" 
                                         defaultChecked={false}
-                                        onChange={handleInputs} 
+                                        onChange={handleCheckBox} 
                                         type="checkbox"
                                         className="form-check-input"/>
                                         <label className="form-label" htmlFor="balkony0">Нет</label>
@@ -437,7 +457,7 @@ export const SearchAside = () => {
                                     <div className="col form-check checkbox-input">
                                         <input id="balkony1" 
                                         defaultChecked={false}
-                                        onChange={handleInputs} 
+                                        onChange={handleCheckBox} 
                                         type="checkbox"
                                         className="form-check-input"/>
                                         <label className="form-label" htmlFor="balkony1">1</label>
@@ -445,7 +465,7 @@ export const SearchAside = () => {
                                     <div className="col form-check checkbox-input">
                                         <input id="balkony2" 
                                         defaultChecked={false}
-                                        onChange={handleInputs} 
+                                        onChange={handleCheckBox} 
                                         type="checkbox"
                                         className="form-check-input"/>
                                         <label className="form-label" htmlFor="balkony2">2</label>
@@ -453,7 +473,7 @@ export const SearchAside = () => {
                                     <div className="col form-check checkbox-input">
                                         <input id="balkony3" 
                                         defaultChecked={false}
-                                        onChange={handleInputs} 
+                                        onChange={handleCheckBox} 
                                         type="checkbox"
                                         className="form-check-input"/>
                                         <label className="form-label" htmlFor="balkony3">3</label>
@@ -461,7 +481,7 @@ export const SearchAside = () => {
                                     <div className="col form-check checkbox-input">
                                         <input id="balkony4" 
                                         defaultChecked={false}
-                                        onChange={handleInputs} 
+                                        onChange={handleCheckBox} 
                                         type="checkbox"
                                         className="form-check-input"/>
                                         <label className="form-label" htmlFor="balkony4">4</label>
@@ -469,7 +489,7 @@ export const SearchAside = () => {
                                     <div className="col form-check checkbox-input">
                                         <input id="balkony5" 
                                         defaultChecked={false}
-                                        onChange={handleInputs} 
+                                        onChange={handleCheckBox} 
                                         type="checkbox"
                                         className="form-check-input"/>
                                         <label className="form-label" htmlFor="balkony5">5</label>
@@ -490,7 +510,7 @@ export const SearchAside = () => {
                                     <div className="col form-check checkbox-input">
                                         <input id="furnitureYes" 
                                         defaultChecked={false}
-                                        onChange={handleInputs} 
+                                        onChange={handleCheckBox} 
                                         type="checkbox"
                                         className="form-check-input"/>
                                         <label className="form-label" htmlFor="furnitureYes">Есть</label>
@@ -498,7 +518,7 @@ export const SearchAside = () => {
                                     <div className="col form-check checkbox-input">
                                         <input id="furnitureNo" 
                                         defaultChecked={false}
-                                        onChange={handleInputs} 
+                                        onChange={handleCheckBox} 
                                         type="checkbox"
                                         className="form-check-input"/>
                                         <label className="form-label" htmlFor="furnitureNo">Нет</label>
@@ -519,7 +539,7 @@ export const SearchAside = () => {
                                     <div className="col form-check checkbox-input">
                                         <input id="kitchenYes" 
                                         defaultChecked={false}
-                                        onChange={handleInputs} 
+                                        onChange={handleCheckBox} 
                                         type="checkbox"
                                         className="form-check-input"/>
                                         <label className="form-label" htmlFor="kitchenYes">Есть</label>
@@ -527,7 +547,7 @@ export const SearchAside = () => {
                                     <div className="col form-check checkbox-input">
                                         <input id="kitchenNo" 
                                         defaultChecked={false}
-                                        onChange={handleInputs} 
+                                        onChange={handleCheckBox} 
                                         type="checkbox"
                                         className="form-check-input"/>
                                         <label className="form-label" htmlFor="kitchenNo">Нет</label>
@@ -535,26 +555,7 @@ export const SearchAside = () => {
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div className="accordion-item">
-                        <h2 className="accordion-header" id="panelsStayOpen-headingTwelve">
-                        <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwelve" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwelve">
-                            Поиск
-                        </button>
-                        </h2>
-                        <div id="panelsStayOpen-collapseTwelve" data-bs-parent="#accordionExample"  className="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingTwelve">
-                            <div className="accordion-body">
-                                <div className="mb-3">
-                                    <input type="text" 
-                                    onChange={handleInputs} 
-                                    className="form-control" 
-                                    id="globalSearchInput"
-                                    // id="formGroupExampleInput"
-                                    placeholder="Название или описание"/>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    </div>                    
                     <div className="search-button">
                     <button type="submit" form="search-form" className="btn btn-primary search-button-item">Поиск</button>
                     <button type="button" onClick={clearInputs} form="search-form" className="btn btn-primary clear-button-item">Очистить поиск</button>

@@ -5,6 +5,7 @@ import { checkBox, clearInput, select, typing, userAgreement } from "../../store
 import { getAgreementrValue, getInputsValue } from "../../store/selectors/selector";
 import { push, set } from "firebase/database";
 import { dataRef, logOut } from "../../server/googleFirebase";
+import { v4 as uuidv4 } from 'uuid';
 
 
 export const SendForm = () => {
@@ -18,10 +19,9 @@ export const SendForm = () => {
         console.log("Submit form")
 
         // !!! Need to function to create id instead of:
-        const id = Math.floor(Math.random() * 1000000);
-        console.log(id)
+        // const id = uuidv4();
     
-        push(dataRef, {"img": ["/img/offers/8.jpg"], "id": id,
+        push(dataRef, {"img": ["/img/offers/8.jpg"], "id": uuidv4(),
             ...filledForm
           })
         dispatch(clearInput())
