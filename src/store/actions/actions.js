@@ -88,6 +88,37 @@ export const searchSelect = (event) => {
 export const searchClearInput = () => {
   return {
     type: SEARCH_CLEAR_INPUTS,
-    payload: ""
+    payload: {
+      globalSearchInput:"",
+      inputCity:"",
+      inputDistrict:"",
+      minPrice:-Infinity,
+      maxPrice:+Infinity,
+      minSqure:-Infinity,
+      maxSqure:+Infinity,
+      '1+1':false,
+      '2+1':false,
+      '3+1':false,
+      heatingNo:false,
+      heatingGas:false,
+      heatingElectro:false,
+      airYes:false,
+      airNo:false,
+      bath0:false,
+      bath1:false,
+      bath2:false,
+      bath3:false,
+      bath4:false,
+      balkony0:false,
+      balkony1:false,
+      balkony2:false,
+      balkony3:false,
+      balkony4:false,
+      balkony5:false,
+      furnitureYes:false,
+      furnitureNo:false,
+      kitchenYes:false,
+      kitchenNo:false 
+    }
   }
 }

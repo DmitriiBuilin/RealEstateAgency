@@ -31,7 +31,8 @@ export const SearchAside = () => {
         dispatch(searchTyping(event))
     };
     const handleCheckBox = (event) => {
-        dispatch(searchCheckBox(event))
+        dispatch(searchCheckBox(event));
+        console.log(event.target.defaultValue)
     };    
 
     const clearInputs = (e) => {
@@ -313,7 +314,22 @@ export const SearchAside = () => {
                                         className="form-check-input"/>
                                         <label className="form-label" htmlFor="3+1">3+1</label>
                                     </div>
-                                    
+                                    <div className="col form-check checkbox-input">
+                                        <input id="4+1" 
+                                        defaultChecked={false}
+                                        onChange={handleCheckBox} 
+                                        type="checkbox"
+                                        className="form-check-input"/>
+                                        <label className="form-label" htmlFor="4+1">4+1</label>
+                                    </div>
+                                    <div className="col form-check checkbox-input">
+                                        <input id="5+1" 
+                                        defaultChecked={false}
+                                        onChange={handleCheckBox} 
+                                        type="checkbox"
+                                        className="form-check-input"/>
+                                        <label className="form-label" htmlFor="5+1">5+1</label>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -331,6 +347,7 @@ export const SearchAside = () => {
                                         <input id="heatingNo" 
                                         defaultChecked={false}
                                         onChange={handleCheckBox} 
+                                        value="Not" 
                                         type="checkbox"
                                         className="form-check-input"/>
                                         <label className="form-label" htmlFor="heatingNo">Нет</label>
@@ -340,6 +357,7 @@ export const SearchAside = () => {
                                         defaultChecked={false}
                                         onChange={handleCheckBox} 
                                         type="checkbox"
+                                        value="Gas"
                                         className="form-check-input"/>
                                         <label className="form-label" htmlFor="heatingGas">Газ</label>
                                     </div>
@@ -348,6 +366,7 @@ export const SearchAside = () => {
                                         defaultChecked={false}
                                         onChange={handleCheckBox} 
                                         type="checkbox"
+                                        value="Electro"
                                         className="form-check-input"/>
                                         <label className="form-label" htmlFor="heatingElectro">Электричество</label>
                                     </div>
@@ -369,6 +388,7 @@ export const SearchAside = () => {
                                         defaultChecked={false}
                                         onChange={handleCheckBox} 
                                         type="checkbox"
+                                        // value={true}
                                         className="form-check-input"/>
                                         <label className="form-label" htmlFor="airYes">Есть</label>
                                     </div>
@@ -377,6 +397,7 @@ export const SearchAside = () => {
                                         defaultChecked={false}
                                         onChange={handleCheckBox} 
                                         type="checkbox"
+                                        // value={false}
                                         className="form-check-input"/>
                                         <label className="form-label" htmlFor="airNo">Нет</label>
                                     </div>

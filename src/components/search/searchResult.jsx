@@ -7,6 +7,7 @@ import { getPageValue, getSearchValue, getSorterValue } from "../../store/select
 import { objectsDataBase, pageParam } from "../../store/actions/actions";
 import { onValue } from "firebase/database";
 import { dataRef } from "../../server/googleFirebase";
+import useCurrencyCoefficient from "../currency/curencyCoefficient";
 
 export const SearchResult = () => {
     const { param } = useParams();    
@@ -16,28 +17,60 @@ export const SearchResult = () => {
     const searchResponse = useSelector(getSearchValue);
     const regexp = new RegExp(searchResponse.globalSearchInput, 'i');
     const [cardsList, setCardsList] = useState([])
+    const currencyCoefficient = useCurrencyCoefficient();
+    console.log(currencyCoefficient);
     const cardsListFilter = (
         cardsList.filter((item) => {
-            if(!param) {
-                // if(!searchResponse) {
-                //     return (item.target === target)
-                // }                
-                return (item.target === target && 
-                    // item.city == searchResponse.inputCity &&
-                    item.city.match(searchResponse.inputCity) &&
-                    item.objectName.match(regexp) && 
-                    item.description.match(regexp)
+            if(!param) {      
+                // console.log(item.airConditioning);      
+                return (item.target === target
+                    && item.objectName.match(regexp)
+                    && item.description.match(regexp)
+                    && item.city.match(searchResponse.inputCity)
+                    && item.district.match(searchResponse.inputDistrict)
+                    && item.price*currencyCoefficient >= Number(searchResponse.minPrice)
+                    && item.price <= Number(searchResponse.maxPrice)
+                    && item.m2gross >= Number(searchResponse.minSqure)
+                    && item.m2gross <= Number(searchResponse.maxSqure)
+                    // && item..match(searchResponse.minSqure)
+                    // && item..match(searchResponse.maxSqure)
+                    // && item..match(searchResponse.)
+                    // && item..match(searchResponse.)
+                    // && item.heating.match(searchResponse.heatingNo)
+                    // && item.heating.match(searchResponse.heatingGas)
+                    // && item.heating.match(searchResponse.heatingElectro)
+                    // && item.airConditioning == searchResponse.airYes
+                    // || item.airConditioning == searchResponse.airNo)
+                    // && item.bathrooms.match(searchResponse.bath0)
+                    // && item.bathrooms.match(searchResponse.bath1)
+                    // && item.bathrooms.match(searchResponse.bath2)
+                    // && item.bathrooms.match(searchResponse.bath3)
+                    // && item.bathrooms.match(searchResponse.bath4)
+                    // && item.balcony.match(searchResponse.balkony0)
+                    // && item.balcony.match(searchResponse.balkony1)
+                    // && item.balcony.match(searchResponse.balkony2)
+                    // && item.balcony.match(searchResponse.balkony3)
+                    // && item.balcony.match(searchResponse.balkony4)
+                    // && item.balcony.match(searchResponse.balkony5)
+                    // && item.furniture.match(searchResponse.furnitureYes)
+                    // && item.furniture.match(searchResponse.furnitureNo)
+                    // && item.kitchen.match(searchResponse.kitchenYes)
+                    // && item.kitchen.match(searchResponse.kitchenNo)
                 )
             }
-            if(!searchResponse){
-                return (
-                    item.target === target && item.realAstateType === param
-                )
-            }
-            return (
-                item.target === target && item.realAstateType === param && (item.objectName.match(regexp) || item.description.match(regexp) || item.city === searchResponse.inputCity)
-            )           
-    }));
+            return (item.target === target
+                && item.realAstateType === param
+                && item.objectName.match(regexp)
+                && item.description.match(regexp)
+                && item.city.match(searchResponse.inputCity)
+                && item.district.match(searchResponse.inputDistrict)
+                && item.price*currencyCoefficient >= Number(searchResponse.minPrice)
+                && item.price <= Number(searchResponse.maxPrice)
+                && item.m2gross >= Number(searchResponse.minSqure)
+                && item.m2gross <= Number(searchResponse.maxSqure)
+            )         
+        })
+    );
     
     const pageParametr = {
         flat: 'Квартира',
