@@ -281,7 +281,7 @@ export const SearchAside = () => {
                             </div>
                         </div>
                     </div>
-                    <div className="accordion-item">
+                    {/* <div className="accordion-item">
                         <h2 className="accordion-header" id="panelsStayOpen-headingFour">
                         <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseFour" aria-expanded="false" aria-controls="panelsStayOpen-collapseFour">
                         Количество комнат
@@ -576,7 +576,7 @@ export const SearchAside = () => {
                                 </div>
                             </div>
                         </div>
-                    </div>                    
+                    </div>                     */}
                     <div className="search-button">
                     <button type="submit" form="search-form" className="btn btn-primary search-button-item">Поиск</button>
                     <button type="button" onClick={clearInputs} form="search-form" className="btn btn-primary clear-button-item">Очистить поиск</button>
