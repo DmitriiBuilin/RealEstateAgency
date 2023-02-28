@@ -18,11 +18,10 @@ export const SearchResult = () => {
     const regexp = new RegExp(searchResponse.globalSearchInput, 'i');
     const [cardsList, setCardsList] = useState([])
     const currencyCoefficient = useCurrencyCoefficient();
-    console.log(currencyCoefficient);
+
     const cardsListFilter = (
         cardsList.filter((item) => {
-            if(!param) {      
-                // console.log(item.airConditioning);      
+            if(!param) {
                 return (item.target === target
                     && (item.objectName.match(regexp)
                     || item.description.match(regexp))

@@ -32,7 +32,6 @@ export const SearchAside = () => {
     };
     const handleCheckBox = (event) => {
         dispatch(searchCheckBox(event));
-        console.log(event.target.defaultValue)
     };    
 
     const clearInputs = (e) => {

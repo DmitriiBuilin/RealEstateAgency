@@ -2,6 +2,7 @@ import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 import { getDatabase, ref, set, get, child } from "firebase/database";
 import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signOut } from "firebase/auth";
+import { getStorage } from "firebase/storage";
 
 /*-- Firebase connection --*/
 
@@ -13,16 +14,20 @@ const firebaseConfig = {
     storageBucket: "antalya-realty.appspot.com",
     messagingSenderId: "827813591412",
     appId: "1:827813591412:web:802cdfc4926f6e5e005421",
-    measurementId: "G-PGJ27FCMNM"
+    measurementId: "G-PGJ27FCMNM",
+    storageBucket: 'gs://antalya-realty.appspot.com/'
 };
 
 const app = initializeApp(firebaseConfig);
+export const storage = getStorage(app);
 const analytics = getAnalytics(app);
 const auth = getAuth(app);
 
 export const database = getDatabase(app);
 export const dataRef = ref(database, 'fulldb');
-export const userRef = ref(database, 'users')
+export const userRef = ref(database, 'users');
+
+
 export const getPostById = (userId) => ref(database, `users/${userId}`)
 
 export const signUp = async (email, password) => {
@@ -53,12 +58,3 @@ export const checkuser = () => {
         return false
     }
 };
-  
-
-  
-
-
-
-
-// console.log(ui)
-

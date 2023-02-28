@@ -7,7 +7,6 @@ export const LogIn = () => {
     const navigate = useNavigate();
 
     const isAuth = checkuser();
-    console.log(isAuth)
 
     const handleSignIn = (e) => {
         e.preventDefault();
