@@ -4,6 +4,7 @@ import { useRef } from 'react';
 import { useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import { signIn } from "../../server/googleFirebase";
+import { async } from '@firebase/util';
 // import dotenv from 'dotenv';
 // require('dotenv').config()
 
@@ -16,57 +17,66 @@ export const SignIn = () => {
     const [message, setMessage] = useState("");
     const [error, setError] = useState("");
     const captchaRef = useRef(null);
+    const [isVerified, setIsVerified] = useState(false);
+
+    const handleRecaptcha = (token) => {
+        setIsVerified(true);
+        return token;
+      };
    
-
-    const verifyToken = async (token) => {
-        try{
-        let response = await axios.post(`http://localhost:4000/verify-token`,{
-           
-    // secret:process.env.REACT_APP_SECRET_KEY,
-    secret:'6Lei1lAkAAAAAEsg2nS6EeyLGbWY9iOCaU_VaDU8',
-            token
-        },console.log(token));
-        return response.data;
-        }catch(error){
-        console.log("error ",error);
-        }
-    }
-
-    const handleSubmit = async (e) => {
-        e.preventDefault();
+    const secretKey = '6Lei1lAkAAAAAEsg2nS6EeyLGbWY9iOCaU_VaDU8';
+    const recaptchaToken = handleRecaptcha;
+    
+    // fetch('https://www.google.com/recaptcha/api/siteverify', {
+    //   method: 'POST',
+    //   headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    //   body: `secret=${secretKey}&response=${recaptchaToken}`
+    // })
+    //   .then(response => response.json())
+    //   .then(data => {
+    //     if (data.success && data.score > 0.5) {
+    //       console.log('reCAPTCHA verification passed!');
+    //     } else {
+    //       console.log('reCAPTCHA verification failed!');
+    //     }
+    //   })
+    //   .catch(error => {
+    //     console.error('Error verifying reCAPTCHA token:', error);
+    //   });
+    
+    const handleSubmit = async(event) => {
+        event.preventDefault();
         setError('');
         setMessage('');
-
         if(inputs.email && inputs.password){
-            let token = captchaRef.current.getValue();
-                if(token){
-                    let valid_token = await verifyToken(token);
-                    if(valid_token.success){
-                    setMessage("Hurray!! you have submitted the form");
-                    }else{
-                    setError("Sorry!! Token invalid");
-                    }
-                }else{
-                    setError("You must confirm you are not a robot");
-                }
+            if(isVerified){
+                setMessage("Hurray!! you have submitted the form");
+                console.log(message)
+                try {
+                    setError('')
+                    setLoading(true)
+                    await signIn(inputs.email, inputs.password)
+                    navigate('/landlords')
+                  } catch (error) {
+                    setError(error)
+                    console.log("invalid login")
+                    navigate('/landlords')
+                  } finally {
+                    setLoading(false)
+                    setInputs({email: '', password: ''})
+                  }
+                // setError("Sorry!! Token invalid");                
+            }else{
+                setError("Подтвердите что вы не робот или перезагрузите страницу");
+                console.log(error)
+            }
         } else {
-            setError("First name and Last name are required");
+            setError("Поля e-mail и пароль должны быть заполнены");
+            console.log(error)
         }
 
-        try {
-            setError('')
-            setLoading(true)
-            await signIn(inputs.email, inputs.password)
-            navigate('/landlords')
-          } catch (error) {
-            setError(error)
-          } finally {
-            setLoading(false)
-            setInputs({email: '', password: ''})
-          }
 
-        console.log(error)
-        console.log(message)
+
     };
 
     const handleInputs = (e) => {
@@ -105,15 +115,22 @@ export const SignIn = () => {
                             required 
                         />
                         <label htmlFor="floatingPassword">Пароль</label>
-                    </div>          
-                    <button type="submit" className="btn btn-primary button-blue login-btn">Войти</button>
-                    <div className='formGroup'>                    
-                        {/* <ReCAPTCHA sitekey={process.env.REACT_APP_SITE_KEY} ref={captchaRef}  /> */}
-                        <ReCAPTCHA sitekey={'6Lei1lAkAAAAAAsM0OCH0XVajpCHwnGvsoAeyK-D'} ref={captchaRef}  />
+                    </div>  
+                    <ReCAPTCHA
+                        sitekey="6Lei1lAkAAAAAAsM0OCH0XVajpCHwnGvsoAeyK-D"
+                        onChange={handleRecaptcha}
+                    />  
+                    {loading && 
+                    <>
+                    <p>Loading.....</p>
+                    <div class="spinner-border" role="status">                        
+                        <span class="visually-hidden">Loading...</span>
                     </div>
-                </form>
-                {loading && <p>Loading.....</p>}
-                {error && <p style={{color: 'red'}}>{error.message}</p>}
+                    </>
+                    }
+                    {error && <p style={{color: 'red', margin: 0, textAlign: 'center'}}>{error}</p>}      
+                    <button type="submit" className="btn btn-primary button-blue login-btn">Войти</button>
+                </form>                
             </main>
         </div>
         </>
