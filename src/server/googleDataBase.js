@@ -13,6 +13,7 @@ const metadata = {
 // const file = ;
 
 // 'file' comes from the Blob or File API
+
 // uploadBytes(storageRef, file, metadata).then((snapshot) => {
 //     console.log('Uploaded a blob or file!');
 //   });

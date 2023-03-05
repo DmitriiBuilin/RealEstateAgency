@@ -4,20 +4,53 @@ import { Link, useNavigate } from "react-router-dom";
 import { checkBox, clearInput, select, typing, userAgreement } from "../../store/actions/actions";
 import { getAgreementrValue, getInputsValue } from "../../store/selectors/selector";
 import { push, set } from "firebase/database";
-import { dataRef, logOut } from "../../server/googleFirebase";
+import { dataRef, logOut, storage } from "../../server/googleFirebase";
 import { v4 as uuidv4 } from 'uuid';
-import { imgRef } from "../../server/googleDataBase";
+import { uploadBytes , ref } from "firebase/storage";
+import { getAuth } from "firebase/auth";
+
 
 export const SendForm = () => {
     const agreement = useSelector(getAgreementrValue);
     const dispatch = useDispatch();
     const filledForm = useSelector(getInputsValue);
-    const navigate = useNavigate();
+    const navigate = useNavigate();    
+
+    // Get cuurent user
+    const auth = getAuth();
+    const userId = auth.currentUser.uid;
+
 
     const handleSubmit = (event) => {
         event.preventDefault();
         console.log("Well done! Form submited.")
-    
+
+        // Loading files
+        const inputElement = document.getElementById("img");
+        inputElement.addEventListener("change", handleFiles, false);
+
+        function handleFiles() {
+            const fileList = this.files; /* now you can work with the file list */        
+            console.log(fileList);
+            const file = fileList[0];
+
+            const storageRef = ref(storage, `images/${userId}/${file.name}`);
+
+            uploadBytes(storageRef, file).then((snapshot) => {
+                console.log('Uploaded a blob or file!');
+            });
+
+            for (let i=0; i<fileList.length; i++) {
+                console.log(fileList[i]);  
+                const storageRef = ref(storage, `images/${userId}/${fileList[i].name}`);
+
+                uploadBytes(storageRef, fileList[i]).then((snapshot) => {
+                    console.log('Uploaded a blob or file!');
+                });          
+            }
+        }
+
+        // Create link for img            
         push(dataRef, {"img": ["/img/offers/4.jpg"], "id": uuidv4(),
             ...filledForm
           })
@@ -46,20 +79,7 @@ export const SendForm = () => {
     };
 
     const handleInputFile = (event) => {
-        event.preventDefault();
-        // console.log(event);
-
-        const inputElement = document.getElementById("img");
-        inputElement.addEventListener("change", handleFiles, false);
-
-        function handleFiles() {
-        const fileList = this.files; /* now you can work with the file list */        
-        console.log(fileList);
-
-        for (let i=0; i<=fileList.length; i++) {
-            console.log(fileList[i]);
-        }
-        }
+        event.preventDefault();        
     };
 
     useEffect(() => {  
