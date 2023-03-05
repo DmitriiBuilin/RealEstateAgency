@@ -14,10 +14,8 @@ export const SendForm = () => {
     const filledForm = useSelector(getInputsValue);
     const navigate = useNavigate();
 
-    console.log(imgRef)
-
-    const handleSubmit = (e) => {
-        e.preventDefault();
+    const handleSubmit = (event) => {
+        event.preventDefault();
         console.log("Well done! Form submited.")
     
         push(dataRef, {"img": ["/img/offers/4.jpg"], "id": uuidv4(),
@@ -47,8 +45,24 @@ export const SendForm = () => {
         dispatch(userAgreement(!agreement))
     };
 
-    useEffect(() => {  
+    const handleInputFile = (event) => {
+        event.preventDefault();
+        // console.log(event);
 
+        const inputElement = document.getElementById("img");
+        inputElement.addEventListener("change", handleFiles, false);
+
+        function handleFiles() {
+        const fileList = this.files; /* now you can work with the file list */        
+        console.log(fileList);
+
+        for (let i=0; i<=fileList.length; i++) {
+            console.log(fileList[i]);
+        }
+        }
+    };
+
+    useEffect(() => {  
         /*Load-photo script*/        
         let inputs = document.querySelectorAll('.input-file');
 
@@ -303,7 +317,7 @@ export const SendForm = () => {
                         </div>
                         <div className="col-10 input-file-wrp">
                             <label className="btn btn-primary landlord-button" htmlFor="img"><span className="load-photo-button-text">Загрузите фото</span></label>
-                            <input className='input-file' id="img" type="file" name="photo" multiple accept="image/jpeg"></input>
+                            <input className='input-file' id="img" type="file" name="photo" multiple accept="image/jpeg" onChange={handleInputFile}></input>
                         </div>
                         <div className="col-10">
                             <div className="form-check">
@@ -328,4 +342,3 @@ export const SendForm = () => {
 }
 
 export default SendForm;
-

@@ -12,12 +12,13 @@ import ObjectCard from './pages/rus/objectCard/objectCard';
 import LogIn from './components/authtorisation/logIn';
 import SignIn from './components/authtorisation/signIn';
 import SignUp from './components/authtorisation/signUp';
+import PageNotFound from './pages/rus/404/PageNotFound';
 
 function App() {
   return (
     <div className="App">
       <Routes>        
-        <Route path="*" element={<h2>404 Page not found</h2>} />
+        <Route path="*" element={<PageNotFound />} />
         <Route exact path="/rent" element={<Rent />} />
         <Route exact path="/rent/:param" element={<Rent />} />
         <Route exact path="/sale" element={<Sale />} />

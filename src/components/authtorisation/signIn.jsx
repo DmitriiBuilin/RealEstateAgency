@@ -16,7 +16,6 @@ export const SignIn = () => {
     const [loading, setLoading] = useState(false)
     const [message, setMessage] = useState("");
     const [error, setError] = useState("");
-    const captchaRef = useRef(null);
     const [isVerified, setIsVerified] = useState(false);
 
     const handleRecaptcha = (token) => {
@@ -24,8 +23,8 @@ export const SignIn = () => {
         return token;
       };
    
-    const secretKey = '6Lei1lAkAAAAAEsg2nS6EeyLGbWY9iOCaU_VaDU8';
-    const recaptchaToken = handleRecaptcha;
+    // const secretKey = '6Lei1lAkAAAAAEsg2nS6EeyLGbWY9iOCaU_VaDU8';
+    // const recaptchaToken = handleRecaptcha;
     
     // fetch('https://www.google.com/recaptcha/api/siteverify', {
     //   method: 'POST',
@@ -74,9 +73,6 @@ export const SignIn = () => {
             setError("Поля e-mail и пароль должны быть заполнены");
             console.log(error)
         }
-
-
-
     };
 
     const handleInputs = (e) => {

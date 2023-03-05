@@ -15,7 +15,7 @@ const firebaseConfig = {
     messagingSenderId: "827813591412",
     appId: "1:827813591412:web:802cdfc4926f6e5e005421",
     measurementId: "G-PGJ27FCMNM",
-    storageBucket: 'gs://antalya-realty.appspot.com/'
+    // storageBucket: 'gs://antalya-realty.appspot.com/'
 };
 
 const app = initializeApp(firebaseConfig);
