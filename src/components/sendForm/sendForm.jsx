@@ -1,12 +1,12 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { checkBox, clearInput, select, typing, userAgreement } from "../../store/actions/actions";
-import { getAgreementrValue, getInputsValue } from "../../store/selectors/selector";
-import { push, set } from "firebase/database";
+import { getAgreementrValue, getFullDataBase, getInputsValue } from "../../store/selectors/selector";
+import { push } from "firebase/database";
 import { dataRef, logOut, storage } from "../../server/googleFirebase";
 import { v4 as uuidv4 } from 'uuid';
-import { uploadBytes , ref } from "firebase/storage";
+import { uploadBytes , ref, getDownloadURL } from "firebase/storage";
 import { getAuth } from "firebase/auth";
 
 
@@ -14,7 +14,9 @@ export const SendForm = () => {
     const agreement = useSelector(getAgreementrValue);
     const dispatch = useDispatch();
     const filledForm = useSelector(getInputsValue);
-    const navigate = useNavigate();    
+    const navigate = useNavigate();   
+    const fullDataBase = useSelector(getFullDataBase); 
+    const [imgsLinks, setImgsLinks] = useState([]);
 
     // Get cuurent user
     const auth = getAuth();
@@ -25,35 +27,70 @@ export const SendForm = () => {
         event.preventDefault();
         console.log("Well done! Form submited.")
 
-        // Loading files
-        const inputElement = document.getElementById("img");
-        inputElement.addEventListener("change", handleFiles, false);
+        // Loading files into DataBase
+        // const inputElement = document.getElementById("img");
+        // inputElement.addEventListener("change", handleFiles, false);
 
-        function handleFiles() {
-            const fileList = this.files; /* now you can work with the file list */        
-            console.log(fileList);
-            const file = fileList[0];
+        // function handleFiles() {
+        //     const fileList = this.files;       
+        //     console.log(fileList);
+        //     const file = fileList[0];
 
-            const storageRef = ref(storage, `images/${userId}/${file.name}`);
+        //     const storageRef = ref(storage, `images/${userId}/${file.name}`);
 
-            uploadBytes(storageRef, file).then((snapshot) => {
-                console.log('Uploaded a blob or file!');
-            });
+        //     uploadBytes(storageRef, file).then((snapshot) => {
+        //         console.log('Uploaded a blob or file!');
+        //     });
 
-            for (let i=0; i<fileList.length; i++) {
-                console.log(fileList[i]);  
-                const storageRef = ref(storage, `images/${userId}/${fileList[i].name}`);
+        //     let URLSArr = [];
+        //     for (let i=0; i<fileList.length; i++) {
+        //         console.log(fileList[i]);  
+        //         const storageRef = ref(storage, `images/${userId}/${fileList[i].name}`);
+        //         URLSArr.push(`images/${userId}/${fileList[i].name}`);
 
-                uploadBytes(storageRef, fileList[i]).then((snapshot) => {
-                    console.log('Uploaded a blob or file!');
-                });          
-            }
+        //         uploadBytes(storageRef, fileList[i]).then((snapshot) => {
+        //             console.log('Uploaded a blob or file!');
+        //         });          
+        //     }
+        //     console.log(`URLSArr: ${URLSArr}`);
+        //     setImgsLinks(URLSArr);
+        // }
+
+        // Create new id
+        let newIdArray = [];
+        for(let i=0; i<fullDataBase.length; i++) {
+            newIdArray.push(fullDataBase[i].id)
         }
+        const id = (Math.max(...newIdArray) + 3);
+        // const id = (1234567);
+        console.log(id)
 
-        // Create link for img            
-        push(dataRef, {"img": ["/img/offers/4.jpg"], "id": uuidv4(),
+        // Create files links
+        let imgURLs = [];
+        imgsLinks.forEach(
+            element => {
+                getDownloadURL(ref(storage, element))
+                .then((url) => {
+                    imgURLs.push(url);
+                    console.log(imgURLs);
+                })
+                .catch((error) => {
+                    console.log(`Link not created. Error: ${error}`)
+                });
+                function urlsArray() {
+                    //TODO smth
+                }                
+            }
+        );        
+        
+        function createObject() { 
+            push(dataRef, {"img": imgURLs, "id": id, "uuid": uuidv4(),
             ...filledForm
-          })
+            });
+            console.log(imgURLs);
+        }        
+        setTimeout(createObject, 3000); 
+
         dispatch(clearInput())
     };
 
@@ -79,7 +116,30 @@ export const SendForm = () => {
     };
 
     const handleInputFile = (event) => {
-        event.preventDefault();        
+        event.preventDefault(); 
+        console.log(event.target.files)
+        const fileList = event.target.files;       
+        console.log(fileList);
+        const file = fileList[0];
+
+        const storageRef = ref(storage, `images/${userId}/${file.name}`);
+
+        uploadBytes(storageRef, file).then((snapshot) => {
+            console.log('Uploaded a blob or file!');
+        });
+
+        let URLSArr = [];
+        for (let i=0; i<fileList.length; i++) {
+            console.log(fileList[i]);  
+            const storageRef = ref(storage, `images/${userId}/${fileList[i].name}`);
+            URLSArr.push(`images/${userId}/${fileList[i].name}`);
+
+            uploadBytes(storageRef, fileList[i]).then((snapshot) => {
+                console.log('Uploaded a blob or file!');
+            });          
+        }
+        console.log(`URLSArr: ${URLSArr}`);
+        setImgsLinks(URLSArr);       
     };
 
     useEffect(() => {  

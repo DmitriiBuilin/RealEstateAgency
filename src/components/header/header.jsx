@@ -58,9 +58,7 @@ export const Header = () => {
         const selectedCurrency = document.getElementById(`${currency}`);
 
         selectedLanguage.parentNode.classList.add('selected')
-        selectedCurrency.parentNode.classList.add('selected')
-
-        
+        selectedCurrency.parentNode.classList.add('selected')        
 
         /* jQuery script (show/hide header) */        
         let header = $('.header-fixed'),
