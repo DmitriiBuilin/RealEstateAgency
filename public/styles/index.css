@@ -11779,6 +11779,10 @@ header, main, footer {
   margin: 0;
 }
 
+.color-red {
+  color: #dc1c2e !important;
+}
+
 /* -- HEADER -- */
 header {
   width: 100%;
@@ -12892,7 +12896,7 @@ input::-webkit-inner-spin-button {
 
 .landlord-button {
   align-self: flex-end;
-  margin: 30px 30px 15px 80px;
+  margin: 10px 30px 15px 80px;
   width: 230px;
   background-color: #003da5;
 }
@@ -12981,7 +12985,9 @@ input::-webkit-inner-spin-button {
 
 .input-file-wrp {
   display: flex;
+  flex-direction: column;
   width: auto;
+  align-items: center;
 }
 
 .load-photo-button {
@@ -13000,6 +13006,28 @@ input::-webkit-inner-spin-button {
 
 .exit-button:hover {
   background-color: #e24554;
+}
+
+.input-number-wrp {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.input-number {
+  width: 100%;
+}
+
+.input-number-btn {
+  width: 36px;
+}
+
+.done {
+  font-family: roboto, arial, sans-serif !important;
+  color: #012158;
+  font-weight: 700;
+  font-size: 14px;
 }
 
 /* -- CARD COMPONENT -- */  

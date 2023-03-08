@@ -127,9 +127,7 @@ export const SearchResult = () => {
             });
             break; 
         default:
-    };
-
-    
+    };    
 
     useEffect(() => {
         onValue(dataRef, (snapshot) => {
@@ -141,8 +139,7 @@ export const SearchResult = () => {
                   }))    
                 setCardsList(newData);      
                 dispatch(objectsDataBase(newData));  
-            }
-            
+            }            
         });        
     }, []);
 

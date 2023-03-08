@@ -13,8 +13,29 @@ import LogIn from './components/authtorisation/logIn';
 import SignIn from './components/authtorisation/signIn';
 import SignUp from './components/authtorisation/signUp';
 import PageNotFound from './pages/rus/404/PageNotFound';
+import { useEffect } from 'react';
+import { onValue } from 'firebase/database';
+import { objectsDataBase } from './store/actions/actions';
+import { useDispatch } from 'react-redux';
+import { dataRef } from './server/googleFirebase';
 
 function App() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    onValue(dataRef, (snapshot) => {
+        const data = snapshot.val()
+        if (data) {
+            const newData = Object.entries(data).map((item) => ({
+                id: item[0],
+                ...item[1]
+              }))         
+            dispatch(objectsDataBase(newData));  
+        }            
+    });        
+  }, []);
+
+
   return (
     <div className="App">
       <Routes>        

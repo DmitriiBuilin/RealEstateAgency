@@ -17,6 +17,9 @@ export const SendForm = () => {
     const navigate = useNavigate();   
     const fullDataBase = useSelector(getFullDataBase); 
     const [imgsLinks, setImgsLinks] = useState([]);
+    const [loading, setLoading] = useState(false)
+    const [done, setDone] = useState(false)
+
 
     // Get cuurent user
     const auth = getAuth();
@@ -27,43 +30,22 @@ export const SendForm = () => {
         event.preventDefault();
         console.log("Well done! Form submited.")
 
-        // Loading files into DataBase
-        // const inputElement = document.getElementById("img");
-        // inputElement.addEventListener("change", handleFiles, false);
-
-        // function handleFiles() {
-        //     const fileList = this.files;       
-        //     console.log(fileList);
-        //     const file = fileList[0];
-
-        //     const storageRef = ref(storage, `images/${userId}/${file.name}`);
-
-        //     uploadBytes(storageRef, file).then((snapshot) => {
-        //         console.log('Uploaded a blob or file!');
-        //     });
-
-        //     let URLSArr = [];
-        //     for (let i=0; i<fileList.length; i++) {
-        //         console.log(fileList[i]);  
-        //         const storageRef = ref(storage, `images/${userId}/${fileList[i].name}`);
-        //         URLSArr.push(`images/${userId}/${fileList[i].name}`);
-
-        //         uploadBytes(storageRef, fileList[i]).then((snapshot) => {
-        //             console.log('Uploaded a blob or file!');
-        //         });          
-        //     }
-        //     console.log(`URLSArr: ${URLSArr}`);
-        //     setImgsLinks(URLSArr);
-        // }
-
         // Create new id
         let newIdArray = [];
         for(let i=0; i<fullDataBase.length; i++) {
             newIdArray.push(fullDataBase[i].id)
         }
         const id = (Math.max(...newIdArray) + 3);
-        // const id = (1234567);
         console.log(id)
+
+        // Create current date
+        function getCurrentDate() {
+            const now = new Date();
+            const year = now.getFullYear();
+            const month = String(now.getMonth() + 1).padStart(2, '0');
+            const day = String(now.getDate()).padStart(2, '0');
+            return `${year}, ${month}, ${day}`;
+          }
 
         // Create files links
         let imgURLs = [];
@@ -72,22 +54,18 @@ export const SendForm = () => {
                 getDownloadURL(ref(storage, element))
                 .then((url) => {
                     imgURLs.push(url);
-                    console.log(imgURLs);
                 })
                 .catch((error) => {
                     console.log(`Link not created. Error: ${error}`)
-                });
-                function urlsArray() {
-                    //TODO smth
-                }                
+                });            
             }
         );        
         
         function createObject() { 
-            push(dataRef, {"img": imgURLs, "id": id, "uuid": uuidv4(),
+            push(dataRef, {"date": getCurrentDate(), "img": imgURLs, "id": id, "uuid": uuidv4(),
             ...filledForm
             });
-            console.log(imgURLs);
+            //TODO smth to navigate to another page
         }        
         setTimeout(createObject, 3000); 
 
@@ -115,12 +93,28 @@ export const SendForm = () => {
         dispatch(userAgreement(!agreement))
     };
 
+    // const increaseInputValue = (event) => {
+    //     event.preventDefault(); 
+    //     const input = document.getElementById(event.target.name);        
+    //     input.value = parseInt(input.value) + 1;
+    //     filledForm.floor = input.value;
+    //     dispatch(typing(event))
+    // };
+    // const decreaseInputValue = (event) => {
+    //     event.preventDefault(); 
+    //     const input = document.getElementById(event.target.name);        
+    //     input.value = parseInt(input.value) - 1;
+    //     filledForm.floor = input.value;
+    //     dispatch(typing(event))
+    // };
+
     const handleInputFile = (event) => {
         event.preventDefault(); 
         console.log(event.target.files)
         const fileList = event.target.files;       
         console.log(fileList);
         const file = fileList[0];
+        setDone(false)
 
         const storageRef = ref(storage, `images/${userId}/${file.name}`);
 
@@ -129,12 +123,16 @@ export const SendForm = () => {
         });
 
         let URLSArr = [];
+        setLoading(true);
         for (let i=0; i<fileList.length; i++) {
             console.log(fileList[i]);  
             const storageRef = ref(storage, `images/${userId}/${fileList[i].name}`);
             URLSArr.push(`images/${userId}/${fileList[i].name}`);
 
             uploadBytes(storageRef, fileList[i]).then((snapshot) => {
+                setLoading(false);
+                setDone(true);                
+                document.querySelector("#submitButton").disabled = false;
                 console.log('Uploaded a blob or file!');
             });          
         }
@@ -245,7 +243,7 @@ export const SendForm = () => {
                                 <label className="form-label margin-0 label-padding" htmlFor="m2gross">m²</label>                            
                             </div>
                             <div className="col-5 flex-row">
-                                <input onChange={handleInputs} type="number" className="form-control" id="m2net" placeholder="m² жилая" value={filledForm.m2net} required/>
+                                <input onChange={handleInputs} type="number" className="form-control" id="m2net" placeholder="m² жилая" value={filledForm.m2net}/>
                                 <label className="form-label margin-0 label-padding" htmlFor="m2net">m²</label>     
                             </div>
                         </div>
@@ -253,81 +251,60 @@ export const SendForm = () => {
                     <div className="landlords-rightside">                        
                         <div className="col-10">
                             <label htmlFor="rooms" className="form-label">Количество комнат</label>
-                            <select onChange={handleSelect} defaultValue='' className="form-select" id="rooms" value={filledForm.rooms} required>
+                            <select onChange={handleSelect} defaultValue='' className="form-select" id="rooms" value={filledForm.rooms}>
                                 <option disabled ></option>
+                                <option value="0+1">Комнаты 0+1</option>
+                                <option value="1+0">Комнаты 1+0</option> 
                                 <option value="1+1">Комнаты 1+1</option>
+                                <option value="2+0">Комнаты 2+0</option>
                                 <option value="2+1">Комнаты 2+1</option>
+                                <option value="2+2">Комнаты 2+2</option>
+                                <option value="3+0">Комнаты 3+0</option>
                                 <option value="3+1">Комнаты 3+1</option>
+                                <option value="3+2">Комнаты 3+2</option>
+                                <option value="4+0">Комнаты 4+0</option>
                                 <option value="4+1">Комнаты 4+1</option>
+                                <option value="4+2">Комнаты 4+2</option>
+                                <option value="5+0">Комнаты 5+0</option>
                                 <option value="5+1">Комнаты 5+1</option>
+                                <option value="5+2">Комнаты 5+2</option>
+                                <option value="6+0">Комнаты 6+0</option>
+                                <option value="6+1">Комнаты 6+1</option>
+                                <option value="6+2">Комнаты 6+2</option>
+                                <option value="7+0">Комнаты 7+0</option>
+                                <option value="7+1">Комнаты 7+1</option>
+                                <option value="7+2">Комнаты 7+2</option>
                             </select>
                         </div>  
                         <div className="col-10">
                             <label htmlFor="floor" className="form-label">Этаж</label>
-                            <select onChange={handleSelect} defaultValue='' className="form-select" id="floor" value={filledForm.floor} required>
-                                <option disabled ></option>
-                                <option value="0">Этаж / 0</option>
-                                <option value="1">Этаж / 1</option>
-                                <option value="2">Этаж / 2</option>
-                                <option value="3">Этаж / 3</option>
-                                <option value="4">Этаж / 4</option>
-                                <option value="5">Этаж / 5</option>
-                                <option value="6">Этаж / 6</option>
-                                <option value="7">Этаж / 7</option>
-                                <option value="8">Этаж / 8</option>
-                                <option value="9">Этаж / 9</option>
-                                <option value="10">Этаж / 10</option>
-                                <option value="11">Этаж / 11</option>
-                                <option value="12">Этаж / 12</option>
-                                <option value="13">Этаж / 13</option>
-                                <option value="14">Этаж / 14</option>
-                                <option value="15">Этаж / 15</option>
-                                <option value="16">Этаж / 16</option>
-                                <option value="17">Этаж / 17</option>
-                                <option value="18">Этаж / 18</option>
-                                <option value="19">Этаж / 19</option>
-                                <option value="20">Этаж / 20</option>
-                            </select>
+                            <div className="input-number-wrp">
+                                <input type="number" onChange={handleInputs} min="0" max="100" defaultValue="0" className="form-control input-number" id="floor" value={filledForm.floor} />
+                                {/* <button name="floor" onClick={decreaseInputValue} className="form-control input-number-btn">-</button>
+                                <button name="floor" onClick={increaseInputValue} className="form-control input-number-btn">+</button> */}
+                            </div>
                         </div>  
                         <div className="col-10">
                             <label htmlFor="totalFloor" className="form-label">Всего этажей</label>
-                            <select onChange={handleSelect} defaultValue='' className="form-select" id="totalFloor" value={filledForm.totalFloor} required>
-                            <option disabled ></option>
-                                <option value="0">Этаж / 0</option>
-                                <option value="1">Этаж / 1</option>
-                                <option value="2">Этаж / 2</option>
-                                <option value="3">Этаж / 3</option>
-                                <option value="4">Этаж / 4</option>
-                                <option value="5">Этаж / 5</option>
-                                <option value="6">Этаж / 6</option>
-                                <option value="7">Этаж / 7</option>
-                                <option value="8">Этаж / 8</option>
-                                <option value="9">Этаж / 9</option>
-                                <option value="10">Этаж / 10</option>
-                                <option value="11">Этаж / 11</option>
-                                <option value="12">Этаж / 12</option>
-                                <option value="13">Этаж / 13</option>
-                                <option value="14">Этаж / 14</option>
-                                <option value="15">Этаж / 15</option>
-                                <option value="16">Этаж / 16</option>
-                                <option value="17">Этаж / 17</option>
-                                <option value="18">Этаж / 18</option>
-                                <option value="19">Этаж / 19</option>
-                                <option value="20">Этаж / 20</option>
-                            </select>
+                            <div className="input-number-wrp">
+                                <input type="number" onChange={handleInputs} min="0" max="100" defaultValue="0" className="form-control input-number" id="totalFloor" value={filledForm.totalFloor} />
+                                {/* <button name="totalFloor" onClick={decreaseInputValue} className="form-control input-number-btn">-</button>
+                                <button name="totalFloor" onClick={increaseInputValue} className="form-control input-number-btn">+</button> */}
+                            </div>
+
                         </div> 
                         <div className="col-10">
                             <label htmlFor="heating" className="form-label">Отопление</label>
-                            <select onChange={handleSelect} defaultValue='' className="form-select" id="heating" value={filledForm.heating} required>
+                            <select onChange={handleSelect} defaultValue='' className="form-select" id="heating" value={filledForm.heating}>
                                 <option disabled ></option>
-                                <option value="Not">Отопление / Нет</option>
                                 <option value="Gas">Отопление / Газ</option>
-                                <option value="Electro">Отопление / Электричество</option>                 
+                                <option value="Electro">Отопление / Электричество</option> 
+                                <option value="Not">Отопление / Нет</option>                
                             </select>
                         </div>
                         <div className="col-10">
                             <label htmlFor="airConditioning" className="form-label">Кондиционер</label>
-                            <select onChange={handleSelect} defaultValue='' className="form-select" id="airConditioning" value={filledForm.airConditioning} required>
+                            <select onChange={handleSelect} defaultValue='' className="form-select" id="airConditioning" value={filledForm.airConditioning} >
                                 <option disabled ></option>
                                 <option value='true'>Кондиционер / Есть</option>
                                 <option value='false'>Кондиционер / Нет</option>           
@@ -335,18 +312,19 @@ export const SendForm = () => {
                         </div> 
                         <div className="col-10">
                             <label htmlFor="bathrooms" className="form-label">Количество ванных комнат</label>
-                            <select onChange={handleSelect} defaultValue='' className="form-select" id="bathrooms" value={filledForm.bathrooms} required>
+                            <select onChange={handleSelect} defaultValue='' className="form-select" id="bathrooms" value={filledForm.bathrooms} >
                                 <option disabled ></option>
                                 <option value="0">Ванных комнат / 0</option>
                                 <option value="1">Ванных комнат / 1</option>
                                 <option value="2">Ванных комнат / 2</option>
                                 <option value="3">Ванных комнат / 3</option> 
-                                <option value="4">Ванных комнат / 4</option>                
+                                <option value="4">Ванных комнат / 4</option>
+                                <option value="4">Ванных комнат / 5</option>
                             </select>
                         </div>
                         <div className="col-10">
                             <label htmlFor="balcony" className="form-label">Балкон</label>
-                            <select onChange={handleSelect} defaultValue='' className="form-select" id="balcony" value={filledForm.balcony} required>
+                            <select onChange={handleSelect} defaultValue='' className="form-select" id="balcony" value={filledForm.balcony} >
                                 <option disabled ></option>
                                 <option value="0">Балкон / 0</option>
                                 <option value="1">Балкон / 1</option>
@@ -358,7 +336,7 @@ export const SendForm = () => {
                         </div>  
                         <div className="col-10">
                             <label htmlFor="furniture" className="form-label">Мебель</label>
-                            <select onChange={handleSelect} defaultValue='' className="form-select" id="furniture" value={filledForm.furniture} required>
+                            <select onChange={handleSelect} defaultValue='' className="form-select" id="furniture" value={filledForm.furniture} >
                                 <option disabled ></option>
                                 <option value='true'>Мебель / Есть</option>
                                 <option value='false'>Мебель / Нет</option>           
@@ -366,7 +344,7 @@ export const SendForm = () => {
                         </div>
                         <div className="col-10">
                             <label htmlFor="kitchen" className="form-label">Кухонная мебель</label>
-                            <select onChange={handleSelect} defaultValue='' className="form-select" id="kitchen" value={filledForm.kitchen} required>
+                            <select onChange={handleSelect} defaultValue='' className="form-select" id="kitchen" value={filledForm.kitchen} >
                                 <option disabled ></option>
                                 <option value='true'>Кухонная мебель / Есть</option>
                                 <option value='false'>Кухонная мебель / Нет</option>           
@@ -396,9 +374,20 @@ export const SendForm = () => {
                             </div>                                                       
                         </div>
                         <div className="col-10 input-file-wrp">
+                            <p className="form-label color-red">Загрузите фото вашего объекта, максимальный размер 5 Мб</p>
                             <label className="btn btn-primary landlord-button" htmlFor="img"><span className="load-photo-button-text">Загрузите фото</span></label>
-                            <input className='input-file' id="img" type="file" name="photo" multiple accept="image/jpeg" onChange={handleInputFile}></input>
+                            <input className='input-file' id="img" type="file" name="photo" multiple accept="image/jpeg" onChange={handleInputFile} required></input>
+                            {loading && 
+                                <>
+                                <p style={{color: 'red', fontSize: '14px', fontWeight: 700, margin: 0, textAlign: 'center'}}>Файлы загружаются...</p>
+                                <div style={{marginTop: '4px'}} className="spinner-border text-danger" role="status">                        
+                                    <span className="visually-hidden">Файлы загружаются...</span>
+                                </div>
+                                </>
+                            }  
+                            {done && <p className="done">Файлы загружены</p>}                          
                         </div>
+                        
                         <div className="col-10">
                             <div className="form-check">
                                 <input onChange={changeAgreement} className="form-check-input" type="checkbox"  id="invalidCheck" required defaultChecked={agreement} />
@@ -413,7 +402,7 @@ export const SendForm = () => {
                         </div>                         
                     </div>
                 </form>
-                <button type="submit" className="btn btn-primary load-photo-button" form="landlordForm">Отправить</button>
+                <button id="submitButton" type="submit" className="btn btn-primary load-photo-button" form="landlordForm" disabled>Отправить</button>
                 <button onClick={handleQuit} type="button" className="btn btn-danger exit-button" form="landlordForm">Выйти</button>
             </main>
         </div>
