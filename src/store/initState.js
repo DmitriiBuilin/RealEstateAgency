@@ -1,6 +1,6 @@
 export const initState = {
     currency: "$",
-    currencyObject: "",
+    currencyObject: {USD: {Value: 75.0}, EUR: {Value: 80.0}, TRY: {Value: 39.0}},
     languge: "rus",
     page: "rent",
     pageParam: "",

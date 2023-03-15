@@ -2,6 +2,7 @@ import { useSelector } from "react-redux";
 import { getCurrencyObject, getCurrencyValue } from "../../store/selectors/selector";
 
 export default function useCurrencyCoefficient() {
+
     const currency = useSelector(getCurrencyValue);
 
     const currencyValue = () => {

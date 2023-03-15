@@ -7,7 +7,6 @@ import { BrowserRouter } from 'react-router-dom';
 import { PersistGate } from 'redux-persist/integration/react';
 import { persistor, store } from './store/store';
 import { Provider } from 'react-redux';
-import { CurrencyApi } from './components/currency/currencyAPI';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -16,7 +15,6 @@ root.render(
       <React.StrictMode>
         <PersistGate persistor={persistor} loading={'Loading...'}>
           <App />
-          <CurrencyApi />
         </PersistGate>
       </React.StrictMode>
     </BrowserRouter>

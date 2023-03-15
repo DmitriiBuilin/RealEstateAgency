@@ -10,11 +10,14 @@ export const CurrencyApi = () => {
             .then((response) => {
                 if(!response.ok) {
                     throw new Error(`Request failed with status ${response.status}`); 
-                }
+                }                
                 return response.json()
             })             
             .then(                
-                (result) => dispatch(currencyObject(result.Valute))
+                (result) => {
+                    console.log(result.Valute);
+                    dispatch(currencyObject(result.Valute))
+                }
                 ) 
             .catch((err) => {
                 console.log(err);
