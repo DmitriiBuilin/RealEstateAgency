@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
-import { checkBox, clearInput, select, typing, userAgreement } from "../../store/actions/actions";
+import { checkBox, clearInput, select, selectBool, typing, userAgreement } from "../../store/actions/actions";
 import { getAgreementrValue, getFullDataBase, getInputsValue } from "../../store/selectors/selector";
 import { push } from "firebase/database";
 import { dataRef, dataUsersRef, logOut, storage } from "../../server/googleFirebase";
@@ -95,6 +95,10 @@ export const SendForm = () => {
 
     const handleSelect = (event) => {
         dispatch(select(event))
+    };
+
+    const handleBooleanSelect = (event) => {
+        dispatch(selectBool(event))
     };
 
     const handleQuit = () => {
@@ -270,6 +274,7 @@ export const SendForm = () => {
                                 <option value="0+1">Комнаты 0+1</option>
                                 <option value="1+0">Комнаты 1+0</option> 
                                 <option value="1+1">Комнаты 1+1</option>
+                                <option value="1+1">Комнаты 1+2</option>
                                 <option value="2+0">Комнаты 2+0</option>
                                 <option value="2+1">Комнаты 2+1</option>
                                 <option value="2+2">Комнаты 2+2</option>
@@ -318,10 +323,10 @@ export const SendForm = () => {
                         </div>
                         <div className="col-10">
                             <label htmlFor="airConditioning" className="form-label">Кондиционер</label>
-                            <select onChange={handleSelect} defaultValue='' className="form-select" id="airConditioning" value={filledForm.airConditioning} >
+                            <select onChange={handleBooleanSelect} defaultValue='' className="form-select" id="airConditioning" value={filledForm.airConditioning} >
                                 <option disabled ></option>
-                                <option value='true'>Кондиционер / Есть</option>
-                                <option value='false'>Кондиционер / Нет</option>           
+                                <option value={true}>Кондиционер / Есть</option>
+                                <option value=''>Кондиционер / Нет</option>           
                             </select>
                         </div> 
                         <div className="col-10">
@@ -350,18 +355,18 @@ export const SendForm = () => {
                         </div>  
                         <div className="col-10">
                             <label htmlFor="furniture" className="form-label">Мебель</label>
-                            <select onChange={handleSelect} defaultValue='' className="form-select" id="furniture" value={filledForm.furniture} >
+                            <select onChange={handleBooleanSelect} defaultValue='' className="form-select" id="furniture" value={filledForm.furniture} >
                                 <option disabled ></option>
-                                <option value='true'>Мебель / Есть</option>
-                                <option value='false'>Мебель / Нет</option>           
+                                <option value={true}>Мебель / Есть</option>
+                                <option value=''>Мебель / Нет</option>           
                             </select>
                         </div>
                         <div className="col-10">
                             <label htmlFor="kitchen" className="form-label">Кухонная мебель</label>
-                            <select onChange={handleSelect} defaultValue='' className="form-select" id="kitchen" value={filledForm.kitchen} >
+                            <select onChange={handleBooleanSelect} defaultValue='' className="form-select" id="kitchen" value={filledForm.kitchen} >
                                 <option disabled ></option>
-                                <option value='true'>Кухонная мебель / Есть</option>
-                                <option value='false'>Кухонная мебель / Нет</option>           
+                                <option value={true}>Кухонная мебель / Есть</option>
+                                <option value=''>Кухонная мебель / Нет</option>           
                             </select>
                         </div>                        
                         <div className="col-10">

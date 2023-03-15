@@ -7,6 +7,7 @@ export const initState = {
     fullDataBase: "",
     chosenObject: "",
     sorterValue: "sort",
+    mainSearchInput: {"inputState":"rent", "inputCountry":"flat"},
     searchInput: {
       globalSearchInput:"",
       inputCity:"",

@@ -1,4 +1,4 @@
-import { AGREEMENTVALUE, CHECK, CLEAR_INPUTS, CURRENCYOBJECT, CURRENCYSELECT, DATABASE, LANGUAGESELECT, OBJECT, PAGEPARAM, PAGESELECT, SEARCHCHECK, SEARCHSELECT, SEARCHTYPING, SEARCH_CLEAR_INPUTS, SELECT, SORTERVALUE, TYPING } from "../types/types";
+import { AGREEMENTVALUE, CHECK, CLEAR_INPUTS, CURRENCYOBJECT, CURRENCYSELECT, DATABASE, LANGUAGESELECT, MAINSELECT, MAIN_RESET_INPUTS, OBJECT, PAGEPARAM, PAGESELECT, SEARCHCHECK, SEARCHSELECT, SEARCHTYPING, SEARCH_CLEAR_INPUTS, SELECT, SORTERVALUE, TYPING } from "../types/types";
 
 export const currencySelect = (data) => {
   return { type: CURRENCYSELECT, payload: data }
@@ -50,10 +50,17 @@ export const checkBox = (event) => {
   }
 }
 
+export const selectBool = (event) => {
+  return {
+    type: SELECT,
+    payload: {[event.target.id]: Boolean(event.target.value)}
+  }
+}
+
 export const select = (event) => {
   return {
     type: SELECT,
-    payload: {[event.target.id]: event.target.value }
+    payload: {[event.target.id]: event.target.value}
   }
 }
 
@@ -61,6 +68,20 @@ export const clearInput = () => {
   return {
     type: CLEAR_INPUTS,
     payload: {}
+  }
+}
+
+export const mainSelect = (event) => {
+  return {
+    type: MAINSELECT,
+    payload: {[event.target.id]: event.target.value}
+  }
+}
+
+export const mainClearInput = () => {
+  return {
+    type: MAIN_RESET_INPUTS,
+    payload: {"inputState":"rent", "inputCountry":"flat"}
   }
 }
 

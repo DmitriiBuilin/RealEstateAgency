@@ -13,27 +13,24 @@ export const getPageValue = (state) => {
 export const getPageParamValue = (state) => {
     return state.pageParam
 };
-
 export const getFullDataBase = (state) => {
     return state.fullDataBase
 };
-
 export const getChosenObject = (state) => {
     return state.chosenObject
 };
-
 export const getSorterValue = (state) => {
     return state.sorterValue
 };
-
 export const getAgreementrValue = (state) => {
     return state.agreementValue
 };
-
 export const getInputsValue = (state) => {
     return state.formInput
 };
-
 export const getSearchValue = (state) => {
     return state.searchInput
+};
+export const getMainSearchValue = (state) => {
+    return state.mainSearchInput
 };

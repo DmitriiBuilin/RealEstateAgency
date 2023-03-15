@@ -1,14 +1,6 @@
-// import { useDispatch } from "react-redux";
-// import { useNavigate } from "react-router-dom";
-// import Footer from "../../../components/footer/footer";
-// import Header from "../../../components/header/header";
-// import { userAgreement } from "../../../store/actions/actions";
-
+import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import Footer from "../footer/footer";
-import Header from "../header/header";
-
 
 export const FormSent = () => {
     const navigate = useNavigate();
@@ -22,10 +14,13 @@ export const FormSent = () => {
         navigate('/');
     };
 
+    const redirect = () => {
+        navigate('/');
+    }
+    setTimeout(redirect, 10000); 
 
     return (
         <>
-            <Header />
                 <div className="container-field container-primary">
                     <main className="main landlords-main">
                         <h4 className="sent-header">Готово!</h4>
@@ -35,7 +30,6 @@ export const FormSent = () => {
                         <button onClick={handleBack} className="btn btn-primary sent-button">Вернуться назад</button>
                     </main>
                 </div>   
-            <Footer />
         </>
     );    
 }

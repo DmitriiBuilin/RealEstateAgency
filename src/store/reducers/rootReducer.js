@@ -5,6 +5,7 @@ import currencyReducer from "./currencyReducer";
 import dataBaseReducer from "./dataBaseReduser";
 import landLordReducer from "./landLordReducer";
 import languageReducer from "./languageReducer";
+import mainSearchReducer from "./mainSearchReducer";
 import objectReducer from "./objectReducer";
 import pageParamReducer from "./pageParamReducer";
 import pageReducer from "./pageReducer";
@@ -24,6 +25,7 @@ const rootReducer = combineReducers ({
     agreementValue: userAgreementReducer,
     formInput: landLordReducer,
     searchInput: searchReducer,
+    mainSearchInput: mainSearchReducer,
 });
 
 export default rootReducer;

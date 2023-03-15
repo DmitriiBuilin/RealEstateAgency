@@ -1,4 +1,4 @@
-import { uploadBytes , ref } from "firebase/storage";
+import { ref } from "firebase/storage";
 import { storage } from "./googleFirebase";
 
 
@@ -9,11 +9,3 @@ export const imgRef = ref(storage, 'images/10.jpg');
 const metadata = {
     contentType: 'image/jpeg',
   };
-
-// const file = ;
-
-// 'file' comes from the Blob or File API
-
-// uploadBytes(storageRef, file, metadata).then((snapshot) => {
-//     console.log('Uploaded a blob or file!');
-//   });

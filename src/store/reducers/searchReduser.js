@@ -13,4 +13,4 @@ export const searchReducer = (state = "", action) => {
         }
     }
   
-    export default searchReducer;
+export default searchReducer;

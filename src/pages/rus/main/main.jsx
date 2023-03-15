@@ -7,21 +7,35 @@ import statistics from "./img/statistics.jpg"
 import Cards from "../../../components/cards/cards";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { mainClearInput, mainSelect, pageSelect } from "../../../store/actions/actions";
+import { getMainSearchValue } from "../../../store/selectors/selector";
 
 
 export const Main = () => {
+    const dispatch = useDispatch();
     const navigate = useNavigate();
+    const searchValues = useSelector(getMainSearchValue);
     const name = ['rent', 'sale', 'new'];
 
     const handleSearch = (e) => {        
         e.preventDefault();
-        console.log('Search');
+        const page = searchValues.inputState;
+        const object = searchValues.inputCountry;
+        navigate(`/${page}/${object}`);
+        dispatch(pageSelect(page));
+        dispatch(mainClearInput());        
     };
 
     const handleMap = (e) => {        
         e.preventDefault();
-        navigate("/map")
+        navigate("/map");
         console.log('Map');
+    };
+
+    const handleSelect = (e) => {
+        e.preventDefault();
+        dispatch(mainSelect(e));
     };
 
     useEffect(() => {
@@ -40,7 +54,7 @@ export const Main = () => {
                     <form className="row g-3 main-search-form" id="mainSearch">
                         <div className="col-md-6">
                             <label htmlFor="inputState"  className="form-label">Предложение</label>
-                            <select className="form-select" id="inputState" required>
+                            <select onChange={handleSelect} className="form-select" id="inputState" required>
                                 <option value="rent">Аренда</option>
                                 <option value="sale">Продажа</option>
                                 <option value="new">Новостройки</option>
@@ -50,10 +64,13 @@ export const Main = () => {
                             </div>
                         </div>
                         <div className="col-md-4">
-                            <label htmlFor="inputCountry" className="form-label">Страна</label>
-                            <select className="form-select" id="inputCountry" required>
-                            <option value="rus">Россия</option>
-                            <option value="trk">Турция</option>
+                            <label htmlFor="inputCountry" className="form-label">Объект недвижимости</label>
+                            <select onChange={handleSelect}className="form-select" id="inputCountry" required>
+                                <option value="flat">Квартира</option>
+                                <option value="house">Дом</option>
+                                <option value="office">Офис</option>
+                                <option value="shop">Торговое помещение</option>
+                                <option value="land">Участок</option>
                             </select>
                             <div className="invalid-feedback">
                             Please select a valid option.
@@ -64,7 +81,6 @@ export const Main = () => {
                             <select className="form-select" id="inputCity" required>
                                 <option value="antalya">...</option>
                                 <option value="antalya">Анталья</option>
-                                <option value="alanya">Аланья</option>
                             </select>
                             <div className="invalid-feedback">
                                 Please select a valid option.
@@ -75,7 +91,6 @@ export const Main = () => {
                             <select className="form-select" id="inputRegion" required>
                                 <option value="antalya">...</option>
                                 <option value="konyalti">Конялты</option>
-                                <option value="kepez">Кепез</option>
                             </select>
                             <div className="invalid-feedback">
                                 Please select a valid option.

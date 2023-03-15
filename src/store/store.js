@@ -18,6 +18,7 @@ const persistConfig = {
       'agreementValue',
       'formInput',
       'searchInput',
+      'mainSearchInput',
     ]
   }
   
