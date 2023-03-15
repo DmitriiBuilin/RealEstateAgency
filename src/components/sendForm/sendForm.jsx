@@ -204,9 +204,10 @@ export const SendForm = () => {
                             <label htmlFor="objectName" className="form-label">Название объекта</label>
                             <input onChange={handleInputs} type="text" className="form-control" id="objectName" placeholder="Введите название объекта" value={filledForm.objectName} required/>
                         </div>
+                        <label htmlFor="price" className="form-label">Цена</label>
                         <div className="col-5 flex-row">
                                 <input onChange={handleInputs} type="number" className="form-control" id="price" placeholder="Цена" value={filledForm.price} required/>
-                                <label className="form-label margin-0 label-padding" htmlFor="price">$&nbsp;USD</label>                            
+                                <label className="form-label margin-0 label-padding color-red" htmlFor="price">$&nbsp;USD</label>                            
                             </div>
                         <div className="col-10 landlords-row">
                             <div className="col-6">
@@ -279,7 +280,7 @@ export const SendForm = () => {
                         <div className="col-10">
                             <label htmlFor="floor" className="form-label">Этаж</label>
                             <div className="input-number-wrp">
-                                <input type="number" onChange={handleInputs} min="0" max="100" defaultValue="0" className="form-control input-number" id="floor" value={filledForm.floor} />
+                                <input type="number" onChange={handleInputs} min="0" max="100" defaultValue="" className="form-control input-number" id="floor" value={filledForm.floor} />
                                 {/* <button name="floor" onClick={decreaseInputValue} className="form-control input-number-btn">-</button>
                                 <button name="floor" onClick={increaseInputValue} className="form-control input-number-btn">+</button> */}
                             </div>
@@ -287,7 +288,7 @@ export const SendForm = () => {
                         <div className="col-10">
                             <label htmlFor="totalFloor" className="form-label">Всего этажей</label>
                             <div className="input-number-wrp">
-                                <input type="number" onChange={handleInputs} min="0" max="100" defaultValue="0" className="form-control input-number" id="totalFloor" value={filledForm.totalFloor} />
+                                <input type="number" onChange={handleInputs} min="0" max="100" defaultValue="" className="form-control input-number" id="totalFloor" value={filledForm.totalFloor} />
                                 {/* <button name="totalFloor" onClick={decreaseInputValue} className="form-control input-number-btn">-</button>
                                 <button name="totalFloor" onClick={increaseInputValue} className="form-control input-number-btn">+</button> */}
                             </div>
