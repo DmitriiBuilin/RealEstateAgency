@@ -15,7 +15,6 @@ export const CurrencyApi = () => {
             })             
             .then(                
                 (result) => {
-                    console.log(result.Valute);
                     dispatch(currencyObject(result.Valute))
                 }
                 ) 
