@@ -24,7 +24,8 @@ const analytics = getAnalytics(app);
 const auth = getAuth(app);
 
 export const database = getDatabase(app);
-export const dataRef = ref(database, 'deployDb');
+// export const dataRef = ref(database, 'deployDb');
+export const dataRef = ref(database, 'fulldb');
 export const userRef = ref(database, 'users');
 
 

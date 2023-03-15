@@ -13233,6 +13233,42 @@ input::-webkit-inner-spin-button {
   text-overflow: ellipsis;
 }
 
+/* -- SENT -- */
+.sent-header {
+  margin: 30px auto;
+  font-family: roboto, arial, sans-serif;
+  color: #012158;
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.sent-content {
+  align-self: center;
+  text-align: center;
+  width: 80%;
+  margin: 10px auto;
+  font-family: roboto, arial, sans-serif;
+  color: #012158;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.sent-button {
+  margin: 0 30px 30px 0;
+  align-self: center;
+  width: 230px;
+  background-color: #012158;
+  border-color: #012158;
+}
+
+.sent-button-red {
+  margin: 20px 30px 30px 0;
+  align-self: center;
+  width: 230px;
+  background-color: #dc1c2e;
+  border-color: #dc1c2e;
+}
+
 /* -- IMPORTANT -- */
 .hidden {
   display: none;

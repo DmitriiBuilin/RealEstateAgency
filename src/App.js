@@ -18,6 +18,7 @@ import { onValue } from 'firebase/database';
 import { objectsDataBase } from './store/actions/actions';
 import { useDispatch } from 'react-redux';
 import { dataRef } from './server/googleFirebase';
+import { FormSent } from './components/sendForm/formSent';
 
 function App() {
   const dispatch = useDispatch();
@@ -50,6 +51,7 @@ function App() {
         <Route path="/map" element={<Map />} />
         <Route path="/contacts" element={<Contacts />} />
         <Route path="/landlords" element={<Landlords component={<LogIn />}/>} />
+        <Route path="/landlords/sent" element={<Landlords component={<FormSent />}/>} />
         <Route path="/landlords/signin" element={<Landlords component={<SignIn />}/>} />
         <Route path="/landlords/signup" element={<Landlords component={<SignUp />}/>} />
         <Route path="/protection-personal-data" element={<PersonalData />} />

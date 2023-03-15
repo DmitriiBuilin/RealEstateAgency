@@ -4,7 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { checkBox, clearInput, select, typing, userAgreement } from "../../store/actions/actions";
 import { getAgreementrValue, getFullDataBase, getInputsValue } from "../../store/selectors/selector";
 import { push } from "firebase/database";
-import { dataRef, logOut, storage } from "../../server/googleFirebase";
+import { dataRef, dataUsersRef, logOut, storage } from "../../server/googleFirebase";
 import { v4 as uuidv4 } from 'uuid';
 import { uploadBytes , ref, getDownloadURL } from "firebase/storage";
 import { getAuth } from "firebase/auth";
@@ -18,7 +18,9 @@ export const SendForm = () => {
     const fullDataBase = useSelector(getFullDataBase); 
     const [imgsLinks, setImgsLinks] = useState([]);
     const [loading, setLoading] = useState(false)
+    const [pageLoading, setPageLoading] = useState(false)
     const [done, setDone] = useState(false)
+    // const [id, setId] = useState()
 
 
     // Get cuurent user
@@ -28,6 +30,7 @@ export const SendForm = () => {
 
     const handleSubmit = (event) => {
         event.preventDefault();
+        setPageLoading(true);
         console.log("Well done! Form submited.")
 
         // Create new id
@@ -62,10 +65,20 @@ export const SendForm = () => {
         );        
         
         function createObject() { 
-            push(dataRef, {"date": getCurrentDate(), "img": imgURLs, "id": id, "uuid": uuidv4(),
-            ...filledForm
-            });
-            //TODO smth to navigate to another page
+            push(dataRef, 
+                {
+                //     userId: 
+                //    {
+                    "date": getCurrentDate(), 
+                    "img": imgURLs, 
+                    "id": id, 
+                    "uuid": uuidv4(),
+                    ...filledForm
+                    // }
+                }   
+            );            
+            setPageLoading(false);
+            navigate("/landlords/sent")
         }        
         setTimeout(createObject, 3000); 
 
@@ -137,7 +150,7 @@ export const SendForm = () => {
             });          
         }
         console.log(`URLSArr: ${URLSArr}`);
-        setImgsLinks(URLSArr);       
+        setImgsLinks(URLSArr);  
     };
 
     useEffect(() => {  
@@ -404,7 +417,15 @@ export const SendForm = () => {
                     </div>
                 </form>
                 <button id="submitButton" type="submit" className="btn btn-primary load-photo-button" form="landlordForm" disabled>Отправить</button>
-                <button onClick={handleQuit} type="button" className="btn btn-danger exit-button" form="landlordForm">Выйти</button>
+                {pageLoading && 
+                        <>
+                        <p style={{color: 'red', fontSize: '14px', fontWeight: 700, margin: 0, textAlign: 'center'}}>Загрузка...</p>
+                        <div style={{marginTop: '4px', marginBottom: '6px'}} className="spinner-border text-danger" role="status">                        
+                            <span className="visually-hidden">Загрузка...</span>
+                        </div>
+                        </>
+                    }  
+        <button onClick={handleQuit} type="button" className="btn btn-danger exit-button" form="landlordForm">Выйти</button>
             </main>
         </div>
         </>
