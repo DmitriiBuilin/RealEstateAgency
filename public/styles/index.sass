@@ -30,9 +30,24 @@ $color-red: #dc1c2e
 $color-grey: #eef2f6
 $color-white: #FFFFFF
 $box-shadow: 2px 2px 5px 1px grey
+$box-shadow-wrp: 1px 1px 5px -2px grey
+
+/* -- Bootstrap variables -- */
+
+$accordion-padding-y: 0.6rem
+$accordion-button-color: $color-dark-blue
+$accordion-button-active-color: $color-red
+$form-select-padding-y: 0.275rem
+$primary-text: $color-blue
+$component-active-bg: $color-blue
+
+@import "../../node_modules/bootstrap/scss/bootstrap"
 
 header, main, footer
     background-color: $color-white
+
+.checkbox-visibility
+    visibility: hidden
 
 .block
     height: 100px
@@ -44,16 +59,44 @@ header, main, footer
     width: 100%
     margin: 0 auto
 
+.flex-row
+    display: flex
+    flex-direction: row
+    align-items: center
+
+.margin-0
+    margin: 0
+
+.color-red
+    color: $color-red !important
+
 
 /* -- HEADER -- */
 
 
 header
+    width: 100%
+    height: 100%
     display: flex
     justify-content: center
+    
 
 .header-block
     width: 100%
+    z-index: 100
+    background-color: $color-white
+    padding-bottom: 0
+    border-radius: 0 0 50px 50px
+
+.header-fixed
+    position: fixed
+    top: 0
+    transition: all .3s ease 
+    -webkit-transition: all .3s ease 
+    -moz-transition: all .3s ease 
+
+.header-fixed.out
+    transform: translateY(-100%)
 
 .header-background
     padding: 0 10px
@@ -63,6 +106,7 @@ header
     display: flex
     justify-content: space-between
     align-items: center
+    box-shadow: $box-shadow-wrp
 
 .header-logo
     text-decoration: none
@@ -87,43 +131,70 @@ header
     color: #b5b5b5
     width: 60px
     transition: 0.5s
+    -webkit-transition: 0.5s
+    -moz-transition: 0.5s
     background-color: #ffffff00
 
 .header-options-button:hover
     cursor: pointer
     color: $color-dark-blue
     transition: 0.5s
+    -webkit-transition: 0.5s
+    -moz-transition: 0.5s
 
 .header-options-button svg
     fill: #b5b5b5
     transition: 0.5s
+    -webkit-transition: 0.5s
+    -moz-transition: 0.5s
 
 .header-options-button:hover svg
     fill: $color-dark-blue
     scale: 1.1
     transition: 0.5s
+    -webkit-transition: 0.5s
+    -moz-transition: 0.5s
 
-.header-menu
+.header-menu 
     margin: 0 15px
     display: flex
     justify-content: space-between
-    max-width: 600px
+    max-width: 800px
     width: 100%
 
-.header-menu-item
+.header-menu-item, .header-menu-item-search
     text-decoration: none
     font-family: $font-main 
     font-size: 17px
     font-weight: 700
     color: $color-dark-blue
-    padding: 8px  
+    padding-left: 8px  
     transition: 0.5s
+    -webkit-transition: 0.5s
+    -moz-transition: 0.5s
+
+.header-menu-item-context
+    padding-left: 30px
+    list-style-type: none
+
+.header-menu-item-context-link
+    text-decoration: none
+    font-family: $font-main
+    font-size: 16px
+    font-weight: 300
+    color: $color-dark-blue
+
+.header-menu-item-context-link:hover
+    cursor: pointer
+    font-weight: 400
 
 .header-menu-item:hover
     cursor: pointer
-    text-shadow: 0.5px 0.9px 1px #aaaaaa
+    text-shadow: 0.5px 0.9px 1px rgb(170, 170, 170)
     color: $color-red
     transition: 0.5s
+    -webkit-transition: 0.5s
+    -moz-transition: 0.5s
 
 .header-options
     display: flex
@@ -133,9 +204,9 @@ header
     visibility: hidden
     display: flex
     position: fixed
-    z-index: 15
+    z-index: 60
     width: 100%
-    height: 100%
+    height: 3000px
     top: 0
     left: 0
     background: rgba(102, 102, 102, 0.6)
@@ -145,12 +216,13 @@ header
     width: 310px
     height: 320px
     position: absolute
-    z-index: 20
+    z-index: 70
     top: 26px
     right: 26px
     background-color: $color-grey
     box-shadow: $box-shadow
     border-radius: 0 0 0 7px
+    min-height: 360px
 
 .language-close-btn, .menu-close-btn
     display: flex
@@ -177,7 +249,6 @@ header
 .currency-and-language-block-item h4, .menu-block-item h4
     font-size: 17px
     font-weight: 700
-    // margin-top: 10px
     margin-bottom: 20px
 
 .grid-head 
@@ -206,14 +277,32 @@ header
     flex-direction: column        
     justify-content: space-between
     height: 200px
+    margin-left: 30px   
 
-.pop-up-menu-wrp
+.menu-head-item 
+    text-decoration: none
+    font-size: 17px
+    font-weight: 400
+    font-family: $font-main 
+    color: $color-dark-blue
 
+.menu-head-item:hover
+    color: $color-red
+    font-weight: 700
+    cursor: pointer
+
+.c-li label:hover
+    cursor: pointer
+
+.l-li label:hover
+    cursor: pointer
 
 
 /* -- MAIN - Search --*/
 
-    
+.index-page-search-and-title
+    padding-top: 100px 
+
 .index-page-search-block
     position: relative
     height: 700px
@@ -230,9 +319,13 @@ header
     border-radius: 7px
     position: absolute
     transition: 0.5s
+    -webkit-transition: 0.5s
+    -moz-transition: 0.5s
 
 .main-search-block:hover
     transition: 0.5s
+    -webkit-transition: 0.5s
+    -moz-transition: 0.5s
     opacity: 1
 
 .main-search-form
@@ -270,11 +363,9 @@ header
 
 .form-label
     font-family: $font-main !important
+    color: $color-dark-blue
     font-weight: 700
     font-size: 14px
-
-.form-select 
-    width: 94% !important
 
 .index-page-search-block-header-txt-high
     position: absolute
@@ -293,6 +384,13 @@ header
     font-size: 35px
     text-transform: uppercase
 
+.empty-search-result
+    margin: 5px 0 5px 10px
+    font-family: $font-main
+    color: $color-dark-blue
+    font-size: 22px
+    font-weight: 700
+
 
 /* -- MAIN - Carousel --*/
 
@@ -301,44 +399,39 @@ header
     border-radius: 10px
 
 .carousel-inner
-    border-radius: 10px 
+    border-radius: 5px 
     background-size: cover
 
 
 /* -- MAIN - Offers --*/
 
 
-.offers-carousel-cart-block
+.offers-carousel-card-block
     padding: 20px
     height: 500px
     display: flex
     justify-content: space-around
 
-.offers-carousel-item-name-1, .offers-carousel-item-name-2, .offers-carousel-item-name-3
+.offers-carousel-item-name
     padding: 15px 0 0 50px
     text-transform: uppercase
     font-family: $font-main
     font-weight: 300 
     font-size: 42px
-
-.offers-carousel-item-name-1
     color: $color-blue
-
-.offers-carousel-item-name-2
-    color: $color-dark-blue
-    
-.offers-carousel-item-name-3
-    color: $color-red
 
 .carousel-indicators button
     background-color: $color-grey !important
     width: 250px !important
 
+.carousel-control-custom
+    width: 50px
 
-/* -- CARTS -- */
+
+/* -- CARDS -- */
 
 
-.offer-cart
+.offer-card
     height: 400px
     width: 310px
     border-radius: 6px
@@ -346,55 +439,62 @@ header
     -webkit-border-radius: 6px
     background-color: $color-white
     transition: 0.5s
+    -webkit-transition: 0.5s
+    -moz-transition: 0.5s
 
-.offer-cart:hover
+.offer-card:hover
     box-shadow: $box-shadow
     -moz-box-shadow: $box-shadow
     -webkit-box-shadow: $box-shadow
     transition: 0.5s
-
-.offer-cart:hover
+    -webkit-transition: 0.5s
+    -moz-transition: 0.5s
     cursor: pointer
 
-.offer-cart-img
+.offer-card-img
     border-radius: 6px 6px 0 0
     -moz-border-radius: 6px 6px 0 0
     -webkit-border-radius: 6px 6px 0 0
     width: 100%
     height: 250px
 
-.offer-cart-properties
+.offer-card-properties
     padding: 10px
 
-.offer-cart-name
+.offer-card-name
     font-family: $font-main
     color: $color-dark-blue
     font-weight: 700 
     font-size: 22px
+    overflow: hidden
+    text-overflow: ellipsis
+    max-height: 28px
+    height: 100%
 
-.offer-cart-description
+.offer-card-description
     font-family: $font-main
     color: $color-dark-blue
     font-weight: 300 
     font-size: 12px
+    overflow: hidden
+    text-overflow: ellipsis
+    max-height: 50px
+    height: 100%
 
-.offer-cart-price
+.offer-card-price
     font-family: $font-main
     color: $color-dark-blue
     font-weight: 300 
     font-size: 15px
 
-.offer-cart-price span
+.offer-card-price span
     color: $color-red
 
 
 
 /* -- MAIN - Search --*/
 
-
-.index-page-aboutus
-
-
+    
 .index-page-aboutus-story
     border-radius: 10px
     background-color: $color-grey
@@ -406,9 +506,6 @@ header
     font-weight: 400 
     font-size: 45px
     text-transform: uppercase
-
-.index-page-aboutus-story h2 span
-
 
 .index-page-aboutus-story p 
     padding: 24px 80px 48px 80px
@@ -422,12 +519,13 @@ header
 
 
 footer
-    background-color: $color-grey
+    padding: 16px 0 0 0
 
 .footer-content
     padding: 50px 0
     display: flex
     justify-content: space-around
+    background-color: $color-grey
 
 .social-icons
     margin: 30px 0 30px 0
@@ -443,6 +541,8 @@ footer
     display: flex
     align-items: center
     transition: 0.5s
+    -webkit-transition: 0.5s
+    -moz-transition: 0.5s
 
 .social-icons-item:hover
     cursor: pointer
@@ -450,6 +550,8 @@ footer
     -moz-box-shadow: $box-shadow
     -webkit-box-shadow: $box-shadow
     transition: 0.5s
+    -webkit-transition: 0.5s
+    -moz-transition: 0.5s
 
 .social-icons-item svg
     fill: $color-blue
@@ -461,8 +563,6 @@ footer
     font-weight: 300 
     font-size: 16px
 
-.footer-content-navigate
-
 .footer-content-navigate h3 
     font-family: $font-main
     color: $color-blue
@@ -470,16 +570,821 @@ footer
     font-size: 16px
     margin: 0 0 40px 0
 
-
-.footer-content-navigate p 
+.footer-content-link
+    text-decoration: none
     font-family: $font-main
     color: $color-blue
     font-weight: 300 
     font-size: 14px
 
-.footer-content-navigate p:hover
+.footer-content-link:hover
     cursor: pointer
     font-weight: 400 
+
+
+/* -- ASIDE SEARCH -- */
+
+
+.container-field
+    display: flex
+    justify-content: space-between
+    padding-top: 100px
+
+.aside-search
+    background-color: $color-grey
+    border-radius: 10px
+    width: 100%
+    max-width: 315px
+    box-shadow: $box-shadow-wrp
+
+.main 
+    background-color: $color-grey
+    border-radius: 10px
+    width: 100%
+    margin: 0 0 0 30px
+    box-shadow: $box-shadow-wrp
+
+.form-select-dev
+    margin: 0 0 10px 0 
+
+.accordion-button-user
+    font-family: $font-main
+    font-weight: 400 
+
+.btn-group
+    margin-bottom: 10px
+
+.btn-user
+    color: $color-dark-blue 
+    border-color: $color-grey   
+    
+.btn-user:hover
+    color: $color-blue !important
+    border-color: $color-grey  !important   
+
+.btn-check:checked + .btn
+    background-color: $color-grey
+    border-color: $color-grey
+    color: $color-dark-blue 
+
+.col
+    position: relative
+
+.col>span 
+    position: absolute
+    right: 25px
+    top: 50%
+    transform: translateY(-50%)
+    font-size: 14px
+    color: #74797d
+
+input[type=number] 
+    -moz-appearance: textfield
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button 
+    -webkit-appearance: none
+    margin: 0
+
+.search-button
+    display: flex
+    flex-direction: column
+    align-items: center
+    justify-content: center
+    padding: 15px 0 24px 0
+    background-color: $color-white
+    position: sticky
+    bottom: 0
+    z-index: 5
+
+.search-button-item
+    padding: 0.375rem 1rem
+    background-color: $color-blue 
+    width: 90%
+    display: none
+
+.clear-button-item
+    padding: 0.375rem 1rem
+    background-color: $color-red 
+    border-color: $color-red
+    width: 90%
+    margin-top: 10px
+
+.clear-button-item:hover
+    background-color: #dc5461 
+    border-color: $color-red
+
+.filter-button-item
+    padding: 0.375rem 1rem
+    background-color: $color-blue 
+    display: none
+
+.form-check-wrp
+    display: flex
+    flex-direction: column
+    padding: 7px 25px 22px 25px
+
+.form-check-label
+    color: $color-dark-blue
+    font-family: $font-main
+    font-size: 17px
+    font-weight: 400
+
+.aside-search-head
+    color: $color-dark-blue
+    font-family: $font-main
+    font-size: 21px
+    padding: 13px 0 0 18px
+
+.mb-3
+    margin-top: 1rem
+
+.accordion-button:not(.collapsed)
+    color: $color-dark-blue
+    font-weight: 300
+
+.accordion-checkbox-input
+    display: flex
+    flex-direction: column
+
+.checkbox-input
+    padding-left: 2.5rem
+
+
+/* -- RENT, SALE, NEW -- */
+
+
+.main
+    display: flex
+    flex-direction: column
+    align-items: center
+    
+
+.filter
+    background-color: $color-white
+    border-radius: 5px
+    width: 98%
+    height: 100px
+    margin: 13px 0
+    display: flex
+    justify-content: space-between
+
+.sorter-side
+    padding-left: 12px
+
+.search-result
+    background-color: $color-white
+    border-radius: 5px
+    width: 98%
+    padding: 10px
+    margin-bottom: 13px
+
+.breadcrumb-item svg
+    fill: rgba(33, 37, 41, 0.75)
+
+.breadcrumb-item a
+    text-decoration: none
+    color: rgba(33, 37, 41, 0.75)
+
+.filter-nav
+    --bs-breadcrumb-divider: '>'
+    padding: 7px 0 0 0
+
+.filter-result-notification
+    padding: 0 0 0 0
+    color: $color-dark-blue
+    font-family: $font-main
+    font-size: 17px
+
+.filter-result-notification span
+    font-weight: 700
+
+.map-button-item
+    padding: 0.375rem 1rem
+    background-color: $color-blue 
+
+.filter-buttons
+    display: flex
+    flex-direction: column
+    justify-content: space-around
+    width: 200px
+    margin: 0 35px 0 30px
+    flex-wrap: nowrap
+
+.filter-button-item svg
+    fill: $color-white
+    margin-right: 5px
+
+.searchbar-close-button
+    display: none
+    margin: 10px
+    position: absolute
+    right: 10px
+    top: 5px
+
+
+/* -- CARD ITEM -- */
+
+
+.card-item
+    display: flex
+    height: 200px
+    width: 98%
+    border-radius: 6px
+    -moz-border-radius: 6px
+    -webkit-border-radius: 6px
+    background-color: $color-white
+    transition: 0.5s
+    -webkit-transition: 0.5s
+    -moz-transition: 0.5s
+    margin-bottom: 20px
+
+.card-item-wrp, .offer-card-wrp
+    text-decoration: none
+
+.card-item:hover
+    box-shadow: $box-shadow
+    -moz-box-shadow: $box-shadow
+    -webkit-box-shadow: $box-shadow
+    transition: 0.5s
+    -webkit-transition: 0.5s
+    -moz-transition: 0.5s
+    cursor: pointer
+
+.card-item-img-wrp
+    width: 270px
+    height: 200px
+
+.card-item-img
+    width: 100%
+    height: 100%
+    object-fit: cover
+    border-radius: 6px
+    -moz-border-radius: 6px
+    -webkit-border-radius: 6px
+
+.card-item-properties
+    display: flex
+    flex-direction: column
+    justify-content: space-between
+    padding: 10px
+
+.card-item-name
+    font-family: $font-main
+    color: $color-dark-blue
+    font-weight: 700 
+    font-size: 18px
+
+.card-item-description
+    display: block
+    width: 95%
+    max-width: 750px
+    height: 100%
+    max-height: 50px
+    overflow: hidden
+    text-overflow: ellipsis
+    font-family: $font-main
+    color: $color-dark-blue
+    font-weight: 300 
+    font-size: 16px
+    margin-bottom: 0.5rem
+
+.card-item-price
+    font-family: $font-main
+    color: $color-dark-blue
+    font-weight: 400 
+    font-size: 24px
+
+.card-item-price span
+    font-weight: 700 
+    // color: $color-red
+
+.card-item-propertties
+    display: flex
+
+.card-item-propertties p
+    font-family: $font-main
+    color: $color-dark-blue
+    font-weight: 400 
+    margin-right: 15px
+
+
+/* -- MAP -- */
+
+
+.map-wrp
+    padding: 10px 
+    width: 100%
+
+.map
+    border: 0
+    border-radius: 6px
+    -moz-border-radius: 6px
+    -webkit-border-radius: 6px
+    width: 100%
+    max-width: 1300px
+    height: 600px
+
+
+/* -- CONTACTS -- */
+
+
+.contacts-aside
+    background-color: $color-grey
+    border-radius: 10px
+    width: 100%
+    max-width: 315px
+    display: flex
+    flex-direction: column
+    align-items: center
+    justify-content: space-between
+
+.contacts-aside svg
+    margin-top: 40px
+
+.contacts-aside-bar
+    display: flex
+    flex-direction: column
+
+.contacts-aside-bar-item
+    text-decoration: none
+    font-family: $font-main
+    color: $color-dark-blue
+    font-weight: 700 
+    font-size: 18px
+    margin: 0 0 5px 0
+
+.contacts-aside-bar-item h4
+    margin-bottom: 0
+    font-family: $font-main
+    color: $color-dark-blue
+    font-weight: 700
+
+.contacts-aside-bar-item p
+    font-family: $font-main
+    color: $color-dark-blue
+    font-weight: 300
+    font-size: 16px
+    margin-left: 25px   
+
+.contacts-aside-bar-item:last-child
+    margin-bottom: 20px
+
+.divide
+    width: 85%
+    border-top: 1px solid $color-dark-blue
+    margin-bottom: 20px
+    opacity: 50%
+
+.region
+    display: flex
+    margin-left: 25px
+
+.contacts-main-text p
+    margin-left: 0
+
+.contacts-aside-bar-item svg
+    fill: $color-dark-blue
+    margin-top: 0
+    margin-right: 10px
+
+
+.contacts-main
+    padding: 30px
+    align-items: flex-start
+    flex-direction: row
+    justify-content: space-around
+
+.contacts-main-text
+    padding: 10px
+    display: flex
+    flex-direction: column
+
+.contacts-main-map
+    width: 100%
+    margin-right: 20px
+    
+.contacts-main-map iframe
+    border-radius: 10px
+    width: 100%
+
+.contacts-button-item
+    margin-bottom: 15px
+    text-decoration: none
+    padding: 0.375rem 1rem
+    font-family: $font-main
+    color: $color-dark-blue
+    font-weight: 400 
+    background-color: $color-white
+    text-align: center
+    width: 90%
+    border: 1px solid $color-dark-blue
+    border-radius: 10px
+    transition: 0.5s
+    -webkit-transition: 0.5s
+    -moz-transition: 0.5s
+
+.contacts-button-item:hover
+    background-color: $color-dark-blue
+    color: $color-white
+    transition: 0.5s
+    -webkit-transition: 0.5s
+    -moz-transition: 0.5s
+
+.contacts-button-item svg
+    margin-right: 7px
+    fill: $color-dark-blue
+    transition: 0.5s
+    -webkit-transition: 0.5s
+    -moz-transition: 0.5s
+
+.contacts-button-item:hover svg
+    fill: $color-white
+    transition: 0.5s
+    -webkit-transition: 0.5s
+    -moz-transition: 0.5s
+
+/* -- AUTHTORISATION -- */   
+
+.login-header, .signin-signup-header
+    padding: 25px 10px
+    font-family: $font-main
+    color: $color-dark-blue
+    font-weight: 700
+    font-size: 17px
+    max-width: 40rem
+    width: 100%
+    text-align: center
+
+.signin-signup-description
+    padding: 0 10px
+    font-family: $font-main
+    color: $color-dark-blue
+    font-weight: 300
+    font-size: 17px
+    max-width: 40rem
+    width: 100%
+    text-align: center
+
+.login-button, .login-btn
+    width: 200px
+    margin: 0 0 25px 0
+
+.signin-signup-header
+    font-size: 32px
+    margin: 0
+    padding-bottom: 10px
+
+.login-btn
+    margin-top: 15px
+    height: 50px
+
+.formGroup
+    margin-bottom: 25px
+
+.form-floating-wrp
+    display: flex
+    flex-direction: column
+    align-items: center
+
+
+
+/* -- LANDLORDS -- */
+
+
+.landlords-main
+    margin: 0 auto
+    width: 70%
+    display: flex
+    flex-direction: column
+    align-items: center
+    background-color: $color-grey
+    border-radius: 10px
+    box-shadow: $box-shadow-wrp
+
+.landloards-header
+    align-self: flex-start
+    margin: 15px 0 20px 30px
+    color: $color-dark-blue
+
+.landlord-button
+    align-self: flex-end
+    margin: 10px 30px 15px 80px 
+    width: 230px
+    background-color: $color-blue
+
+.landlord-button-red
+    margin: 0 30px 30px 0 
+    align-self: flex-end
+    width: 230px
+    background-color: $color-red 
+    border-color: $color-red 
+
+.landlord-button-red:hover
+    background-color: #a70615
+
+.landlords-form
+    display: flex
+    justify-content: space-between
+
+.landlords-leftside
+    width: 450px
+
+.landlords-rightside
+    width: 450px
+
+.landlords-leftside div,.landlords-rightside div
+    margin-bottom: 10px
+
+.form-label-link
+    color: $color-dark-blue
+
+.personal-data-header
+    font-family: $font-main
+    color: $color-dark-blue
+    margin: 30px auto
+
+.personal-data-content
+    width: 80%
+    height: 400px
+    overflow: auto
+
+.landlords-textarea
+    border-radius: 0.375rem
+    border-color: #dee2e6
+    resize: none
+    width: 362px
+    height: 75px
+
+.landlords-textarea-description
+    border-radius: 0.375rem
+    border-color: #dee2e6
+    resize: none
+    width: 362px
+    height: 200px
+    width: 100%
+    max-width: 640px
+
+.landlords-row
+    display: flex
+    justify-content: space-between
+
+.col-10 div
+    margin-bottom: 0
+
+.label-padding
+    padding-left: 10px
+
+.input-file
+    opacity: 0
+    display: none
+    width: 100%
+//   visibility: hidden  
+
+.input-file-wrp  
+    display: flex
+    flex-direction: column
+    width: auto 
+    align-items: center
+
+.load-photo-button
+    padding: 1rem 1rem
+    width: 30%
+    margin-bottom: 25px
+    background-color: $color-blue 
+
+.exit-button
+    padding: 1rem 1rem
+    width: 30%
+    margin-bottom: 25px
+    background-color: $color-red 
+
+.exit-button:hover
+    background-color: #e24554
+
+.input-number-wrp
+    display: flex
+    flex-direction: row
+    align-items: center
+    justify-content: space-between
+
+.input-number
+    width: 100%
+
+.input-number-btn
+    width: 36px
+
+.done
+    font-family: roboto, arial, sans-serif !important
+    color: #012158
+    font-weight: 700
+    font-size: 14px
+
+
+
+/* -- CARD COMPONENT -- */  
+
+ 
+.card-component-main
+    margin: 0 auto
+    width: 1030px
+    display: flex
+    flex-direction: column
+    align-items: flex-start
+    background-color: #eef2f6
+    border-radius: 10px
+    box-shadow: 1px 1px 5px -2px grey
+    padding: 0 10px
+
+.card-title-wrp
+    display: flex
+    flex-direction: column
+    align-items: flex-start
+
+.card-id
+    color: rgba(33, 37, 41, 0.75)
+    font-size: 14px
+
+.card-name
+    font-family: $font-main
+    color: $color-dark-blue
+    font-size: 27px
+    font-weight: 700
+    
+.card-main-info
+    display: flex
+
+.card-photo
+    display: flex
+    flex-direction: column
+
+.card-photo-small-screen
+    display: none
+    margin-bottom: 15px
+
+.card-photo-main
+    width: 100%
+    max-width: 600px
+    height: 400px
+    margin-bottom: 20px
+    border-radius: 5px
+
+.card-photo-main-img    
+    width: 600px
+    height: 100%
+    border-radius: 5px
+    object-fit: cover
+
+.card-characters
+    width: 100%
+    max-width: 420px
+    margin-left: 20px
+
+.card-photo-carousel
+    margin-bottom: 20px
+
+.card-photo-carousel-item
+    display: flex
+    justify-content: space-between
+
+.card-photo-main-item-img
+    width: 100%
+    max-width: 142px
+    height: 100px
+    object-fit: cover
+
+.card-photo-main-item-img:hover
+    cursor: pointer
+
+.carousel-control-custom
+    width: 30px
+    height: 30px
+    background-color: $color-white
+    border-radius: 50%
+    top: 25%
+    margin: 10px 
+
+.carousel-control-custom-main
+    width: 3%
+
+.carousel-control-custom svg
+    fill: black
+
+.card-price
+    font-family: $font-main
+    color: $color-dark-blue
+    font-size: 25px
+    font-weight: 700
+
+.card-price span
+    margin-left: 15px
+
+.card-region-wrp
+    display: flex
+    justify-content: space-between
+    width: 100%
+    padding-right: 40px
+
+.card-region
+    color: rgba(33, 37, 41, 0.75)
+    font-size: 15px
+
+.card-properties-wrp    
+    display: flex
+    flex-direction: column
+    width:  405px
+
+.card-properties-ul
+    list-style: none
+    margin: 0
+    padding: 0
+
+.card-properties-ul li
+    display: flex
+    align-items: flex-start
+    justify-content: space-between
+
+.card-properties-item
+    width: 50%
+    font-family: $font-main
+    color: $color-dark-blue
+    font-size: 16px
+    font-weight: 700
+    margin-bottom: 2px
+
+.card-properties-item-value
+    width: 50%
+    right: 0
+    font-weight: 400
+    margin-bottom: 2px
+
+.card-divide
+    width: 95%
+    border-top: 1px solid $color-dark-blue
+    opacity: 50%
+
+.card-properties-mini-item
+    width: 50%
+    margin: 0
+    font-family: $font-main
+    color: $color-dark-blue
+    font-size: 15px
+    font-weight: 400
+
+.card-properties-mini-item-value
+    width: 50%
+    right: 0
+    font-family: $font-main
+    color: $color-dark-blue
+    font-size: 15px
+    font-weight: 300
+    margin: 0
+
+.margin-bottom
+    margin-bottom: 15px
+
+.card-item-description-p
+    font-family: $font-main
+    color: $color-dark-blue
+    font-size: 16px
+    font-weight: 400
+    width: 100%
+    max-width: 600px
+    margin-bottom: 20px
+    overflow: hidden
+    text-overflow: ellipsis
+    
+/* -- SENT -- */
+.sent-header
+    margin: 30px auto
+    font-family: $font-main
+    color: $color-dark-blue
+    font-size: 22px
+    font-weight: 700
+
+.sent-content
+    align-self: center
+    text-align: center
+    width: 80%
+    margin: 10px auto
+    font-family: $font-main
+    color: $color-dark-blue
+    font-size: 16px
+    font-weight: 400
+
+.sent-button
+    margin: 0 30px 30px 0 
+    align-self: center
+    width: 230px
+    background-color: $color-dark-blue
+    border-color: $color-dark-blue 
+
+.sent-button-red
+    margin: 20px 30px 30px 0 
+    align-self: center
+    width: 230px
+    background-color: $color-red 
+    border-color: $color-red 
 
 
 /* -- IMPORTANT -- */
@@ -492,64 +1397,124 @@ footer
     color: $color-red
 
 
+
 /* -- MEDIA -- */
 
 
 @media(max-width: 1333px)
-    .hid1
+    .offer-card-wrp:nth-child(4n)
         display: none
 
+    .landlords-form
+        flex-direction: row
+        justify-content: center
 
-@media(max-width: 1023px)
-    .hid2
+    .contacts-main
+        flex-direction: column
+
+@media(max-width: 1065px)
+
+    .card-component-main
+        width: 100%
+        margin: 0
+
+    .card-main-info
+        flex-direction: column
+    
+
+@media(max-width: 1024px)
+    .offer-card-wrp:nth-child(3n)
         display: none
-    .offer-cart
+
+    .offer-card
         box-shadow: $box-shadow
         -moz-box-shadow: $box-shadow
         -webkit-box-shadow: $box-shadow
 
-@media(max-width: 820px)
-    .header-menu-item:nth-child(4)
+    .header-menu-item:nth-child(6)
         display: none
-    .header-menu-item:nth-child(3)
-        display: none
-    .header-menu
-        justify-content: space-around
-    .index-page-search-block-header-txt-high, .index-page-search-block-header-txt-low, .main-search-block
-        margin-left: 20px
 
     .menu-options-button 
         display: block
+
+    .filter
+        flex-direction: column
+        height: 210px
+        margin: 7px 0
+
+    .filter-buttons
+        height: 100%
+        margin: 0 35px 15px 30px
+        align-self: flex-end
+
+    .card-item
+        flex-direction: column
+        height: 400px
+
+    .card-item-img-wrp
+        width: 100%
+        height: 215px
+
+    .main
+        margin: 0 0 0 15px
+
+    .card-component-main
+        width: 100%
+        margin: 0
+
+
+@media(max-width: 900px)
+    .header-menu-item:nth-child(5)
+        display: none
+
+@media(max-width: 820px)
+    .header-menu-item:nth-child(4)
+        display: none
+
+    .header-menu
+        justify-content: space-around
+
+    .index-page-search-block-header-txt-high, .index-page-search-block-header-txt-low, .main-search-block
+        margin-left: 20px    
 
     .offers-carousel-item-name-1, .offers-carousel-item-name-2, .offers-carousel-item-name-3
         padding: 15px 0 0 50px
         font-size: 32px
 
-
+    .landlords-main
+        width: 100%
 
 @media(max-width: 768px)
+    .filter-buttons
+        align-self: center
 
+    .filter-result-notification
+        display: block
+        align-self: center
 
     .container-primary
         padding: 5px
 
+    .container-field, .index-page-search-and-title
+        padding-top: 70px
+
     .footer-content
         padding-top: 16px
-
-    .footer-content-navigate p 
-        margin-bottom: 03
     
     .header-menu
         display: none
 
+    .header-fixed
+        padding-bottom: 0
 
 @media(max-width: 767px)
-    .hid3
+    .offer-card-wrp:nth-child(2n)
         display: none
 
     .main-search-block
         width: 95%
         margin-left: 0
+        opacity: 1
 
     .index-page-search-block
         display: flex
@@ -557,6 +1522,124 @@ footer
 
     .index-page-search-block-header-txt-high, .index-page-search-block-header-txt-low
         margin-left: 0
+
+    .footer-content
+        flex-direction: column
+        align-items: center 
+
+    .footer-content-navigate
+        margin-bottom: 15px
+        display: flex
+        flex-direction: column
+        align-items: center
+
+    .footer-content-navigate h3
+        margin-bottom: 10px
+
+    .search-result
+        display: flex
+        flex-direction: column
+        align-items: center
+
+    .contacts-wrp
+        flex-direction: column
+        align-items: center
+
+    .contacts-aside
+        margin-bottom: 10px
+        width: 100%
+        max-width: 767px
+
+    .contacts-main
+        margin: 0
+        padding: 10px    
+
+
+@media(max-width: 677px)
+    .aside-search
+        display: none
+        // display: block
+        position: absolute
+        z-index: 50
+        width: 100%
+        max-width: 676px
+
+    .main 
+        margin: 0
+
+    .search-button-item
+        display: block
+
+    .filter   
+        height: 250px
+
+    .filter-button-item
+        display: block
+
+    .searchbar-close-button
+        display: block
+
+    .landlords-leftside
+        display: flex
+        flex-direction: column
+        align-items: center
+        width: 400px
+
+    .landlords-rightside
+        display: flex
+        flex-direction: column
+        align-items: center
+        width: 400px
+
+    .landloards-header
+        display: flex
+        flex-direction: column
+        align-items: flex-start
+        margin: 15px 10px 20px 10px
+
+    .landlord-button
+        align-self: center
+        margin-left: 0
+        margin-right: 0
+
+    .landlords-textarea
+        width: 100%
+        max-width: 320px
+
+    .landlords-textarea-description
+        width: 100%
+        max-width: 320px
+
+    .card-main-info
+        align-items: center
+        align-self: center
+
+    .card-characters
+        margin-left: 0
+
+    .carousel-inner-small
+        width: 100%
+        height: 300px
+
+    .card-photo-main-mini-img
+        width: 100%
+        height: 100%
+        object-fit: cover
+
+    .card-photo-main-img
+        width: 100%
+
+    .card-properties-wrp
+        width: 100%
+
+    .card-photo
+        display: none
+
+    .card-photo-small-screen
+        display: block
+
+    .card-component-main
+        padding: 0 5px
 
 
 @media(max-width: 429px)
@@ -574,26 +1657,9 @@ footer
     .index-page-search-block
         height: 570px
 
-    .footer-content
-        flex-direction: column
-        align-items: center 
-
-    .footer-content-navigate
-        margin-bottom: 15px
-
-    .footer-content-navigate h3
-        margin-bottom: 10px
-
     .offers-carousel-item-name-1, .offers-carousel-item-name-2, .offers-carousel-item-name-3
         padding: 15px 0 0 50px
         font-size: 28px
-
-    // .header-options-button
-    //     background-color: $color-white
-    //     opacity: 0.7
-    //     box-shadow: $box-shadow
-    //     -moz-box-shadow: $box-shadow
-    //     -webkit-box-shadow: $box-shadow
 
     .index-page-aboutus-story h2 
         font-size: 32px
@@ -618,6 +1684,13 @@ footer
 
     .menu-close-btn, .language-close-btn
         margin: 10px 10px 0 0 
+
+    .landloards-header
+        align-self: flex-start
+
+@media(max-width: 425px)
+    .landlords-leftside, .landlords-rightside
+        width: 350px
 
 
 @media(max-width: 340px)

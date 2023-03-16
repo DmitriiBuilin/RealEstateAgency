@@ -1,42 +1,66 @@
-export const Cards = (image) => {
+import { onValue } from "firebase/database";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
+import { dataRef } from "../../server/googleFirebase";
+import { objectsDataBase } from "../../store/actions/actions";
+import { getCurrencyValue } from "../../store/selectors/selector";
+import useCurrencyCoefficient from "../currency/curencyCoefficient";
+
+export const Cards = (props) => {
+    const currency = useSelector(getCurrencyValue);
+    const valuteCoefficient = useCurrencyCoefficient();
+    const dispatch = useDispatch();
+    const [cardsList, setCardsList] = useState([]);        
+
+    const cardsListFilter = (
+        cardsList.filter((item) => {
+                return (item.target === props.name)
+    }));
+
+    cardsListFilter.sort((a, b) => {
+        if (a.price > b.price) {
+            return 1;
+            }
+            if (a.price < b.price) {
+            return -1;
+            }
+            return 0;
+    });
+
+    useEffect(() => {
+        onValue(dataRef, (snapshot) => {
+            const data = snapshot.val()
+            if (data) {
+                const newData = Object.entries(data).map((item) => ({
+                    id: item[0],
+                    ...item[1]
+                  }))    
+                setCardsList(newData);      
+                dispatch(objectsDataBase(newData));        
+            }
+        });        
+    }, []);
 
     return (
         <>
             <div className="offers-carousel-item">
-                <p className="offers-carousel-item-name-1">аренда</p>
-                <div className="offers-carousel-cart-block">
-                    <div className="offer-cart hid1">
-                        <img className="offer-cart-img" src={image.img_1} alt="..." />
-                        <div className="offer-cart-properties">
-                        <h4 className="offer-cart-name">Name</h4>
-                        <p className="offer-cart-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab quod alias ipsam modi odio repellendus a, explicabo.</p>
-                        <p className="offer-cart-price">Price <span>1200</span> $ </p>
-                    </div>
-                </div>
-                <div className="offer-cart hid2">
-                    <img className="offer-cart-img" src={image.img_2} alt="..." />
-                    <div className="offer-cart-properties">
-                    <h4 className="offer-cart-name">Name</h4>
-                    <p className="offer-cart-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab quod alias ipsam modi odio repellendus a, explicabo.</p>
-                    <p className="offer-cart-price">Price <span>1200</span> $ </p>
-                    </div>
-                </div>
-                <div className="offer-cart hid3">
-                    <img className="offer-cart-img" src={image.img_3} alt="..." />
-                    <div className="offer-cart-properties">
-                    <h4 className="offer-cart-name">Name</h4>
-                    <p className="offer-cart-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab quod alias ipsam modi odio repellendus a, explicabo.</p>
-                    <p className="offer-cart-price">Price <span>1200</span> $ </p>
-                    </div>
-                </div>
-                <div className="offer-cart">
-                    <img className="offer-cart-img" src={image.img_4} alt="..." />
-                    <div className="offer-cart-properties">
-                    <h4 className="offer-cart-name">Name</h4>
-                    <p className="offer-cart-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab quod alias ipsam modi odio repellendus a, explicabo.</p>
-                    <p className="offer-cart-price">Price <span>1200</span> $ </p>
-                    </div>
-                </div>
+                <p className="offers-carousel-item-name">{props.name}</p>
+                <div className="offers-carousel-card-block">
+                    {cardsListFilter.slice(0, 4).map((item) => {
+                        return (
+                            <Link key={Math.random() * 10000} to={`/card/${item.id}`} className="offer-card-wrp">
+                                <div className="offer-card">
+                                    <img className="offer-card-img" src={item.img[0]} alt="..." />
+                                    <div className="offer-card-properties">
+                                        <h4 className="offer-card-name">{item.objectName}</h4>
+                                        <p className="offer-card-description">{item.description}</p>
+                                        <p className="offer-card-price">Price <span>{Math.round(item.price * valuteCoefficient).toLocaleString()}</span> {currency} </p>
+                                    </div>
+                                </div>
+                            </Link>
+                        )
+                    })}
                 </div>
             </div>
         </>

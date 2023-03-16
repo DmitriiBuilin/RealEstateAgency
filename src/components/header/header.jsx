@@ -1,7 +1,19 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import { React, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Link, NavLink } from "react-router-dom";
+import { currencySelect, languageSelect, pageSelect, searchClearInput } from "../../store/actions/actions";
+import { getCurrencyValue, getLanguageValue } from "../../store/selectors/selector";
+import $ from "jquery"
+import { CurrencyApi } from "../currency/currencyAPI";
 
 export const Header = () => {
+    const currency = useSelector(getCurrencyValue);
+    const language = useSelector(getLanguageValue);
+    const dispatch = useDispatch();
+    const activeClassName = "selected";
+    const selectedLanguage = document.getElementById(`${language}`);
+    const selectedCurrency = document.getElementById(`${currency}`);
+    
     const langHandleOpen = () => {
         document.querySelector(".currency-and-language").classList.add('show');
         document.querySelector(".currency-and-menu-wrp").classList.add('show');
@@ -15,27 +27,113 @@ export const Header = () => {
         document.querySelector(".menu").classList.remove('show');
         document.querySelector(".currency-and-menu-wrp").classList.remove('show');
     };
+    const handleCurrency = (e) => {
+        const id = e.target.id;
+        const currencyLi = document.querySelectorAll('.c-li');        
+        dispatch(currencySelect(id))
+        for(let i=0; i<currencyLi.length; i++) {
+            currencyLi[i].classList.remove('selected')
+        };  
+        e.target.parentNode.classList.add('selected')
+    };
+    const handleLanguage = (e) => {
+        const lenguageLi = document.querySelectorAll(`.l-li`);
+        const id = e.target.id;        
+        dispatch(languageSelect(id));
+        for(let i=0; i<lenguageLi.length; i++) {
+            lenguageLi[i].classList.remove('selected')
+        };
+        e.target.parentNode.classList.add('selected')
+    };
+    
+    const handlePage = (e) => {
+        const pageId = e.target.getAttribute('datapage');
+        dispatch(pageSelect(pageId));
+        dispatch(searchClearInput());
+    };
 
+
+
+    useEffect(() => {    
+        const selectedLanguage = document.getElementById(`${language}`);
+        const selectedCurrency = document.getElementById(`${currency}`);
+
+        selectedLanguage.parentNode.classList.add('selected')
+        selectedCurrency.parentNode.classList.add('selected')        
+
+        /* jQuery script (show/hide header) */        
+        let header = $('.header-fixed'),
+        scrollPrev = 0;
+
+        $(window).scroll(function() {
+            let scrolled = $(window).scrollTop();
+        
+            if ( scrolled > 100 && scrolled > scrollPrev ) {
+                header.addClass('out');
+            } else {
+                header.removeClass('out');
+            }
+            scrollPrev = scrolled;
+        }); 
+    });
 
     return (
-        <header>
-            <div className="header-block container-primary">
-                <div className="header-background">
+        <header id="header">
+            <CurrencyApi />
+            <div id='headerFloat' className="header-block header-fixed container-primary">
+                <div className="header-background">                    
                     <Link to="/" className="header-logo">
                         <svg width="170" height="50" xmlns="http://www.w3.org/2000/svg">
                         <g className="layer">
                             <title>Layer 1</title>
-                            <text fill="#003da5" fontFamily="Fantasy" fontSize="35" id="svg_1" stroke="#000000" strokeWidth="0" textAnchor="middle" x="79.225358" xmlSpace="preserve" y="30.821596">ANTALYA</text>
+                            <text fill="#003da5" fontFamily="Roboto" fontWeight="700" fontSize="35" id="svg_1" stroke="#000000" strokeWidth="0" textAnchor="middle" x="79.225358" xmlSpace="preserve" y="30.821596">ANTALYA</text>
                             <text fill="#dc1c2e" fontFamily="Sans-serif" fontSize="21" id="svg_2" stroke="#000000" strokeWidth="0" textAnchor="middle" x="119.976531" xmlSpace="preserve" y="48.192489">REALTY</text>
                         </g>
                         </svg>
                     </Link>
                     <nav className="header-menu">
-                        <Link to="/rent" className="header-menu-item">Аренда</Link>
-                        <Link to="/sale"  className="header-menu-item">Продажа</Link>
-                        <Link to="/new"  className="header-menu-item">Новостройки</Link>
-                        <Link to="/office"  className="header-menu-item">Наш офис</Link>
-                        <Link to="/contacts"  className="header-menu-item">Контакты</Link>
+                        <NavLink to="/rent" onClick={handlePage} datapage='rent' className="header-menu-item">
+                            {({ isActive }) => (
+                                <span onClick={handlePage} datapage='rent' className={ isActive ? activeClassName : undefined }>
+                                Аренда
+                                </span>
+                            )}
+                        </NavLink>
+                        <NavLink to="/sale" onClick={handlePage} datapage='sale' className="header-menu-item">
+                            {({ isActive }) => (
+                                <span onClick={handlePage} datapage='sale' className={ isActive ? activeClassName : undefined }>
+                                Продажа
+                                </span>
+                            )}
+                        </NavLink>
+                        <NavLink to="/new" onClick={handlePage} datapage='new' className="header-menu-item">
+                            {({ isActive }) => (
+                                <span onClick={handlePage} datapage='new' className={ isActive ? activeClassName : undefined }>
+                                Новостройки
+                                </span>
+                            )}                            
+                        </NavLink>
+                        <NavLink to="/map" className="header-menu-item">
+                            {({ isActive }) => (
+                                <span className={ isActive ? activeClassName : undefined }>
+                                Карта
+                                </span>
+                            )}                            
+                        </NavLink>
+                        <NavLink to="/contacts"  className="header-menu-item">
+                        {({ isActive }) => (
+                                <span className={ isActive ? activeClassName : undefined }>
+                                Контакты
+                                </span>
+                            )}                            
+                        </NavLink>
+                        <NavLink to="/landlords"  className="header-menu-item">
+                        {({ isActive }) => (
+                                <span className={ isActive ? activeClassName : undefined }>
+                                Арендодателям
+                                </span>
+                            )}                            
+                        </NavLink>
                     </nav>
                     <div className="header-options">
                         <button id="language" type="button" className="header-options-button" onClick={langHandleOpen}>
@@ -79,18 +177,39 @@ export const Header = () => {
                             <div className="currency-and-language-block-item">
                                 <h4 className="grid-head">Валюта</h4>
                                 <ul className="currency">
-                                <li className="grid-left-top c-li">USD $</li>
-                                <li className="grid-left c-li">Euro €</li>
-                                <li className="grid-right-top c-li">TRL ₺</li>
-                                <li className="grid-right c-li selected">Rub ₽</li>
+                                <li className="grid-left-top c-li">
+                                    <input onClick={handleCurrency} name="currency" type="radio" className="checkbox-visibility" id="$"/>
+                                    <label htmlFor="$">USD $</label>
+                                </li>
+                                <li className="grid-left c-li">
+                                    <input onClick={handleCurrency} name="currency" type="radio" className="checkbox-visibility" id="€"/>
+                                    <label htmlFor="€">Euro €</label>
+                                </li>
+                                <li className="grid-right-top c-li">
+                                    <input onClick={handleCurrency} name="currency" type="radio" className="checkbox-visibility" id="₺"/>
+                                    <label htmlFor="₺">TRL ₺</label>           
+                                </li>
+                                <li className="grid-right c-li">
+                                    <input onClick={handleCurrency} name="currency" type="radio" className="checkbox-visibility" id="₽"/>
+                                    <label htmlFor="₽">Rub ₽</label>
+                                </li>
                                 </ul>
                             </div>
                             <div className="currency-and-language-block-item">
                                 <h4 className="grid-head">Выбор языка</h4>
                                 <ul className="lenguage">
-                                <li className="grid-left-top l-li selected">Русский</li>
-                                <li className="grid-left l-li">English</li>
-                                <li className="grid-right l-li">Türkçe</li>
+                                <li className="grid-left-top l-li">
+                                    <input onClick={handleLanguage} name="language" type="radio" className="checkbox-visibility" id="rus"/>
+                                    <label htmlFor="rus">Русский</label> 
+                                </li>
+                                <li className="grid-left l-li">
+                                    <input onClick={handleLanguage} name="language" type="radio" className="checkbox-visibility" id="en"/>
+                                    <label htmlFor="en">English</label> 
+                                </li>
+                                <li className="grid-right l-li">
+                                    <input onClick={handleLanguage} name="language" type="radio" className="checkbox-visibility" id="tr"/>
+                                    <label htmlFor="tr">Türkçe</label> 
+                                </li>
                                 </ul>
                             </div>
                         </div>
@@ -103,14 +222,58 @@ export const Header = () => {
                         </div>
                         <div className="currency-and-language-block">
                             <div className="menu-block-item">
-                                <h4 className="">Меню</h4>
-                                <ul className="menu-head">
-                                <li className="">Аренда</li>
-                                <li className="">Продажи</li>
-                                <li className="">Новостройки</li>
-                                <li className="">Наш офис</li>
-                                <li className="">Контакты</li>
-                                </ul>
+                                <h4>Меню</h4>
+                                <nav className="menu-head">
+                                    <NavLink to="/" className="menu-head-item">
+                                        {({ isActive }) => (
+                                            <span className={ isActive ? activeClassName : undefined }>
+                                            Главная
+                                            </span>
+                                        )}
+                                    </NavLink>
+                                    <NavLink to="/rent" onClick={handlePage} datapage='rent' className="menu-head-item">
+                                        {({ isActive }) => (
+                                            <span onClick={handlePage} datapage='rent' className={ isActive ? activeClassName : undefined }>
+                                            Аренда
+                                            </span>
+                                        )}
+                                    </NavLink>
+                                    <NavLink to="/sale" onClick={handlePage} datapage='sale' className="menu-head-item">
+                                        {({ isActive }) => (
+                                            <span onClick={handlePage} datapage='sale' className={ isActive ? activeClassName : undefined }>
+                                            Продажа
+                                            </span>
+                                        )}
+                                    </NavLink>
+                                    <NavLink to="/new" onClick={handlePage} datapage='new' className="menu-head-item">
+                                        {({ isActive }) => (
+                                            <span to="/new" onClick={handlePage} datapage='new' className={ isActive ? activeClassName : undefined }>
+                                            Новостройки
+                                            </span>
+                                        )}                            
+                                    </NavLink>
+                                    <NavLink to="/map" className="menu-head-item">
+                                        {({ isActive }) => (
+                                            <span className={ isActive ? activeClassName : undefined }>
+                                            Карта
+                                            </span>
+                                        )}                            
+                                    </NavLink>
+                                    <NavLink to="/contacts"  className="menu-head-item">
+                                        {({ isActive }) => (
+                                            <span className={ isActive ? activeClassName : undefined }>
+                                            Контакты
+                                            </span>
+                                        )}                            
+                                    </NavLink>
+                                    <NavLink to="/landlords"  className="menu-head-item">
+                                        {({ isActive }) => (
+                                            <span className={ isActive ? activeClassName : undefined }>
+                                            Арендодателям
+                                            </span>
+                                        )}                            
+                                    </NavLink>
+                                </nav>
                             </div>
                         </div>
                     </div>    
