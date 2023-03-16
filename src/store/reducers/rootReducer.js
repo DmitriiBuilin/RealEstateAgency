@@ -9,6 +9,7 @@ import mainSearchReducer from "./mainSearchReducer";
 import objectReducer from "./objectReducer";
 import pageParamReducer from "./pageParamReducer";
 import pageReducer from "./pageReducer";
+import regionDataBaseReducer from "./regionDataBaseReducer";
 import searchReducer from "./searchReduser";
 import sorterValueReducer from "./sorterValueReducer";
 import userAgreementReducer from "./userAgreemetReducer";
@@ -26,6 +27,7 @@ const rootReducer = combineReducers ({
     formInput: landLordReducer,
     searchInput: searchReducer,
     mainSearchInput: mainSearchReducer,
+    regions: regionDataBaseReducer,
 });
 
 export default rootReducer;

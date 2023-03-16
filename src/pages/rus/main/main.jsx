@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Footer from "../../../components/footer/footer";
 import Header from "../../../components/header/header";
 import imgTeam from "./img/team.jpg"
@@ -6,16 +6,29 @@ import partners from "./img/partners.jpeg"
 import statistics from "./img/statistics.jpg"
 import Cards from "../../../components/cards/cards";
 import { useNavigate } from "react-router-dom";
-import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { mainClearInput, mainSelect, pageSelect } from "../../../store/actions/actions";
-import { getMainSearchValue } from "../../../store/selectors/selector";
-
+import { mainClearInput, mainSelect, pageSelect, regionsDataBase, searchTyping } from "../../../store/actions/actions";
+import { getMainSearchValue, getRegionsDataBase } from "../../../store/selectors/selector";
+import { regionDataRef } from "../../../server/googleFirebase";
+import { onValue } from "firebase/database";
 
 export const Main = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    const searchValues = useSelector(getMainSearchValue);
+    const searchValues = useSelector(getMainSearchValue);  
+    const [regions, setRegions] = useState([]);
+
+    const getDistrict = () => {
+        const district = regions.find(element=>element.id === searchValues.inputCity)
+        let districtArr = []
+        for (let i in district) {
+            if (i!='id') {
+                districtArr.push(<option key={district[i]} value={district[i]}>{district[i]}</option>)
+            }
+        }
+        return districtArr
+    }
+
     const name = ['rent', 'sale', 'new'];
 
     const handleSearch = (e) => {        
@@ -23,7 +36,7 @@ export const Main = () => {
         const page = searchValues.inputState;
         const object = searchValues.inputCountry;
         navigate(`/${page}/${object}`);
-        dispatch(pageSelect(page));
+        dispatch(pageSelect(page));        
         dispatch(mainClearInput());        
     };
 
@@ -35,12 +48,27 @@ export const Main = () => {
 
     const handleSelect = (e) => {
         e.preventDefault();
+        dispatch(searchTyping(e));
         dispatch(mainSelect(e));
     };
 
+    const setActive = () => {document.querySelector('.carousel-inner').children[0].classList.add('active')};
+
+    setTimeout(setActive, 1000)
+
     useEffect(() => {
-        document.querySelector('.carousel-inner').children[0].classList.add('active');
-    });
+        onValue(regionDataRef, (snapshot) => {
+          const data = snapshot.val()
+          if (data) {
+            const newData = Object.entries(data).map((item) => ({
+                id: item[0],
+                ...item[1]
+            }));
+            setRegions(newData);
+            dispatch(regionsDataBase(newData));        
+          }
+        });       
+      }, []);
 
     return (
     <>
@@ -78,19 +106,20 @@ export const Main = () => {
                         </div>
                         <div className="col-md-4">
                             <label htmlFor="inputCity" className="form-label">Город</label>
-                            <select className="form-select" id="inputCity" required>
-                                <option value="antalya">...</option>
-                                <option value="antalya">Анталья</option>
+                            <select onChange={handleSelect} className="form-select" id="inputCity" required>
+                                <option value=''>...</option>
+                                {regions.map((item) => {
+                                    return <option key={item.id} value={item.id}>{item.id}</option>
+                                })}
                             </select>
                             <div className="invalid-feedback">
                                 Please select a valid option.
                             </div>
                         </div>
                         <div className="col-md-4">
-                            <label htmlFor="inputRegion" className="form-label">Район</label>
-                            <select className="form-select" id="inputRegion" required>
-                                <option value="antalya">...</option>
-                                <option value="konyalti">Конялты</option>
+                            <label htmlFor="inputDistrict" className="form-label">Район</label>
+                            <select onChange={handleSelect} className="form-select" id="inputDistrict" required>
+                                {getDistrict()}
                             </select>
                             <div className="invalid-feedback">
                                 Please select a valid option.

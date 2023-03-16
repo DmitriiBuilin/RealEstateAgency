@@ -52,7 +52,7 @@ export const CardItem = (props) => {
                 </div>
                 <div className="card-item-properties">
                     <h4 className="card-item-name">{props.objectName}</h4>
-                    <p className="card-item-price">Price <span>{Math.round(props.price * valuteCoefficient)}</span> {currency} </p>
+                    <p className="card-item-price">Price <span>{Math.round(props.price * valuteCoefficient).toLocaleString()}</span> {currency} </p>
                     <p className="card-item-description">
                     {props.description}
                     </p>

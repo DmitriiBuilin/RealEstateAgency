@@ -15,9 +15,9 @@ import SignUp from './components/authtorisation/signUp';
 import PageNotFound from './pages/rus/404/PageNotFound';
 import { useEffect } from 'react';
 import { onValue } from 'firebase/database';
-import { objectsDataBase } from './store/actions/actions';
+import { objectsDataBase, regionsDataBase } from './store/actions/actions';
 import { useDispatch } from 'react-redux';
-import { dataRef } from './server/googleFirebase';
+import { dataRef, regionDataRef } from './server/googleFirebase';
 import { FormSent } from './components/sendForm/formSent';
 
 function App() {
@@ -27,13 +27,23 @@ function App() {
     onValue(dataRef, (snapshot) => {
         const data = snapshot.val()
         if (data) {
-            const newData = Object.entries(data).map((item) => ({
-                id: item[0],
-                ...item[1]
-              }))         
-            dispatch(objectsDataBase(newData));  
+          const newData = Object.entries(data).map((item) => ({
+              id: item[0],
+              ...item[1]
+          }))         
+          dispatch(objectsDataBase(newData));  
         }            
-    });        
+    });  
+    onValue(regionDataRef, (snapshot) => {
+      const data = snapshot.val()
+      if (data) {
+        const newData = Object.entries(data).map((item) => ({
+            id: item[0],
+            ...item[1]
+        }));
+        dispatch(regionsDataBase(newData));        
+      }
+    });       
   }, []);
 
 

@@ -5,6 +5,7 @@ export const initState = {
     page: "rent",
     pageParam: "",
     fullDataBase: "",
+    regions: "",
     chosenObject: "",
     sorterValue: "sort",
     mainSearchInput: {"inputState":"rent", "inputCountry":"flat"},

@@ -11,7 +11,7 @@ export const Cards = (props) => {
     const currency = useSelector(getCurrencyValue);
     const valuteCoefficient = useCurrencyCoefficient();
     const dispatch = useDispatch();
-    const [cardsList, setCardsList] = useState([]);
+    const [cardsList, setCardsList] = useState([]);        
 
     const cardsListFilter = (
         cardsList.filter((item) => {
@@ -55,7 +55,7 @@ export const Cards = (props) => {
                                     <div className="offer-card-properties">
                                         <h4 className="offer-card-name">{item.objectName}</h4>
                                         <p className="offer-card-description">{item.description}</p>
-                                        <p className="offer-card-price">Price <span>{Math.round(item.price * valuteCoefficient)}</span> {currency} </p>
+                                        <p className="offer-card-price">Price <span>{Math.round(item.price * valuteCoefficient).toLocaleString()}</span> {currency} </p>
                                     </div>
                                 </div>
                             </Link>

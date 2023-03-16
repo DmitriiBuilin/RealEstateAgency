@@ -1,4 +1,4 @@
-import { AGREEMENTVALUE, CHECK, CLEAR_INPUTS, CURRENCYOBJECT, CURRENCYSELECT, DATABASE, LANGUAGESELECT, MAINSELECT, MAIN_RESET_INPUTS, OBJECT, PAGEPARAM, PAGESELECT, SEARCHCHECK, SEARCHSELECT, SEARCHTYPING, SEARCH_CLEAR_INPUTS, SELECT, SORTERVALUE, TYPING } from "../types/types";
+import { AGREEMENTVALUE, CHECK, CLEAR_INPUTS, CURRENCYOBJECT, CURRENCYSELECT, DATABASE, LANGUAGESELECT, MAINSELECT, MAIN_RESET_INPUTS, OBJECT, PAGEPARAM, PAGESELECT, REGIONSDATABASE, SEARCHCHECK, SEARCHSELECT, SEARCHTYPING, SEARCH_CLEAR_INPUTS, SELECT, SORTERVALUE, TYPING } from "../types/types";
 
 export const currencySelect = (data) => {
   return { type: CURRENCYSELECT, payload: data }
@@ -22,6 +22,10 @@ export const pageParam = (data) => {
 
 export const objectsDataBase = (data) => {
   return { type: DATABASE, payload: data }
+};
+
+export const regionsDataBase = (data) => {
+  return { type: REGIONSDATABASE, payload: data }
 };
 
 export const chosenObject = (data) => {

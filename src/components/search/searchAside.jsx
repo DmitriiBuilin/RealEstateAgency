@@ -2,13 +2,43 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, NavLink } from "react-router-dom";
 import { currencySelect, pageSelect, searchCheckBox, searchClearInput, searchTyping } from "../../store/actions/actions";
-import { getCurrencyValue, getPageValue } from "../../store/selectors/selector";
+import { getCurrencyValue, getMainSearchValue, getPageValue, getRegionsDataBase, getSearchValue } from "../../store/selectors/selector";
 
 export const SearchAside = () => {
     const currency = useSelector(getCurrencyValue);
     const pageKey = useSelector(getPageValue);
     const dispatch = useDispatch();
     const [currencySymbol, setCurrencySymbol] = useState(currency)  
+    const searchValues = useSelector(getSearchValue);
+    const regions = useSelector(getRegionsDataBase);
+
+    const getCountryList = () => {
+        try {
+            let regionstArr = []
+            for (let i in regions) {
+                regionstArr.push(<option key={regions[i].id} value={regions[i].id}>{regions[i].id}</option>)
+            }
+            return regionstArr
+        } catch (error) {
+        console.error(error);
+        }
+    }
+
+    const getDistrict = () => {
+        try {
+        const district = regions.find(element=>element.id === searchValues.
+            inputCity)
+        let districtArr = []
+        for (let i in district) {
+            if (i!='id') {
+                districtArr.push(<option key={district[i]} value={district[i]}>{district[i]}</option>)
+            }
+        }
+        return districtArr
+        } catch (error) {
+            console.error(error);
+        }
+    }
     
     const handleCurrency = (e) => {
         const id = e.target.getAttribute('dataname');
@@ -25,6 +55,7 @@ export const SearchAside = () => {
     const handlePage = (e) => {
         const pageId = e.target.getAttribute('datapage');
         dispatch(pageSelect(pageId));
+        dispatch(searchClearInput());
     };
 
     const handleInputs = (event) => {
@@ -51,6 +82,7 @@ export const SearchAside = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        document.querySelector('.aside-search').style.display = 'none';
     };
 
     useEffect(() => {
@@ -163,7 +195,6 @@ export const SearchAside = () => {
                                     onChange={handleInputs} 
                                     className="form-control" 
                                     id="globalSearchInput"
-                                    // id="formGroupExampleInput"
                                     placeholder="Название или описание"/>
                                 </div>
                             </div>                            
@@ -179,20 +210,14 @@ export const SearchAside = () => {
                          <div className="accordion-body">
                                 <select className="form-select form-select-dev" onChange={handleInputs} defaultValue='main' id="inputCity" required>
                                     <option disabled value="main">Город</option>
-                                    <option value="Istanbul">Стамбул</option>
-                                    <option value="Antalya">Анталья</option>
-                                    <option value="Alanya">Аланья</option>
-                                    <option value="Mersin">Мерсин</option>
+                                    {getCountryList()}
                                 </select>
                                 <div className="invalid-feedback">
                                 Please select a valid option.
                                 </div>
                                 <select className="form-select" onChange={handleInputs} defaultValue='main' id="inputDistrict" required>
                                     <option disabled value="main">Район</option>
-                                    <option value="Kepez">Кепез</option>
-                                    <option value="Konyalty">Конъялты</option>
-                                    <option value="Lara">Лара</option>
-                                    <option value="Muratpasha">Муратпаша</option>
+                                {getDistrict()}
                                 </select>
                             </div>
                         </div>

@@ -1,7 +1,7 @@
 import { React, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, NavLink } from "react-router-dom";
-import { currencySelect, languageSelect, pageSelect } from "../../store/actions/actions";
+import { currencySelect, languageSelect, pageSelect, searchClearInput } from "../../store/actions/actions";
 import { getCurrencyValue, getLanguageValue } from "../../store/selectors/selector";
 import $ from "jquery"
 import { CurrencyApi } from "../currency/currencyAPI";
@@ -49,6 +49,7 @@ export const Header = () => {
     const handlePage = (e) => {
         const pageId = e.target.getAttribute('datapage');
         dispatch(pageSelect(pageId));
+        dispatch(searchClearInput());
     };
 
 

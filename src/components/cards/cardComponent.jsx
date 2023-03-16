@@ -160,7 +160,7 @@ export const CardComponent = () => {
                     <div className="card-item-description-p">{item.description}</div>
                 </div>
                 <div className="card-characters">                
-                    <h3 className="card-price">{Math.round(item.price * valuteCoefficient)}<span>{currency}</span></h3>
+                    <h3 className="card-price">{Math.round(item.price * valuteCoefficient).toLocaleString()}<span>{currency}</span></h3>
                     <div className="card-region-wrp">
                         <p className="card-region">{item.city} / {item.district}</p>
                         <p className="card-region">{item.date}</p>

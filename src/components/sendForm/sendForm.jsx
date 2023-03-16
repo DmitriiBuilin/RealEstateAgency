@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { checkBox, clearInput, select, selectBool, typing, userAgreement } from "../../store/actions/actions";
-import { getAgreementrValue, getFullDataBase, getInputsValue } from "../../store/selectors/selector";
+import { getAgreementrValue, getFullDataBase, getInputsValue, getRegionsDataBase } from "../../store/selectors/selector";
 import { push } from "firebase/database";
 import { dataRef, dataUsersRef, logOut, storage } from "../../server/googleFirebase";
 import { v4 as uuidv4 } from 'uuid';
@@ -20,7 +20,40 @@ export const SendForm = () => {
     const [loading, setLoading] = useState(false)
     const [pageLoading, setPageLoading] = useState(false)
     const [done, setDone] = useState(false)
-    // const [id, setId] = useState()
+    const regions = useSelector(getRegionsDataBase);
+
+    const getCountryList = () => {
+        try {
+            let regionstArr = []
+            for (let i in regions) {
+                regionstArr.push(<option key={regions[i].id} value={regions[i].id}>{regions[i].id}</option>)
+            }
+            return regionstArr
+        } catch (error) {
+        console.error(error);
+        }
+    }
+
+    const getDistrict = () => {
+        try {
+        const district = regions.find(element=>element.id === filledForm.
+            city)
+            console.log(regions);
+            console.log(district);
+            console.log("City", filledForm.
+            city)
+        let districtArr = []
+        for (let i in district) {
+            if (i!='id') {
+                districtArr.push(<option key={district[i]} value={district[i]}>{district[i]}</option>)
+            }
+        }
+        console.log(districtArr);
+        return districtArr
+        } catch (error) {
+            console.error(error);
+        }
+    }
 
 
     // Get cuurent user
@@ -231,20 +264,16 @@ export const SendForm = () => {
                                 <label htmlFor="city" className="form-label">Город</label>
                                 <select onChange={handleSelect} defaultValue='' className="form-select" id="city" value={filledForm.city} required>
                                     <option disabled ></option>
-                                    <option value="Antalya">Анталья</option>
-                                    <option value="Alanya">Аланья</option>
-                                    <option value="Fethie">Фетие</option>
-                                    <option value="Mersin">Мерсин</option>
+                                    {getCountryList()}
+                                    <option value="other">Другой ...</option>
                                 </select>
                             </div>
                             <div className="col-5">
                                 <label htmlFor="district" className="form-label">Район</label>
                                 <select onChange={handleSelect} defaultValue='' className="form-select" id="district" value={filledForm.district} required>
                                     <option disabled ></option>
-                                    <option value="Kepez">Кепез</option>
-                                    <option value="Konyalti">Коньялты</option>
-                                    <option value="Lara">Лара</option>
-                                    <option value="Muratpasha">Муратпаша</option>
+                                    {getDistrict()}
+                                    <option value="other">Другой ...</option>
                                 </select>
                             </div>
                         </div>
