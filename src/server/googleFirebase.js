@@ -61,3 +61,15 @@ export const checkuser = () => {
         return false
     }
 };
+
+export const checkadmin = () => {
+    if(auth.currentUser) {
+        if (auth.currentUser.uid === 'o7VNoLtTwMed2v467PIMiHYOuMs1' && auth.currentUser.email === 'antalya.realty.agency@gmai.com') {
+            return true
+        } else {
+            return false;
+        }
+    } else {
+        return false;
+    }
+};
