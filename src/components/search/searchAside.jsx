@@ -49,9 +49,11 @@ export const SearchAside = () => {
         };
         e.target.parentNode.classList.add('selected')   
     };
+
     const handleSearchCloseButton = () => {
         document.querySelector('.aside-search').style.display = 'none';
     };
+    
     const handlePage = (e) => {
         const pageId = e.target.getAttribute('datapage');
         dispatch(pageSelect(pageId));

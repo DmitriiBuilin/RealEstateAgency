@@ -64,7 +64,7 @@ export const checkuser = () => {
 
 export const checkadmin = () => {
     if(auth.currentUser) {
-        if (auth.currentUser.uid === 'o7VNoLtTwMed2v467PIMiHYOuMs1' && auth.currentUser.email === 'antalya.realty.agency@gmai.com') {
+        if (auth.currentUser.uid === process.env.REACT_APP_UID && auth.currentUser.email === process.env.REACT_APP_E_MAIL) {
             return true
         } else {
             return false;

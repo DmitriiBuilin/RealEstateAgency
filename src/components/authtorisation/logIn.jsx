@@ -20,6 +20,8 @@ export const LogIn = () => {
         navigate("/landlords/signup")
     };
 
+    return <AdminPanel />
+
     if (!isAuth) {    
         return (
             <>
