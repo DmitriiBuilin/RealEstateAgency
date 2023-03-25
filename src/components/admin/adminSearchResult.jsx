@@ -1,4 +1,5 @@
 import { NavLink, useNavigate } from "react-router-dom";
+import { logOut } from "../../server/googleFirebase";
 
 export const AdminSearchResult = ({component}) => {
     const navigate = useNavigate();
@@ -34,6 +35,10 @@ export const AdminSearchResult = ({component}) => {
         };
         e.target.classList.add('active')
     };
+    const handleQuit = () => {
+        logOut();
+        navigate("/landlords/signin")
+    };
     
 
     return (
@@ -58,6 +63,7 @@ export const AdminSearchResult = ({component}) => {
                         </svg>
                         Фильтр
                     </button>
+                    <button onClick={handleQuit} type="button" className="btn btn-danger exit-admin-btn" form="landlordForm">Выйти</button>
                 </div>
                 {component}
             </main>

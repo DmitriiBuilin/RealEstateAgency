@@ -20,7 +20,10 @@ export const LogIn = () => {
         navigate("/landlords/signup")
     };
 
+
+// TODO Delete before prod
     return <AdminPanel />
+// - ** - //
 
     if (!isAuth) {    
         return (
