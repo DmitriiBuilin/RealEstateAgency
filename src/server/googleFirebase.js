@@ -29,7 +29,7 @@ export const dataRef = ref(database, 'fulldb');
 export const regionDataRef = ref(database, 'regions');
 export const userRef = ref(database, 'users');
 
-console.log(analytics);
+// console.log(analytics);
 
 export const getPostById = (userId) => ref(database, `users/${userId}`)
 

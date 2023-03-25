@@ -19,6 +19,11 @@ import { objectsDataBase, regionsDataBase } from './store/actions/actions';
 import { useDispatch } from 'react-redux';
 import { dataRef, regionDataRef } from './server/googleFirebase';
 import { FormSent } from './components/sendForm/formSent';
+import AdminSearchResult from './components/admin/adminSearchResult';
+import AdminPanel from './components/admin/adminPanel';
+import AdminUsers from './components/admin/adminUsers';
+import AdminRegions from './components/admin/adminRegions';
+import AdminDb from './components/admin/adminDb';
 
 function App() {
   const dispatch = useDispatch();
@@ -64,6 +69,9 @@ function App() {
         <Route path="/landlords/sent" element={<Landlords component={<FormSent />}/>} />
         <Route path="/landlords/signin" element={<Landlords component={<SignIn />}/>} />
         <Route path="/landlords/signup" element={<Landlords component={<SignUp />}/>} />
+        <Route path="/landlords/admin/users" element={<Landlords component={<AdminPanel component={<AdminUsers/>}/>}/>} />
+        <Route path="/landlords/admin/db" element={<Landlords component={<AdminPanel component={<AdminDb />}/>}/>} />
+        <Route path="/landlords/admin/regions" element={<Landlords component={<AdminPanel component={<AdminRegions />}/>}/>} />
         <Route path="/protection-personal-data" element={<PersonalData />} />
         <Route path="/" element={<Main />} />
       </Routes>

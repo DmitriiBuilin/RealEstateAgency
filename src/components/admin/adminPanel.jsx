@@ -1,14 +1,14 @@
 import AdminSearchAside from "./adminSearchAside";
 import AdminSearchResult from "./adminSearchResult";
 
-export const AdminPanel = () => {
+export const AdminPanel = ({component}) => {
 
 
     return (
         <>
         <div className="container-field container-primary">
             <AdminSearchAside />
-            <AdminSearchResult />
+            <AdminSearchResult component={component}/>
         </div>
         </>
     )    

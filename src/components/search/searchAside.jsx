@@ -20,7 +20,7 @@ export const SearchAside = () => {
             }
             return regionstArr
         } catch (error) {
-        console.error(error);
+        // console.error(error);
         }
     }
 
@@ -36,7 +36,7 @@ export const SearchAside = () => {
         }
         return districtArr
         } catch (error) {
-            console.error(error);
+            // console.error(error);
         }
     }
     
