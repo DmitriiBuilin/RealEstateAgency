@@ -35,6 +35,15 @@ export const AdminSearchResult = ({component}) => {
         };
         e.target.classList.add('active')
     };
+    const handleobject = (e) => {
+        e.preventDefault();
+        navigate("/landlords/admin/createobject")
+        const links = document.querySelectorAll(`.nav-link`);
+        for(let i=0; i<links.length; i++) {
+            links[i].classList.remove('active')
+        };
+        e.target.classList.add('active')
+    };
     const handleQuit = () => {
         logOut();
         navigate("/landlords/signin")
@@ -49,6 +58,9 @@ export const AdminSearchResult = ({component}) => {
                     <ul className="nav nav-pills">
                         <li className="nav-item">
                             <NavLink to="/" onClick={handleusers} className="nav-link" aria-current="page" >Заявки пользователей</NavLink>
+                        </li>
+                        <li className="nav-item">
+                            <NavLink to="/" onClick={handleobject} className="nav-link" >Добавить объект</NavLink>
                         </li>
                         <li className="nav-item">
                             <NavLink to="/" onClick={handledb} className="nav-link" >Все объекты</NavLink>

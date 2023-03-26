@@ -28,6 +28,7 @@ export const SearchAside = () => {
         try {
         const district = regions.find(element=>element.id === searchValues.
             inputCity)
+            // console.error(searchValues);
         let districtArr = []
         for (let i in district) {
             if (i!='id') {

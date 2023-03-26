@@ -15,15 +15,16 @@ import SignUp from './components/authtorisation/signUp';
 import PageNotFound from './pages/rus/404/PageNotFound';
 import { useEffect } from 'react';
 import { onValue } from 'firebase/database';
-import { objectsDataBase, regionsDataBase } from './store/actions/actions';
+import { objectsDataBase, regionsDataBase, usersDataBase } from './store/actions/actions';
 import { useDispatch } from 'react-redux';
-import { dataRef, regionDataRef } from './server/googleFirebase';
+import { dataDeployRef, dataRef, regionDataRef } from './server/googleFirebase';
 import { FormSent } from './components/sendForm/formSent';
 import AdminSearchResult from './components/admin/adminSearchResult';
 import AdminPanel from './components/admin/adminPanel';
 import AdminUsers from './components/admin/adminUsers';
 import AdminRegions from './components/admin/adminRegions';
 import AdminDb from './components/admin/adminDb';
+import AdminObject from './components/admin/adminObject';
 
 function App() {
   const dispatch = useDispatch();
@@ -39,6 +40,16 @@ function App() {
           dispatch(objectsDataBase(newData));  
         }            
     });  
+    onValue(dataDeployRef, (snapshot) => {
+      const data = snapshot.val()
+      if (data) {
+        const newData = Object.entries(data).map((item) => ({
+            id: item[0],
+            ...item[1]
+        }));
+        dispatch(usersDataBase(newData));        
+      }
+    }); 
     onValue(regionDataRef, (snapshot) => {
       const data = snapshot.val()
       if (data) {
@@ -72,6 +83,7 @@ function App() {
         <Route path="/landlords/admin/users" element={<Landlords component={<AdminPanel component={<AdminUsers/>}/>}/>} />
         <Route path="/landlords/admin/db" element={<Landlords component={<AdminPanel component={<AdminDb />}/>}/>} />
         <Route path="/landlords/admin/regions" element={<Landlords component={<AdminPanel component={<AdminRegions />}/>}/>} />
+        <Route path="/landlords/admin/createobject" element={<Landlords component={<AdminPanel component={<AdminObject/>}/>}/>} />
         <Route path="/protection-personal-data" element={<PersonalData />} />
         <Route path="/" element={<Main />} />
       </Routes>

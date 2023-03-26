@@ -1,12 +1,10 @@
-export const AdminUsers = () => {
-
-
+export const AdminObject = () => {
     return (
         <>
-        <h3>Admin Users</h3>
+        <h3>Admin Object</h3>
         <div className="admin-panel-wrp"></div>
         </>
     )    
 }
 
-export default AdminUsers;
+export default AdminObject;

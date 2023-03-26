@@ -13574,6 +13574,14 @@ input::-webkit-inner-spin-button {
   top: 114px;
 }
 
+.admin-panel-wrp {
+  background-color: #FFFFFF;
+  width: 98%;
+  min-height: 400px;
+  border-radius: 5px;
+  margin: 0 0 13px 0;
+}
+
 /* -- IMPORTANT -- */
 .hidden {
   display: none;
