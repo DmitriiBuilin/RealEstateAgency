@@ -29,9 +29,7 @@ export const dataRef = ref(database, 'fulldb');
 export const regionDataRef = ref(database, 'regions');
 export const userRef = ref(database, 'users');
 
-// console.log(analytics);
-
-export const getPostById = (userId) => ref(database, `users/${userId}`)
+// console.log(regionDataRef);
 
 export const signUp = async (email, password) => {
     await createUserWithEmailAndPassword(auth, email, password)

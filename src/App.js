@@ -57,7 +57,7 @@ function App() {
             id: item[0],
             ...item[1]
         }));
-        dispatch(regionsDataBase(newData));        
+        dispatch(regionsDataBase(newData));     
       }
     });       
   }, []);

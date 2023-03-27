@@ -13659,7 +13659,7 @@ input::-webkit-inner-spin-button {
   font-size: 16px;
   font-weight: 700;
   border: 1px solid #012158;
-  padding: 2px;
+  padding: 2px 2px 2px 5px;
   border-radius: 5px;
   margin-bottom: 2px;
   min-width: 145px;
@@ -13686,6 +13686,8 @@ input::-webkit-inner-spin-button {
 }
 
 .admin-district-btn-remove {
+  width: 28px;
+  color: #dc1c2e;
   border: 1px solid #dc1c2e;
   border-radius: 5px;
   background-color: #FFFFFF;
@@ -13701,6 +13703,10 @@ input::-webkit-inner-spin-button {
   transition: 0.5s;
   -webkit-transition: 0.5s;
   -moz-transition: 0.5s;
+}
+
+.admin-input-city {
+  width: 76%;
 }
 
 /* -- IMPORTANT -- */

@@ -15,7 +15,7 @@ export const AdminSearchAside = () => {
         try {
             let regionstArr = []
             for (let i in regions) {
-                regionstArr.push(<option key={regions[i].id} value={regions[i].id}>{regions[i].id}</option>)
+                regionstArr.push(<option key={regions[i].id} value={regions[i].id}>{regions[i].city}</option>)
             }
             return regionstArr
         } catch (error) {
@@ -29,7 +29,7 @@ export const AdminSearchAside = () => {
             inputCity)
         let districtArr = []
         for (let i in district) {
-            if (i!='id') {
+            if (i!='city' && i!='id') {
                 districtArr.push(<option key={district[i]} value={district[i]}>{district[i]}</option>)
             }
         }
