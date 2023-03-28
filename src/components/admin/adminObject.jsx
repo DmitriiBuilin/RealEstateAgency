@@ -1,8 +1,9 @@
+import SendForm from "../sendForm/sendForm";
+
 export const AdminObject = () => {
     return (
         <>
-        <h3>Admin Object</h3>
-        <div className="admin-panel-wrp"></div>
+            <SendForm />
         </>
     )    
 }

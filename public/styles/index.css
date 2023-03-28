@@ -13147,7 +13147,7 @@ input::-webkit-inner-spin-button {
 /* -- LANDLORDS -- */
 .landlords-main {
   margin: 0 auto;
-  width: 70%;
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -13709,6 +13709,43 @@ input::-webkit-inner-spin-button {
   width: 76%;
 }
 
+.admin-main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #eef2f6;
+  border-radius: 10px;
+  width: 100%;
+}
+
+.admin-sorter {
+  width: 270px;
+  margin-bottom: 15px;
+}
+
+.admin-card-item-propertties {
+  display: flex;
+}
+
+.admin-card-item-propertties p {
+  font-family: roboto, arial, sans-serif;
+  color: #012158;
+  font-weight: 400;
+  margin-right: 15px;
+}
+
+.admin-card-item-price {
+  font-family: roboto, arial, sans-serif;
+  color: #012158;
+  font-weight: 400;
+  font-size: 18px;
+  margin-bottom: 0;
+}
+
+.admin-card-item-price span {
+  font-weight: 700;
+}
+
 /* -- IMPORTANT -- */
 .hidden {
   display: none;
@@ -13799,9 +13836,6 @@ input::-webkit-inner-spin-button {
   .offers-carousel-item-name-1, .offers-carousel-item-name-2, .offers-carousel-item-name-3 {
     padding: 15px 0 0 50px;
     font-size: 32px;
-  }
-  .landlords-main {
-    width: 100%;
   }
 }
 @media (max-width: 768px) {

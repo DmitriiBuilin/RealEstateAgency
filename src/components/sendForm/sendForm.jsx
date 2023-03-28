@@ -38,17 +38,17 @@ export const SendForm = () => {
         try {
         const district = regions.find(element=>element.id === filledForm.
             city)
-            console.log(regions);
-            console.log(district);
-            console.log("City", filledForm.
-            city)
+            // console.log(regions);
+            // console.log(district);
+            // console.log("City", filledForm.
+            // city)
         let districtArr = []
         for (let i in district) {
             if (i!='id') {
                 districtArr.push(<option key={district[i]} value={district[i]}>{district[i]}</option>)
             }
         }
-        console.log(districtArr);
+        // console.log(districtArr);
         return districtArr
         } catch (error) {
             console.error(error);
@@ -71,8 +71,8 @@ export const SendForm = () => {
         for(let i=0; i<fullDataBase.length; i++) {
             newIdArray.push(fullDataBase[i].id)
         }
-        const id = (Math.max(...newIdArray) + 3);
-        console.log(id)
+        const id = (Math.max(...newIdArray) + 3).toString();
+        // console.log(id)
 
         // Create current date
         function getCurrentDate() {

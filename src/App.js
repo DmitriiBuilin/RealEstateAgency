@@ -17,7 +17,7 @@ import { useEffect } from 'react';
 import { onValue } from 'firebase/database';
 import { objectsDataBase, regionsDataBase, usersDataBase } from './store/actions/actions';
 import { useDispatch } from 'react-redux';
-import { dataDeployRef, dataRef, regionDataRef } from './server/googleFirebase';
+import { dataUsersRef, dataRef, regionDataRef } from './server/googleFirebase';
 import { FormSent } from './components/sendForm/formSent';
 import AdminSearchResult from './components/admin/adminSearchResult';
 import AdminPanel from './components/admin/adminPanel';
@@ -40,7 +40,7 @@ function App() {
           dispatch(objectsDataBase(newData));  
         }            
     });  
-    onValue(dataDeployRef, (snapshot) => {
+    onValue(dataUsersRef, (snapshot) => {
       const data = snapshot.val()
       if (data) {
         const newData = Object.entries(data).map((item) => ({
