@@ -38,17 +38,12 @@ export const SendForm = () => {
         try {
         const district = regions.find(element=>element.id === filledForm.
             city)
-            // console.log(regions);
-            // console.log(district);
-            // console.log("City", filledForm.
-            // city)
         let districtArr = []
         for (let i in district) {
             if (i!='id') {
                 districtArr.push(<option key={district[i]} value={district[i]}>{district[i]}</option>)
             }
         }
-        // console.log(districtArr);
         return districtArr
         } catch (error) {
             console.error(error);
@@ -98,16 +93,13 @@ export const SendForm = () => {
         );        
         
         function createObject() { 
-            push(dataRef, 
+            push(dataUsersRef, 
                 {
-                //     userId: 
-                //    {
                     "date": getCurrentDate(), 
                     "img": imgURLs, 
-                    "id": id, 
+                    "number": id, 
                     "uuid": uuidv4(),
                     ...filledForm
-                    // }
                 }   
             );            
             setPageLoading(false);

@@ -1,7 +1,8 @@
-import { getDatabase, ref, remove } from "firebase/database";
+import { getDatabase, push, ref, remove } from "firebase/database";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
+import { dataRef } from "../../server/googleFirebase";
 import { chosenObject } from "../../store/actions/actions";
 import { getCurrencyValue, getFullDataBase } from "../../store/selectors/selector";
 import useCurrencyCoefficient from "../currency/curencyCoefficient";
@@ -28,7 +29,7 @@ export const AdminCardItem = (props) => {
     };
     const removeObject = (e) => {
         e.preventDefault();
-        remove(ref(db, 'fulldb/' + e.target.value))
+        remove(ref(db, props.db + '/' + e.target.value))
     };
 
     const editObject = (e) => {
@@ -36,7 +37,21 @@ export const AdminCardItem = (props) => {
         navigate('card/' + e.target.value);
     };
 
+    const letPublicObject = (e) => {
+        e.preventDefault();
+        const item = props.item;
+        delete item.id;
+        push(dataRef, item); 
+        remove(ref(db, 'fulldb/' + e.target.value))    
+    };
 
+    const letPublicButton = () => {
+        if(props.db === "fulldb") {
+            return (         
+            <button onClick={letPublicObject} type="button" className="btn btn-primary admin-edit-btn" form="landlordForm" value={props.id}>Опубликовать</button>
+            )
+        }
+    };
     
 
     useEffect(() => {
@@ -91,6 +106,7 @@ export const AdminCardItem = (props) => {
                 <div className="admin-card-item-settings">
                     <button onClick={removeObject} type="button" className="btn btn-danger admin-remove-btn" form="landlordForm" value={props.id}>Удалить</button>
                     <button onClick={editObject} type="button" className="btn btn-primary admin-edit-btn" form="landlordForm" value={props.number}>Редактировать</button>
+                    {letPublicButton()}
                 </div>
             </div>
         {/* </Link> */}

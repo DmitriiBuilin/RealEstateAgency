@@ -1,7 +1,26 @@
 {
   "deployDb": {
-    "-NQ0zpQcFtq8UCL7uNgz": {
-      "uuid": "ec5fc4a8-dc2f-4c94-9964-31e758bbd136"
+    "-NQ_qXOABUyV1vylSMJJ": {
+      "address": "3 Турчанинов переулок",
+      "city": "Анталья",
+      "date": "2023, 03, 15",
+      "description": "Lorem",
+      "district": "Муратпаша",
+      "email": "super@man.com",
+      "number": "1001255",
+      "img": [
+        "https://firebasestorage.googleapis.com/v0/b/antalya-realty.appspot.com/o/images%2F9YeGsdJJkeZHC5VRJcR35V3jnaM2%2F4.jpg?alt=media&token=ed34a7c9-6501-4e58-84a8-8a82097178e1",
+        "https://firebasestorage.googleapis.com/v0/b/antalya-realty.appspot.com/o/images%2F9YeGsdJJkeZHC5VRJcR35V3jnaM2%2F5.jpg?alt=media&token=846f8740-d2b8-4a72-bdad-b9af3692a756"
+      ],
+      "m2gross": "34",
+      "m2net": "34",
+      "objectName": "Superman's office",
+      "ownerName": "Superman",
+      "phoneNumber": "+944874946849",
+      "price": "300",
+      "realAstateType": "flat",
+      "target": "rent",
+      "uuid": "20066c0e-4871-4b8f-ac2b-dde1a240b84d"
     }
   },
   "fulldb": {

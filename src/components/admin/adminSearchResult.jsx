@@ -63,7 +63,7 @@ export const AdminSearchResult = ({component}) => {
                             <NavLink to="/" onClick={handleobject} className="nav-link" >Добавить объект</NavLink>
                         </li>
                         <li className="nav-item">
-                            <NavLink to="/" onClick={handledb} className="nav-link" >Все объекты</NavLink>
+                            <NavLink to="/" onClick={handledb} className="nav-link" >Опубликованные</NavLink>
                         </li>
                         <li className="nav-item">
                             <NavLink to="/" onClick={handleregions} className="nav-link" >Регионы</NavLink>

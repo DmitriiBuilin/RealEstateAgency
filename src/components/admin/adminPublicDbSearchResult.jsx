@@ -10,7 +10,7 @@ import { dataRef, dataUsersRef } from "../../server/googleFirebase";
 import useCurrencyCoefficient from "../currency/curencyCoefficient";
 import AdminCardItem from "../cards/adminCardItem";
 
-export const AdminUsersSearchResult = () => {
+export const AdminPublicDbSearchResult = () => {
     const { param } = useParams();    
     const dispatch = useDispatch();
     const target = useSelector(getPageValue);
@@ -73,11 +73,9 @@ export const AdminUsersSearchResult = () => {
         case "chipiest":
             cardsListFilter.sort((a, b) => {
                 if (Number(a.price) > Number(b.price)) {
-                    console.log(b.price)
                     return 1;
                     }
                 if (Number(a.price) < Number(b.price)) {
-                    console.log(a.price)
                 return -1;
                 }
                 return 0;
@@ -120,7 +118,7 @@ export const AdminUsersSearchResult = () => {
     };   
 
     useEffect(() => {
-        onValue(dataUsersRef, (snapshot) => {
+        onValue(dataRef, (snapshot) => {
             const data = snapshot.val()
             if (data) {
                 const newData = Object.entries(data).map((item) => ({
@@ -169,7 +167,7 @@ export const AdminUsersSearchResult = () => {
                 <div className="search-result">                
                     {cardsListFilter.map((item) => {
                         return(
-                            <AdminCardItem db='fulldb' item={item} key={item.number} id={item.id} number={item.number} objectName={item.objectName} price={item.price} description={item.description} rooms={item.rooms} m2gross={item.m2gross} city={item.city} date={item.date} img={item.img} district={item.district} realAstateType={item.realAstateType} target={item.target}/> 
+                            <AdminCardItem db='deployDb' key={item.number} id={item.id} number={item.number} objectName={item.objectName} price={item.price} description={item.description} rooms={item.rooms} m2gross={item.m2gross} city={item.city} date={item.date} img={item.img} district={item.district} realAstateType={item.realAstateType} target={item.target}/> 
                         )                    
                     })}
                 </div>            
@@ -179,4 +177,4 @@ export const AdminUsersSearchResult = () => {
     }   
 }
 
-export default AdminUsersSearchResult;
+export default AdminPublicDbSearchResult;
