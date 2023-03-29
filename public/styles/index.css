@@ -13734,6 +13734,10 @@ input::-webkit-inner-spin-button {
   margin-right: 15px;
 }
 
+.admin-card-item-propertties span {
+  color: #dc1c2e;
+}
+
 .admin-card-item-price {
   font-family: roboto, arial, sans-serif;
   color: #012158;
@@ -13744,6 +13748,32 @@ input::-webkit-inner-spin-button {
 
 .admin-card-item-price span {
   font-weight: 700;
+}
+
+.admin-card-item {
+  height: 260px;
+  display: flex;
+  flex-direction: column;
+}
+
+.admin-card-item-main {
+  display: flex;
+  height: 200px;
+}
+
+.admin-card-item-settings {
+  padding: 10px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.admin-edit-btn {
+  background-color: #003da5;
+  margin-left: 20px;
+}
+
+.admin-landlord-btn {
+  background-color: #dc1c2e;
 }
 
 /* -- IMPORTANT -- */

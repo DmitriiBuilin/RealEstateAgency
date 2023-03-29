@@ -27,13 +27,11 @@ export const AdminUsersSearchResult = () => {
         dispatch(sorterValue(e.target.value));
     };
 
-    console.log(cardsList)
-
     const cardsListFilter = (
         cardsList.filter((item) => {            
             return (
                 (item.objectName.match(regexp)
-                || item.description.match(regexp) || item.id.match(regexp) )
+                || item.description.match(regexp) || item.number.match(regexp) )
                 && item.city.match(searchResponse.inputCity)
                 && item.district.match(searchResponse.inputDistrict)
                 && item.price*currencyCoefficient >= Number(searchResponse.minPrice)
@@ -67,28 +65,30 @@ export const AdminUsersSearchResult = () => {
             )
                      
         })
-    );
+    );    
 
     /* Sort module */
 
     switch(storeSorterValue) {
         case "chipiest":
             cardsListFilter.sort((a, b) => {
-                if (a.price > b.price) {
+                if (Number(a.price) > Number(b.price)) {
+                    console.log(b.price)
                     return 1;
                     }
-                    if (a.price < b.price) {
-                    return -1;
-                    }
-                    return 0;
+                if (Number(a.price) < Number(b.price)) {
+                    console.log(a.price)
+                return -1;
+                }
+                return 0;
             });
             break;                
         case "expensive": 
             cardsListFilter.sort((a, b) => {
-                if (a.price > b.price) {
+                if (Number(a.price) > Number(b.price)) {
                     return -1;
                 }
-                if (a.price < b.price) {
+                if (Number(a.price) < Number(b.price)) {
                     return 1;
                 }
                 return 0;
@@ -117,7 +117,7 @@ export const AdminUsersSearchResult = () => {
             });
             break; 
         default:
-    };    
+    };   
 
     useEffect(() => {
         onValue(dataUsersRef, (snapshot) => {
@@ -169,7 +169,7 @@ export const AdminUsersSearchResult = () => {
                 <div className="search-result">                
                     {cardsListFilter.map((item) => {
                         return(
-                            <AdminCardItem key={item.id} id={item.id} objectName={item.objectName} price={item.price} description={item.description} rooms={item.rooms} m2gross={item.m2gross} city={item.city} date={item.date} img={item.img} district={item.district} realAstateType={item.realAstateType} target={item.target}/> 
+                            <AdminCardItem key={item.number} id={item.id} number={item.number} objectName={item.objectName} price={item.price} description={item.description} rooms={item.rooms} m2gross={item.m2gross} city={item.city} date={item.date} img={item.img} district={item.district} realAstateType={item.realAstateType} target={item.target}/> 
                         )                    
                     })}
                 </div>            

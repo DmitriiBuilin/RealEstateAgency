@@ -18,7 +18,7 @@ export const CardItem = (props) => {
     const idCarousel = letters[randomIndex];
 
     const getThisObject = fullDataBase.filter((item) => {
-        return item.id === props.id
+        return item.number === props.number
     });
     const dispatchChoosenObject = () => {
         dispatch(chosenObject(getThisObject)); 
@@ -33,7 +33,7 @@ export const CardItem = (props) => {
 
     return (
         <>
-        <Link to={`/card/${props.id}`} onClick={dispatchChoosenObject} className="card-item-wrp">
+        <Link to={`/card/${props.number}`} onClick={dispatchChoosenObject} className="card-item-wrp">
             <div className="card-item">                
                 <div className="card-item-img-wrp">
                     <div id={idCarousel} className="carousel slide">

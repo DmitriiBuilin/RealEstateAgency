@@ -25,6 +25,7 @@ import AdminUsers from './components/admin/adminUsers';
 import AdminRegions from './components/admin/adminRegions';
 import AdminDb from './components/admin/adminDb';
 import AdminObject from './components/admin/adminObject';
+import AdminCardComponent from './components/cards/adminCardComponent';
 
 function App() {
   const dispatch = useDispatch();
@@ -84,6 +85,7 @@ function App() {
         <Route path="/landlords/admin/db" element={<Landlords component={<AdminPanel component={<AdminDb />}/>}/>} />
         <Route path="/landlords/admin/regions" element={<Landlords component={<AdminPanel component={<AdminRegions />}/>}/>} />
         <Route path="/landlords/admin/createobject" element={<Landlords component={<AdminPanel component={<AdminObject/>}/>}/>} />
+        <Route path="/landlords/admin/users/card/:id" element={<Landlords component={<AdminPanel component={<AdminCardComponent />}/>}/>} />
         <Route path="/protection-personal-data" element={<PersonalData />} />
         <Route path="/" element={<Main />} />
       </Routes>

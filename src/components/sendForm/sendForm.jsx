@@ -71,7 +71,7 @@ export const SendForm = () => {
         for(let i=0; i<fullDataBase.length; i++) {
             newIdArray.push(fullDataBase[i].id)
         }
-        const id = (Math.max(...newIdArray) + 3).toString();
+        const id = String(Math.max(...newIdArray) + 3);
         // console.log(id)
 
         // Create current date
