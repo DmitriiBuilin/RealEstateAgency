@@ -11,9 +11,9 @@ import useCurrencyCoefficient from "../currency/curencyCoefficient";
 export const AdminCardItem = (props) => {
     const currency = useSelector(getCurrencyValue);
     const valuteCoefficient = useCurrencyCoefficient();
-    const dispatch = useDispatch();
     const navigate = useNavigate();
     const db = getDatabase();
+    
     
     const fullDataBase = useSelector(getFullDataBase);
 
@@ -21,12 +21,6 @@ export const AdminCardItem = (props) => {
     const randomIndex = Math.floor(Math.random() * letters.length);
     const idCarousel = letters[randomIndex];
 
-    const getThisObject = fullDataBase.filter((item) => {
-        return item.number === props.number
-    });
-    const dispatchChoosenObject = () => {
-        dispatch(chosenObject(getThisObject)); 
-    };
     const removeObject = (e) => {
         e.preventDefault();
         remove(ref(db, props.db + '/' + e.target.value))
@@ -39,8 +33,16 @@ export const AdminCardItem = (props) => {
 
     const letPublicObject = (e) => {
         e.preventDefault();
+        // Create new number
+        let newIdArray = [];
+        for(let i=0; i<fullDataBase.length; i++) {
+            newIdArray.push(fullDataBase[i].number)
+        }
+        const number = String(Math.max(...newIdArray) + 3);
+        
         const item = props.item;
         delete item.id;
+        item.number = number;
         push(dataRef, item); 
         remove(ref(db, 'fulldb/' + e.target.value))    
     };

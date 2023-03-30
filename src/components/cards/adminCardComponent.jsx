@@ -1,34 +1,26 @@
-import { onValue } from "firebase/database";
+import { getDatabase, onValue, ref } from "firebase/database";
 import { memo, useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { dataRef, dataUsersRef } from "../../server/googleFirebase";
 import { getCurrencyValue } from "../../store/selectors/selector";
 import { getPageValue } from "../../store/selectors/selector";
 import useCurrencyCoefficient from "../currency/curencyCoefficient";
 
-export const AdminCardComponent = () => {
+export const AdminCardComponent = (props) => {
     const { id } = useParams();
     const navigate = useNavigate();
     const [fullDataBase, setFullDataBase] = useState([]);
-   
-    const pageKey = useSelector(getPageValue);
+    const db = getDatabase();   
     const currency = useSelector(getCurrencyValue);
     const valuteCoefficient = useCurrencyCoefficient();
-    const noAction = (e) => {
-        e.preventDefault();
-    };
+
     const [mainPhotoKey, setMainPhotoKey] = useState('0');
 
     const handleChangePhoto = (e, imgNumber) => {
         setMainPhotoKey(imgNumber)
     };
     
-    const page = {
-        rent: 'Аренда',
-        sale: 'Продажа',
-        new: 'Новостройки',
-    };
     const pageType = {
         flat:'Квартира',
         house:'Дом',
@@ -38,7 +30,7 @@ export const AdminCardComponent = () => {
     }        
 
     useEffect(() => {
-        onValue(dataUsersRef, (snapshot) => {
+        onValue(ref(db, props.dbname), (snapshot) => {
             const data = snapshot.val();
             if (data) {
                 const newData = Object.entries(data).map((item) => ({
@@ -59,8 +51,9 @@ export const AdminCardComponent = () => {
         {fullDataBase.filter(item => item.number == id).map((item) => 
             <div key={item + Math.random() * 10000}>
             <div className="card-title-wrp">
-                <h2 className="card-name">{item.objectName}</h2>
-                <p className="card-id">№ объекта: {item.number}</p>            
+
+                <input type="text" className="form-control admin-card-input-header" value={item.objectName}/>
+                <p className="admin-card-id">№ объекта: {item.number}</p>            
             </div>
             <div className="card-main-info">
                 <div className="card-photo">
@@ -114,7 +107,7 @@ export const AdminCardComponent = () => {
                             </button>                      
                         </div>               
                     </div>
-                    <div className="card-item-description-p">{item.description}</div>
+                    <textarea className="landlords-textarea-description admin-textarea" name="address" id="description" placeholder="Описание" maxLength="500" value={item.description} required></textarea>
                 </div>
                 <div className="card-photo-small-screen">
                     <div id="carouselExampleFade" className="carousel slide carousel-fade">
@@ -150,6 +143,31 @@ export const AdminCardComponent = () => {
                     </div>                
                     <div className="card-properties-wrp">
                         <ul className="card-properties-ul">
+                             <li>
+                                <p className="card-properties-item">Имя собственника</p>
+                                <p className="card-properties-item-value">{item.ownerName}</p>
+                            </li>
+                            <div className="card-divide"></div>
+                            <li>
+                                <p className="card-properties-item">Телефон</p>
+                                <p className="card-properties-item-value">{item.phoneNumber}</p>
+                            </li>
+                            <div className="card-divide"></div>
+                            <li>
+                                <p className="card-properties-item">E-mail</p>
+                                <p className="card-properties-item-value">{item.email}</p>
+                            </li>
+                            <div className="card-divide"></div>
+                            <li>
+                                <p className="card-properties-item">Предложение</p>
+                                <p className="card-properties-item-value">{item.target}</p>
+                            </li>
+                            <div className="card-divide"></div>
+                            <li>
+                                <p className="card-properties-item">Адрес</p>
+                                <p className="card-properties-item-value">{item.address}</p>
+                            </li>
+                            <div className="card-divide"></div>
                             <li>
                                 <p className="card-properties-item">Вид недвижимости</p>
                                 <p className="card-properties-item-value">{pageType[item.realAstateType]}</p>
@@ -219,31 +237,31 @@ export const AdminCardComponent = () => {
                             <li>
                                 <p className="card-properties-mini-item">Кухонная плита</p>
                                 <p className="card-properties-mini-item-value">
-                                <input className="form-check-input" type="checkbox" value='' id="stove" onClick={noAction} defaultChecked={item.stove} />
+                                <input className="form-check-input" type="checkbox" value='' id="stove"  defaultChecked={item.stove} />
                                 </p>
                             </li>
                             <li>
                                 <p className="card-properties-mini-item">Посудомоечная машина</p>
                                 <p className="card-properties-mini-item-value">
-                                <input className="form-check-input" type="checkbox" value='' id="dishwasher" onClick={noAction} defaultChecked={item.dishwasher} />
+                                <input className="form-check-input" type="checkbox" value='' id="dishwasher" defaultChecked={item.dishwasher} />
                                 </p>
                             </li>
                             <li>
                                 <p className="card-properties-mini-item">Стиральная машина</p>
                                 <p className="card-properties-mini-item-value">
-                                <input className="form-check-input" type="checkbox" value='' id="washingMachine" onClick={noAction} defaultChecked={item.washingMachine} />
+                                <input className="form-check-input" type="checkbox" value='' id="washingMachine"  defaultChecked={item.washingMachine} />
                                 </p>
                             </li>
                             <li>
                                 <p className="card-properties-mini-item">Холодильник</p>
                                 <p className="card-properties-mini-item-value">
-                                <input className="form-check-input" type="checkbox" value='' id="refrigerator" onClick={noAction} defaultChecked={item.refrigerator} />
+                                <input className="form-check-input" type="checkbox" value='' id="refrigerator"  defaultChecked={item.refrigerator} />
                                 </p>
                             </li>
                             <li>
                                 <p className="card-properties-mini-item">Микроволновая печь</p>
                                 <p className="card-properties-mini-item-value">
-                                <input className="form-check-input" type="checkbox" value='' id="microwave" onClick={noAction} defaultChecked={item.microwave} />
+                                <input className="form-check-input" type="checkbox" value='' id="microwave"  defaultChecked={item.microwave} />
                                 </p>
                             </li>   
                         </ul>                        

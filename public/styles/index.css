@@ -13776,6 +13776,21 @@ input::-webkit-inner-spin-button {
   background-color: #dc1c2e;
 }
 
+.admin-card-input-header {
+  width: 600px;
+  margin-bottom: 10px;
+}
+
+.admin-card-id {
+  color: rgba(33, 37, 41, 0.75);
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.admin-textarea {
+  height: 100px;
+}
+
 /* -- IMPORTANT -- */
 .hidden {
   display: none;
