@@ -13,7 +13,7 @@ export const AdminCardComponent = (props) => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const [fullDataBase, setFullDataBase] = useState([]);
-    // const newObject = useSelector(getChosenObject);
+    const newObject = useSelector(getChosenObject);
     const db = getDatabase();   
     const currency = useSelector(getCurrencyValue);
     const valuteCoefficient = useCurrencyCoefficient();
@@ -25,16 +25,16 @@ export const AdminCardComponent = (props) => {
     };
 
     const handleChangeInput = (event) => {
-        dispatch(chosenObjectEdit(event));
+        // dispatch(chosenObjectEdit(event));
     };
     const handleChangeInputCheckbox = (event) => {
-        dispatch(chosenObjectEditCheckbox(event));
+        // dispatch(chosenObjectEditCheckbox(event));
     }; 
     const handleSave = () => {
-        // const newObjectId = newObject.id;     
-        // delete newObject.id;
-        // push(ref(db, props.dbname), newObject); 
-        // remove(ref(db, props.dbname + '/'+ newObjectId)); 
+        const newObjectId = newObject.id;     
+        delete newObject.id;
+        push(ref(db, props.dbname), newObject); 
+        remove(ref(db, props.dbname + '/'+ newObjectId)); 
     }
     
     
@@ -65,7 +65,8 @@ export const AdminCardComponent = (props) => {
         {fullDataBase.filter(item => item.number == id).map((item) => 
             <div key={item + Math.random() * 10000}>
             <div className="card-title-wrp">
-                <input onChange={handleChangeInput} id="objectName" type="text" className="form-control admin-card-input-header" value={item.objectName}/>
+                {item.objectName}
+                <input onChange={handleChangeInput} id="objectName" type="text" className="form-control admin-card-input-header" defaultValue={item.objectName}/>
                 <p className="admin-card-id">№ объекта: {item.number}</p>            
             </div>
             <div className="card-main-info">
