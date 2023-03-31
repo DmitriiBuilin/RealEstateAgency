@@ -40,7 +40,7 @@ export const AdminCardItem = (props) => {
         }
         const number = String(Math.max(...newIdArray) + 3);
         
-        const item = props.item;
+        let item = props.item;
         delete item.id;
         item.number = number;
         push(dataRef, item); 

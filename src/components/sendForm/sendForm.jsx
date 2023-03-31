@@ -349,10 +349,10 @@ export const SendForm = () => {
                         </div>
                         <div className="col-10">
                             <label htmlFor="airConditioning" className="form-label">Кондиционер</label>
-                            <select onChange={handleBooleanSelect} defaultValue='' className="form-select" id="airConditioning" value={filledForm.airConditioning} >
+                            <select onChange={handleBooleanSelect} defaultValue='' className="form-select" id="airConditioning"  >
                                 <option disabled ></option>
-                                <option value={true}>Кондиционер / Есть</option>
-                                <option value=''>Кондиционер / Нет</option>           
+                                <option value={1}>Кондиционер / Есть</option>
+                                <option value={0}>Кондиционер / Нет</option>           
                             </select>
                         </div> 
                         <div className="col-10">
@@ -364,7 +364,7 @@ export const SendForm = () => {
                                 <option value="2">Ванных комнат / 2</option>
                                 <option value="3">Ванных комнат / 3</option> 
                                 <option value="4">Ванных комнат / 4</option>
-                                <option value="4">Ванных комнат / 5</option>
+                                <option value="5">Ванных комнат / 5</option>
                             </select>
                         </div>
                         <div className="col-10">
@@ -381,18 +381,18 @@ export const SendForm = () => {
                         </div>  
                         <div className="col-10">
                             <label htmlFor="furniture" className="form-label">Мебель</label>
-                            <select onChange={handleBooleanSelect} defaultValue='' className="form-select" id="furniture" value={filledForm.furniture} >
+                            <select onChange={handleBooleanSelect} defaultValue='' className="form-select" id="furniture" >
                                 <option disabled ></option>
-                                <option value={true}>Мебель / Есть</option>
-                                <option value=''>Мебель / Нет</option>           
+                                <option value={1}>Мебель / Есть</option>
+                                <option value={0}>Мебель / Нет</option>           
                             </select>
                         </div>
                         <div className="col-10">
                             <label htmlFor="kitchen" className="form-label">Кухонная мебель</label>
-                            <select onChange={handleBooleanSelect} defaultValue='' className="form-select" id="kitchen" value={filledForm.kitchen} >
+                            <select onChange={handleBooleanSelect} defaultValue='' className="form-select" id="kitchen" >
                                 <option disabled ></option>
-                                <option value={true}>Кухонная мебель / Есть</option>
-                                <option value=''>Кухонная мебель / Нет</option>           
+                                <option value={1}>Кухонная мебель / Есть</option>
+                                <option value={0}>Кухонная мебель / Нет</option>           
                             </select>
                         </div>                        
                         <div className="col-10">
