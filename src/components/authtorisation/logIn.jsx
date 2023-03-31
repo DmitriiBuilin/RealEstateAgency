@@ -22,7 +22,7 @@ export const LogIn = () => {
 
 
 // TODO Delete before prod
-    return <AdminPanel />
+    // return <AdminPanel />
 // - ** - //
 
     if (!isAuth) {    

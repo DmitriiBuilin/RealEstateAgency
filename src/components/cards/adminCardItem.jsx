@@ -65,7 +65,6 @@ export const AdminCardItem = (props) => {
 
     return (
         <>
-        {/* <Link to={`/card/${props.number}`} onClick={dispatchChoosenObject} className="card-item-wrp"> */}
             <div className="card-item admin-card-item">  
                 <div className="admin-card-item-main">
                     <div className="card-item-img-wrp">
@@ -111,7 +110,6 @@ export const AdminCardItem = (props) => {
                     {letPublicButton()}
                 </div>
             </div>
-        {/* </Link> */}
         </>
     );
 }

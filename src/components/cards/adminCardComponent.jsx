@@ -7,13 +7,15 @@ import { getChosenObject, getCurrencyValue } from "../../store/selectors/selecto
 import { getPageValue } from "../../store/selectors/selector";
 import useCurrencyCoefficient from "../currency/curencyCoefficient";
 import { chosenObject, chosenObjectEdit, chosenObjectEditCheckbox } from "../../store/actions/actions";
+import PopUpConfirm from "../admin/popUpConfirm";
 
 export const AdminCardComponent = (props) => {
     const { id } = useParams();
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const [fullDataBase, setFullDataBase] = useState([]);
-    const newObject = useSelector(getChosenObject);
+    const [confirmation, setConfirmation] = useState(false)
+    // const newObject = useSelector(getChosenObject);
     const db = getDatabase();   
     const currency = useSelector(getCurrencyValue);
     const valuteCoefficient = useCurrencyCoefficient();
@@ -25,16 +27,18 @@ export const AdminCardComponent = (props) => {
     };
 
     const handleChangeInput = (event) => {
-        // dispatch(chosenObjectEdit(event));
+        dispatch(chosenObjectEdit(event));
     };
     const handleChangeInputCheckbox = (event) => {
-        // dispatch(chosenObjectEditCheckbox(event));
+        dispatch(chosenObjectEditCheckbox(event));
     }; 
-    const handleSave = () => {
-        const newObjectId = newObject.id;     
-        delete newObject.id;
-        push(ref(db, props.dbname), newObject); 
-        remove(ref(db, props.dbname + '/'+ newObjectId)); 
+    const handleSave = (e) => {
+        e.preventDefault();
+        setConfirmation(true)
+        // const newObjectId = newObject.id;     
+        // delete newObject.id;
+        // push(ref(db, props.dbname), newObject); 
+        // remove(ref(db, props.dbname + '/'+ newObjectId)); 
     }
     
     
@@ -55,17 +59,21 @@ export const AdminCardComponent = (props) => {
                     ...item[1]
                   }))    
                 setFullDataBase(newData);
-                dispatch(chosenObject(newData.filter(item => item.number == id)[0]))
+                const newObj = newData.filter(item => item.number == id)[0];
+                if(!newObj) {
+                    return null;   
+                }
+                dispatch(chosenObject(newObj));
             }
           });
     }, []);
 
     return (
         <>
+        {confirmation && <PopUpConfirm props={props.dbname}/>}  
         {fullDataBase.filter(item => item.number == id).map((item) => 
             <div key={item + Math.random() * 10000}>
             <div className="card-title-wrp">
-                {item.objectName}
                 <input onChange={handleChangeInput} id="objectName" type="text" className="form-control admin-card-input-header" defaultValue={item.objectName}/>
                 <p className="admin-card-id">№ объекта: {item.number}</p>            
             </div>
@@ -202,7 +210,7 @@ export const AdminCardComponent = (props) => {
                             <div className="card-divide"></div>
                             <li>
                                 <p className="card-properties-item">Количество комнат</p>
-                                <select className="form-select admin-card-input-select" id="rooms" defaultValue={item.rooms}>
+                                <select onChange={handleChangeInput} className="form-select admin-card-input-select" id="rooms" defaultValue={item.rooms}>
                                     <option value="">No data</option>
                                     <option value="0+1">Комнаты 0+1</option>
                                     <option value="1+0">Комнаты 1+0</option> 

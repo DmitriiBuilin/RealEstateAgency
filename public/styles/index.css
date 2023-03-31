@@ -13823,6 +13823,39 @@ input::-webkit-inner-spin-button {
   height: 38px;
 }
 
+.admin-cover {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  z-index: 100;
+  width: 100%;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  background: rgba(102, 102, 102, 0.6);
+}
+
+.confirm-window {
+  width: 400px;
+  height: 150px;
+}
+
+.confirm-window-header {
+  font-family: roboto, arial, sans-serif;
+  color: #012158;
+  margin-top: 27px;
+}
+
+.confirm-window-btn-group {
+  display: flex;
+}
+
+.confirm-window-btn {
+  width: 117px;
+  margin: 10px;
+}
+
 /* -- IMPORTANT -- */
 .hidden {
   display: none;

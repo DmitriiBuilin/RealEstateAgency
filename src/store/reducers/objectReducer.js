@@ -3,6 +3,7 @@ export const objectReducer = (state = "", action) => {
         case 'CARD::OBJECT':
           return action.payload;
         case 'CARD::EDITOBJECT':
+          console.log(action.payload )
           return { ...state, ...action.payload };
         case 'CARD::EDITOBJECTCHECKBOX':
           return { ...state, ...action.payload };

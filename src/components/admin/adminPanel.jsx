@@ -8,14 +8,14 @@ export const AdminPanel = ({component}) => {
 
 
 // TODO Delete before prod
-return (
-    <>
-    <div className="container-field container-primary">
-        <AdminSearchAside />
-        <AdminSearchResult component={component}/>
-    </div>
-    </>
-)   
+// return (
+//     <>
+//     <div className="container-field container-primary">
+//         <AdminSearchAside />
+//         <AdminSearchResult component={component}/>
+//     </div>
+//     </>
+// )   
 // - ** - //
 
     if(isAdmin) {
