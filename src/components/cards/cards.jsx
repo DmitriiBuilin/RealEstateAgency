@@ -49,7 +49,7 @@ export const Cards = (props) => {
                 <div className="offers-carousel-card-block">
                     {cardsListFilter.slice(0, 4).map((item) => {
                         return (
-                            <Link key={Math.random() * 10000} to={`/card/${item.id}`} className="offer-card-wrp">
+                            <Link key={Math.random() * 10000} to={`/card/${item.number}`} className="offer-card-wrp">
                                 <div className="offer-card">
                                     <img className="offer-card-img" src={item.img[0]} alt="..." />
                                     <div className="offer-card-properties">

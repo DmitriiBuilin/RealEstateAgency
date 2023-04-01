@@ -22,7 +22,7 @@ export const Main = () => {
         const district = regions.find(element=>element.id === searchValues.inputCity)
         let districtArr = []
         for (let i in district) {
-            if (i!='id') {
+            if (i!='city' && i!='id') {
                 districtArr.push(<option key={district[i]} value={district[i]}>{district[i]}</option>)
             }
         }
