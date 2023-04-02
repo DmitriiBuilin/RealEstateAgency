@@ -11,7 +11,6 @@ import { mainClearInput, mainSelect, pageSelect, regionsDataBase, searchTyping }
 import { getMainSearchValue, getRegionsDataBase } from "../../../store/selectors/selector";
 import { regionDataRef } from "../../../server/googleFirebase";
 import { onValue } from "firebase/database";
-import ReactDOM from 'react-dom/client';
 
 export const Main = () => {
     const dispatch = useDispatch();
@@ -156,13 +155,15 @@ export const Main = () => {
                         <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
                     </div>
                     <div className="carousel-inner">                        
-                        {name.map((item) => {
-                            return (
-                                <div key={Math.random() * 100} className="carousel-item">
-                                    <Cards name={item}/>
-                                </div>  
-                            )
-                        })}
+                        <div className="carousel-item active">
+                            <Cards name={name[0]}/>
+                        </div>  
+                        <div className="carousel-item">
+                        <Cards name={name[1]}/>
+                        </div>  
+                        <div className="carousel-item">
+                            <Cards name={name[2]}/>
+                        </div>  
                     </div>
                     <button className="carousel-control-prev carousel-control-custom-main" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
                         <span className="visually-hidden">Previous</span>

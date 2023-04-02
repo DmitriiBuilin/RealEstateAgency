@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { dataRef } from "../../server/googleFirebase";
-import { objectsDataBase } from "../../store/actions/actions";
+import { objectsDataBase, pageSelect } from "../../store/actions/actions";
 import { getCurrencyValue } from "../../store/selectors/selector";
 import useCurrencyCoefficient from "../currency/curencyCoefficient";
 
@@ -17,6 +17,16 @@ export const Cards = (props) => {
         cardsList.filter((item) => {
                 return (item.target === props.name)
     }));
+
+    const itemHeader = {
+        rent: 'Аренда', 
+        sale: 'Продажа', 
+        new: 'Новостройки'
+    }
+
+    const handleClick = () => {
+        dispatch(pageSelect(props.name))
+    };
 
     cardsListFilter.sort((a, b) => {
         if (a.price > b.price) {
@@ -45,11 +55,11 @@ export const Cards = (props) => {
     return (
         <>
             <div className="offers-carousel-item">
-                <p className="offers-carousel-item-name">{props.name}</p>
+                <p className="offers-carousel-item-name">{itemHeader[props.name]}</p>
                 <div className="offers-carousel-card-block">
                     {cardsListFilter.slice(0, 4).map((item) => {
                         return (
-                            <Link key={Math.random() * 10000} to={`/card/${item.number}`} className="offer-card-wrp">
+                            <Link onClick={handleClick} key={Math.random() * 10000} to={`/card/${item.number}`} className="offer-card-wrp">
                                 <div className="offer-card">
                                     <img className="offer-card-img" src={item.img[0]} alt="..." />
                                     <div className="offer-card-properties">
