@@ -52,12 +52,14 @@ export const Main = () => {
         dispatch(mainSelect(e));
     };
 
-    const setActive = () => {document.querySelector('.carousel-inner').children[0].classList.add('active')};
+    
     try {
-        setTimeout(setActive, 3000)
+        const setActive = () => {document.querySelector('.carousel-inner').children[0].classList.add('active')};
+        setTimeout(setActive, 2000)
     } catch (error) {
         console.error(error)
       } finally {
+        const setActive = () => {document.querySelector('.carousel-inner').children[0].classList.add('active')};
         setTimeout(setActive, 3000)
     }
 
