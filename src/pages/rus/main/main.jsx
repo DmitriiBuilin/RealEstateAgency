@@ -53,8 +53,15 @@ export const Main = () => {
     };
 
     const setActive = () => {document.querySelector('.carousel-inner').children[0].classList.add('active')};
+    try {
+        setTimeout(setActive, 3000)
+    } catch (error) {
+        console.error(error)
+      } finally {
+        setTimeout(setActive, 3000)
+    }
 
-    setTimeout(setActive, 3000)
+
 
     useEffect(() => {
         onValue(regionDataRef, (snapshot) => {
