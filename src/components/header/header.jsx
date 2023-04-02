@@ -11,8 +11,6 @@ export const Header = () => {
     const language = useSelector(getLanguageValue);
     const dispatch = useDispatch();
     const activeClassName = "selected";
-    const selectedLanguage = document.getElementById(`${language}`);
-    const selectedCurrency = document.getElementById(`${currency}`);
     
     const langHandleOpen = () => {
         document.querySelector(".currency-and-language").classList.add('show');
@@ -58,8 +56,9 @@ export const Header = () => {
         const selectedLanguage = document.getElementById(`${language}`);
         const selectedCurrency = document.getElementById(`${currency}`);
 
-        selectedLanguage.parentNode.classList.add('selected')
-        selectedCurrency.parentNode.classList.add('selected')        
+        selectedLanguage.parentNode.classList.add('selected');
+        // selectedCurrency.parentNode.classList.add('selected');
+ 
 
         /* jQuery script (show/hide header) */        
         let header = $('.header-fixed'),
@@ -177,19 +176,19 @@ export const Header = () => {
                             <div className="currency-and-language-block-item">
                                 <h4 className="grid-head">Валюта</h4>
                                 <ul className="currency">
-                                <li className="grid-left-top c-li">
+                                <li className="grid-left-top c-li $">
                                     <input onClick={handleCurrency} name="currency" type="radio" className="checkbox-visibility" id="$"/>
                                     <label htmlFor="$">USD $</label>
                                 </li>
-                                <li className="grid-left c-li">
+                                <li className="grid-left c-li €">
                                     <input onClick={handleCurrency} name="currency" type="radio" className="checkbox-visibility" id="€"/>
                                     <label htmlFor="€">Euro €</label>
                                 </li>
-                                <li className="grid-right-top c-li">
+                                <li className="grid-right-top c-li ₺">
                                     <input onClick={handleCurrency} name="currency" type="radio" className="checkbox-visibility" id="₺"/>
                                     <label htmlFor="₺">TRL ₺</label>           
                                 </li>
-                                <li className="grid-right c-li">
+                                <li className="grid-right c-li ₽">
                                     <input onClick={handleCurrency} name="currency" type="radio" className="checkbox-visibility" id="₽"/>
                                     <label htmlFor="₽">Rub ₽</label>
                                 </li>

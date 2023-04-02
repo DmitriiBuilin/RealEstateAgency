@@ -11,6 +11,7 @@ import { mainClearInput, mainSelect, pageSelect, regionsDataBase, searchTyping }
 import { getMainSearchValue, getRegionsDataBase } from "../../../store/selectors/selector";
 import { regionDataRef } from "../../../server/googleFirebase";
 import { onValue } from "firebase/database";
+import ReactDOM from 'react-dom/client';
 
 export const Main = () => {
     const dispatch = useDispatch();
@@ -52,18 +53,7 @@ export const Main = () => {
         dispatch(mainSelect(e));
     };
 
-    
-    try {
-        const setActive = () => {document.querySelector('.carousel-inner').children[0].classList.add('active')};
-        setTimeout(setActive, 2000)
-    } catch (error) {
-        console.error(error)
-      } finally {
-        const setActive = () => {document.querySelector('.carousel-inner').children[0].classList.add('active')};
-        setTimeout(setActive, 3000)
-    }
-
-
+    // document.querySelector('.carousel-item').classList.add('active'); 
 
     useEffect(() => {
         onValue(regionDataRef, (snapshot) => {
