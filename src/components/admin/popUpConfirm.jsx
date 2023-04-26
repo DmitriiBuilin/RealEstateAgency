@@ -15,7 +15,7 @@ export const PopUpConfirm = (props) => {
 
         push(ref(db, props.props), newObject); 
         remove(ref(db, props.props + '/'+ newObjectId)); 
-        navigate(0)
+        navigate(-1)
     }
 
     return (

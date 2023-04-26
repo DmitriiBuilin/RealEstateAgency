@@ -107,7 +107,7 @@ export const Main = () => {
                             <select onChange={handleSelect} className="form-select" id="inputCity" required>
                                 <option value=''>...</option>
                                 {regions.map((item) => {
-                                    return <option key={item.id} value={item.id}>{item.id}</option>
+                                    return <option key={item.id} value={item.id}>{item.city}</option>
                                 })}
                             </select>
                             <div className="invalid-feedback">
